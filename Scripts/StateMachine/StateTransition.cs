@@ -8,60 +8,62 @@ using UnityEngine;
 [System.Serializable]
 public class StateTransition : IState
 {
-  [SerializeField] private StateSO _targetState;
-  [SerializeField] private StateConditionSO[] _conditions;
-  [SerializeField] private bool[] _expectedResults;
-  [SerializeField] private StateConditionOperator _conditionOperator;
-  private List<bool> _results;
+  private State _targetState;
+  private StateCondition[] _conditions;
+  private int[] _resultGroups;
+  private bool[] _results;
 
-  private void OnEnable()
+  public StateTransition() { }
+  public StateTransition(State targetState, StateCondition[] conditions, int[] resultGroups = null)
   {
-    _results = new List<bool>();
+    Init(targetState, conditions, resultGroups);
   }
 
-  public bool GetTransition(out StateSO state)
+  public void Init(State targetState, StateCondition[] conditions, int[] resultGroups = null)
   {
-    _results.Clear();
+    _targetState = targetState;
+    _conditions = conditions;
+    _resultGroups = resultGroups != null && resultGroups.Length > 0 ? resultGroups : new int[1];
+    _results = new bool[_resultGroups.Length];
+  }
 
-    state = null;
-    for (int i = 0; i < _conditions.Length; i++)
-      _results.Add(_conditions[i].GetStatement() == _expectedResults[i]);
-
-    if (_conditionOperator == StateConditionOperator.AND)
-      state = _results.All(element => element) ? _targetState : null;
-    else
-      state = _results.Any(element => element) ? _targetState : null;
-
+  public bool TryGetTransiton(out State state)
+  {
+    state = ShouldTransition() ? _targetState : null;
     return state != null;
   }
 
   public void OnStateEnter()
   {
     for (int i = 0; i < _conditions.Length; i++)
-      _conditions[i].OnStateEnter();
+      _conditions[i]._condition.OnStateEnter();
   }
 
   public void OnStateExit()
   {
     for (int i = 0; i < _conditions.Length; i++)
-      _conditions[i].OnStateExit();
+      _conditions[i]._condition.OnStateExit();
+  }
+
+  private bool ShouldTransition()
+  {
+    int count = _resultGroups.Length;
+    for (int i = 0, idx = 0; i < count && idx < _conditions.Length; i++)
+      for (int j = 0; j < _resultGroups[i]; j++, idx++)
+        _results[i] = j == 0 ?
+          _conditions[idx].IsMet() :
+          _results[i] && _conditions[idx].IsMet();
+
+    bool ret = false;
+    for (int i = 0; i < count && !ret; i++)
+      ret = ret || _results[i];
+
+    return ret;
   }
 
   public void ClearConditionsCache()
   {
     for (int i = 0; i < _conditions.Length; i++)
-      _conditions[i].ClearStatementCache();
+      _conditions[i]._condition.ClearStatementCache();
   }
-
-  public void InitComponent(StateMachine stateMachine)
-  {
-    for (int i = 0; i < _conditions.Length; i++)
-      _conditions[i].InitComponent(stateMachine);
-  }
-}
-
-public enum StateConditionOperator
-{
-  AND,
-  OR
 }

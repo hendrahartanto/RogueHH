@@ -2,30 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public abstract class StateConditionSO : ScriptableObject, IState
+public abstract class StateConditionSO : ScriptableObject
 {
-  private bool _isCached = false;
-  private bool _cachedStatement = default;
-  protected abstract bool Statement();
-
-  public bool GetStatement()
+  internal StateCondition GetCondition(StateMachine stateMachine, bool expectedResult, Dictionary<ScriptableObject, object> createdInstances)
   {
-    if (!_isCached)
+    if (!createdInstances.TryGetValue(this, out var obj))
     {
-      _cachedStatement = Statement();
-      _isCached = true;
+      var condition = CreateCondition();
+      condition.OriginSO = this;
+      createdInstances.Add(this, condition);
+      condition.Awake(stateMachine);
+
+      obj = condition;
     }
 
-    return _cachedStatement;
+    return new StateCondition(stateMachine, (Condition)obj, expectedResult);
   }
+  protected abstract Condition CreateCondition();
+}
 
-  public void ClearStatementCache()
-  {
-    _isCached = false;
-  }
-
-  public virtual void InitComponent(StateMachine stateMachine) { }
-  public virtual void OnStateEnter() { }
-  public virtual void OnStateExit() { }
+public abstract class StateConditionSO<T> : StateConditionSO where T : Condition, new()
+{
+  protected override Condition CreateCondition() => new T();
 }

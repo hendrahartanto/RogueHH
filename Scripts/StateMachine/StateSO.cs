@@ -4,58 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "State", menuName = "StateMachine/State")]
-public class StateSO : ScriptableObject, IState
+public class StateSO : ScriptableObject
 {
-  public StateTransition[] Transitions;
-  public StateActionSO[] Actions;
-
-  public void InitComponent(StateMachine stateMachine)
+  [SerializeField] private StateActionSO[] _actions = null;
+  internal State GetState(StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
   {
-    for (int i = 0; i < Transitions.Length; i++)
-      Transitions[i].InitComponent(stateMachine);
+    if (createdInstances.TryGetValue(this, out var obj))
+      return (State)obj;
 
-    for (int i = 0; i < Actions.Length; i++)
-      Actions[i].InitComponent(stateMachine);
+    var state = new State();
+    createdInstances.Add(this, state);
+
+    state.OriginSO = this;
+    state.StateMachine = stateMachine;
+    state.Transitions = new StateTransition[0];
+    state.Actions = GetActions(_actions, stateMachine, createdInstances);
+
+    return state;
   }
 
-  public void OnStateEnter()
+  private static StateAction[] GetActions(StateActionSO[] scriptableActions,
+    StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
   {
-    void OnStateEnter(IState[] comps)
-    {
-      for (int i = 0; i < comps.Length; i++)
-        comps[i].OnStateEnter();
-    }
-    OnStateEnter(Transitions);
-    OnStateEnter(Actions);
-  }
+    int count = scriptableActions.Length;
+    var actions = new StateAction[count];
+    for (int i = 0; i < count; i++)
+      actions[i] = scriptableActions[i].GetAction(stateMachine, createdInstances);
 
-  public void OnUpdate()
-  {
-    for (int i = 0; i < Actions.Length; i++)
-      Actions[i].OnUpdate();
-  }
-
-  public void OnStateExit()
-  {
-    void OnStateExit(IState[] comps)
-    {
-      for (int i = 0; i < comps.Length; i++)
-        comps[i].OnStateExit();
-    }
-    OnStateExit(Transitions);
-    OnStateExit(Actions);
-  }
-
-  public bool GetTransition(out StateSO state)
-  {
-    state = null;
-    for (int i = 0; i < Transitions.Length; i++)
-      if (Transitions[i].GetTransition(out state))
-        break;
-
-    for (int i = 0; i < Transitions.Length; i++)
-      Transitions[i].ClearConditionsCache();
-
-    return state != null;
+    return actions;
   }
 }

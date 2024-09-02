@@ -1,13 +1,15 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HighlightTileAction", menuName = "StateMachine/Actions/Pointer/HighlightTileAction")]
-public class HighlightTileActionSO : StateActionSO
+public class HighlightTileActionSO : StateActionSO<HighlightTileAction> { }
+
+public class HighlightTileAction : StateAction
 {
   private Vector3Int _previousGridPosition;
   private Vector3Int _currentGridPosition;
   private PointerManager _pointerManager;
   //TODO: jadiin Grid menjadi variable global
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
     _pointerManager = stateMachine.GetComponent<PointerManager>();
   }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d3966d77bc07049a6e8209e693d838, type: 3}
   m_Name: FindPathAction
   m_EditorClassIdentifier: 
-  _pathStorage: {fileID: 11400000, guid: 0353892a0e9145c4d8a1f3cd2267b058, type: 2}
-  playerTransform: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
+  PlayerTransform: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
+  OnPlayerInstantiated: {fileID: 11400000, guid: b83aa13b1c5deed42b52652029013603, type: 2}

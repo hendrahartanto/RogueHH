@@ -6,18 +6,26 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-  private readonly Dictionary<Type, Component> _cachedComponents = new Dictionary<Type, Component>();
-  private StateSO _currentState = default;
-  public StateSO[] States = default;
+  [SerializeField] private StateTableSO _stateTable = default;
 
+#if UNITY_EDITOR
+  [Space]
+  [SerializeField]
+  // internal Debugging.StateMachineDebugger _debugger = default;
+#endif
+
+  private readonly Dictionary<Type, Component> _cachedComponents = new Dictionary<Type, Component>();
+  public State _currentState;
+
+  private void Awake()
+  {
+    // #if UNITY_EDITOR
+    //     _debugger.Awake(this);
+    // #endif
+  }
   private void Start()
   {
-    _currentState = States[0];
-
-    for (int i = 0; i < States.Length; i++)
-      States[i].InitComponent(this);
-
-    _currentState.OnStateEnter();
+    _currentState = _stateTable.GetInitialState(this);
   }
 
   public new bool TryGetComponent<T>(out T component) where T : Component
@@ -35,6 +43,17 @@ public class StateMachine : MonoBehaviour
     return true;
   }
 
+  public T GetOrAddComponent<T>() where T : Component
+  {
+    if (!TryGetComponent<T>(out var component))
+    {
+      component = gameObject.AddComponent<T>();
+      _cachedComponents.Add(typeof(T), component);
+    }
+
+    return component;
+  }
+
   public new T GetComponent<T>() where T : Component
   {
     return TryGetComponent(out T component)
@@ -43,13 +62,13 @@ public class StateMachine : MonoBehaviour
 
   private void Update()
   {
-    if (_currentState.GetTransition(out var transitionState))
+    if (_currentState.TryGetTransition(out var transitionState))
       Transition(transitionState);
 
     _currentState.OnUpdate();
   }
 
-  private void Transition(StateSO transitionState)
+  private void Transition(State transitionState)
   {
     _currentState.OnStateExit();
     _currentState = transitionState;

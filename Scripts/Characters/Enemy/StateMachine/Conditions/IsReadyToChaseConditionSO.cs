@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IsReadyToChase", menuName = "StateMachine/Conditions/Enemy/IsReadyToChase")]
-public class IsReadyToChaseConditionSO : StateConditionSO
+public class IsReadyToChaseConditionSO : StateConditionSO<IsReadyToChaseCondition> { }
+
+public class IsReadyToChaseCondition : Condition
 {
   private Enemy _enemy;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
     _enemy = stateMachine.GetComponent<Enemy>();
   }

@@ -5,13 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MovePlayerOnClickAction", menuName = "StateMachine/Actions/Pointer/MovePlayerOnClickAction")]
 public class MovePlayerOnClickActionSO : StateActionSO
 {
-  [SerializeField] InputReader _inputReader = default;
+  public InputReader InputReader = default;
+  protected override StateAction CreateAction() => new MovePlayerOnClickAction();
+}
+
+public class MovePlayerOnClickAction : StateAction
+{
+  InputReader _inputReader = default;
   private Player _player;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
+    _inputReader = ((MovePlayerOnClickActionSO)OriginSO).InputReader;
     _player = stateMachine.GetComponent<Player>();
-    Debug.Log(_player);
   }
 
   public override void OnStateEnter()
@@ -30,5 +36,4 @@ public class MovePlayerOnClickActionSO : StateActionSO
   }
 
   public override void OnUpdate() { }
-
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   [SerializeField] private GlobalMovementSpeedSO _movementSpeed;
-  public PathStorageSO PathStorage;
+  public PathStorageSO PathStorage = default;
 
   public bool IsMoving = false;
   private bool _stopMovingFlag = false;
@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
   private void Awake()
   {
+    Debug.Log("Awake player");
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
   }
 

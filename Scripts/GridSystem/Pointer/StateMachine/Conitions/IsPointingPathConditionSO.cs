@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IsPointingPath", menuName = "StateMachine/Conditions/Pointer/IsPointingPath")]
-public class IsPointingPathConditionSO : StateConditionSO
+public class IsPointingPathConditionSO : StateConditionSO<IsPointingPathCondition> { }
+
+public class IsPointingPathCondition : Condition
 {
   private PointerManager _pointerManager;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
     _pointerManager = stateMachine.GetComponent<PointerManager>();
   }
@@ -20,5 +22,4 @@ public class IsPointingPathConditionSO : StateConditionSO
 
     return _pointerManager.isPointingNull ? false : grid[gridPosition.x, gridPosition.y].cellTypes.Contains(CellType.Walkable);
   }
-
 }

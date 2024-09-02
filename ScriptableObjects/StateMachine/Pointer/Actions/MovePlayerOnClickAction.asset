@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8322b989f226847b1fdadb565662a7, type: 3}
   m_Name: MovePlayerOnClickAction
   m_EditorClassIdentifier: 
-  _notifyMovePlayer: {fileID: 11400000, guid: 381ed830bbcc970479216ebcac399dcf, type: 2}
-  _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
+  InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}

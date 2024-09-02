@@ -4,11 +4,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "isPointingRestricted", menuName = "StateMachine/Conditions/Pointer/IsPointingRestricted")]
 
-public class IsPointingRestrictedConditionSO : StateConditionSO
+public class IsPointingRestrictedConditionSO : StateConditionSO<IsPointingRestrictedCondition> { }
+
+public class IsPointingRestrictedCondition : Condition
 {
   private PointerManager _pointerManager;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
     _pointerManager = stateMachine.GetComponent<PointerManager>();
   }

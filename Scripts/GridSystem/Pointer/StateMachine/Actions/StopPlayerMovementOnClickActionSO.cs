@@ -1,13 +1,21 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StopPlayerMovementOnClickAction", menuName = "StateMachine/Actions/Pointer/StopPlayerMovementOnClickAction")]
-public class StopPlayerMovementOnClickActionSO : StateActionSO
+public class StopPlayerMovementOnClickActionSO : StateActionSO<StopPlayerMovementOnClickAction>
 {
-  [SerializeField] InputReader _inputReader = default;
+  public InputReader InputReader = default;
+  protected override StateAction CreateAction() => new StopPlayerMovementOnClickAction();
+}
+
+public class StopPlayerMovementOnClickAction : StateAction
+{
+  InputReader _inputReader = default;
   private Player _player;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
+    _inputReader = ((StopPlayerMovementOnClickActionSO)OriginSO).InputReader;
     _player = stateMachine.GetComponent<Player>();
   }
 

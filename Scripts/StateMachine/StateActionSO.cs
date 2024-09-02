@@ -2,10 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StateActionSO : ScriptableObject, IState
+public abstract class StateActionSO : ScriptableObject
 {
-  public abstract void OnUpdate();
-  public virtual void InitComponent(StateMachine stateMachine) { }
-  public virtual void OnStateEnter() { }
-  public virtual void OnStateExit() { }
+  public StateAction GetAction(StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
+  {
+    if (createdInstances.TryGetValue(this, out var obj))
+      return (StateAction)obj;
+
+    var action = CreateAction();
+    createdInstances.Add(this, action);
+    action.OriginSO = this;
+    action.Awake(stateMachine);
+    return action;
+  }
+  protected abstract StateAction CreateAction();
 }
+
+public abstract class StateActionSO<T> : StateActionSO where T : StateAction, new()
+{
+  protected override StateAction CreateAction() => new T();
+}
+

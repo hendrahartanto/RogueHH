@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IsMoving", menuName = "StateMachine/Conditions/Player/IsMoving")]
-public class IsMovingConditionSO : StateConditionSO
+public class IsMovingConditionSO : StateConditionSO<IsMovingCondition> { }
+
+public class IsMovingCondition : Condition
 {
   private Player _player;
 
-  public override void InitComponent(StateMachine stateMachine)
+  public override void Awake(StateMachine stateMachine)
   {
     _player = stateMachine.GetComponent<Player>();
   }
@@ -16,5 +18,4 @@ public class IsMovingConditionSO : StateConditionSO
   {
     return _player.IsMoving;
   }
-
 }
