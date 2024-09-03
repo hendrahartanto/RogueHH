@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
   public UnityAction OnTurnExecuted;
   public PathStorageSO PathStorage;
-
   public bool IsReadyToChase = false;
 
   private void Awake()

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
   }
 
-  private IEnumerator MoveAlongPath()
+  private IEnumerator MoveAlongPath(bool isInCombat)
   {
     List<Node> paths = new List<Node>(PathStorage.paths);
 
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
       transform.position = endPosition;
 
       //Cek jika ada perintah untuk berhenti bergerak
-      if (_stopMovingFlag)
+      if (_stopMovingFlag || isInCombat)
       {
         _stopMovingFlag = false;
         IsMoving = false;
@@ -52,10 +52,10 @@ public class Player : MonoBehaviour
     IsMoving = false;
   }
 
-  public void OnNotifyMovePlayer()
+  public void OnNotifyMovePlayer(bool isInCombat)
   {
     IsMoving = true;
-    StartCoroutine(MoveAlongPath());
+    StartCoroutine(MoveAlongPath(isInCombat));
   }
 
   public void OnNotifyStopMoving()

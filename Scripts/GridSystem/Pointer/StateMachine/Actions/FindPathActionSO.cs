@@ -7,7 +7,7 @@ public class FindPathActionSO : StateActionSO
 {
   public TransformAnchorSO PlayerTransform;
 
-  protected override StateAction CreateAction() => new FindPathAction();
+  protected override StateAction CreateAction() => new FindPathAction(PlayerTransform);
 }
 
 public class FindPathAction : StateAction
@@ -22,12 +22,16 @@ public class FindPathAction : StateAction
   private Vector3Int _previousGridPosition;
   private Vector3Int _currentGridPosition;
 
+  public FindPathAction(TransformAnchorSO playerTransform)
+  {
+    _playerTransform = playerTransform;
+  }
+
   public override void Awake(StateMachine stateMachine)
   {
     _pointerManager = stateMachine.GetComponent<PointerManager>();
     _player = stateMachine.GetComponent<Player>();
     _pathStorage = _player.PathStorage;
-    _playerTransform = ((FindPathActionSO)OriginSO).PlayerTransform;
     _gridNode = _pointerManager.GridNode;
     _aStar = new AStar();
   }

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8322b989f226847b1fdadb565662a7, type: 3}
-  m_Name: MovePlayerOnClickAction
+  m_Script: {fileID: 11500000, guid: a082206d6a0fbb1479490c78f8e297ed, type: 3}
+  m_Name: IsInCombat
   m_EditorClassIdentifier: 
-  InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
+  GameStateToCheck: 1
   GameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
