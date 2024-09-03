@@ -5,21 +5,26 @@ using UnityEngine;
 public class TurnSystem : MonoBehaviour
 {
   public List<ITurnComponent> QueueItems = default;
+  private int _currentItemIndex = 0;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
+  [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
+
 
   private void OnEnable()
   {
     _onTurnCycleExecuted.OnEventRaised += ExecuteTurnCycle;
     _onEnemyAggro.OnEventRaised += AddToQueue;
+    _onTurnFinished.OnEventRaised += ExecuteNextTurn;
   }
 
   private void OnDisable()
   {
     _onTurnCycleExecuted.OnEventRaised -= ExecuteTurnCycle;
     _onEnemyAggro.OnEventRaised -= AddToQueue;
+    _onTurnFinished.OnEventRaised -= ExecuteNextTurn;
   }
 
   private void Awake()
@@ -36,7 +41,16 @@ public class TurnSystem : MonoBehaviour
   private void ExecuteTurnCycle()
   {
     Debug.Log("EXECUTE TURN CYCLE");
-    QueueItems[0].ExecuteTurn();
+    _currentItemIndex = 0;
+    QueueItems[_currentItemIndex++].ExecuteTurn();
+  }
+
+  private void ExecuteNextTurn()
+  {
+    if (_currentItemIndex >= QueueItems.Count)
+      return;
+
+    QueueItems[_currentItemIndex++].ExecuteTurn();
   }
 
 }

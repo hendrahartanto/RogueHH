@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983032397731062404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37, y: 1.5, z: 75}
+  m_LocalPosition: {x: 89, y: 1.5, z: 67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,6 +116,7 @@ MonoBehaviour:
   IsMoving: 0
   MovementProgress: 0
   _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
 --- !u!114 &7598917526948215553
 MonoBehaviour:
   m_ObjectHideFlags: 0

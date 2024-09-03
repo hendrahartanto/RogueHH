@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
   [Header("Broadcasting on")]
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
+  [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
+
 
   public UnityAction OnTurnExecuted { get; set; }
 
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour, ITurnComponent
     transform.position = endPosition;
 
     IsMoving = false;
+    _onTurnFinished.RaiseEvent();
   }
 
   public void OnNotifyMoveEnemy()
