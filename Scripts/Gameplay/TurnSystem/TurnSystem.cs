@@ -34,13 +34,14 @@ public class TurnSystem : MonoBehaviour
 
   private void AddToQueue(ITurnComponent turnComponent)
   {
-    Debug.Log("ADD TO TURN QUEUE");
+    if (QueueItems.Contains(turnComponent))
+      return;
+
     QueueItems.Add(turnComponent);
   }
 
   private void ExecuteTurnCycle()
   {
-    Debug.Log("EXECUTE TURN CYCLE");
     _currentItemIndex = 0;
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
