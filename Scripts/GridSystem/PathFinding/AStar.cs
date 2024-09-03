@@ -40,6 +40,10 @@ public class AStar
       //loop ke 4 neighbour (kiri, atas, bawah, kanan)
       for (int i = 0; i < 4; i++)
       {
+        //cek jika out of boud
+        if (curr.Position.x + dirX[i] > grid.size.x || curr.Position.z + dirX[i] > grid.size.y)
+          continue;
+
         Node currNeighbour = grid[curr.Position.x + dirX[i], curr.Position.z + dirZ[i]];
 
         //Cek node neighbor sekarang kalau null atau udah divisit maka di skip ke neighbour selanjutnya

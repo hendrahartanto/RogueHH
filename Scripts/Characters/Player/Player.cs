@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   [SerializeField] private GlobalMovementSpeedSO _movementSpeed;
+  [SerializeField] private GameStateSO _gameState;
   public PathStorageSO PathStorage = default;
 
   public bool IsMoving = false;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
   }
 
-  private IEnumerator MoveAlongPath(bool isInCombat)
+  private IEnumerator MoveAlongPath()
   {
     List<Node> paths = new List<Node>(PathStorage.paths);
 
@@ -40,7 +41,8 @@ public class Player : MonoBehaviour
 
       transform.position = endPosition;
 
-      //Cek jika ada perintah untuk berhenti bergerak
+      //Cek jika ada perintah untuk berhenti bergerak atau Cek jika lagi dalam combat (hanya bisa move 1 tile per turn)
+      bool isInCombat = _gameState.CurrentGameState == GameState.Combat;
       if (_stopMovingFlag || isInCombat)
       {
         _stopMovingFlag = false;
@@ -52,10 +54,10 @@ public class Player : MonoBehaviour
     IsMoving = false;
   }
 
-  public void OnNotifyMovePlayer(bool isInCombat)
+  public void OnNotifyMovePlayer()
   {
     IsMoving = true;
-    StartCoroutine(MoveAlongPath(isInCombat));
+    StartCoroutine(MoveAlongPath());
   }
 
   public void OnNotifyStopMoving()

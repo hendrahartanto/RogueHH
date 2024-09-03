@@ -6,20 +6,17 @@ using UnityEngine;
 public class MovePlayerOnClickActionSO : StateActionSO
 {
   public InputReader InputReader = default;
-  public GameStateSO GameState = default;
-  protected override StateAction CreateAction() => new MovePlayerOnClickAction(InputReader, GameState);
+  protected override StateAction CreateAction() => new MovePlayerOnClickAction(InputReader);
 }
 
 public class MovePlayerOnClickAction : StateAction
 {
   InputReader _inputReader = default;
   private Player _player;
-  private GameStateSO _gameState;
 
-  public MovePlayerOnClickAction(InputReader inputReader, GameStateSO gameState)
+  public MovePlayerOnClickAction(InputReader inputReader)
   {
     _inputReader = inputReader;
-    _gameState = gameState;
   }
 
   public override void Awake(StateMachine stateMachine)
@@ -39,8 +36,7 @@ public class MovePlayerOnClickAction : StateAction
 
   public void NotifyMovePlayer()
   {
-    bool isInCombat = _gameState.CurrentGameState == GameState.Combat;
-    _player.OnNotifyMovePlayer(isInCombat);
+    _player.OnNotifyMovePlayer();
   }
 
   public override void OnUpdate() { }
