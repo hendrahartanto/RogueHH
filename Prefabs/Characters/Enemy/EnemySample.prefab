@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983032397731062404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: 1.5, z: 13}
+  m_LocalPosition: {x: 37, y: 1.5, z: 75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,8 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6730c3c235871b41b1aee03f6a9d444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementSpeed: {fileID: 11400000, guid: e0f2d34148b129f45aa98492ced61543, type: 2}
   PathStorage: {fileID: 0}
   IsReadyToChase: 0
+  IsMoving: 0
+  MovementProgress: 0
+  _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
 --- !u!114 &7598917526948215553
 MonoBehaviour:
   m_ObjectHideFlags: 0

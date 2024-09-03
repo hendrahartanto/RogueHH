@@ -3,29 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ITurnComponent
 {
-  public UnityAction OnTurnExecuted;
+  public GlobalMovementSpeedSO MovementSpeed;
   public PathStorageSO PathStorage;
   public bool IsReadyToChase = false;
+  public bool IsMoving = false;
+  public float MovementProgress = 0f;
+
+  [Header("Broadcasting on")]
+  [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
+
+  public UnityAction OnTurnExecuted { get; set; }
+
+  private IEnumerator MoveToTarget()
+  {
+    Node target = PathStorage.paths[0];
+
+    Vector3 startPosition = transform.position;
+    Vector3 endPosition = new Vector3(target.Position.x * GridConfig.CellSize.x, transform.position.y, target.Position.z * GridConfig.CellSize.z) + GridConfig.Offset;
+
+    float distance = Vector3.Distance(startPosition, endPosition);
+    MovementProgress = 0f;
+
+    while (MovementProgress < 1f)
+    {
+      MovementProgress += MovementSpeed.MovementSpeed * Time.deltaTime / distance;
+
+      transform.position = Vector3.Lerp(startPosition, endPosition, MovementProgress);
+
+      yield return null;
+    }
+
+    transform.position = endPosition;
+
+    IsMoving = false;
+  }
+
+  public void OnNotifyMoveEnemy()
+  {
+    IsMoving = true;
+
+    StartCoroutine(MoveToTarget());
+  }
+
+  public void ExecuteTurn()
+  {
+    OnTurnExecuted?.Invoke();
+  }
 
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
   }
 
-  public void ExecuteTurn()
-  {
-    if (OnTurnExecuted != null)
-      OnTurnExecuted.Invoke();
-  }
-
   //Ketika player masuk zona agro musuh
   private void OnTriggerEnter(Collider other)
   {
-    Debug.Log("TESTES");
     if (other.CompareTag("Player"))
     {
+      _onEnemyAggro.RaiseEvent(this);
       IsReadyToChase = true;
     }
   }

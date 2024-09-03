@@ -30,7 +30,7 @@ public class EnemyFindPathAction : StateAction
     _aStar = new AStar();
   }
 
-  public override void OnStateEnter()
+  private void FindPath()
   {
     Node startNode = _gridNode[(int)_enemyTransform.position.x / GridConfig.CellSize.x, (int)_enemyTransform.position.z / GridConfig.CellSize.z];
     Node endNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
@@ -42,8 +42,14 @@ public class EnemyFindPathAction : StateAction
     }
   }
 
+  public override void OnStateEnter()
+  {
+    _enemy.OnTurnExecuted += FindPath;
+  }
+
   public override void OnStateExit()
   {
+    _enemy.OnTurnExecuted -= FindPath;
   }
 
   public override void OnUpdate() { }
