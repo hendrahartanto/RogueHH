@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 014f0341b4a429a49b3f201431402e33, type: 3}
-  m_Name: ReadyToChase
+  m_Name: EnemyIdle
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 6c4de0028e05a564383924e1bd0e1df9, type: 2}
+  _actions: []

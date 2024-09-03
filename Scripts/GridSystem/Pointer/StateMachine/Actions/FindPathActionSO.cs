@@ -24,7 +24,6 @@ public class FindPathAction : StateAction
 
   public override void Awake(StateMachine stateMachine)
   {
-    Debug.Log("Awake Action");
     _pointerManager = stateMachine.GetComponent<PointerManager>();
     _player = stateMachine.GetComponent<Player>();
     _pathStorage = _player.PathStorage;

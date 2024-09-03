@@ -20,4 +20,14 @@ public class Enemy : MonoBehaviour
     if (OnTurnExecuted != null)
       OnTurnExecuted.Invoke();
   }
+
+  //Ketika player masuk zona agro musuh
+  private void OnTriggerEnter(Collider other)
+  {
+    Debug.Log("TESTES");
+    if (other.CompareTag("Player"))
+    {
+      IsReadyToChase = true;
+    }
+  }
 }

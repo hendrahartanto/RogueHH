@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class AStar
 {
-  public void FindPath(GridNodeSO grid, PathStorageSO pathStorage, Node startNode, Node endNode)
+  public void FindPath(GridNodeSO gridSource, PathStorageSO pathStorage, Node startNode, Node endNode)
   {
-    // GridNodeSO grid = ScriptableObject.CreateInstance<GridNodeSO>();
-    // grid.Initialize(gridSource.size, gridSource.data);
+    //TODO: experimental membuat instance GridNodeSO baru agar valuenya ga tertimpa saat banyak entitiy menggunakan pathfinding
+    GridNodeSO grid = ScriptableObject.CreateInstance<GridNodeSO>();
+    grid.Initialize(gridSource.size, gridSource.data);
 
     int[] dirX = { 1, 0, -1, 0 };
     int[] dirZ = { 0, -1, 0, 1 };

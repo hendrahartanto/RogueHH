@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014f0341b4a429a49b3f201431402e33, type: 3}
-  m_Name: ReadyToChase
+  m_Script: {fileID: 11500000, guid: caf04c820a5ae9b47b5c41e2ac0117fc, type: 3}
+  m_Name: EnemyFindPathAction
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 6c4de0028e05a564383924e1bd0e1df9, type: 2}
+  PlayerTransform: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
+  GridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
