@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8414dbd290be3034e9b564342f99755c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 240311778022324205, guid: b90d4549756839448b970d6f84d8af55, type: 3}
+  _playerPrefab: {fileID: 7049406681976180358, guid: 1c57d8239ad187d4d9008e1d3f689ed5, type: 3}
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
   _dungeon: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   _playerTransformAnchor: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}

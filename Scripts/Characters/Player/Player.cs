@@ -33,6 +33,24 @@ public class Player : MonoBehaviour
       float distance = Vector3.Distance(startPosition, endPosition);
       MovementProgress = 0f;
 
+      //cek arah rotasi
+      Vector3 direction = (endPosition - startPosition).normalized;
+
+      //rotate
+      if (direction != Vector3.zero)
+      {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        float rotationSpeed = 50f;
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+          transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+          yield return null;
+        }
+
+        transform.rotation = targetRotation;
+      }
+
       while (MovementProgress < 1f)
       {
         MovementProgress += _movementSpeed.MovementSpeed * Time.deltaTime / distance;
