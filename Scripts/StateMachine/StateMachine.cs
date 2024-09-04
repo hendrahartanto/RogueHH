@@ -34,9 +34,19 @@ public class StateMachine : MonoBehaviour
     if (!_cachedComponents.TryGetValue(type, out var value))
     {
       if (base.TryGetComponent<T>(out component))
+      {
         _cachedComponents.Add(type, component);
+        return true;
+      }
 
-      return component != null;
+      component = GetComponentInChildren<T>();
+      if (component != null)
+      {
+        _cachedComponents.Add(type, component);
+        return true;
+      }
+
+      return false;
     }
 
     component = (T)value;

@@ -46,8 +46,8 @@ public class AStar
 
         Node currNeighbour = grid[curr.Position.x + dirX[i], curr.Position.z + dirZ[i]];
 
-        //Cek node neighbor sekarang kalau null atau udah divisit maka di skip ke neighbour selanjutnya
-        if (currNeighbour == null || visitedNodes.Contains(currNeighbour))
+        //Cek node neighbor sekarang kalau null atau udah divisit maka di skip ke neighbour selanjutnya atau not accessable (ada enemy)
+        if (currNeighbour == null || visitedNodes.Contains(currNeighbour) || !currNeighbour.Accessable)
           continue;
 
         //hitung costnya menggunakan eucledian distance di c# udah ada function bawaan Vector3int yaitu Distance
@@ -95,6 +95,7 @@ public class AStar
 
 public class Node
 {
+  public bool Accessable;
   public Vector3Int Position;
   public Node Parent;
   public float GCost, HCost, FCost;
@@ -106,5 +107,6 @@ public class Node
     Position = position;
     Parent = null;
     GCost = HCost = FCost = 0;
+    Accessable = true;
   }
 }

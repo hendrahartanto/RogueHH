@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ac47965485c784f973ebb64462b6ca, type: 3}
-  m_Name: isPointingRestricted
+  m_Script: {fileID: 11500000, guid: dd222b3e73b8e2f4294c57ce8cb09bc7, type: 3}
+  m_Name: IsPointingRestrictedTile
   m_EditorClassIdentifier: 
+  CellTypeToCheck: 2

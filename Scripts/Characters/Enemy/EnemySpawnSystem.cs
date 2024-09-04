@@ -47,6 +47,10 @@ public class EnemySpawnSystem : MonoBehaviour
 
       EnemyBaseSO enemy = _dungeon.GetRandomEnemy();
 
+      //set tile to type to enemy
+      _grid[randomPosition.x, randomPosition.y].cellTypes.Clear();
+      _grid[randomPosition.x, randomPosition.y].cellTypes.Add(CellType.Enemy);
+
       Transform spawnLocation = enemy.Prefab.transform;
 
       spawnLocation.position = new Vector3(randomPosition.x * GridConfig.CellSize.x, 1.5f, randomPosition.y * GridConfig.CellSize.z) + GridConfig.Offset;

@@ -153,7 +153,7 @@ public class DungeonGenerator : MonoBehaviour
         {
           Vector3Int temp = position - zOffset * dirZ;
           Tile cell = _grid[position.x, temp.z];
-          cell.cellTypes.Add(CellType.Restricted);
+          cell.cellTypes.Add(CellType.DecorationRestrict);
           startEntrance = false;
         }
         Tile newTile = new Tile(PossibleRooms[0].floorPrefab, position.x, position.z, CellType.Walkable);
@@ -175,7 +175,7 @@ public class DungeonGenerator : MonoBehaviour
         {
           Vector3Int temp = position - xOffset * dirX;
           Tile cell = _grid[temp.x, position.z];
-          cell.cellTypes.Add(CellType.Restricted);
+          cell.cellTypes.Add(CellType.DecorationRestrict);
           startEntrance = false;
         }
         Tile newTile = new Tile(PossibleRooms[0].floorPrefab, position.x, position.z, CellType.Walkable);
@@ -191,7 +191,7 @@ public class DungeonGenerator : MonoBehaviour
         if (startEntrance == false && endEntrance)
         {
           Tile cell = _grid[position.x, position.z];
-          cell.cellTypes.Add(CellType.Restricted);
+          cell.cellTypes.Add(CellType.DecorationRestrict);
           endEntrance = false;
         }
       }
@@ -242,7 +242,7 @@ public class DungeonGenerator : MonoBehaviour
 
         foreach (Vector3Int pos in decorationAreaBuffer)
         {
-          if (_grid[pos.x, pos.z].cellTypes.Contains(CellType.Restricted))
+          if (_grid[pos.x, pos.z].cellTypes.Contains(CellType.DecorationRestrict) || _grid[pos.x, pos.z].cellTypes.Contains(CellType.Restricted))
           {
             add = false;
             break;
@@ -252,7 +252,7 @@ public class DungeonGenerator : MonoBehaviour
         if (add)
         {
           Instantiate(decoration.prefab, new Vector3(position.x * GridConfig.CellSize.x, 1, position.z * GridConfig.CellSize.z) + GridConfig.Offset, Quaternion.identity);
-          RestrictTiles(decorationAreaBuffer);
+          DecorationRestrict(decorationAreaBuffer);
           UnWalkableTile(decorationArea);
           room.availableTile -= decorationAreaBuffer.size.x * decorationAreaBuffer.size.z;
         }
@@ -264,16 +264,17 @@ public class DungeonGenerator : MonoBehaviour
   {
     foreach (Vector3Int pos in area)
     {
-      _grid[pos.x, pos.z].cellTypes.Remove(CellType.Walkable);
+      _grid[pos.x, pos.z].cellTypes.Clear();
+      _grid[pos.x, pos.z].cellTypes.Add(CellType.Restricted);
       _gridNode[pos.x, pos.z] = null;
     }
   }
 
-  private void RestrictTiles(RectXZ area)
+  private void DecorationRestrict(RectXZ area)
   {
     foreach (Vector3Int pos in area)
     {
-      _grid[pos.x, pos.z].cellTypes.Add(CellType.Restricted);
+      _grid[pos.x, pos.z].cellTypes.Add(CellType.DecorationRestrict);
     }
   }
 }
@@ -327,5 +328,7 @@ public class Tile
 public enum CellType
 {
   Walkable,
-  Restricted
+  DecorationRestrict,
+  Restricted,
+  Enemy
 }

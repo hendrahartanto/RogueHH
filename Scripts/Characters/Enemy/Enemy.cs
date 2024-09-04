@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour, ITurnComponent
   public bool IsReadyToChase = false;
   public bool IsMoving = false;
   public float MovementProgress = 0f;
+  [SerializeField] private GridTileSO _grid = default;
+  [SerializeField] private GridNodeSO _gridNode = default;
+
 
   [Header("Broadcasting on")]
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
@@ -24,6 +27,12 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
     Vector3 startPosition = transform.position;
     Vector3 endPosition = new Vector3(target.Position.x * GridConfig.CellSize.x, transform.position.y, target.Position.z * GridConfig.CellSize.z) + GridConfig.Offset;
+
+    //ganti start position jadi walkable
+    _grid[(int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z].cellTypes.Clear();
+    _grid[(int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z].cellTypes.Add(CellType.Walkable);
+
+    _gridNode[(int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z].Accessable = true;
 
     float distance = Vector3.Distance(startPosition, endPosition);
     MovementProgress = 0f;
@@ -56,6 +65,12 @@ public class Enemy : MonoBehaviour, ITurnComponent
     }
 
     transform.position = endPosition;
+
+    //ganti end position jadi enemy
+    _grid[target.Position.x, target.Position.z].cellTypes.Clear();
+    _grid[target.Position.x, target.Position.z].cellTypes.Add(CellType.Enemy);
+
+    _gridNode[target.Position.x, target.Position.z].Accessable = false;
 
     IsMoving = false;
     _onTurnFinished.RaiseEvent();
