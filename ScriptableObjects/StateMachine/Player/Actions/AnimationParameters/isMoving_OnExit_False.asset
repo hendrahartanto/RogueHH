@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014f0341b4a429a49b3f201431402e33, type: 3}
-  m_Name: Moving
+  m_Script: {fileID: 11500000, guid: 9d28a08d0c292a047bc1ad94ef3583c8, type: 3}
+  m_Name: isMoving_OnExit_False
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 64129328af6d5554883ee4c309a4157c, type: 2}
-  - {fileID: 11400000, guid: dab8dabbc1bc6b548831ea70bb2a7c34, type: 2}
+  parameterType: 0
+  parameterName: isMoving
+  boolValue: 0
+  intValue: 0
+  floatValue: 0
+  whenToRun: 1

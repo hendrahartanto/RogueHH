@@ -13,4 +13,10 @@ public abstract class StateAction : IState
   public virtual void OnStateEnter() { }
 
   public virtual void OnStateExit() { }
+
+}
+
+public enum SpecificMoment
+{
+  OnStateEnter, OnStateExit, OnUpdate
 }

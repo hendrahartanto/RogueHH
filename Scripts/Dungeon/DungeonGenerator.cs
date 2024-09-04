@@ -61,8 +61,9 @@ public class DungeonGenerator : MonoBehaviour
         }
       }
 
-      if (newRoom.area.xMin < 0 || newRoom.area.xMax >= Dungeon.Size.x
-          || newRoom.area.zMin < 0 || newRoom.area.zMax >= Dungeon.Size.y)
+      //TODO: experimental solution to outofbound grid access
+      if (newRoom.area.xMin < 0 || newRoom.area.xMax + 1 >= Dungeon.Size.x
+          || newRoom.area.zMin < 0 || newRoom.area.zMax + 1 >= Dungeon.Size.y)
       {
         add = false;
       }
