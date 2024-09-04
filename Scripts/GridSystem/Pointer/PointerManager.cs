@@ -9,6 +9,7 @@ public class PointerManager : MonoBehaviour
   public GridNodeSO GridNode = default;
   public Vector3Int GridPosition = default;
   public bool isPointingNull = true;
+  public Collider CurrentPointedCollider = default;
   [SerializeField] private PointerStateSO _pointerState;
   [SerializeField] private Camera _mainCamera;
   [SerializeField] private VoidEventChannelSO _onPlayerInstantiated = default;
@@ -33,18 +34,34 @@ public class PointerManager : MonoBehaviour
   {
     Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
     RaycastHit hit;
+    bool isHit = false;
 
-    if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Ignore))
+    while (!isHit)
     {
-      isPointingNull = false;
-      Vector3 hitPosition = hit.point;
+      if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Ignore))
+      {
+        // Check if the hit object has the tag "Player"
+        if (hit.collider.CompareTag("Player"))
+        {
+          ray.origin = hit.point + ray.direction * 0.01f;
+          continue;
+        }
 
-      //TODO: masih disimpan dalam x, y bukaan x, z
-      GridPosition = new Vector3Int((int)hitPosition.x / GridConfig.CellSize.x, (int)hitPosition.z / GridConfig.CellSize.z, 0);
-    }
-    else
-    {
-      isPointingNull = true;
+        isPointingNull = false;
+        Vector3 hitPosition = hit.point;
+
+        CurrentPointedCollider = hit.collider;
+
+        // TODO: Still using x, y instead of x, z for GridPosition
+        GridPosition = new Vector3Int((int)hitPosition.x / GridConfig.CellSize.x, (int)hitPosition.z / GridConfig.CellSize.z, 0);
+
+        isHit = true;
+      }
+      else
+      {
+        isPointingNull = true;
+        break;
+      }
     }
   }
 }

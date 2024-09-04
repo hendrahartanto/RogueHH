@@ -1683,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e1c12e9be7c0d4e872a3a048a944e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetList: []
   IsInAttackRange: 0
   TargetTag: Enemy
 --- !u!1 &2666252445044831056
@@ -4715,7 +4716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59, y: 1.5, z: 87}
+  m_LocalPosition: {x: 43, y: 1.5, z: 61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4805,6 +4806,7 @@ MonoBehaviour:
   GridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
   GridPosition: {x: 0, y: 0, z: 0}
   isPointingNull: 1
+  CurrentPointedCollider: {fileID: 0}
   _pointerState: {fileID: 11400000, guid: 76df99cfad0d3c341a0037d62f0f047a, type: 2}
   _mainCamera: {fileID: 0}
   _onPlayerInstantiated: {fileID: 11400000, guid: b83aa13b1c5deed42b52652029013603, type: 2}

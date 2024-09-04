@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AttackRangeTrigger : MonoBehaviour
 {
+  public List<Collider> TargetList = new List<Collider>();
   public bool IsInAttackRange = false;
   public String TargetTag;
   private void OnTriggerEnter(Collider other)
@@ -12,6 +13,7 @@ public class AttackRangeTrigger : MonoBehaviour
     if (other.CompareTag(TargetTag))
     {
       Debug.Log("ATTACK RANGE");
+      TargetList.Add(other);
       IsInAttackRange = true;
     }
   }
@@ -20,6 +22,7 @@ public class AttackRangeTrigger : MonoBehaviour
   {
     if (other.CompareTag(TargetTag))
     {
+      TargetList.Remove(other);
       IsInAttackRange = false;
     }
   }
