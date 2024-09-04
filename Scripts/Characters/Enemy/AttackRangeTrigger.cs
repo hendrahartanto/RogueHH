@@ -11,6 +11,7 @@ public class AttackRangeTrigger : MonoBehaviour
   {
     if (other.CompareTag(TargetTag))
     {
+      Debug.Log("ATTACK RANGE");
       IsInAttackRange = true;
     }
   }

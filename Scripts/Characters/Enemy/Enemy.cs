@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour, ITurnComponent
 {
   public GlobalMovementSpeedSO MovementSpeed;
   public PathStorageSO PathStorage;
-  public bool IsReadyToChase = false;
   public bool IsMoving = false;
   public float MovementProgress = 0f;
   [SerializeField] private GridTileSO _grid = default;
@@ -15,7 +14,6 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
 
   [Header("Broadcasting on")]
-  [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
 
 
@@ -91,15 +89,5 @@ public class Enemy : MonoBehaviour, ITurnComponent
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
-  }
-
-  //Ketika player masuk zona agro musuh
-  private void OnTriggerEnter(Collider other)
-  {
-    if (other.CompareTag("Player"))
-    {
-      _onEnemyAggro.RaiseEvent(this);
-      IsReadyToChase = true;
-    }
   }
 }

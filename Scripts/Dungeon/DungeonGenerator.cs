@@ -28,7 +28,7 @@ public class DungeonGenerator : MonoBehaviour
 
     PlaceRooms();
     ConnectRooms();
-    PlaceDecorations();
+    // PlaceDecorations();
   }
 
   private void PlaceRooms()

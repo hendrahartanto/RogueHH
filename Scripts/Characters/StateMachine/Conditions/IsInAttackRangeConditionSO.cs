@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "IsInAttackRange", menuName = "StateMachine/Conditions/Player/IsInAttackRange")]
+[CreateAssetMenu(fileName = "IsInAttackRange", menuName = "StateMachine/Conditions/IsInAttackRange")]
 public class IsInAttackRangeConditionSO : StateConditionSO<IsInAttackRangeCondition> { }
 
 public class IsInAttackRangeCondition : Condition

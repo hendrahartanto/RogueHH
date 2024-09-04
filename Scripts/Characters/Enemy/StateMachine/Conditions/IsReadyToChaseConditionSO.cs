@@ -7,14 +7,14 @@ public class IsReadyToChaseConditionSO : StateConditionSO<IsReadyToChaseConditio
 
 public class IsReadyToChaseCondition : Condition
 {
-  private Enemy _enemy;
+  private EnemyAggroTrigger _enemyAggroTrigger;
 
   public override void Awake(StateMachine stateMachine)
   {
-    _enemy = stateMachine.GetComponent<Enemy>();
+    _enemyAggroTrigger = stateMachine.GetComponent<EnemyAggroTrigger>();
   }
   protected override bool Statement()
   {
-    return _enemy.IsReadyToChase;
+    return _enemyAggroTrigger.IsReadyToChase;
   }
 }
