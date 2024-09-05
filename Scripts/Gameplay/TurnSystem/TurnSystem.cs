@@ -48,6 +48,7 @@ public class TurnSystem : MonoBehaviour
 
   private void ExecuteNextTurn()
   {
+    Debug.Log("EXECUTE NEXT TURN");
     if (_currentItemIndex >= QueueItems.Count)
       return;
 

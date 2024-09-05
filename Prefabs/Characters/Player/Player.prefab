@@ -4733,7 +4733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73, y: 1.5, z: 25}
+  m_LocalPosition: {x: 77, y: 1.5, z: 27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4858,6 +4858,7 @@ MonoBehaviour:
   IsGettingHit: 0
   isDead: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
 --- !u!114 &7034733871640068061
 MonoBehaviour:
   m_ObjectHideFlags: 0

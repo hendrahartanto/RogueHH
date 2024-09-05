@@ -3997,7 +3997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6484292930280265082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 1.5, z: 37}
+  m_LocalPosition: {x: 13, y: 1.5, z: 19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3316852673847041886}
@@ -4058,7 +4058,7 @@ MonoBehaviour:
   MovementProgress: 0
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
   _gridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
-  _onTurnFinished: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
 --- !u!114 &4338396487131020707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4089,6 +4089,7 @@ MonoBehaviour:
   IsGettingHit: 0
   isDead: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
 --- !u!114 &7006656950238368843
 MonoBehaviour:
   m_ObjectHideFlags: 0

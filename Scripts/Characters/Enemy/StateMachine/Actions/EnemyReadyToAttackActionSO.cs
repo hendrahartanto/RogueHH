@@ -30,10 +30,8 @@ public class EnemyReadyToAttackAction : StateAction
 
   private void AttackTarget()
   {
-    Debug.Log("Enemy Attack");
     if (_attackRangeTrigger.TargetList[0].TryGetComponent(out Damagable damagableComp))
     {
-      Debug.Log("Berhasil get damagable");
       _attack.AttacTarget(damagableComp);
     }
   }

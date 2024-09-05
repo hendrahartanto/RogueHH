@@ -12,6 +12,8 @@ public class Damagable : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
+  [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
+
 
   private void Awake()
   {
@@ -65,6 +67,12 @@ public class Damagable : MonoBehaviour
     if (_source.gameObject.CompareTag("Player"))
     {
       _onTurnCycleExecuted.RaiseEvent();
+    }
+
+    //kalo source attack dari enemy maka enemy akan notify bahwa turn dia sudah selesai
+    if (_source.gameObject.CompareTag("Enemy"))
+    {
+      _onTurnFinished.RaiseEvent();
     }
   }
 }
