@@ -12,17 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014f0341b4a429a49b3f201431402e33, type: 3}
   m_Name: PointingRestricted
   m_EditorClassIdentifier: 
-  Transitions:
-  - _targetState: {fileID: 11400000, guid: 995011f870bf2fa4bbe4b0e8617581df, type: 2}
-    _conditions:
-    - {fileID: 11400000, guid: ad261591d47a6de44ba71678bbde985b, type: 2}
-    - {fileID: 11400000, guid: 9db075dca3ac0a347affe332d0e5a34e, type: 2}
-    _expectedResults: 0100
-    _conditionOperator: 0
-  - _targetState: {fileID: 11400000, guid: 1aa6e8015d24b424ea6f0efe2217bd5a, type: 2}
-    _conditions:
-    - {fileID: 11400000, guid: ad261591d47a6de44ba71678bbde985b, type: 2}
-    - {fileID: 11400000, guid: 9db075dca3ac0a347affe332d0e5a34e, type: 2}
-    _expectedResults: 0101
-    _conditionOperator: 0
-  Actions: []
+  _actions: []

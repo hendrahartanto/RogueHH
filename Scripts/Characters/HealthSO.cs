@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Health", menuName = "Configs/Character/Health")]
 public class HealthSO : ScriptableObject
 {
-  private int _maxHelath;
+  private int _maxHealth;
   private int _currentHealth;
+
+  public int MaxHealth => _maxHealth;
+  public int CurrentHealth => _currentHealth;
 
   public void SetMaxHealth(int value)
   {
-    _maxHelath = value;
+    _maxHealth = value;
   }
 
   public void SetCurrentHealth(int value)

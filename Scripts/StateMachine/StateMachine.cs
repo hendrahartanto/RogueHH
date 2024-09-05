@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
   [SerializeField] private StateTableSO _stateTable = default;
+  [SerializeField, ReadOnly] private string currentStateName;
 
 #if UNITY_EDITOR
   [Space]
@@ -26,6 +28,8 @@ public class StateMachine : MonoBehaviour
   private void Start()
   {
     _currentState = _stateTable.GetInitialState(this);
+
+    currentStateName = _currentState.OriginSO.name;
   }
 
   public new bool TryGetComponent<T>(out T component) where T : Component
@@ -83,5 +87,7 @@ public class StateMachine : MonoBehaviour
     _currentState.OnStateExit();
     _currentState = transitionState;
     _currentState.OnStateEnter();
+
+    currentStateName = _currentState.OriginSO.name;
   }
 }
