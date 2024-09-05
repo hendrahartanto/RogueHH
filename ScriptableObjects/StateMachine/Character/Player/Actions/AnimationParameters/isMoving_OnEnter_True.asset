@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: isMoving_OnEnter_True
   m_EditorClassIdentifier: 
   parameterType: 0
-  parameterName: isMoving
+  parameterName: IsMoving
   boolValue: 1
   intValue: 0
   floatValue: 0
