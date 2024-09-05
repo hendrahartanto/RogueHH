@@ -21,8 +21,10 @@ public class Damagable : MonoBehaviour
     _currentHealth.SetCurrentHealth(100);
   }
 
-  public void ReceiveAttack(int damage)
+  public void ReceiveAttack(Transform source, int damage)
   {
+    RotateTowardsTarget(source);
+
     _currentHealth.DecreaseHealth(damage);
 
     IsGettingHit = true;
@@ -31,5 +33,23 @@ public class Damagable : MonoBehaviour
     {
       isDead = true;
     }
+  }
+
+  private void RotateTowardsTarget(Transform targetTransform)
+  {
+    Vector3 directionToTarget = (targetTransform.position - transform.position).normalized;
+
+    if (directionToTarget != Vector3.zero)
+    {
+      Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+      transform.rotation = targetRotation;
+    }
+  }
+
+  //called by animation event
+  private void StopGettingHit()
+  {
+    IsGettingHit = false;
   }
 }

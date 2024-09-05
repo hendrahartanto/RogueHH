@@ -4717,6 +4717,7 @@ GameObject:
   - component: {fileID: 5912661145378325603}
   - component: {fileID: 7034733871640068061}
   - component: {fileID: -159225850327403872}
+  - component: {fileID: 8955660501945425275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4732,7 +4733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39, y: 1.5, z: 71}
+  m_LocalPosition: {x: 9, y: 1.5, z: 31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4885,6 +4886,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!154 &8955660501945425275
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049406681976180358}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 0}
+  m_EnableTreeColliders: 1
 --- !u!1 &7164176608845322744
 GameObject:
   m_ObjectHideFlags: 0

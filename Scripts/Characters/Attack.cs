@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+  private Damagable _currentTarget;
   public bool IsAttacking = false;
 
   public void AttacTarget(Damagable target)
   {
     StartCoroutine(RotateTowardsTarget(target.transform));
-
-    StartAttacking();
-    //TODO: set using configSO
-    target.ReceiveAttack(5);
+    IsAttacking = true;
+    _currentTarget = target;
   }
 
   private IEnumerator RotateTowardsTarget(Transform targetTransform)
   {
-    Debug.Log("COROUTINE CALLED");
-    // Calculate the direction from the current object to the target
     Vector3 directionToTarget = (targetTransform.position - transform.position).normalized;
 
     //rotate
@@ -26,6 +23,7 @@ public class Attack : MonoBehaviour
     {
       Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
+      //TODO: set using configSO
       float rotationSpeed = 50f;
       while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
       {
@@ -38,14 +36,17 @@ public class Attack : MonoBehaviour
   }
 
   //called by animation event
-  private void StartAttacking()
-  {
-    Debug.Log("Start Attacking");
-    IsAttacking = true;
-  }
   private void StopAttacking()
   {
-    Debug.Log("Stop Attacking");
     IsAttacking = false;
+  }
+
+  private void TriggerAttackEvent()
+  {
+    if (_currentTarget != null)
+    {
+      //TODO: set using configSO
+      _currentTarget.ReceiveAttack(transform, 5);
+    }
   }
 }

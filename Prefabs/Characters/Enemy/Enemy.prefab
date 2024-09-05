@@ -3977,7 +3977,6 @@ GameObject:
   - component: {fileID: 5960240036411527104}
   - component: {fileID: 9098285349243823781}
   - component: {fileID: 4588552960728400162}
-  - component: {fileID: -7475398862370958216}
   - component: {fileID: 3162146587652353399}
   - component: {fileID: 4338396487131020707}
   - component: {fileID: 1466996193185973644}
@@ -3998,7 +3997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6484292930280265082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 1.5, z: 39}
+  m_LocalPosition: {x: 5, y: 1.5, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3316852673847041886}
@@ -4041,19 +4040,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1.8, z: 0.5}
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!135 &-7475398862370958216
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484292930280265082}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3162146587652353399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5956,6 +5942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7124465742309637}
   - component: {fileID: 8972847453322192540}
+  - component: {fileID: 1483177360980654240}
   - component: {fileID: 6251842820920121504}
   m_Layer: 0
   m_Name: AttackRange
@@ -5963,7 +5950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7124465742309637
 Transform:
   m_ObjectHideFlags: 0
@@ -5989,7 +5976,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 4}
+  m_Size: {x: 2, y: 2, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1483177360980654240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826741051202066637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6251842820920121504
 MonoBehaviour:
