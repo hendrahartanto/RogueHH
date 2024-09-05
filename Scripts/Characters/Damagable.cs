@@ -8,6 +8,10 @@ public class Damagable : MonoBehaviour
 
   public bool IsGettingHit = false;
   public bool isDead = false;
+  private Transform _source;
+
+  [Header("Broadcasting on")]
+  [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
 
   private void Awake()
   {
@@ -23,6 +27,8 @@ public class Damagable : MonoBehaviour
 
   public void ReceiveAttack(Transform source, int damage)
   {
+    _source = source;
+
     RotateTowardsTarget(source);
 
     _currentHealth.DecreaseHealth(damage);
@@ -51,5 +57,14 @@ public class Damagable : MonoBehaviour
   private void StopGettingHit()
   {
     IsGettingHit = false;
+  }
+
+  private void CheckTurnCycleTrigger()
+  {
+    //jika source attack dari player maka turn cycle akan berjalan
+    if (_source.gameObject.CompareTag("Player"))
+    {
+      _onTurnCycleExecuted.RaiseEvent();
+    }
   }
 }

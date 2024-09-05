@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014f0341b4a429a49b3f201431402e33, type: 3}
+  m_Script: {fileID: 11500000, guid: 697dc7d68bbcb8649bec82689ca37767, type: 3}
   m_Name: EnemyReadyToAttack
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 471cb94610cc1614a9d726fac7580753, type: 2}

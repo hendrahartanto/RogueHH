@@ -28,7 +28,6 @@ public class AttackOnClickAction : StateAction
 
   public override void OnStateEnter()
   {
-    Debug.Log("Attack on click enter");
     _inputReader.MouseClickEvent += AttackTarget;
   }
 
