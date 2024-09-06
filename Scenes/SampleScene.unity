@@ -183,7 +183,6 @@ GameObject:
   - component: {fileID: 550963989}
   - component: {fileID: 550963988}
   - component: {fileID: 550963991}
-  - component: {fileID: 550963992}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -242,33 +241,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550963987}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6f05d610129db4e90d501b809fba3f, type: 3}
+  m_Script: {fileID: 11500000, guid: ef1f4c90ee27f9e439f098cd9749fa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
-  GridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
-  GridPosition: {x: 0, y: 0, z: 0}
-  isPointingNull: 1
-  CurrentPointedCollider: {fileID: 0}
-  _pointerState: {fileID: 11400000, guid: 76df99cfad0d3c341a0037d62f0f047a, type: 2}
-  _mainCamera: {fileID: 963194227}
-  _onPlayerInstantiated: {fileID: 0}
---- !u!114 &550963992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550963987}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b8a375b3ffe9b488a96f55d592ac43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateTable: {fileID: 0}
-  currentStateName: 
+  _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
+  _gridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
+  _changeCellTypeEvent: {fileID: 11400000, guid: f9f4459186c780e449553006c7c0fea9, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
