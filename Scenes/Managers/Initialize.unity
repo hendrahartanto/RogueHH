@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  _turnCycleEvent: {fileID: 11400000, guid: 7d7c52c3e8f09ae4ba05da21f16e46d1, type: 2}
 --- !u!4 &2035850505
 Transform:
   m_ObjectHideFlags: 0

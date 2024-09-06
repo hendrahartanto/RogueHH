@@ -15,13 +15,11 @@ public class EnemyMoveAction : StateAction
 
   public override void OnStateEnter()
   {
-    Debug.Log("ASSIGN ENEMY MOVE");
     _enemy.OnTurnExecuted += _enemy.OnNotifyMoveEnemy;
   }
 
   public override void OnStateExit()
   {
-    Debug.Log("REMOVE ENEMY MOVE");
     _enemy.OnTurnExecuted -= _enemy.OnNotifyMoveEnemy;
   }
 

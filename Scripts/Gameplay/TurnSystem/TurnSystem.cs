@@ -7,6 +7,9 @@ public class TurnSystem : MonoBehaviour
   public List<ITurnComponent> QueueItems = default;
   private int _currentItemIndex = 0;
 
+  [Header("Broadcasting to")]
+  [SerializeField] private GameStateEventChanelSO _turnCycleEvent = default;
+
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
@@ -42,7 +45,8 @@ public class TurnSystem : MonoBehaviour
 
   private void ExecuteTurnCycle()
   {
-    Debug.Log("EXECUTE TURN");
+    _turnCycleEvent.RaiseEvent(GameState.TurnCycling);
+
     _currentItemIndex = 0;
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
@@ -50,9 +54,11 @@ public class TurnSystem : MonoBehaviour
   private void ExecuteNextTurn()
   {
     if (_currentItemIndex >= QueueItems.Count)
+    {
+      _turnCycleEvent.RaiseEvent(GameState.Combat);
       return;
+    }
 
-    Debug.Log("EXECUTE NEXT TURN");
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
 

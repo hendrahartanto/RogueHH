@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cb80b341fb8ff43a6af5fb6f780d45, type: 3}
-  m_Name: GlobalMovementSpeed
+  m_Script: {fileID: 11500000, guid: dc603a56958cda44089b1df525771777, type: 3}
+  m_Name: TurnCycleEvent
   m_EditorClassIdentifier: 
-  MovementSpeed: 5

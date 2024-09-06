@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175ac118ff2bd5e4092c20788ca25110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turnCycleEvent: {fileID: 11400000, guid: 7d7c52c3e8f09ae4ba05da21f16e46d1, type: 2}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
@@ -249,6 +250,7 @@ MonoBehaviour:
   GridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
   GridPosition: {x: 0, y: 0, z: 0}
   isPointingNull: 1
+  CurrentPointedCollider: {fileID: 0}
   _pointerState: {fileID: 11400000, guid: 76df99cfad0d3c341a0037d62f0f047a, type: 2}
   _mainCamera: {fileID: 963194227}
   _onPlayerInstantiated: {fileID: 0}
@@ -265,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateTable: {fileID: 0}
+  currentStateName: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
