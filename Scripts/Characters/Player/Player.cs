@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
 
   private void Awake()
   {
-    Debug.Log("Awake player");
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
   }
 

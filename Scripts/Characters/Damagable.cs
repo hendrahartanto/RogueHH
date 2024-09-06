@@ -13,9 +13,10 @@ public class Damagable : MonoBehaviour
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
+  public IntEventChanelSO SetMaxHealthUIEvent = default;
+  public IntEventChanelSO UpdateHealthUIEvent = default;
 
-
-  private void Awake()
+  private void Start()
   {
     if (_currentHealth == null)
     {
@@ -25,6 +26,8 @@ public class Damagable : MonoBehaviour
     //TODO: set it using config SO
     _currentHealth.SetMaxHealth(100);
     _currentHealth.SetCurrentHealth(100);
+
+    SetMaxHealthUIEvent.RaiseEvent(_currentHealth.MaxHealth);
   }
 
   public void ReceiveAttack(Transform source, int damage)
@@ -34,6 +37,8 @@ public class Damagable : MonoBehaviour
     RotateTowardsTarget(source);
 
     _currentHealth.DecreaseHealth(damage);
+
+    UpdateHealthUIEvent.RaiseEvent(_currentHealth.CurrentHealth);
 
     IsGettingHit = true;
 

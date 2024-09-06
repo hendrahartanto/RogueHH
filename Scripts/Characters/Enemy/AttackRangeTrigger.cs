@@ -21,7 +21,6 @@ public class AttackRangeTrigger : MonoBehaviour
   {
     if (other.CompareTag(TargetTag))
     {
-      Debug.Log("EXIT ATTACK RANGE");
       TargetList.Remove(other);
       IsInAttackRange = false;
     }

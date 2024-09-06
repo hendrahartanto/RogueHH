@@ -56,7 +56,22 @@ public class EnemySpawnSystem : MonoBehaviour
       spawnLocation.position = new Vector3(randomPosition.x * GridConfig.CellSize.x, 1.5f, randomPosition.y * GridConfig.CellSize.z) + GridConfig.Offset;
       spawnLocation.rotation = Quaternion.identity;
 
-      Instantiate(enemy.Prefab, spawnLocation.position, spawnLocation.rotation);
+      GameObject enemyObject = enemy.Prefab;
+
+      //assign unique helathevent chanel to each enemy
+      IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
+      IntEventChanelSO updateHealthUIEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
+
+      UIHealthBarManager UIHealthBarManagerComp = enemyObject.GetComponentInChildren<UIHealthBarManager>();
+      UIHealthBarManagerComp.SetMaxHealthUIEvent = setMaxhealthEvent;
+      UIHealthBarManagerComp.UpdateHealthUIEvent = updateHealthUIEvent;
+
+      Damagable DamagableComp = enemyObject.GetComponent<Damagable>();
+      DamagableComp.SetMaxHealthUIEvent = setMaxhealthEvent;
+      DamagableComp.UpdateHealthUIEvent = updateHealthUIEvent;
+
+      //instantiate object yang udah dikasih chanel unique
+      Instantiate(enemyObject, spawnLocation.position, spawnLocation.rotation);
 
       randomRoom.EnemyCount++;
       currEnemyCount++;
