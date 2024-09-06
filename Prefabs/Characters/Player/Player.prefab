@@ -1635,9 +1635,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003552627192061391}
-  - component: {fileID: 7428643553005442359}
   - component: {fileID: 3480626778411875547}
-  - component: {fileID: 2345811902196633203}
+  - component: {fileID: 3988745897600109461}
   m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
@@ -1659,19 +1658,6 @@ Transform:
   m_Father: {fileID: 7682954784957322300}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7428643553005442359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2567368392176470495}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3480626778411875547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,8 +1673,8 @@ MonoBehaviour:
   TargetList: []
   IsInAttackRange: 0
   TargetTag: Enemy
---- !u!65 &2345811902196633203
-BoxCollider:
+--- !u!135 &3988745897600109461
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1698,7 +1684,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 4}
+  m_Radius: 1.8
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2666252445044831056
 GameObject:
@@ -4733,7 +4719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77, y: 1.5, z: 27}
+  m_LocalPosition: {x: 85, y: 1.5, z: 23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}

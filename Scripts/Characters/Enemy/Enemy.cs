@@ -83,6 +83,10 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
   public void ExecuteTurn()
   {
+    foreach (var d in OnTurnExecuted.GetInvocationList())
+    {
+      Debug.Log(d.Method.Name);
+    }
     OnTurnExecuted?.Invoke();
   }
 

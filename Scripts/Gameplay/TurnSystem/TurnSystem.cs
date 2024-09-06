@@ -42,16 +42,17 @@ public class TurnSystem : MonoBehaviour
 
   private void ExecuteTurnCycle()
   {
+    Debug.Log("EXECUTE TURN");
     _currentItemIndex = 0;
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
 
   private void ExecuteNextTurn()
   {
-    Debug.Log("EXECUTE NEXT TURN");
     if (_currentItemIndex >= QueueItems.Count)
       return;
 
+    Debug.Log("EXECUTE NEXT TURN");
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
 

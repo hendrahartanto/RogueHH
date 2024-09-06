@@ -20,11 +20,13 @@ public class EnemyReadyToAttackAction : StateAction
 
   public override void OnStateEnter()
   {
+    Debug.Log("ASSIGN READY TO ATTACK");
     _enemy.OnTurnExecuted += AttackTarget;
   }
 
   public override void OnStateExit()
   {
+    Debug.Log("REMOVE READY TO ATTACK");
     _enemy.OnTurnExecuted -= AttackTarget;
   }
 
