@@ -47,7 +47,7 @@ public class Attack : MonoBehaviour
     if (_currentTarget != null)
     {
       //TODO: set using configSO
-      _currentTarget.ReceiveAttack(transform, 5);
+      _currentTarget.ReceiveAttack(transform, 50);
     }
   }
 }

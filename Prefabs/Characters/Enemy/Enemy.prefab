@@ -475,17 +475,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965588980291714434}
-  m_LocalRotation: {x: 0, y: 0.3826834, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: -0.65328145, y: 0.65328157, z: 0.27059805, w: 0.27059814}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.0049999985, y: 0.009999997, z: 1}
   m_Children:
   - {fileID: 7392226869768368396}
-  m_Father: {fileID: 5960240036411527104}
-  m_RootOrder: 5
+  m_Father: {fileID: 9016391280802350804}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.11}
+  m_AnchoredPosition: {x: -0.47143593, y: 0.08259487}
   m_SizeDelta: {x: 377.5543, y: 26.2497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &790850044113758364
@@ -1775,6 +1775,7 @@ Transform:
   - {fileID: 9151029605656770838}
   - {fileID: 6562416120734272184}
   - {fileID: 3739301370345364499}
+  - {fileID: 8575731133878200175}
   m_Father: {fileID: 6865818153153132066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4364,7 +4365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6484292930280265082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69, y: 1.5, z: 71}
+  m_LocalPosition: {x: 81, y: 1.5, z: 89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3316852673847041886}
@@ -4372,7 +4373,6 @@ Transform:
   - {fileID: 4702242251926033270}
   - {fileID: 7124465742309637}
   - {fileID: 1873993184527486131}
-  - {fileID: 8575731133878200175}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4455,7 +4455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: {fileID: 0}
   IsGettingHit: 0
-  isDead: 0
+  IsDead: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   SetMaxHealthUIEvent: {fileID: 0}

@@ -7,7 +7,7 @@ public class Damagable : MonoBehaviour
   [SerializeField] private HealthSO _currentHealth;
 
   public bool IsGettingHit = false;
-  public bool isDead = false;
+  public bool IsDead = false;
   private Transform _source;
 
   [Header("Broadcasting on")]
@@ -44,7 +44,7 @@ public class Damagable : MonoBehaviour
 
     if (_currentHealth.CurrentHealth <= 0)
     {
-      isDead = true;
+      IsDead = true;
     }
   }
 
@@ -60,12 +60,6 @@ public class Damagable : MonoBehaviour
     }
   }
 
-  //called by animation event
-  private void StopGettingHit()
-  {
-    IsGettingHit = false;
-  }
-
   private void CheckTurnCycleTrigger()
   {
     //jika source attack dari player maka turn cycle akan berjalan
@@ -79,5 +73,16 @@ public class Damagable : MonoBehaviour
     {
       _onTurnFinished.RaiseEvent();
     }
+  }
+
+  //called by animation event
+  private void StopGettingHit()
+  {
+    IsGettingHit = false;
+  }
+
+  private void StopDeath()
+  {
+    IsDead = false;
   }
 }
