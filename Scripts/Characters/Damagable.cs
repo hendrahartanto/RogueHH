@@ -13,6 +13,8 @@ public class Damagable : MonoBehaviour
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
+  [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
+
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
 
@@ -45,6 +47,14 @@ public class Damagable : MonoBehaviour
     if (_currentHealth.CurrentHealth <= 0)
     {
       IsDead = true;
+      if (_removeEnemyFromQueueEvent != null)
+      {
+        _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
+      }
+      if (_source.gameObject.CompareTag("Player"))
+      {
+        _onTurnCycleExecuted.RaiseEvent();
+      }
     }
   }
 
@@ -83,6 +93,11 @@ public class Damagable : MonoBehaviour
 
   private void StopDeath()
   {
+    if (_source.gameObject.CompareTag("Enemy"))
+    {
+      _onTurnFinished.RaiseEvent();
+    }
     IsDead = false;
+    Destroy(gameObject);
   }
 }

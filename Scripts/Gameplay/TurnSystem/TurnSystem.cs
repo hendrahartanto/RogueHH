@@ -14,6 +14,7 @@ public class TurnSystem : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
+  [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
 
 
   private void OnEnable()
@@ -21,6 +22,7 @@ public class TurnSystem : MonoBehaviour
     _onTurnCycleExecuted.OnEventRaised += ExecuteTurnCycle;
     _onEnemyAggro.OnEventRaised += AddToQueue;
     _onTurnFinished.OnEventRaised += ExecuteNextTurn;
+    _removeEnemyFromQueueEvent.OnEventRaised += RemoveFromQueue;
   }
 
   private void OnDisable()
@@ -28,6 +30,7 @@ public class TurnSystem : MonoBehaviour
     _onTurnCycleExecuted.OnEventRaised -= ExecuteTurnCycle;
     _onEnemyAggro.OnEventRaised -= AddToQueue;
     _onTurnFinished.OnEventRaised -= ExecuteNextTurn;
+    _removeEnemyFromQueueEvent.OnEventRaised -= RemoveFromQueue;
   }
 
   private void Awake()
@@ -43,8 +46,16 @@ public class TurnSystem : MonoBehaviour
     QueueItems.Add(turnComponent);
   }
 
+  private void RemoveFromQueue(ITurnComponent turnComponent)
+  {
+    QueueItems.Remove(turnComponent);
+  }
+
   private void ExecuteTurnCycle()
   {
+    if (QueueItems.Count == 0)
+      return;
+
     _turnCycleEvent.RaiseEvent(GameState.TurnCycling);
 
     _currentItemIndex = 0;
