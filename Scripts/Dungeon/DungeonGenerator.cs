@@ -43,12 +43,13 @@ public class DungeonGenerator : MonoBehaviour
       );
 
       Vector3Int roomSize = new Vector3Int(
-        GlobalRandom.Next(6, PossibleRooms[0].roomMaxSize.x),
+        GlobalRandom.Next(3, PossibleRooms[0].roomMaxSize.x),
         0,
-        GlobalRandom.Next(6, PossibleRooms[0].roomMaxSize.y)
+        GlobalRandom.Next(3, PossibleRooms[0].roomMaxSize.y)
       );
 
       bool add = true;
+      //TODO: possible roomsnya bikin random
       Room newRoom = new Room(location, roomSize, PossibleRooms[0]);
       Room buffer = new Room(location + new Vector3Int(-1, 0, -1), roomSize + new Vector3Int(2, 0, 2), PossibleRooms[0]);
 

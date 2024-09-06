@@ -16,6 +16,7 @@ public class Damagable : MonoBehaviour
   [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
+  [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -48,15 +49,7 @@ public class Damagable : MonoBehaviour
 
     if (_currentHealth.CurrentHealth <= 0)
     {
-      IsDead = true;
-      if (_removeEnemyFromQueueEvent != null)
-      {
-        _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
-      }
-      if (_source.gameObject.CompareTag("Player"))
-      {
-        _onTurnCycleExecuted.RaiseEvent();
-      }
+      OnDeath();
     }
   }
 
@@ -69,6 +62,15 @@ public class Damagable : MonoBehaviour
       Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
       transform.rotation = targetRotation;
+    }
+  }
+
+  private void OnDeath()
+  {
+    IsDead = true;
+    if (_removeEnemyFromQueueEvent != null)
+    {
+      _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
     }
   }
 
@@ -93,17 +95,16 @@ public class Damagable : MonoBehaviour
     IsGettingHit = false;
   }
 
-  private void StopDeath()
+  private void FinishTurn()
   {
-    if (_source.gameObject.CompareTag("Enemy"))
+    if (_source.gameObject.CompareTag("Player"))
     {
-      _onTurnFinished.RaiseEvent();
+      IsDead = false;
+      _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
+      _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
+      _recalculatePathEvent.RaiseEvent();
+      _onTurnCycleExecuted.RaiseEvent();
+      Destroy(gameObject);
     }
-    IsDead = false;
-
-    _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
-    _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
-
-    Destroy(gameObject);
   }
 }

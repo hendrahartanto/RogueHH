@@ -12,6 +12,7 @@ public class MovePlayerOnClickActionSO : StateActionSO
 public class MovePlayerOnClickAction : StateAction
 {
   InputReader _inputReader = default;
+  Attack _attack = default;
   private Player _player;
 
   public MovePlayerOnClickAction(InputReader inputReader)
@@ -22,6 +23,7 @@ public class MovePlayerOnClickAction : StateAction
   public override void Awake(StateMachine stateMachine)
   {
     _player = stateMachine.GetComponent<Player>();
+    _attack = stateMachine.GetComponent<Attack>();
   }
 
   public override void OnStateEnter()
@@ -36,7 +38,7 @@ public class MovePlayerOnClickAction : StateAction
 
   public void NotifyMovePlayer()
   {
-    _player.OnNotifyMovePlayer();
+    _player.OnNotifyMovePlayer(_attack.IsAttacking);
   }
 
   public override void OnUpdate() { }

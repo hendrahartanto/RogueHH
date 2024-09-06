@@ -6,8 +6,9 @@ using UnityEngine;
 public class FindPathActionSO : StateActionSO
 {
   public TransformAnchorSO PlayerTransform;
+  public VoidEventChannelSO RecalculatePathEvent;
 
-  protected override StateAction CreateAction() => new FindPathAction(PlayerTransform);
+  protected override StateAction CreateAction() => new FindPathAction(PlayerTransform, RecalculatePathEvent);
 }
 
 public class FindPathAction : StateAction
@@ -22,13 +23,18 @@ public class FindPathAction : StateAction
   private Vector3Int _previousGridPosition;
   private Vector3Int _currentGridPosition;
 
-  public FindPathAction(TransformAnchorSO playerTransform)
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _recalculatePathEvent;
+
+  public FindPathAction(TransformAnchorSO playerTransform, VoidEventChannelSO recalculatePathEvent)
   {
     _playerTransform = playerTransform;
+    _recalculatePathEvent = recalculatePathEvent;
   }
 
   public override void Awake(StateMachine stateMachine)
   {
+    _recalculatePathEvent.OnEventRaised += RecalculatePath;
     _pointerManager = stateMachine.GetComponent<PointerManager>();
     _player = stateMachine.GetComponent<Player>();
     _pathStorage = _player.PathStorage;
@@ -36,18 +42,14 @@ public class FindPathAction : StateAction
     _aStar = new AStar();
   }
 
+  private void OnDisable()
+  {
+    _recalculatePathEvent.OnEventRaised -= RecalculatePath;
+  }
+
   public override void OnStateEnter()
   {
-    _previousGridPosition = _currentGridPosition = _pointerManager.GridPosition;
-    Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
-    Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
-
-    _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode);
-
-    foreach (var path in _pathStorage.paths)
-    {
-      HighlightTile(path.Position.x, path.Position.z);
-    }
+    FindPath();
   }
 
   public override void OnStateExit()
@@ -89,6 +91,31 @@ public class FindPathAction : StateAction
       }
 
       _previousGridPosition = _currentGridPosition;
+    }
+  }
+
+  private void RecalculatePath()
+  {
+    //unhighlight path sebelumnya
+    foreach (var path in _pathStorage.paths)
+    {
+      Unhighlight(path.Position.x, path.Position.z);
+    }
+    _pathStorage.paths.Clear();
+    FindPath();
+  }
+
+  private void FindPath()
+  {
+    _previousGridPosition = _currentGridPosition = _pointerManager.GridPosition;
+    Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
+    Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
+
+    _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode);
+
+    foreach (var path in _pathStorage.paths)
+    {
+      HighlightTile(path.Position.x, path.Position.z);
     }
   }
 
