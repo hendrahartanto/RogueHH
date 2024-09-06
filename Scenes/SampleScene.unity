@@ -249,6 +249,7 @@ MonoBehaviour:
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
   _gridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
   _changeCellTypeEvent: {fileID: 11400000, guid: f9f4459186c780e449553006c7c0fea9, type: 2}
+  _changeNodeAccessibleEvent: {fileID: 11400000, guid: c800ee0a70f0a51449dd41da1d8b99da, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

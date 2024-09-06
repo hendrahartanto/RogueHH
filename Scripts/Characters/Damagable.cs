@@ -14,6 +14,8 @@ public class Damagable : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
+  [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
+  [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -98,6 +100,10 @@ public class Damagable : MonoBehaviour
       _onTurnFinished.RaiseEvent();
     }
     IsDead = false;
+
+    _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
+    _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
+
     Destroy(gameObject);
   }
 }

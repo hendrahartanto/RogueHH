@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, ITurnComponent
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
+  [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
 
   public UnityAction OnTurnExecuted { get; set; }
 
@@ -63,8 +64,7 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
     //ganti end position jadi enemy
     _changeCellTypeEvent.RaiseEvent(target.Position.x, target.Position.z, CellType.Enemy);
-
-    _gridNode[target.Position.x, target.Position.z].Accessable = false;
+    _changeNodeAccessibleEvent.RaiseEvent(target.Position.x, target.Position.z, false);
 
     IsMoving = false;
     _onTurnFinished.RaiseEvent();
