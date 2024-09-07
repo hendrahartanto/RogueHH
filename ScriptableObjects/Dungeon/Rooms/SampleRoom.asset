@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SampleRoom
   m_EditorClassIdentifier: 
   roomMaxSize: {x: 10, y: 10}
-  roomMinSize: {x: 10, y: 10}
+  roomMinSize: {x: 5, y: 5}
   possibleFloors:
   - {fileID: 6436045593121916015, guid: ed837ac2c7b7c1442a71ce043a32f755, type: 3}
   - {fileID: 6436045593121916015, guid: 285b74eb265ab3441b67a4fdf688dd98, type: 3}
@@ -27,4 +27,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3bc7f4aac7bd34a45b05c75635a40945, type: 2}
   - {fileID: 11400000, guid: bcfb5d6d3fb24814bb75ca1541c2b5db, type: 2}
   - {fileID: 11400000, guid: ad257f2e4bf4719458b2cb420c0f780f, type: 2}
-  DecorationChances: 32000000320000003200000032000000
+  - {fileID: 11400000, guid: 01145c9e7f58bc543938aeb0db03bf24, type: 2}
+  DecorationChances: 3200000032000000320000003200000032000000

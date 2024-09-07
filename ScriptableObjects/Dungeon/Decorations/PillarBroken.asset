@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8bc86809e623234d85ccbc7f36d418f, type: 3}
-  m_Name: Crate
+  m_Name: PillarBroken
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7210681902434996207, guid: ddd7a96ef6ac6c14cbb110856762a137, type: 3}
-  size: {x: 2, y: 0, z: 1}
-  Ypos: 1.552339
-  OffsetX: 1
+  prefab: {fileID: 3008615883151607702, guid: 939f8876426179a4bbdff5c1589b2a42, type: 3}
+  size: {x: 1, y: 0, z: 1}
+  Ypos: 0
+  OffsetX: 0
   OffsetZ: 0
-  bufferX: 0
-  bufferZ: 1
+  bufferX: 1
+  bufferZ: 0

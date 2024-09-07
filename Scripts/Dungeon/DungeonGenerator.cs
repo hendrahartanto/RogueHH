@@ -220,7 +220,6 @@ public class DungeonGenerator : MonoBehaviour
   {
     foreach (var room in _rooms)
     {
-
       //asumsi min decoration buffernya adalah 3
       while (room.availableTile >= 3)
       {
@@ -228,11 +227,16 @@ public class DungeonGenerator : MonoBehaviour
 
         int rotationAngle = GlobalRandom.Next(0, 4) * 90; // Randomly picks 0, 90, 180, or 270
 
+        rotationAngle = 180;
+
         Vector3Int rotatedSize = decoration.size;
         int rotatedBufferX = decoration.bufferX;
         int rotatedBufferZ = decoration.bufferZ;
         float rotatedOffsetX = decoration.OffsetX;
         float rotatedOffsetZ = decoration.OffsetZ;
+
+        int positionZOffset = 0;
+        int positionXOffset = 0;
 
         switch (rotationAngle)
         {
@@ -249,6 +253,8 @@ public class DungeonGenerator : MonoBehaviour
           case 180:
             rotatedOffsetX = -decoration.OffsetX;
             rotatedOffsetZ = -decoration.OffsetZ;
+            positionZOffset = decoration.size.z - 1;
+            positionXOffset = decoration.size.x - 1;
             break;
 
           case 270:
@@ -268,8 +274,8 @@ public class DungeonGenerator : MonoBehaviour
             GlobalRandom.Next(room.area.zMin, room.area.zMax)
         );
 
-        RectXZ decorationAreaBuffer = new RectXZ(position.x - rotatedBufferX, position.z - rotatedBufferZ, rotatedSize.x + rotatedBufferX * 2, rotatedSize.z + rotatedBufferZ * 2);
-        RectXZ decorationArea = new RectXZ(position.x, position.z, rotatedSize.x, rotatedSize.z);
+        RectXZ decorationAreaBuffer = new RectXZ(position.x - rotatedBufferX - positionXOffset, position.z - rotatedBufferZ - positionZOffset, rotatedSize.x + rotatedBufferX * 2, rotatedSize.z + rotatedBufferZ * 2);
+        RectXZ decorationArea = new RectXZ(position.x - positionXOffset, position.z - positionZOffset, rotatedSize.x, rotatedSize.z);
 
         bool add = true;
 
