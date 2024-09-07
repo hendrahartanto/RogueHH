@@ -11,5 +11,7 @@ public class DecorationSO : ScriptableObject
   public float OffsetX;
   public float OffsetZ;
   public int bufferX;
+  public int bufferXMin;
   public int bufferZ;
+  public int bufferZMin;
 }

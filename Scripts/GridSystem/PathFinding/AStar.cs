@@ -41,7 +41,7 @@ public class AStar
       for (int i = 0; i < 4; i++)
       {
         //cek jika out of boud
-        if (curr.Position.x + dirX[i] > grid.size.x || curr.Position.z + dirX[i] > grid.size.y)
+        if (curr.Position.x + dirX[i] > grid.size.x || curr.Position.z + dirX[i] > grid.size.y || curr.Position.x + dirX[i] < 0 || curr.Position.z + dirZ[i] < 0)
           continue;
 
         Node currNeighbour = grid[curr.Position.x + dirX[i], curr.Position.z + dirZ[i]];
