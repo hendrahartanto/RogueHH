@@ -24,8 +24,7 @@ MonoBehaviour:
   FloorChances: c80000000500000005000000050000000500000005000000
   possibleDecorations:
   - {fileID: 11400000, guid: 8ec1ac0a0e2d135478c5a753b82d2204, type: 2}
-  - {fileID: 11400000, guid: 3bc7f4aac7bd34a45b05c75635a40945, type: 2}
   - {fileID: 11400000, guid: bcfb5d6d3fb24814bb75ca1541c2b5db, type: 2}
   - {fileID: 11400000, guid: ad257f2e4bf4719458b2cb420c0f780f, type: 2}
   - {fileID: 11400000, guid: 01145c9e7f58bc543938aeb0db03bf24, type: 2}
-  DecorationChances: 3200000032000000320000003200000032000000
+  DecorationChances: 32000000320000003200000032000000

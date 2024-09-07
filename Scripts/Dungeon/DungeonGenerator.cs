@@ -156,28 +156,7 @@ public class DungeonGenerator : MonoBehaviour
           Tile cell = _grid[position.x, temp.z];
           cell.cellTypes.Add(CellType.DecorationRestrict);
           startEntrance = false;
-        }
-        Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), position.x, position.z, CellType.Walkable);
-        _grid[position.x, position.z] = newTile;
-
-        Node newNode = new Node(new Vector3Int(position.x, 0, position.z));
-        _gridNode[position.x, position.z] = newNode;
-
-        newTile.TileObject = Instantiate(newTile.tilePrefab, new Vector3(newTile.xWorld, 0, newTile.zWorld) + GridConfig.Offset, Quaternion.identity);
-      }
-    }
-    while (position.x != destination.x)
-    {
-      //position x akan dimanipulasi agar menuju destinasi x
-      position += xOffset * dirX;
-      if (_grid[position.x, position.z] == null)
-      {
-        if (startEntrance)
-        {
-          Vector3Int temp = position - xOffset * dirX;
-          Tile cell = _grid[temp.x, position.z];
-          cell.cellTypes.Add(CellType.DecorationRestrict);
-          startEntrance = false;
+          endEntrance = true;
         }
         Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), position.x, position.z, CellType.Walkable);
         _grid[position.x, position.z] = newTile;
@@ -194,6 +173,44 @@ public class DungeonGenerator : MonoBehaviour
           Tile cell = _grid[position.x, position.z];
           cell.cellTypes.Add(CellType.DecorationRestrict);
           endEntrance = false;
+          startEntrance = true;
+        }
+      }
+    }
+
+    startEntrance = true;
+    endEntrance = true;
+
+    while (position.x != destination.x)
+    {
+      //position x akan dimanipulasi agar menuju destinasi x
+      position += xOffset * dirX;
+      if (_grid[position.x, position.z] == null)
+      {
+        if (startEntrance)
+        {
+          Vector3Int temp = position - xOffset * dirX;
+          Tile cell = _grid[temp.x, position.z];
+          cell.cellTypes.Add(CellType.DecorationRestrict);
+          startEntrance = false;
+          endEntrance = true;
+        }
+        Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), position.x, position.z, CellType.Walkable);
+        _grid[position.x, position.z] = newTile;
+
+        Node newNode = new Node(new Vector3Int(position.x, 0, position.z));
+        _gridNode[position.x, position.z] = newNode;
+
+        newTile.TileObject = Instantiate(newTile.tilePrefab, new Vector3(newTile.xWorld, 0, newTile.zWorld) + GridConfig.Offset, Quaternion.identity);
+      }
+      else
+      {
+        if (startEntrance == false && endEntrance)
+        {
+          Tile cell = _grid[position.x, position.z];
+          cell.cellTypes.Add(CellType.DecorationRestrict);
+          endEntrance = false;
+          startEntrance = true;
         }
       }
     }
@@ -250,6 +267,9 @@ public class DungeonGenerator : MonoBehaviour
             float tempOffset90 = rotatedOffsetX;
             rotatedOffsetX = rotatedOffsetZ;
             rotatedOffsetZ = -tempOffset90;
+
+            positionZOffset = decoration.size.x - 1;
+            positionXOffset = decoration.size.z - 1;
             break;
 
           case 180:
