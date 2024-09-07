@@ -228,16 +228,21 @@ public class DungeonGenerator : MonoBehaviour
 
         int rotationAngle = GlobalRandom.Next(1, 4) * 90;
 
-        // Adjust size and buffer based on rotation
         Vector3Int rotatedSize = decoration.size;
         int rotatedBufferX = decoration.bufferX;
         int rotatedBufferZ = decoration.bufferZ;
+        float rotatedOffsetX = decoration.OffsetX;
+        float rotatedOffsetZ = decoration.OffsetZ;
 
         if (rotationAngle == 90 || rotationAngle == 270)
         {
           rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
           rotatedBufferX = decoration.bufferZ;
           rotatedBufferZ = decoration.bufferX;
+
+          float tempOffset = rotatedOffsetX;
+          rotatedOffsetX = rotatedOffsetZ;
+          rotatedOffsetZ = tempOffset;
         }
 
         Vector3Int position = new Vector3Int(
@@ -270,7 +275,13 @@ public class DungeonGenerator : MonoBehaviour
         {
           Quaternion rotation = Quaternion.Euler(0, rotationAngle, 0);
 
-          Instantiate(decoration.prefab, new Vector3(position.x * GridConfig.CellSize.x, decoration.Ypos, position.z * GridConfig.CellSize.z) + GridConfig.Offset, rotation);
+          Vector3 instantiationPosition = new Vector3(
+              (position.x * GridConfig.CellSize.x) + rotatedOffsetX,
+              decoration.Ypos,
+              (position.z * GridConfig.CellSize.z) + rotatedOffsetZ
+          ) + GridConfig.Offset;
+
+          Instantiate(decoration.prefab, instantiationPosition, rotation);
 
           DecorationRestrict(decorationAreaBuffer);
           UnWalkableTile(decorationArea);
@@ -279,6 +290,7 @@ public class DungeonGenerator : MonoBehaviour
           Debug.Log("Available tile: " + room.availableTile);
         }
       }
+
     }
   }
 

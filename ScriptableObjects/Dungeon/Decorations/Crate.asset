@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Crate
   m_EditorClassIdentifier: 
   prefab: {fileID: 7210681902434996207, guid: ddd7a96ef6ac6c14cbb110856762a137, type: 3}
-  size: {x: 1, y: 0, z: 1}
-  Ypos: 1.5
+  size: {x: 1, y: 0, z: 2}
+  Ypos: 1.368227
+  OffsetX: 0
+  OffsetZ: 1
   bufferX: 0
   bufferZ: 1
