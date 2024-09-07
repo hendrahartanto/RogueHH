@@ -261,8 +261,8 @@ public class DungeonGenerator : MonoBehaviour
             rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
             rotatedBufferX = decoration.bufferZ;
             rotatedBufferXMin = decoration.bufferZMin;
-            rotatedBufferZ = decoration.bufferX;
-            rotatedBufferZMin = decoration.bufferXMin;
+            rotatedBufferZ = decoration.bufferXMin;
+            rotatedBufferZMin = decoration.bufferX;
 
             float tempOffset90 = rotatedOffsetX;
             rotatedOffsetX = rotatedOffsetZ;
@@ -274,13 +274,15 @@ public class DungeonGenerator : MonoBehaviour
 
           case 180:
             rotatedBufferX = decoration.bufferXMin;
+            rotatedBufferXMin = decoration.bufferX;
             rotatedBufferZ = decoration.bufferZMin;
+            rotatedBufferZMin = decoration.bufferZ;
 
             rotatedOffsetX = -decoration.OffsetX;
             rotatedOffsetZ = -decoration.OffsetZ;
 
-            positionZOffset = decoration.size.z - 1;
             positionXOffset = decoration.size.x - 1;
+            positionZOffset = decoration.size.z - 1;
             break;
 
           case 270:
@@ -332,7 +334,11 @@ public class DungeonGenerator : MonoBehaviour
               (position.z * GridConfig.CellSize.z) + rotatedOffsetZ
           ) + GridConfig.Offset;
 
-          Instantiate(decoration.prefab, instantiationPosition, rotation);
+          GameObject instance = Instantiate(decoration.prefab, instantiationPosition, rotation);
+
+          DecorationBufferVisualizer visualizer = instance.AddComponent<DecorationBufferVisualizer>();
+          visualizer.decorationAreaBuffer = decorationAreaBuffer;
+          visualizer.bufferColor = Color.red;
 
           DecorationRestrict(decorationAreaBuffer);
           UnWalkableTile(decorationArea);

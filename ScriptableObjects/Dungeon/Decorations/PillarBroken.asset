@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3008615883151607702, guid: 939f8876426179a4bbdff5c1589b2a42, type: 3}
   size: {x: 1, y: 0, z: 1}
-  Ypos: 0
+  Ypos: 1
   OffsetX: 0
   OffsetZ: 0
   bufferX: 1
+  bufferXMin: 0
   bufferZ: 0
+  bufferZMin: 0

@@ -17,5 +17,7 @@ MonoBehaviour:
   Ypos: 1
   OffsetX: 0
   OffsetZ: -0.3
-  bufferX: 1
+  bufferX: 0
+  bufferXMin: 0
   bufferZ: 1
+  bufferZMin: 0
