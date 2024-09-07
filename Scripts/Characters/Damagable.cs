@@ -49,7 +49,7 @@ public class Damagable : MonoBehaviour
 
     if (_currentHealth.CurrentHealth <= 0)
     {
-      OnDeath();
+      IsDead = true;
     }
   }
 
@@ -62,15 +62,6 @@ public class Damagable : MonoBehaviour
       Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
       transform.rotation = targetRotation;
-    }
-  }
-
-  private void OnDeath()
-  {
-    IsDead = true;
-    if (_removeEnemyFromQueueEvent != null)
-    {
-      _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
     }
   }
 
@@ -103,6 +94,12 @@ public class Damagable : MonoBehaviour
       _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
       _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
       _recalculatePathEvent.RaiseEvent();
+
+      if (_removeEnemyFromQueueEvent != null)
+      {
+        _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
+      }
+
       _onTurnCycleExecuted.RaiseEvent();
       Destroy(gameObject);
     }

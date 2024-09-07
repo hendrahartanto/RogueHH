@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MovePlayerOnClickAction
   m_EditorClassIdentifier: 
   InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
-  GameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  ChangeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}

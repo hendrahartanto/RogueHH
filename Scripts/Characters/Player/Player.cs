@@ -79,11 +79,8 @@ public class Player : MonoBehaviour
     IsMoving = false;
   }
 
-  public void OnNotifyMovePlayer(bool isAttacking)
+  public void OnNotifyMovePlayer()
   {
-    if (isAttacking)
-      return;
-
     IsMoving = true;
 
     StartCoroutine(MoveAlongPath());

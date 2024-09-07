@@ -6,7 +6,10 @@ using UnityEngine;
 public class AttackOnClickActionSO : StateActionSO
 {
   public InputReader InputReader = default;
-  protected override StateAction CreateAction() => new AttackOnClickAction(InputReader);
+
+  [Header("Broadcasting to")]
+  public GameStateEventChanelSO ChangeGameStateEvent = default;
+  protected override StateAction CreateAction() => new AttackOnClickAction(InputReader, ChangeGameStateEvent);
 }
 
 public class AttackOnClickAction : StateAction
@@ -15,9 +18,13 @@ public class AttackOnClickAction : StateAction
   private InputReader _inputReader;
   private Attack _attack;
 
-  public AttackOnClickAction(InputReader inputReader)
+  [Header("Broadcasting to")]
+  private GameStateEventChanelSO _changeGameStateEvent = default;
+
+  public AttackOnClickAction(InputReader inputReader, GameStateEventChanelSO changeGameStateEvent)
   {
     _inputReader = inputReader;
+    _changeGameStateEvent = changeGameStateEvent;
   }
 
   public override void Awake(StateMachine stateMachine)
@@ -38,6 +45,8 @@ public class AttackOnClickAction : StateAction
 
   private void AttackTarget()
   {
+    _changeGameStateEvent.RaiseEvent(GameState.TurnCycling);
+
     Collider target = _pointerManager.CurrentPointedCollider;
     if (target.TryGetComponent(out Damagable damagableComp))
     {

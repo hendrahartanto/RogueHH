@@ -51,7 +51,7 @@ public class DungeonGenerator : MonoBehaviour
       bool add = true;
       //TODO: possible roomsnya bikin random
       Room newRoom = new Room(location, roomSize, PossibleRooms[0]);
-      Room buffer = new Room(location + new Vector3Int(-1, 0, -1), roomSize + new Vector3Int(2, 0, 2), PossibleRooms[0]);
+      Room buffer = new Room(location + new Vector3Int(-2, 0, -2), roomSize + new Vector3Int(4, 0, 4), PossibleRooms[0]);
 
       foreach (var room in _rooms)
       {

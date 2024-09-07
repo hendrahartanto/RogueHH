@@ -7,18 +7,21 @@ public class ChangeGameStateActionSO : StateActionSO
 {
   public GameStateSO GameState = default;
   public GameState NewGameState = default;
-  protected override StateAction CreateAction() => new ChangeGameStateAction(GameState, NewGameState);
+  public SpecificMoment WhenToRun = default;
+  protected override StateAction CreateAction() => new ChangeGameStateAction(GameState, NewGameState, WhenToRun);
 }
 
 public class ChangeGameStateAction : StateAction
 {
   private GameState _newGameState = default;
   private GameStateSO _gameState = default;
+  private SpecificMoment _whenToRun = default;
 
-  public ChangeGameStateAction(GameStateSO gameState, GameState newGameState)
+  public ChangeGameStateAction(GameStateSO gameState, GameState newGameState, SpecificMoment whenToRun)
   {
     _newGameState = newGameState;
     _gameState = gameState;
+    _whenToRun = whenToRun;
   }
 
   private void ChangeState()
@@ -33,11 +36,14 @@ public class ChangeGameStateAction : StateAction
 
   public override void OnStateEnter()
   {
-    ChangeState();
+    if (_whenToRun == SpecificMoment.OnStateEnter)
+      ChangeState();
   }
 
   public override void OnStateExit()
   {
+    if (_whenToRun == SpecificMoment.OnStateExit)
+      ChangeState();
   }
 
   public override void OnUpdate() { }

@@ -38,7 +38,7 @@ public class MovePlayerOnClickAction : StateAction
 
   public void NotifyMovePlayer()
   {
-    _player.OnNotifyMovePlayer(_attack.IsAttacking);
+    _player.OnNotifyMovePlayer();
   }
 
   public override void OnUpdate() { }
