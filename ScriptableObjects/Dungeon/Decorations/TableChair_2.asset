@@ -15,5 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 326971723317538028, guid: ff5c8d851d268c44c9ac84a9d8039b96, type: 3}
   size: {x: 1, y: 0, z: 1}
   Ypos: 1
+  OffsetX: 0
+  OffsetZ: -0.3
   bufferX: 1
   bufferZ: 1

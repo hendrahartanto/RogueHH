@@ -226,7 +226,7 @@ public class DungeonGenerator : MonoBehaviour
       {
         DecorationSO decoration = room.roomType.ChooseRandomDecoration();
 
-        int rotationAngle = GlobalRandom.Next(1, 4) * 90;
+        int rotationAngle = GlobalRandom.Next(0, 4) * 90; // Randomly picks 0, 90, 180, or 270
 
         Vector3Int rotatedSize = decoration.size;
         int rotatedBufferX = decoration.bufferX;
@@ -234,15 +234,32 @@ public class DungeonGenerator : MonoBehaviour
         float rotatedOffsetX = decoration.OffsetX;
         float rotatedOffsetZ = decoration.OffsetZ;
 
-        if (rotationAngle == 90 || rotationAngle == 270)
+        switch (rotationAngle)
         {
-          rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
-          rotatedBufferX = decoration.bufferZ;
-          rotatedBufferZ = decoration.bufferX;
+          case 90:
+            rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
+            rotatedBufferX = decoration.bufferZ;
+            rotatedBufferZ = decoration.bufferX;
 
-          float tempOffset = rotatedOffsetX;
-          rotatedOffsetX = rotatedOffsetZ;
-          rotatedOffsetZ = tempOffset;
+            float tempOffset90 = rotatedOffsetX;
+            rotatedOffsetX = rotatedOffsetZ;
+            rotatedOffsetZ = -tempOffset90;
+            break;
+
+          case 180:
+            rotatedOffsetX = -decoration.OffsetX;
+            rotatedOffsetZ = -decoration.OffsetZ;
+            break;
+
+          case 270:
+            rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
+            rotatedBufferX = decoration.bufferZ;
+            rotatedBufferZ = decoration.bufferX;
+
+            float tempOffset270 = rotatedOffsetX;
+            rotatedOffsetX = -rotatedOffsetZ;
+            rotatedOffsetZ = tempOffset270;
+            break;
         }
 
         Vector3Int position = new Vector3Int(
@@ -257,7 +274,7 @@ public class DungeonGenerator : MonoBehaviour
         bool add = true;
 
         if (decorationAreaBuffer.xMin < room.area.xMin || decorationAreaBuffer.xMax >= room.area.xMax
-          || decorationAreaBuffer.zMin < room.area.zMin || decorationAreaBuffer.zMax >= room.area.zMax)
+            || decorationAreaBuffer.zMin < room.area.zMin || decorationAreaBuffer.zMax >= room.area.zMax)
         {
           continue;
         }
@@ -290,7 +307,6 @@ public class DungeonGenerator : MonoBehaviour
           Debug.Log("Available tile: " + room.availableTile);
         }
       }
-
     }
   }
 
