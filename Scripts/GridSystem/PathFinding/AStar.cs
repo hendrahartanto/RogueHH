@@ -19,7 +19,7 @@ public class AStar
 
     openNodes.Add(startNode);
 
-    while (true)
+    while (openNodes.Count > 0)
     {
       //cari node dengan F cost terendah kalau ada lebih dari 1, cari berdasarkan HCost terendah
       Node curr = openNodes
@@ -67,6 +67,10 @@ public class AStar
         }
       }
     }
+
+    //jika endNode gabisa tercapai
+    Debug.Log("There is no valid path to target");
+    pathStorage.paths = new List<Node>();
   }
 
   private void CalculateCost(out float GCost, out float HCost, out float FCost, Node startNode, Node currNeighbour, Node endNode)

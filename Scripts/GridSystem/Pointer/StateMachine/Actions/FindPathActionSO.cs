@@ -96,6 +96,8 @@ public class FindPathAction : StateAction
 
   private void RecalculatePath()
   {
+    if (_pointerManager.isPointingNull)
+      return;
     //unhighlight path sebelumnya
     foreach (var path in _pathStorage.paths)
     {
