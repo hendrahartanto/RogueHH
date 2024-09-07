@@ -38,6 +38,9 @@ public class MovePlayerOnClickAction : StateAction
 
   public void NotifyMovePlayer()
   {
+    if (_player.PathStorage.paths.Count == 0)
+      return;
+
     _player.OnNotifyMovePlayer();
   }
 

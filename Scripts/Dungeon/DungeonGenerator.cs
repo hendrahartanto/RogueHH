@@ -28,7 +28,7 @@ public class DungeonGenerator : MonoBehaviour
 
     PlaceRooms();
     ConnectRooms();
-    // PlaceDecorations();
+    PlaceDecorations();
   }
 
   private void PlaceRooms()
@@ -43,9 +43,9 @@ public class DungeonGenerator : MonoBehaviour
       );
 
       Vector3Int roomSize = new Vector3Int(
-        GlobalRandom.Next(3, PossibleRooms[0].roomMaxSize.x),
+        GlobalRandom.Next(PossibleRooms[0].roomMinSize.x, PossibleRooms[0].roomMaxSize.x),
         0,
-        GlobalRandom.Next(3, PossibleRooms[0].roomMaxSize.y)
+        GlobalRandom.Next(PossibleRooms[0].roomMinSize.y, PossibleRooms[0].roomMaxSize.y)
       );
 
       bool add = true;
@@ -89,7 +89,7 @@ public class DungeonGenerator : MonoBehaviour
   {
     foreach (Vector3Int pos in room.area)
     {
-      Tile newTile = new Tile(PossibleRooms[0].floorPrefab, pos.x, pos.z, CellType.Walkable);
+      Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), pos.x, pos.z, CellType.Walkable);
       _grid[pos.x, pos.z] = newTile;
 
       Node newNode = new Node(new Vector3Int(pos.x, 0, pos.z));
@@ -157,7 +157,7 @@ public class DungeonGenerator : MonoBehaviour
           cell.cellTypes.Add(CellType.DecorationRestrict);
           startEntrance = false;
         }
-        Tile newTile = new Tile(PossibleRooms[0].floorPrefab, position.x, position.z, CellType.Walkable);
+        Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), position.x, position.z, CellType.Walkable);
         _grid[position.x, position.z] = newTile;
 
         Node newNode = new Node(new Vector3Int(position.x, 0, position.z));
@@ -179,7 +179,7 @@ public class DungeonGenerator : MonoBehaviour
           cell.cellTypes.Add(CellType.DecorationRestrict);
           startEntrance = false;
         }
-        Tile newTile = new Tile(PossibleRooms[0].floorPrefab, position.x, position.z, CellType.Walkable);
+        Tile newTile = new Tile(PossibleRooms[0].ChooseRandomFloor(), position.x, position.z, CellType.Walkable);
         _grid[position.x, position.z] = newTile;
 
         Node newNode = new Node(new Vector3Int(position.x, 0, position.z));
@@ -220,18 +220,34 @@ public class DungeonGenerator : MonoBehaviour
   {
     foreach (var room in _rooms)
     {
-      while (room.availableTile > 0)
+
+      //asumsi min decoration buffernya adalah 3
+      while (room.availableTile >= 3)
       {
         DecorationSO decoration = room.roomType.ChooseRandomDecoration();
 
+        int rotationAngle = GlobalRandom.Next(1, 4) * 90;
+
+        // Adjust size and buffer based on rotation
+        Vector3Int rotatedSize = decoration.size;
+        int rotatedBufferX = decoration.bufferX;
+        int rotatedBufferZ = decoration.bufferZ;
+
+        if (rotationAngle == 90 || rotationAngle == 270)
+        {
+          rotatedSize = new Vector3Int(decoration.size.z, decoration.size.y, decoration.size.x);
+          rotatedBufferX = decoration.bufferZ;
+          rotatedBufferZ = decoration.bufferX;
+        }
+
         Vector3Int position = new Vector3Int(
-          GlobalRandom.Next(room.area.xMin, room.area.xMax),
-          0,
-          GlobalRandom.Next(room.area.zMin, room.area.zMax)
+            GlobalRandom.Next(room.area.xMin, room.area.xMax),
+            0,
+            GlobalRandom.Next(room.area.zMin, room.area.zMax)
         );
 
-        RectXZ decorationAreaBuffer = new RectXZ(position.x - decoration.bufferX, position.z - decoration.bufferZ, decoration.size.x + decoration.bufferX * 2, decoration.size.z + decoration.bufferZ * 2);
-        RectXZ decorationArea = new RectXZ(position.x, position.z, decoration.size.x, decoration.size.z);
+        RectXZ decorationAreaBuffer = new RectXZ(position.x - rotatedBufferX, position.z - rotatedBufferZ, rotatedSize.x + rotatedBufferX * 2, rotatedSize.z + rotatedBufferZ * 2);
+        RectXZ decorationArea = new RectXZ(position.x, position.z, rotatedSize.x, rotatedSize.z);
 
         bool add = true;
 
@@ -252,10 +268,15 @@ public class DungeonGenerator : MonoBehaviour
 
         if (add)
         {
-          Instantiate(decoration.prefab, new Vector3(position.x * GridConfig.CellSize.x, 1, position.z * GridConfig.CellSize.z) + GridConfig.Offset, Quaternion.identity);
+          Quaternion rotation = Quaternion.Euler(0, rotationAngle, 0);
+
+          Instantiate(decoration.prefab, new Vector3(position.x * GridConfig.CellSize.x, decoration.Ypos, position.z * GridConfig.CellSize.z) + GridConfig.Offset, rotation);
+
           DecorationRestrict(decorationAreaBuffer);
           UnWalkableTile(decorationArea);
           room.availableTile -= decorationAreaBuffer.size.x * decorationAreaBuffer.size.z;
+
+          Debug.Log("Available tile: " + room.availableTile);
         }
       }
     }
@@ -293,6 +314,8 @@ public class Room
 
     //berapa banyak slot tile untuk diletakkan suatu dekorasi
     availableTile = GlobalRandom.Next(Mathf.RoundToInt(0.2f * size.x * size.z), Mathf.RoundToInt(0.3f * size.x * size.z)) - 2;
+
+    Debug.Log(availableTile);
 
     this.roomType = roomType;
 

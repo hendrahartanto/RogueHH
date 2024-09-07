@@ -7,6 +7,7 @@ public class DecorationSO : ScriptableObject
 {
   public GameObject prefab;
   public Vector3Int size;
+  public float Ypos;
   public int bufferX;
   public int bufferZ;
 }
