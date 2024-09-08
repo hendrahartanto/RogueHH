@@ -15,6 +15,7 @@ MonoBehaviour:
   PrefabVariants:
   - {fileID: 6865306993092269866, guid: 7cfb68371a3ca404aa4437c2f962b08d, type: 3}
   - {fileID: 554824509360195690, guid: ca11416a266f7854aa40912278f00144, type: 3}
+  - {fileID: 1915735900696964212, guid: 349cde9a64ef3cd4b8fe5c72a18bd189, type: 3}
   MexHealthMultiplier: 1
   AttackPointMultiplier: 1
   DefendPointMultiplier: 1
