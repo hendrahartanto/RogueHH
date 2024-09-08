@@ -336,6 +336,7 @@ public class DungeonGenerator : MonoBehaviour
 
           GameObject instance = Instantiate(decoration.prefab, instantiationPosition, rotation);
 
+          //TODO: remove after finished
           DecorationBufferVisualizer visualizer = instance.AddComponent<DecorationBufferVisualizer>();
           visualizer.decorationAreaBuffer = decorationAreaBuffer;
           visualizer.bufferColor = Color.red;

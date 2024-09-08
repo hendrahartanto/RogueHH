@@ -17,6 +17,7 @@ public class Damagable : MonoBehaviour
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
+  [SerializeField] private Vector3_Int_EvetChanel _damagePopUpEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -44,6 +45,8 @@ public class Damagable : MonoBehaviour
     _currentHealth.DecreaseHealth(damage);
 
     UpdateHealthUIEvent.RaiseEvent(_currentHealth.CurrentHealth);
+
+    _damagePopUpEvent.RaiseEvent(transform.position, damage);
 
     IsGettingHit = true;
 
