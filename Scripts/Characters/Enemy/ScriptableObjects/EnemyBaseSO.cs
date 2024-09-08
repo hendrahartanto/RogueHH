@@ -4,8 +4,13 @@ using UnityEngine;
 
 public abstract class EnemyBaseSO : ScriptableObject
 {
-  public GameObject Prefab;
-  public int MaxHealth;
-  public int AttackPoint;
-  public int DefendPoint;
+  public List<GameObject> PrefabVariants;
+  public float MexHealthMultiplier;
+  public float AttackPointMultiplier;
+  public float DefendPointMultiplier;
+
+  public GameObject GetRandomPrefab()
+  {
+    return PrefabVariants[Random.Range(0, PrefabVariants.Count)];
+  }
 }

@@ -45,18 +45,18 @@ public class EnemySpawnSystem : MonoBehaviour
           break;
       }
 
-      EnemyBaseSO enemy = _dungeon.GetRandomEnemy();
+      EnemyBaseSO enemy = _dungeon.GetRandomEnemyType();
 
       //set tile to type to enemy
       _grid[randomPosition.x, randomPosition.y].cellTypes.Clear();
       _grid[randomPosition.x, randomPosition.y].cellTypes.Add(CellType.Enemy);
 
-      Transform spawnLocation = enemy.Prefab.transform;
+      Transform spawnLocation = enemy.GetRandomPrefab().transform;
 
       spawnLocation.position = new Vector3(randomPosition.x * GridConfig.CellSize.x, 1.5f, randomPosition.y * GridConfig.CellSize.z) + GridConfig.Offset;
       spawnLocation.rotation = Quaternion.identity;
 
-      GameObject enemyObject = enemy.Prefab;
+      GameObject enemyObject = spawnLocation.gameObject;
 
       //assign unique helathevent chanel to each enemy
       IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();

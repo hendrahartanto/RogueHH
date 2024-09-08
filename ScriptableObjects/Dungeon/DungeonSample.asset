@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: {x: 60, y: 60}
   RoomCount: 20
-  possibleEnemies:
-  - {fileID: 11400000, guid: 527d2439bd921954c887c84fb08a0442, type: 2}
+  PossibleEnemyTypes:
+  - {fileID: 11400000, guid: a91bbb108fb97534f94fce9e416b31c9, type: 2}
+  EnemyTypeChances: 64000000
