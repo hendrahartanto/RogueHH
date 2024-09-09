@@ -18,7 +18,6 @@ public class Damagable : MonoBehaviour
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
   [SerializeField] private Vector3_Int_EvetChanel _damagePopUpEvent = default;
-
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
 
