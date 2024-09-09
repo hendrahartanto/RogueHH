@@ -35,7 +35,7 @@ public class EnemyFindPathAction : StateAction
     Node startNode = _gridNode[(int)_enemyTransform.position.x / GridConfig.CellSize.x, (int)_enemyTransform.position.z / GridConfig.CellSize.z];
     Node endNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
 
-    _aStar.FindPathForEnemy(_gridNode, _pathStorage, startNode, endNode);
+    _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode, FindPathType.Enemy);
   }
 
   public override void OnStateEnter()

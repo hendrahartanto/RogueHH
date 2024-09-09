@@ -22,6 +22,7 @@ public class FindPathAction : StateAction
   private GridNodeSO _gridNode;
   private Vector3Int _previousGridPosition;
   private Vector3Int _currentGridPosition;
+  private bool _onGoingState = false;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent;
@@ -49,11 +50,13 @@ public class FindPathAction : StateAction
 
   public override void OnStateEnter()
   {
+    _onGoingState = true;
     FindPath();
   }
 
   public override void OnStateExit()
   {
+    _onGoingState = false;
     //unhighlight path sebelumnya
     foreach (var path in _pathStorage.paths)
     {
@@ -83,7 +86,7 @@ public class FindPathAction : StateAction
       Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
       Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
 
-      _aStar.FindPathForPlayer(_gridNode, _pathStorage, startNode, endNode);
+      _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode, FindPathType.Player);
 
       foreach (var path in _pathStorage.paths)
       {
@@ -96,8 +99,9 @@ public class FindPathAction : StateAction
 
   private void RecalculatePath()
   {
-    if (_pointerManager.isPointingNull)
+    if (!_onGoingState)
       return;
+
     //unhighlight path sebelumnya
     foreach (var path in _pathStorage.paths)
     {
@@ -113,7 +117,7 @@ public class FindPathAction : StateAction
     Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
     Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
 
-    _aStar.FindPathForPlayer(_gridNode, _pathStorage, startNode, endNode);
+    _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode, FindPathType.Player);
 
     foreach (var path in _pathStorage.paths)
     {

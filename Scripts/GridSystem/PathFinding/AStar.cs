@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AStar
 {
-  public void FindPathForEnemy(GridNodeSO gridSource, PathStorageSO pathStorage, Node startNode, Node endNode)
+  public void FindPath(GridNodeSO gridSource, PathStorageSO pathStorage, Node startNode, Node endNode, FindPathType type)
   {
     //TODO: experimental membuat instance GridNodeSO baru agar valuenya ga tertimpa saat banyak entitiy menggunakan pathfinding
     GridNodeSO grid = ScriptableObject.CreateInstance<GridNodeSO>();
@@ -46,7 +46,7 @@ public class AStar
 
         Node currNeighbour = grid[curr.Position.x + dirX[i], curr.Position.z + dirZ[i]];
 
-        if (currNeighbour == null || visitedNodes.Contains(currNeighbour))
+        if (currNeighbour == null || visitedNodes.Contains(currNeighbour) || !currNeighbour.Accessable)
           continue;
 
         //hitung costnya menggunakan eucledian distance di c# udah ada function bawaan Vector3int yaitu Distance
@@ -67,13 +67,20 @@ public class AStar
       }
     }
 
-    //jika endNode gabisa tercapai
     Debug.Log("There is no valid path to target");
-    pathStorage.paths = new List<Node>();
+    if (type == FindPathType.Enemy)
+    {
+      pathStorage.paths.Clear();
+      FindAlternativePath(gridSource, pathStorage, startNode, endNode);
+    }
+    else
+    {
+      pathStorage.paths = new List<Node>();
+    }
   }
 
-  //bedanya cmn kalau tilenya ada enemy diignore biar lebih rapi aja highlightnya
-  public void FindPathForPlayer(GridNodeSO gridSource, PathStorageSO pathStorage, Node startNode, Node endNode)
+
+  public void FindAlternativePath(GridNodeSO gridSource, PathStorageSO pathStorage, Node startNode, Node endNode)
   {
     //TODO: experimental membuat instance GridNodeSO baru agar valuenya ga tertimpa saat banyak entitiy menggunakan pathfinding
     GridNodeSO grid = ScriptableObject.CreateInstance<GridNodeSO>();
@@ -115,7 +122,7 @@ public class AStar
         Node currNeighbour = grid[curr.Position.x + dirX[i], curr.Position.z + dirZ[i]];
 
         //Cek node neighbor sekarang kalau null atau udah divisit maka di skip ke neighbour selanjutnya atau not accessable (ada enemy)
-        if (currNeighbour == null || visitedNodes.Contains(currNeighbour) || !currNeighbour.Accessable)
+        if (currNeighbour == null || visitedNodes.Contains(currNeighbour))
           continue;
 
         //hitung costnya menggunakan eucledian distance di c# udah ada function bawaan Vector3int yaitu Distance
@@ -200,4 +207,10 @@ public class Node
     GCost = HCost = FCost = 0;
     Accessable = true;
   }
+}
+
+public enum FindPathType
+{
+  Player,
+  Enemy
 }
