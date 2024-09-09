@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DungeonSample
   m_EditorClassIdentifier: 
   Size: {x: 60, y: 60}
-  RoomCount: 20
+  RoomCount: 2
   PossibleEnemyTypes:
   - {fileID: 11400000, guid: a91bbb108fb97534f94fce9e416b31c9, type: 2}
   EnemyTypeChances: 64000000

@@ -15,20 +15,22 @@ public class Enemy : MonoBehaviour, ITurnComponent
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
+  [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
 
   public UnityAction OnTurnExecuted { get; set; }
 
   private IEnumerator MoveToTarget()
   {
+
     Node target = PathStorage.paths[0];
+
+    Debug.Log("path from enemy: " + target.Position);
 
     Vector3 startPosition = transform.position;
     Vector3 endPosition = new Vector3(target.Position.x * GridConfig.CellSize.x, transform.position.y, target.Position.z * GridConfig.CellSize.z) + GridConfig.Offset;
 
-    //ganti start position jadi walkable
-    _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
-
-    _gridNode[(int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z].Accessable = true;
+    int tempX = (int)transform.position.x / GridConfig.CellSize.x;
+    int tempZ = (int)transform.position.z / GridConfig.CellSize.z;
 
     float distance = Vector3.Distance(startPosition, endPosition);
     MovementProgress = 0f;
@@ -62,16 +64,27 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
     transform.position = endPosition;
 
+    //ganti start position jadi walkable
+    _changeCellTypeEvent.RaiseEvent(tempX, tempZ, CellType.Walkable);
+    _gridNode[tempX, tempZ].Accessable = true;
+
     //ganti end position jadi enemy
     _changeCellTypeEvent.RaiseEvent(target.Position.x, target.Position.z, CellType.Enemy);
     _changeNodeAccessibleEvent.RaiseEvent(target.Position.x, target.Position.z, false);
 
     IsMoving = false;
+    _recalculatePathEvent.RaiseEvent();
     _onTurnFinished.RaiseEvent();
   }
 
   public void OnNotifyMoveEnemy()
   {
+    if (PathStorage.paths.Count <= 0)
+    {
+      _onTurnFinished.RaiseEvent();
+      return;
+    }
+
     IsMoving = true;
 
     StartCoroutine(MoveToTarget());

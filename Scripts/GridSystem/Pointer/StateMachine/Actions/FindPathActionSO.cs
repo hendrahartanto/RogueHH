@@ -83,7 +83,7 @@ public class FindPathAction : StateAction
       Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
       Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
 
-      _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode);
+      _aStar.FindPathForPlayer(_gridNode, _pathStorage, startNode, endNode);
 
       foreach (var path in _pathStorage.paths)
       {
@@ -113,7 +113,7 @@ public class FindPathAction : StateAction
     Node startNode = _gridNode[(int)_playerTransform.Value.position.x / GridConfig.CellSize.x, (int)_playerTransform.Value.position.z / GridConfig.CellSize.z];
     Node endNode = _gridNode[_currentGridPosition.x, _currentGridPosition.y];
 
-    _aStar.FindPath(_gridNode, _pathStorage, startNode, endNode);
+    _aStar.FindPathForPlayer(_gridNode, _pathStorage, startNode, endNode);
 
     foreach (var path in _pathStorage.paths)
     {
