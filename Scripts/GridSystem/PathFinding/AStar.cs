@@ -19,6 +19,8 @@ public class AStar
 
     openNodes.Add(startNode);
 
+    int visitedCount = 0;
+
     while (openNodes.Count > 0)
     {
       //cari node dengan F cost terendah kalau ada lebih dari 1, cari berdasarkan HCost terendah
@@ -29,6 +31,10 @@ public class AStar
 
       openNodes.Remove(curr);
       visitedNodes.Add(curr);
+      visitedCount++;
+
+      if (visitedCount >= 50)
+        break;
 
       //jika sudah mencapai endNode atau target
       if (curr == endNode)
@@ -70,7 +76,7 @@ public class AStar
     Debug.Log("There is no valid path to target");
     if (type == FindPathType.Enemy)
     {
-      pathStorage.paths.Clear();
+      pathStorage.paths = new List<Node>();
       FindAlternativePath(gridSource, pathStorage, startNode, endNode);
     }
     else

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0d0893c16fdd944ad6c21673842e20, type: 3}
   m_Name: DungeonSample
   m_EditorClassIdentifier: 
-  Size: {x: 30, y: 30}
-  RoomCount: 2
+  Size: {x: 60, y: 60}
+  RoomCount: 20
   PossibleEnemyTypes:
   - {fileID: 11400000, guid: a91bbb108fb97534f94fce9e416b31c9, type: 2}
   EnemyTypeChances: 64000000

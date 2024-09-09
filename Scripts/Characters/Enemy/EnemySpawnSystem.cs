@@ -9,6 +9,11 @@ public class EnemySpawnSystem : MonoBehaviour
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+
+  [Header("Broadcasting to")]
+  [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
+  [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
+
   private void OnEnable()
   {
     _onSceneReady.OnEventRaised += SpawnEnemy;
@@ -22,9 +27,9 @@ public class EnemySpawnSystem : MonoBehaviour
   private void SpawnEnemy()
   {
     //TODO: this is experimental config
-    int enemyCount = _dungeon.RoomCount * 3; // bagi 2 
+    int enemyCount = _dungeon.RoomCount * 2; // bagi 2 
     int currEnemyCount = 0;
-    int maxEnemyPerRoom = 3;
+    int maxEnemyPerRoom = 2;
 
     while (currEnemyCount < enemyCount)
     {
@@ -47,9 +52,8 @@ public class EnemySpawnSystem : MonoBehaviour
 
       EnemyBaseSO enemy = _dungeon.GetRandomEnemyType();
 
-      //set tile to type to enemy
-      _grid[randomPosition.x, randomPosition.y].cellTypes.Clear();
-      _grid[randomPosition.x, randomPosition.y].cellTypes.Add(CellType.Enemy);
+      _changeCellTypeEvent.RaiseEvent(randomPosition.x, randomPosition.y, CellType.Enemy);
+      _changeNodeAccessibleEvent.RaiseEvent(randomPosition.x, randomPosition.y, false);
 
       Transform spawnLocation = enemy.GetRandomPrefab().transform;
 
