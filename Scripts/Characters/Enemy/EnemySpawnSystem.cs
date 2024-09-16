@@ -66,7 +66,7 @@ public class EnemySpawnSystem : MonoBehaviour
       IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
       IntEventChanelSO updateHealthUIEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
 
-      UIHealthBarManager UIHealthBarManagerComp = enemyObject.GetComponentInChildren<UIHealthBarManager>();
+      UIBarManager UIHealthBarManagerComp = enemyObject.GetComponentInChildren<UIBarManager>();
       UIHealthBarManagerComp.SetMaxHealthUIEvent = setMaxhealthEvent;
       UIHealthBarManagerComp.UpdateHealthUIEvent = updateHealthUIEvent;
 

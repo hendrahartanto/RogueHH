@@ -4148,7 +4148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392226869768368396}
   - component: {fileID: 3276035427944028266}
-  - component: {fileID: 4183079189862658727}
+  - component: {fileID: 2571923136384269262}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -4228,7 +4228,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4183079189862658727
+--- !u!114 &2571923136384269262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4237,7 +4237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6078426464029218115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c52e51d9051744eae13c001df45ed2, type: 3}
+  m_Script: {fileID: 11500000, guid: dfc41c6afdc5cf44f8be13ecbd45da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SetMaxHealthUIEvent: {fileID: 0}
@@ -4465,6 +4465,8 @@ MonoBehaviour:
   _changeNodeAccessibleEvent: {fileID: 11400000, guid: c800ee0a70f0a51449dd41da1d8b99da, type: 2}
   _recalculatePathEvent: {fileID: 11400000, guid: ae14b657406388b44a3a546156cf3d67, type: 2}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
+  _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
+  _setUpInitialExpEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 0}
   UpdateHealthUIEvent: {fileID: 0}
 --- !u!114 &7006656950238368843

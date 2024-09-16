@@ -4702,6 +4702,7 @@ GameObject:
   - component: {fileID: 1641469432621055732}
   - component: {fileID: 5912661145378325603}
   - component: {fileID: 7034733871640068061}
+  - component: {fileID: 2442832934141306455}
   - component: {fileID: -159225850327403872}
   - component: {fileID: 8955660501945425275}
   m_Layer: 3
@@ -4719,7 +4720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: 51}
+  m_LocalPosition: {x: 7, y: 1.5, z: 73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4851,6 +4852,8 @@ MonoBehaviour:
   _changeNodeAccessibleEvent: {fileID: 0}
   _recalculatePathEvent: {fileID: 0}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
+  _gainExpEvent: {fileID: 0}
+  _setUpInitialExpEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 11400000, guid: a493d1e054dd3be4c927a5c226a45dd9, type: 2}
   UpdateHealthUIEvent: {fileID: 11400000, guid: 51df0c45a8ae7c24da7c12a88b9c943b, type: 2}
 --- !u!114 &7034733871640068061
@@ -4866,6 +4869,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAttacking: 0
+--- !u!114 &2442832934141306455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049406681976180358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010a4e97a11c09d419fb0dc01977110a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentExp: {fileID: 11400000, guid: 933411ba2a15add4aba40546a0e8c50f, type: 2}
+  _updateExpUIEvent: {fileID: 11400000, guid: 316094f89ee9a7a40b8980b533a11f12, type: 2}
+  _setupExpUIEvent: {fileID: 11400000, guid: 856cc90fec2b3574fb61b4fb8b061bae, type: 2}
+  _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
 --- !u!54 &-159225850327403872
 Rigidbody:
   m_ObjectHideFlags: 0

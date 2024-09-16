@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Health", menuName = "Configs/Character/Health")]
+[CreateAssetMenu(fileName = "Health", menuName = "Gameplay/Character/Health")]
 public class HealthSO : ScriptableObject
 {
   private int _maxHealth;

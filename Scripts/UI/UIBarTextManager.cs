@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIHealthTextManager : MonoBehaviour
+public class UIBarTextManager : MonoBehaviour
 {
   private int _maxHealth = default;
   private TextMeshProUGUI _textMesh = default;

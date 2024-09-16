@@ -18,6 +18,9 @@ public class Damagable : MonoBehaviour
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
   [SerializeField] private Vector3_Int_EvetChanel _damagePopUpEvent = default;
+  [SerializeField] private IntEventChanelSO _gainExpEvent = default;
+  [SerializeField] private IntEventChanelSO _setUpInitialExpEvent = default;
+
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
 
@@ -93,14 +96,17 @@ public class Damagable : MonoBehaviour
     if (_source.gameObject.CompareTag("Player"))
     {
       IsDead = false;
+
+      //reset cell and recalculat path for player
       _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
       _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
       _recalculatePathEvent.RaiseEvent();
 
-      if (_removeEnemyFromQueueEvent != null)
-      {
-        _removeEnemyFromQueueEvent.RaiseEvent(GetComponent<Enemy>());
-      }
+      //gain exp for player
+      //TODO: set it using config SO\
+      _gainExpEvent?.RaiseEvent(2);
+
+      _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
 
       _onTurnCycleExecuted.RaiseEvent();
       Destroy(gameObject);
