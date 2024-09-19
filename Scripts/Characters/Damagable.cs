@@ -35,7 +35,7 @@ public class Damagable : MonoBehaviour
     }
 
     _currentHealth.SetMaxHealth(_characterConfigSO.GetInitialHealth());
-    _currentHealth.SetCurrentHealth(_characterConfigSO.GetInitialHealth());
+    _currentHealth.SetCurrentHealth(_currentHealth.MaxHealth);
 
     //setup initial defend point in the SO container
     DeffendPoint = _characterConfigSO.GetInitialDeffendPoint();
