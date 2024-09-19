@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class Damagable : MonoBehaviour
   public bool IsGettingHit = false;
   public bool IsDead = false;
   private Transform _source;
+  [NonSerialized] public int DeffendPoint = default;
+
+  [SerializeField] private CharacterConfigSO _characterConfigSO = default;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
@@ -19,7 +23,6 @@ public class Damagable : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
   [SerializeField] private Vector3_Int_EvetChanel _damagePopUpEvent = default;
   [SerializeField] private IntEventChanelSO _gainExpEvent = default;
-  [SerializeField] private IntEventChanelSO _setUpInitialExpEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -31,9 +34,11 @@ public class Damagable : MonoBehaviour
       _currentHealth = ScriptableObject.CreateInstance<HealthSO>();
     }
 
-    //TODO: set it using config SO
-    _currentHealth.SetMaxHealth(100);
-    _currentHealth.SetCurrentHealth(100);
+    _currentHealth.SetMaxHealth(_characterConfigSO.GetInitialHealth());
+    _currentHealth.SetCurrentHealth(_characterConfigSO.GetInitialHealth());
+
+    //setup initial defend point in the SO container
+    DeffendPoint = _characterConfigSO.GetInitialDeffendPoint();
 
     SetMaxHealthUIEvent.RaiseEvent(_currentHealth.MaxHealth);
   }
@@ -103,7 +108,7 @@ public class Damagable : MonoBehaviour
       _recalculatePathEvent.RaiseEvent();
 
       //gain exp for player
-      //TODO: set it using config SO\
+      //TODO: set it using config SO
       _gainExpEvent?.RaiseEvent(2);
 
       _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());

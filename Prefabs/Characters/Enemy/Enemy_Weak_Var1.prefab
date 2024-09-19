@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466996193185973644, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
+      propertyPath: _characterConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 16fc38f53f6c02349bbbcd9640afe3a4, type: 2}
     - target: {fileID: 4886522163832905438, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5960240036411527104, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 93
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5960240036411527104, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5960240036411527104, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 5960240036411527104, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,5 +63,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Weak_Var1
       objectReference: {fileID: 0}
+    - target: {fileID: 7006656950238368843, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}
+      propertyPath: _characterConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 16fc38f53f6c02349bbbcd9640afe3a4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a5c315c0e0eb7488bdbf1f79a06f0b, type: 3}

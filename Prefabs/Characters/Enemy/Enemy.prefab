@@ -4458,6 +4458,7 @@ MonoBehaviour:
   _currentHealth: {fileID: 0}
   IsGettingHit: 0
   IsDead: 0
+  _characterConfigSO: {fileID: 0}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
@@ -4466,7 +4467,6 @@ MonoBehaviour:
   _recalculatePathEvent: {fileID: 11400000, guid: ae14b657406388b44a3a546156cf3d67, type: 2}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
   _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
-  _setUpInitialExpEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 0}
   UpdateHealthUIEvent: {fileID: 0}
 --- !u!114 &7006656950238368843
@@ -4481,6 +4481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce53e928b5f04344b0074c31302ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterConfigSO: {fileID: 0}
   IsAttacking: 0
 --- !u!54 &4563817498264839816
 Rigidbody:

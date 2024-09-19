@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+  [SerializeField] private CharacterConfigSO _characterConfigSO = default;
+  private int _attackPoint = default;
+  private int _weaponAttackPoint = default;
   private Damagable _currentTarget;
   public bool IsAttacking = false;
+
+  private void Awake()
+  {
+    //TODO: total attack = base attack + weapon damage
+    _attackPoint = _characterConfigSO.GetInitialAttackPoint();
+
+    //TODO: assign dengan weapon attack point setelah ada fitur weapon
+    _weaponAttackPoint = 0;
+  }
 
   public void AttacTarget(Damagable target)
   {
@@ -46,8 +59,8 @@ public class Attack : MonoBehaviour
   {
     if (_currentTarget != null)
     {
-      //TODO: set using configSO
-      _currentTarget.ReceiveAttack(transform, 50);
+      int effectiveDamage = Calculation.CalculateDamage(_attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
+      _currentTarget.ReceiveAttack(transform, effectiveDamage);
     }
   }
 }

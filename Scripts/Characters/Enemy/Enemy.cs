@@ -24,8 +24,6 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
     Node target = PathStorage.paths[0];
 
-    Debug.Log("path from enemy: " + target.Position);
-
     Vector3 startPosition = transform.position;
     Vector3 endPosition = new Vector3(target.Position.x * GridConfig.CellSize.x, transform.position.y, target.Position.z * GridConfig.CellSize.z) + GridConfig.Offset;
 

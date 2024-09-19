@@ -344,8 +344,6 @@ public class DungeonGenerator : MonoBehaviour
           DecorationRestrict(decorationAreaBuffer);
           UnWalkableTile(decorationArea);
           room.availableTile -= decorationAreaBuffer.size.x * decorationAreaBuffer.size.z;
-
-          Debug.Log("Available tile: " + room.availableTile);
         }
       }
     }
@@ -383,8 +381,6 @@ public class Room
 
     //berapa banyak slot tile untuk diletakkan suatu dekorasi
     availableTile = GlobalRandom.Next(Mathf.RoundToInt(0.2f * size.x * size.z), Mathf.RoundToInt(0.3f * size.x * size.z)) - 2;
-
-    Debug.Log(availableTile);
 
     this.roomType = roomType;
 

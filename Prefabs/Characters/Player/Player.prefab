@@ -4720,7 +4720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 1.5, z: 73}
+  m_LocalPosition: {x: 47, y: 1.5, z: 49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4845,6 +4845,7 @@ MonoBehaviour:
   _currentHealth: {fileID: 11400000, guid: 0dd012d3823a9a047bd5e6f1f87c4815, type: 2}
   IsGettingHit: 0
   IsDead: 0
+  _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _removeEnemyFromQueueEvent: {fileID: 0}
@@ -4853,7 +4854,6 @@ MonoBehaviour:
   _recalculatePathEvent: {fileID: 0}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
   _gainExpEvent: {fileID: 0}
-  _setUpInitialExpEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 11400000, guid: a493d1e054dd3be4c927a5c226a45dd9, type: 2}
   UpdateHealthUIEvent: {fileID: 11400000, guid: 51df0c45a8ae7c24da7c12a88b9c943b, type: 2}
 --- !u!114 &7034733871640068061
@@ -4868,6 +4868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce53e928b5f04344b0074c31302ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   IsAttacking: 0
 --- !u!114 &2442832934141306455
 MonoBehaviour:
