@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0aadcea6a250724b82e6e7d5cfa97af, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: c0b999531f91a6940925897204dc97ba, type: 3}
+  m_Name: Gameplay
   m_EditorClassIdentifier: 
-  MinInitialHealth: 20
-  MaxInitialHealth: 20
-  MinInitialAttackPoint: 5
-  MaxInitialAttackPoint: 5
-  MinInitialDeffendPoint: 2
-  MaxInitialDeffendPoint: 2
+  sceneType: 2
+  sceneReference:
+    m_AssetGUID: b4ae614b208c17b4bbe6c655b6848d80
+    m_SubObjectName: 
+    m_SubObjectType: 

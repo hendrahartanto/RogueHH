@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0aadcea6a250724b82e6e7d5cfa97af, type: 3}
   m_Name: WeakEnemyConfig
   m_EditorClassIdentifier: 
-  MinInitialHealth: 10
-  MaxInitialHealth: 20
+  MinInitialHealth: 8
+  MaxInitialHealth: 13
   MinInitialAttackPoint: 3
   MaxInitialAttackPoint: 5
   MinInitialDeffendPoint: 3

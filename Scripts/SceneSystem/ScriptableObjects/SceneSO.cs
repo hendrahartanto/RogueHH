@@ -9,6 +9,8 @@ public class SceneSO : ScriptableObject
   public enum SceneType
   {
     Location,
-    Initialize
+    Initialize,
+    Gameplay,
+    Menu
   }
 }

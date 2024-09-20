@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+  [SerializeField] private SceneSO _gameplayScene = default;
+
   [Header("Listening to")]
   [SerializeField] private LoadEventChannelSO _coldStartupChannel = default;
 
@@ -22,11 +28,13 @@ public class SceneLoader : MonoBehaviour
     //parameter scene yang diterima hanya untuk cek apakah scene tersebut adalah location
     if (coldStartupLocation.sceneType == SceneSO.SceneType.Location)
     {
-      //TODO: load scene Gameplay secara synchronous, ditunggu hingga selesai baru mulai game (invoke channel onSceneLoaded supaya player bisa di spawn)
-      //lebih jelasnya cek di referensi code UOP
-
-      OnSceneReady();
+      _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += OnGameplaySceneReady;
     }
+  }
+
+  private void OnGameplaySceneReady(AsyncOperationHandle<SceneInstance> instance)
+  {
+    OnSceneReady();
   }
 
   private void OnSceneReady()

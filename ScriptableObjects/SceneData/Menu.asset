@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0aadcea6a250724b82e6e7d5cfa97af, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: c8edee5d31afeff4994f3a48a11834bb, type: 3}
+  m_Name: Menu
   m_EditorClassIdentifier: 
-  MinInitialHealth: 20
-  MaxInitialHealth: 20
-  MinInitialAttackPoint: 5
-  MaxInitialAttackPoint: 5
-  MinInitialDeffendPoint: 2
-  MaxInitialDeffendPoint: 2
+  sceneType: 3
+  sceneReference:
+    m_AssetGUID: 8de013795ecbdc4498dd0d4390ac2b75
+    m_SubObjectName: 
+    m_SubObjectType: 
