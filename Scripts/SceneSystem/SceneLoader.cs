@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
   [SerializeField] private SceneSO _gameplayScene = default;
-  // [SerializeField] private InputReader _inputReader = default;
   private SceneInstance _gameplayManagerSceneinstance = new SceneInstance();
   private bool _isLoading = false;
   private SceneSO _sceneToLoad = default;
@@ -24,18 +23,22 @@ public class SceneLoader : MonoBehaviour
   [SerializeField] private LoadEventChannelSO _loadMenuEvent = default;
 
   [Header("Broadcasting to")]
-  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
   [SerializeField] private FadeEventChannelSO _fadeEvent = default;
+  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+  [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent;
+
   private void OnEnable()
   {
     _coldStartupChannel.OnLoadingRequested += ColdLocationStartup;
     _loadMenuEvent.OnLoadingRequested += LoadMenu;
+    _loadLocationEvent.OnLoadingRequested += LoadLoaction;
   }
 
   private void OnDisable()
   {
     _coldStartupChannel.OnLoadingRequested -= ColdLocationStartup;
     _loadMenuEvent.OnLoadingRequested -= LoadMenu;
+    _loadLocationEvent.OnLoadingRequested -= LoadLoaction;
   }
 
   private void ColdLocationStartup(SceneSO coldStartupLocation, bool showLoadingScreen, bool fadeScreen)
@@ -52,7 +55,29 @@ public class SceneLoader : MonoBehaviour
 
   private void LoadLoaction(SceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
   {
+    if (_isLoading)
+      return;
 
+    _sceneToLoad = locationToLoad;
+    _showLoadingScreen = showLoadingScreen;
+    _isLoading = true;
+
+    if (_gameplayManagerSceneinstance.Scene == null || !_gameplayManagerSceneinstance.Scene.isLoaded)
+    {
+      _gameplayManagerLoadingOpHandle = _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
+      _gameplayManagerLoadingOpHandle.Completed += OnGameplayManagerLoaded;
+    }
+    else
+    {
+      StartCoroutine(UnloadPreviousScene());
+    }
+  }
+
+  private void OnGameplayManagerLoaded(AsyncOperationHandle<SceneInstance> obj)
+  {
+    _gameplayManagerSceneinstance = _gameplayManagerLoadingOpHandle.Result;
+
+    StartCoroutine(UnloadPreviousScene());
   }
 
   private void LoadMenu(SceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
@@ -106,8 +131,8 @@ public class SceneLoader : MonoBehaviour
 
   private void OnGameplaySceneReady(AsyncOperationHandle<SceneInstance> instance)
   {
-    _gameplayManagerSceneinstance = instance.Result;
-    OnSceneReady();
+    _gameplayManagerSceneinstance = _gameplayManagerLoadingOpHandle.Result;
+    _onSceneReady.RaiseEvent();
   }
 
   private void OnNewSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
@@ -125,14 +150,11 @@ public class SceneLoader : MonoBehaviour
       //TODO: not implemented
     }
 
+    _setGameplayCanvasActiveEvent.RaiseEvent(true);
+    _onSceneReady.RaiseEvent();
+
     _fadeEvent.FadeOut(_fadeDuration);
 
-    OnSceneReady();
   }
 
-  private void OnSceneReady()
-  {
-    //saat scene ready spawn player dan musuh
-    _onSceneReady.RaiseEvent();
-  }
 }

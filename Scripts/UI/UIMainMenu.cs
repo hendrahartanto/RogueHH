@@ -10,7 +10,7 @@ public class UIMainMenu : MonoBehaviour
 
   public UnityAction NewGameButtonAction;
 
-  public void OnClickNewGameButton()
+  public void NewGameButtonOnClick()
   {
     NewGameButtonAction.Invoke();
   }

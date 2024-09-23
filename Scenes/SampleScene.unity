@@ -207,6 +207,8 @@ MonoBehaviour:
   Dungeon: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   PossibleRooms:
   - {fileID: 11400000, guid: 745c0ac4b9af60143b546bac06113ede, type: 2}
+  _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
 --- !u!156049354 &550963989
 Grid:
   m_ObjectHideFlags: 0
@@ -705,7 +707,7 @@ MonoBehaviour:
   _dungeon: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   _playerTransformAnchor: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
   _onPlayerInstantiated: {fileID: 11400000, guid: b83aa13b1c5deed42b52652029013603, type: 2}
-  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
+  _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
 --- !u!4 &2036558033
 Transform:
   m_ObjectHideFlags: 0
@@ -734,6 +736,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dungeon: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
-  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
+  _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
   _changeCellTypeEvent: {fileID: 11400000, guid: f9f4459186c780e449553006c7c0fea9, type: 2}
   _changeNodeAccessibleEvent: {fileID: 11400000, guid: c800ee0a70f0a51449dd41da1d8b99da, type: 2}

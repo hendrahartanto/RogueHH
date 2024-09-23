@@ -14,9 +14,20 @@ public class DungeonGenerator : MonoBehaviour
   private List<Room> _rooms;
   private List<Vector3Int> _roomCenters;
 
-  private void Start()
+  [Header("Broadcasting on")]
+  [SerializeField] private VoidEventChannelSO _onDungeonGenerated = default;
+
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+
+  private void OnEnable()
   {
-    Generate();
+    _onSceneReady.OnEventRaised += Generate;
+  }
+
+  private void OnDisable()
+  {
+    _onSceneReady.OnEventRaised -= Generate;
   }
 
   private void Generate()
@@ -29,6 +40,8 @@ public class DungeonGenerator : MonoBehaviour
     PlaceRooms();
     ConnectRooms();
     PlaceDecorations();
+
+    _onDungeonGenerated.RaiseEvent();
   }
 
   private void PlaceRooms()

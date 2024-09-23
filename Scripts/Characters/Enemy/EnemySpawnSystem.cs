@@ -8,7 +8,7 @@ public class EnemySpawnSystem : MonoBehaviour
   [SerializeField] private GridTileSO _grid;
 
   [Header("Listening to")]
-  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+  [SerializeField] private VoidEventChannelSO _onDungeonGenerated = default;
 
   [Header("Broadcasting to")]
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
@@ -16,12 +16,12 @@ public class EnemySpawnSystem : MonoBehaviour
 
   private void OnEnable()
   {
-    _onSceneReady.OnEventRaised += SpawnEnemy;
+    _onDungeonGenerated.OnEventRaised += SpawnEnemy;
   }
 
   private void OnDisable()
   {
-    _onSceneReady.OnEventRaised -= SpawnEnemy;
+    _onDungeonGenerated.OnEventRaised -= SpawnEnemy;
   }
 
   private void SpawnEnemy()

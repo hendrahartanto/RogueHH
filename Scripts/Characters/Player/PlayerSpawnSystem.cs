@@ -11,16 +11,16 @@ public class PlayerSpawnSystem : MonoBehaviour
 
 
   [Header("Listening to")]
-  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+  [SerializeField] private VoidEventChannelSO _onDungeonGenerated = default;
 
   private void OnEnable()
   {
-    _onSceneReady.OnEventRaised += SpawnPlayer;
+    _onDungeonGenerated.OnEventRaised += SpawnPlayer;
   }
 
   private void OnDisable()
   {
-    _onSceneReady.OnEventRaised -= SpawnPlayer;
+    _onDungeonGenerated.OnEventRaised -= SpawnPlayer;
     _playerTransformAnchor.Unset();
   }
 
