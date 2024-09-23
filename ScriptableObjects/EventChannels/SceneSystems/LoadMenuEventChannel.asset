@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8edee5d31afeff4994f3a48a11834bb, type: 3}
-  m_Name: Menu
+  m_Script: {fileID: 11500000, guid: ff770a5e4d89a4b43ba04f4edc2fca03, type: 3}
+  m_Name: LoadMenuEventChannel
   m_EditorClassIdentifier: 
-  sceneType: 3
-  sceneReference:
-    m_AssetGUID: 8de013795ecbdc4498dd0d4390ac2b75
-    m_SubObjectName: 
-    m_SubObjectType: 

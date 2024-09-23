@@ -26,4 +26,10 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
     if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling)
       MouseClickEvent.Invoke();
   }
+
+  public void DisableAllInput()
+  {
+    //TODO: add another input
+    _gameInput.Gameplay.Disable();
+  }
 }
