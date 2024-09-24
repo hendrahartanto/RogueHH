@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelingSystem : MonoBehaviour
 {
-  [SerializeField] private ExpSO _currentExp;
+  [SerializeField] private ExpSO _currentExp = default;
+  [SerializeField] private CharacterConfigSO _characterConfigSO = default;
 
   [Header("Broadcastin to")]
   [SerializeField] private IntEventChanelSO _updateExpUIEvent = default;
@@ -15,10 +16,9 @@ public class LevelingSystem : MonoBehaviour
 
   private void Start()
   {
-    //TODO: set it using config SO
-    _currentExp.SetExpCap(20);
+    _currentExp.SetExpCap(_characterConfigSO.InitialExpCap);
     _currentExp.SetCurrentExp(0);
-    _setupExpUIEvent.RaiseEvent(20);
+    _setupExpUIEvent.RaiseEvent(_characterConfigSO.InitialExpCap);
     _updateExpUIEvent.RaiseEvent(0);
   }
 

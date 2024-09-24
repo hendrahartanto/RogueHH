@@ -7,6 +7,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
   [SerializeField] private CharacterConfigSO _characterConfigSO = default;
+  [SerializeField] private GameObject _swordObject = default;
   private int _attackPoint = default;
   private int _weaponAttackPoint = default;
   private Damagable _currentTarget;
@@ -62,5 +63,15 @@ public class Attack : MonoBehaviour
       int effectiveDamage = Calculation.CalculateDamage(_attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
       _currentTarget.ReceiveAttack(transform, effectiveDamage);
     }
+  }
+
+  private void ShowSword()
+  {
+    _swordObject?.SetActive(true);
+  }
+
+  private void HideSword()
+  {
+    _swordObject?.SetActive(false);
   }
 }

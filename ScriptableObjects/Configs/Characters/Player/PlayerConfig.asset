@@ -18,3 +18,7 @@ MonoBehaviour:
   MaxInitialAttackPoint: 5
   MinInitialDeffendPoint: 2
   MaxInitialDeffendPoint: 2
+  InitialExpCap: 10
+  ExpGain: 0
+  MinGoldGain: 0
+  MaxGoldGain: 0

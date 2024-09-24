@@ -101,6 +101,7 @@ public class Damagable : MonoBehaviour
     if (_source.gameObject.CompareTag("Player"))
     {
       IsDead = false;
+      int expGain = _characterConfigSO.GetExpGain();
 
       //reset cell and recalculat path for player
       _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
@@ -108,8 +109,7 @@ public class Damagable : MonoBehaviour
       _recalculatePathEvent.RaiseEvent();
 
       //gain exp for player
-      //TODO: set it using config SO
-      _gainExpEvent?.RaiseEvent(2);
+      _gainExpEvent?.RaiseEvent(expGain);
 
       _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
 
