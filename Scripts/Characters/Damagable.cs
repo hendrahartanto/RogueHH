@@ -63,6 +63,8 @@ public class Damagable : MonoBehaviour
       if (gameObject.CompareTag("Player"))
         return;
 
+      OnDeath();
+
       IsDead = true;
     }
   }
@@ -100,25 +102,35 @@ public class Damagable : MonoBehaviour
     IsGettingHit = false;
   }
 
-  private void FinishTurn()
+  private void Despawn()
   {
     if (_source.gameObject.CompareTag("Player"))
     {
       IsDead = false;
-      int expGain = _characterConfigSO.GetExpGain();
+      Destroy(gameObject);
+    }
+  }
+
+  private void OnDeath()
+  {
+    if (_source.gameObject.CompareTag("Player"))
+    {
+      GetComponent<BoxCollider>().enabled = false;
+      GetComponent<Rigidbody>().useGravity = false;
 
       //reset cell and recalculat path for player
       _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
       _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
       _recalculatePathEvent.RaiseEvent();
 
+
       //gain exp for player
+      int expGain = _characterConfigSO.GetExpGain();
       _gainExpEvent?.RaiseEvent(expGain);
 
+      //remove enemy from queue
       _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
-
       _onTurnCycleExecuted.RaiseEvent();
-      Destroy(gameObject);
     }
   }
 }

@@ -752,14 +752,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.42307693
+      - time: 0.40384614
         functionName: StopGettingHit
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4487179
+      - time: 0.4294871
         functionName: CheckTurnCycleTrigger
         data: 
         objectReferenceParameter: {instanceID: 0}
