@@ -59,6 +59,10 @@ public class Damagable : MonoBehaviour
 
     if (_currentHealth.CurrentHealth <= 0)
     {
+      //TODO: biar bisa debug"
+      if (gameObject.CompareTag("Player"))
+        return;
+
       IsDead = true;
     }
   }

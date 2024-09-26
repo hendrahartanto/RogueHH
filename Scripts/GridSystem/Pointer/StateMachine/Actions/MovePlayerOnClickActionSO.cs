@@ -14,6 +14,7 @@ public class MovePlayerOnClickAction : StateAction
   InputReader _inputReader = default;
   Attack _attack = default;
   private Player _player;
+  private Damagable _damagable;
 
   public MovePlayerOnClickAction(InputReader inputReader)
   {
@@ -24,6 +25,7 @@ public class MovePlayerOnClickAction : StateAction
   {
     _player = stateMachine.GetComponent<Player>();
     _attack = stateMachine.GetComponent<Attack>();
+    _damagable = stateMachine.GetComponent<Damagable>();
   }
 
   public override void OnStateEnter()
@@ -38,7 +40,7 @@ public class MovePlayerOnClickAction : StateAction
 
   public void NotifyMovePlayer()
   {
-    if (_player.PathStorage.paths.Count == 0)
+    if (_player.PathStorage.paths.Count == 0 || _damagable.IsGettingHit)
       return;
 
     _player.OnNotifyMovePlayer();
