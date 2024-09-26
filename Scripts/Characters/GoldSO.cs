@@ -6,8 +6,7 @@ using UnityEngine;
 public class GoldSO : ScriptableObject
 {
   private int _gold;
-
-  public int Gold => _gold;
+  public int CurrentGold => _gold;
 
   public void SetGold(int value)
   {

@@ -16,6 +16,6 @@ public class IsGettingHitCondition : Condition
 
   protected override bool Statement()
   {
-    return _damagable.IsGettingHit;
+    return _damagable.IsGettingHit && !_damagable.IsDead;
   }
 }
