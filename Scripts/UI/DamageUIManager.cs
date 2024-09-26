@@ -6,10 +6,11 @@ using UnityEngine;
 public class DamageUIManager : MonoBehaviour
 {
   [SerializeField] GameObject _textPrefab = default;
+  [SerializeField] GameObject _criticalTextPrefab = default;
   private Quaternion _rotationValue;
 
   [Header("Listening to")]
-  [SerializeField] private Vector3_Int_EvetChanel _damagePopUpEvent = default;
+  [SerializeField] private DamagePopupEventChannel _damagePopUpEvent = default;
   private void Awake()
   {
     _rotationValue = Quaternion.Euler(30f, 45f, 0f);
@@ -25,11 +26,13 @@ public class DamageUIManager : MonoBehaviour
     _damagePopUpEvent.OnEventRaised -= Setup;
   }
 
-  private void Setup(Vector3 pos, int damageValue)
+  private void Setup(Vector3 pos, int damageValue, bool critical)
   {
     pos.y += 2f;
 
-    GameObject instance = Instantiate(_textPrefab, pos, _rotationValue);
+    GameObject _textToInstantiate = critical ? _criticalTextPrefab : _textPrefab;
+
+    GameObject instance = Instantiate(_textToInstantiate, pos, _rotationValue);
     TextMeshPro textMesh = instance.GetComponent<TextMeshPro>();
     textMesh.SetText(damageValue.ToString());
 

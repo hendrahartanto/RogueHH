@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textPrefab: {fileID: 7250671784383162617, guid: ebb19491c198a764f898545b474812a9, type: 3}
+  _criticalTextPrefab: {fileID: 5841908282360823402, guid: 14932a4c1e378f04eb901ca4b9d2dfcf, type: 3}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
 --- !u!114 &728158877
 MonoBehaviour:

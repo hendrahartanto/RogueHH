@@ -50,6 +50,11 @@ public class Attack : MonoBehaviour
     }
   }
 
+  private bool IsCriticalHit()
+  {
+    return Random.value <= _characterConfigSO._criticalRate;
+  }
+
   //called by animation event
   private void StopAttacking()
   {
@@ -60,8 +65,17 @@ public class Attack : MonoBehaviour
   {
     if (_currentTarget != null)
     {
+      bool critical = false;
+
       int effectiveDamage = Calculation.CalculateDamage(_attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
-      _currentTarget.ReceiveAttack(transform, effectiveDamage);
+
+      if (IsCriticalHit())
+      {
+        critical = true;
+        effectiveDamage = Mathf.RoundToInt(effectiveDamage * _characterConfigSO._criticalDamage);
+      }
+
+      _currentTarget.ReceiveAttack(transform, effectiveDamage, critical);
     }
   }
 

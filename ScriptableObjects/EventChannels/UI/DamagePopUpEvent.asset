@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02828d8032f47240ab6438d0ad0c0eb, type: 3}
-  m_Name: DamagePopUpEvent
+  m_Script: {fileID: 11500000, guid: f4fa2bfd15381044c97a43c71cd6182b, type: 3}
+  m_Name: DamagePopupEvent
   m_EditorClassIdentifier: 

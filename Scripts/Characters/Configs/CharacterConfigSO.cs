@@ -12,6 +12,8 @@ public class CharacterConfigSO : ScriptableObject
   public int MaxInitialAttackPoint;
   public int MinInitialDeffendPoint;
   public int MaxInitialDeffendPoint;
+  public float _criticalRate;
+  public float _criticalDamage;
 
   [Header("Player config")]
   public int InitialExpCap;
