@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldSO: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
+  _updateGoldIndicatorUIEvent: {fileID: 11400000, guid: 56cd233ce3bffe541aec1f58127777b3, type: 2}
 --- !u!1 &5483345724869266992
 GameObject:
   m_ObjectHideFlags: 0

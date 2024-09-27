@@ -20,6 +20,11 @@ public class UIMainMenuManager : MonoBehaviour
     _mainMenuPanel.NewGameButtonAction += StartNewGame;
   }
 
+  private void OnDestroy()
+  {
+    _mainMenuPanel.NewGameButtonAction -= StartNewGame;
+  }
+
   private void StartNewGame()
   {
     _startNewGameEvent.RaiseEvent();

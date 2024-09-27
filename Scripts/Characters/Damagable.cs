@@ -23,6 +23,8 @@ public class Damagable : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
   [SerializeField] private DamagePopupEventChannel _damagePopUpEvent = default;
   [SerializeField] private IntEventChanelSO _gainExpEvent = default;
+  [SerializeField] private IntEventChanelSO _gainGoldEvent = default;
+  [SerializeField] private BoolEventChannelSO _gameOverModalSetActiveEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -59,13 +61,15 @@ public class Damagable : MonoBehaviour
 
     if (_currentHealth.CurrentHealth <= 0)
     {
-      //TODO: biar bisa debug"
       if (gameObject.CompareTag("Player"))
-        return;
+        OnPlayerDeath();
+      else if (gameObject.CompareTag("Enemy"))
+      {
+        //TODO: set isdeadnya untuk player juga
+        IsDead = true;
+        OnEnemyDeath();
+      }
 
-      OnDeath();
-
-      IsDead = true;
     }
   }
 
@@ -111,26 +115,32 @@ public class Damagable : MonoBehaviour
     }
   }
 
-  private void OnDeath()
+  private void OnEnemyDeath()
   {
-    if (_source.gameObject.CompareTag("Player"))
-    {
-      GetComponent<BoxCollider>().enabled = false;
-      GetComponent<Rigidbody>().useGravity = false;
+    GetComponent<BoxCollider>().enabled = false;
+    GetComponent<Rigidbody>().useGravity = false;
 
-      //reset cell and recalculat path for player
-      _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
-      _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
-      _recalculatePathEvent.RaiseEvent();
+    //reset cell and recalculat path for player
+    _changeCellTypeEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, CellType.Walkable);
+    _changeNodeAccessibleEvent.RaiseEvent((int)transform.position.x / GridConfig.CellSize.x, (int)transform.position.z / GridConfig.CellSize.z, true);
+    _recalculatePathEvent.RaiseEvent();
 
 
-      //gain exp for player
-      int expGain = _characterConfigSO.GetExpGain();
-      _gainExpEvent?.RaiseEvent(expGain);
+    //gain exp for player
+    int expGain = _characterConfigSO.GetExpGain();
+    _gainExpEvent?.RaiseEvent(expGain);
 
-      //remove enemy from queue
-      _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
-      _onTurnCycleExecuted.RaiseEvent();
-    }
+    //gain gold for player
+    int goldGain = _characterConfigSO.GetGoldGain();
+    _gainGoldEvent.RaiseEvent(goldGain);
+
+    //remove enemy from queue
+    _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
+    _onTurnCycleExecuted.RaiseEvent();
+  }
+
+  private void OnPlayerDeath()
+  {
+    _gameOverModalSetActiveEvent.RaiseEvent(true);
   }
 }

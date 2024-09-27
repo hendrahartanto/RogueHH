@@ -16,8 +16,6 @@ public class Calculation
 
     effectiveDamage *= randomFactor;
 
-    Debug.Log(effectiveDamage);
-
     return (int)Mathf.Max(0, effectiveDamage);
   }
 }

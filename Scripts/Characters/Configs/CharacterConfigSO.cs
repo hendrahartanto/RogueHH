@@ -43,4 +43,9 @@ public class CharacterConfigSO : ScriptableObject
   {
     return Random.Range(MinExpGain, MaxExpGain + 1);
   }
+
+  public int GetGoldGain()
+  {
+    return Random.Range(MinGoldGain, MaxGoldGain + 1);
+  }
 }

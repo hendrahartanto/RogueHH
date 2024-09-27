@@ -800,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneToLoad: {fileID: 11400000, guid: b38a628e7e128024d8891649a583c027, type: 2}
   _showLoadingScreen: 0
-  _loadMenuEvent: {fileID: 11400000, guid: c7ee04ac7ba00384c9d250ab713d5346, type: 2}
+  _loadLocation: {fileID: 11400000, guid: 62021d8bb2110c24092075e09ed27c20, type: 2}
   _startNewGameEvent: {fileID: 11400000, guid: 52bec9db819d8714697997c2e67517d4, type: 2}
 --- !u!1001 &921323684
 PrefabInstance:

@@ -27,9 +27,9 @@ public class EnemySpawnSystem : MonoBehaviour
   private void SpawnEnemy()
   {
     //TODO: this is experimental config
-    int enemyCount = _dungeon.RoomCount; // bagi 2 
+    int enemyCount = _dungeon.RoomCount * 2; // bagi 2 
     int currEnemyCount = 0;
-    int maxEnemyPerRoom = 1;
+    int maxEnemyPerRoom = 2;
 
     while (currEnemyCount < enemyCount)
     {

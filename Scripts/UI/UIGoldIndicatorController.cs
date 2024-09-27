@@ -6,13 +6,25 @@ public class UIGoldIndicatorController : MonoBehaviour
   [SerializeField] private GoldSO _goldSO = default;
   private TextMeshProUGUI _textAmount = default;
 
+  [Header("Listening to")]
+  [SerializeField] private IntEventChanelSO _updateGoldIndicatorUIEvent = default;
   private void Awake()
   {
     _textAmount = GetComponentInChildren<TextMeshProUGUI>();
-    SetInitialValue();
+    SetGoldValueText(_goldSO.CurrentGold);
   }
 
-  private void SetInitialValue()
+  private void OnEnable()
+  {
+    _updateGoldIndicatorUIEvent.OnEventRaised += SetGoldValueText;
+  }
+
+  private void OnDisable()
+  {
+    _updateGoldIndicatorUIEvent.OnEventRaised -= SetGoldValueText;
+  }
+
+  private void SetGoldValueText(int currentGold)
   {
     _textAmount.SetText(_goldSO.CurrentGold.ToString());
   }

@@ -8,7 +8,6 @@ public class RandomAttackAnimationBehaviour : StateMachineBehaviour
   public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
   {
     int randomAttack = GlobalRandom.Next(0, _maxVariants);
-    Debug.Log(randomAttack);
     animator.SetInteger("RandomAttack", randomAttack);
   }
 }

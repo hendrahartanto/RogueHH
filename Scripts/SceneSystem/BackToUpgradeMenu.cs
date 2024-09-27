@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartGame : MonoBehaviour
+public class BackToUpgradeMenu : MonoBehaviour
 {
   [SerializeField] SceneSO _sceneToLoad = default;
   [SerializeField] private bool _showLoadingScreen = default;
@@ -11,19 +11,19 @@ public class StartGame : MonoBehaviour
   [SerializeField] private LoadEventChannelSO _loadLocation = default;
 
   [Header("Listening on")]
-  [SerializeField] private VoidEventChannelSO _startNewGameEvent = default;
+  [SerializeField] private VoidEventChannelSO _backToUpgradeMenuEvent = default;
 
   private void OnEnable()
   {
-    _startNewGameEvent.OnEventRaised += StartNewGame;
+    _backToUpgradeMenuEvent.OnEventRaised += GoToUpgradeMenu;
   }
 
   private void OnDisable()
   {
-    _startNewGameEvent.OnEventRaised -= StartNewGame;
+    _backToUpgradeMenuEvent.OnEventRaised -= GoToUpgradeMenu;
   }
 
-  private void StartNewGame()
+  private void GoToUpgradeMenu()
   {
     _loadLocation.RaiseEvent(_sceneToLoad, _showLoadingScreen);
   }

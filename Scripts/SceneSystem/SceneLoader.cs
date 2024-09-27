@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
   private AsyncOperationHandle<SceneInstance> _gameplayManagerLoadingOpHandle = default;
   private AsyncOperationHandle<SceneInstance> _loadingOperationHandle = default;
   private float _fadeDuration = .5f;
+  private bool _fromLocation = false;
 
   [Header("Listening to")]
   [SerializeField] private LoadEventChannelSO _coldStartupChannel = default;
@@ -25,7 +26,7 @@ public class SceneLoader : MonoBehaviour
   [Header("Broadcasting to")]
   [SerializeField] private FadeEventChannelSO _fadeEvent = default;
   [SerializeField] private VoidEventChannelSO _onSceneReady = default;
-  [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent;
+  [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent = default;
 
   private void OnEnable()
   {
@@ -61,6 +62,8 @@ public class SceneLoader : MonoBehaviour
     _sceneToLoad = locationToLoad;
     _showLoadingScreen = showLoadingScreen;
     _isLoading = true;
+
+    _fromLocation = !(_sceneToLoad.name == "UpgradeMenu");
 
     if (_gameplayManagerSceneinstance.Scene == null || !_gameplayManagerSceneinstance.Scene.isLoaded)
     {
@@ -102,17 +105,29 @@ public class SceneLoader : MonoBehaviour
 
     yield return new WaitForSeconds(_fadeDuration);
 
+
     if (_currentScene != null)
     {
+      yield return Resources.UnloadUnusedAssets();
+
       if (_currentScene.sceneReference.OperationHandle.IsValid())
       {
-        _currentScene.sceneReference.UnLoadScene();
+        Debug.Log("ATAS");
+        AsyncOperationHandle unloadHandle = _currentScene.sceneReference.UnLoadScene();
+        yield return unloadHandle;
       }
       else
       {
-        SceneManager.UnloadSceneAsync(_currentScene.sceneReference.editorAsset.name);
+        Debug.Log("BAWAH");
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(_currentScene.sceneReference.editorAsset.name);
+        if (unloadOperation != null)
+        {
+          yield return unloadOperation;
+        }
       }
     }
+
+    Debug.Log("UNLOAD");
 
     LoadNewScene();
   }
@@ -150,7 +165,7 @@ public class SceneLoader : MonoBehaviour
       //TODO: not implemented
     }
 
-    _setGameplayCanvasActiveEvent.RaiseEvent(true);
+    _setGameplayCanvasActiveEvent.RaiseEvent(_fromLocation);
     _onSceneReady.RaiseEvent();
 
     _fadeEvent.FadeOut(_fadeDuration);
