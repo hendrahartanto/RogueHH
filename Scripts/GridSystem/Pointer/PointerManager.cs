@@ -10,9 +10,13 @@ public class PointerManager : MonoBehaviour
   public Vector3Int GridPosition = default;
   public bool isPointingNull = true;
   public Collider CurrentPointedCollider = default;
+  private bool _isRaycastEnabled = true;
   [SerializeField] private PointerStateSO _pointerState;
   [SerializeField] private Camera _mainCamera;
+
+  [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onPlayerInstantiated = default;
+  [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
 
   private void SetupCamera()
   {
@@ -23,15 +27,20 @@ public class PointerManager : MonoBehaviour
   private void OnEnable()
   {
     _onPlayerInstantiated.OnEventRaised += SetupCamera;
+    _raycastSetActiveEvent.OnEventRaised += SetRaycastActive;
   }
 
   private void OnDisable()
   {
     _onPlayerInstantiated.OnEventRaised -= SetupCamera;
+    _raycastSetActiveEvent.OnEventRaised -= SetRaycastActive;
   }
 
   private void Update()
   {
+    if (!_isRaycastEnabled)
+      return;
+
     Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
     RaycastHit hit;
     bool isHit = false;
@@ -63,5 +72,10 @@ public class PointerManager : MonoBehaviour
         break;
       }
     }
+  }
+
+  private void SetRaycastActive(bool isActive)
+  {
+    _isRaycastEnabled = isActive;
   }
 }

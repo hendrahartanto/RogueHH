@@ -11,6 +11,10 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   public event UnityAction MouseClickEvent = delegate { };
   private GameInput _gameInput;
 
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
+  [SerializeField] private VoidEventChannelSO _disableAllInputEvent = default;
+
   private void OnEnable()
   {
     if (_gameInput == null)
@@ -20,16 +24,31 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       _gameInput.Gameplay.SetCallbacks(this);
       _gameInput.Gameplay.Enable();
     }
+
+    _enableGameplayInputEvent.OnEventRaised += EnableGameplayInput;
+    _disableAllInputEvent.OnEventRaised += DisableAllInput;
   }
+
+  private void OnDisable()
+  {
+    _enableGameplayInputEvent.OnEventRaised -= EnableGameplayInput;
+    _disableAllInputEvent.OnEventRaised -= DisableAllInput;
+  }
+
   public void OnMouseClick(InputAction.CallbackContext context)
   {
-    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling)
+    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling && _gameState.CurrentGameState != GameState.Gameover)
       MouseClickEvent.Invoke();
   }
 
   public void DisableAllInput()
   {
-    //TODO: add another input
+    MouseClickEvent = null;
     _gameInput.Gameplay.Disable();
+  }
+
+  public void EnableGameplayInput()
+  {
+    _gameInput.Gameplay.Enable();
   }
 }

@@ -25,6 +25,8 @@ public class Damagable : MonoBehaviour
   [SerializeField] private IntEventChanelSO _gainExpEvent = default;
   [SerializeField] private IntEventChanelSO _gainGoldEvent = default;
   [SerializeField] private BoolEventChannelSO _gameOverModalSetActiveEvent = default;
+  [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
+  [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
 
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
@@ -64,12 +66,9 @@ public class Damagable : MonoBehaviour
       if (gameObject.CompareTag("Player"))
         OnPlayerDeath();
       else if (gameObject.CompareTag("Enemy"))
-      {
-        //TODO: set isdeadnya untuk player juga
-        IsDead = true;
         OnEnemyDeath();
-      }
 
+      IsDead = true;
     }
   }
 
@@ -113,6 +112,11 @@ public class Damagable : MonoBehaviour
       IsDead = false;
       Destroy(gameObject);
     }
+    else if (_source.gameObject.CompareTag("Enemy"))
+    {
+      IsDead = false;
+      _gameOverModalSetActiveEvent.RaiseEvent(true);
+    }
   }
 
   private void OnEnemyDeath()
@@ -141,6 +145,7 @@ public class Damagable : MonoBehaviour
 
   private void OnPlayerDeath()
   {
-    _gameOverModalSetActiveEvent.RaiseEvent(true);
+    _changeGameStateEvent?.RaiseEvent(GameState.Gameover);
+    _raycastSetActiveEvent?.RaiseEvent(false);
   }
 }

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: InputReader
   m_EditorClassIdentifier: 
   _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  _enableGameplayInputEvent: {fileID: 11400000, guid: f5b3f5f2784c55e4796290ef3aaf8efe, type: 2}
+  _disableAllInputEvent: {fileID: 11400000, guid: 40cbb36f464b037458937a868f4ce14f, type: 2}

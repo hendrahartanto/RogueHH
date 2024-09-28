@@ -8,7 +8,8 @@ public class ChangeGameStateActionSO : StateActionSO
   public GameStateSO GameState = default;
   public GameState NewGameState = default;
   public SpecificMoment WhenToRun = default;
-  protected override StateAction CreateAction() => new ChangeGameStateAction(GameState, NewGameState, WhenToRun);
+  public InputReader InputReader = default;
+  protected override StateAction CreateAction() => new ChangeGameStateAction(GameState, NewGameState, WhenToRun, InputReader);
 }
 
 public class ChangeGameStateAction : StateAction
@@ -16,12 +17,14 @@ public class ChangeGameStateAction : StateAction
   private GameState _newGameState = default;
   private GameStateSO _gameState = default;
   private SpecificMoment _whenToRun = default;
+  private InputReader _inputReader = default;
 
-  public ChangeGameStateAction(GameStateSO gameState, GameState newGameState, SpecificMoment whenToRun)
+  public ChangeGameStateAction(GameStateSO gameState, GameState newGameState, SpecificMoment whenToRun, InputReader inputReader)
   {
     _newGameState = newGameState;
     _gameState = gameState;
     _whenToRun = whenToRun;
+    _inputReader = inputReader;
   }
 
   private void ChangeState()
@@ -31,6 +34,12 @@ public class ChangeGameStateAction : StateAction
       if (_gameState.CurrentGameState == GameState.Combat || _gameState.CurrentGameState == GameState.TurnCycling)
         return;
     }
+
+    if (_newGameState == GameState.Gameover)
+    {
+      _inputReader.DisableAllInput();
+    }
+
     _gameState.SetGameState(_newGameState);
   }
 

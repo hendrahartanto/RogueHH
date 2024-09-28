@@ -112,13 +112,11 @@ public class SceneLoader : MonoBehaviour
 
       if (_currentScene.sceneReference.OperationHandle.IsValid())
       {
-        Debug.Log("ATAS");
         AsyncOperationHandle unloadHandle = _currentScene.sceneReference.UnLoadScene();
         yield return unloadHandle;
       }
       else
       {
-        Debug.Log("BAWAH");
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(_currentScene.sceneReference.editorAsset.name);
         if (unloadOperation != null)
         {
@@ -126,8 +124,6 @@ public class SceneLoader : MonoBehaviour
         }
       }
     }
-
-    Debug.Log("UNLOAD");
 
     LoadNewScene();
   }
@@ -166,7 +162,9 @@ public class SceneLoader : MonoBehaviour
     }
 
     _setGameplayCanvasActiveEvent.RaiseEvent(_fromLocation);
-    _onSceneReady.RaiseEvent();
+
+    if (_fromLocation)
+      _onSceneReady.RaiseEvent();
 
     _fadeEvent.FadeOut(_fadeDuration);
 

@@ -6,7 +6,8 @@ public enum GameState
 {
   Regular,
   Combat,
-  TurnCycling
+  TurnCycling,
+  Gameover,
 }
 
 [CreateAssetMenu(fileName = "GameState", menuName = "Gameplay/GameState")]

@@ -4817,6 +4817,7 @@ MonoBehaviour:
   _pointerState: {fileID: 11400000, guid: 76df99cfad0d3c341a0037d62f0f047a, type: 2}
   _mainCamera: {fileID: 0}
   _onPlayerInstantiated: {fileID: 11400000, guid: b83aa13b1c5deed42b52652029013603, type: 2}
+  _raycastSetActiveEvent: {fileID: 11400000, guid: 3c92df77c6577284bb148348aa415c23, type: 2}
 --- !u!114 &1641469432621055732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4857,6 +4858,8 @@ MonoBehaviour:
   _gainExpEvent: {fileID: 0}
   _gainGoldEvent: {fileID: 0}
   _gameOverModalSetActiveEvent: {fileID: 11400000, guid: 3825540656acf9d42bfb473ed2ea5523, type: 2}
+  _raycastSetActiveEvent: {fileID: 11400000, guid: 3c92df77c6577284bb148348aa415c23, type: 2}
+  _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
   SetMaxHealthUIEvent: {fileID: 11400000, guid: a493d1e054dd3be4c927a5c226a45dd9, type: 2}
   UpdateHealthUIEvent: {fileID: 11400000, guid: 51df0c45a8ae7c24da7c12a88b9c943b, type: 2}
 --- !u!114 &7034733871640068061
