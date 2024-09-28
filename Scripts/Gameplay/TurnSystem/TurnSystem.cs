@@ -6,10 +6,10 @@ public class TurnSystem : MonoBehaviour
 {
   public List<ITurnComponent> QueueItems = default;
   private int _currentItemIndex = 0;
+  [SerializeField] private InputReader _inputReader = default;
 
   [Header("Broadcasting to")]
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
-
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
@@ -37,6 +37,7 @@ public class TurnSystem : MonoBehaviour
   private void Awake()
   {
     QueueItems = new List<ITurnComponent>();
+    SetupGameInput();
   }
 
   private void AddToQueue(ITurnComponent turnComponent)
@@ -75,6 +76,11 @@ public class TurnSystem : MonoBehaviour
     }
 
     QueueItems[_currentItemIndex++].ExecuteTurn();
+  }
+
+  private void SetupGameInput()
+  {
+    _inputReader.KeyboardSpaceEvent += ExecuteTurnCycle;
   }
 
 }

@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175ac118ff2bd5e4092c20788ca25110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
   _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}

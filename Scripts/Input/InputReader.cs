@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 {
   [SerializeField] private GameStateSO _gameState = default;
   public event UnityAction MouseClickEvent = delegate { };
+  public event UnityAction KeyboardSpaceEvent = delegate { };
   private GameInput _gameInput;
 
   [Header("Listening to")]
@@ -41,9 +42,15 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       MouseClickEvent.Invoke();
   }
 
+  public void OnKeyboardSpace(InputAction.CallbackContext context)
+  {
+    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+      KeyboardSpaceEvent.Invoke();
+  }
+
   public void DisableAllInput()
   {
-    MouseClickEvent = null;
+    RemoveAllInputAction();
     _gameInput.Gameplay.Disable();
   }
 
@@ -51,4 +58,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   {
     _gameInput.Gameplay.Enable();
   }
+
+  private void RemoveAllInputAction()
+  {
+    MouseClickEvent = null;
+    KeyboardSpaceEvent = null;
+  }
+
 }
