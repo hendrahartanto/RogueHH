@@ -20,6 +20,7 @@ MonoBehaviour:
   MaxInitialDeffendPoint: 2
   _criticalRate: 0.05
   _criticalDamage: 1.5
+  WeaponType: 1
   InitialExpCap: 10
   MinExpGain: 0
   MaxExpGain: 0

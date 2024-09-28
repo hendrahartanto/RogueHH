@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GameState
 {
   Regular,
+  Alert,
   Combat,
   TurnCycling,
   Gameover,

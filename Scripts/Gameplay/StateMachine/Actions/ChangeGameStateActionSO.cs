@@ -29,9 +29,9 @@ public class ChangeGameStateAction : StateAction
 
   private void ChangeState()
   {
-    if (_newGameState == GameState.Combat)
+    if (_newGameState == GameState.Combat || _newGameState == GameState.Alert)
     {
-      if (_gameState.CurrentGameState == GameState.Combat || _gameState.CurrentGameState == GameState.TurnCycling)
+      if (_gameState.CurrentGameState == GameState.Combat || _gameState.CurrentGameState == GameState.TurnCycling || _gameState.CurrentGameState == GameState.Alert)
         return;
     }
 

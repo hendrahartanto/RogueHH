@@ -6,11 +6,14 @@ public class Player : MonoBehaviour
 {
   [SerializeField] private GlobalMovementSpeedSO _movementSpeed;
   [SerializeField] private GameStateSO _gameState;
+  [SerializeField] private CharacterConfigSO _playerConfigSO = default;
   public PathStorageSO PathStorage = default;
   public bool isInCombat = false;
+  public bool IsInAlert = false;
   public bool IsMoving = false;
   private bool _stopMovingFlag = false;
   public float MovementProgress = 0f;
+  private Animator _animator;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
@@ -18,6 +21,8 @@ public class Player : MonoBehaviour
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
+    _animator = GetComponent<Animator>();
+    SetWeaponType();
   }
 
   private IEnumerator MoveAlongPath()
@@ -63,17 +68,19 @@ public class Player : MonoBehaviour
 
       //Cek jika ada perintah untuk berhenti bergerak atau Cek jika lagi dalam combat (hanya bisa move 1 tile per turn)
       isInCombat = _gameState.CurrentGameState == GameState.Combat;
-      if (_stopMovingFlag || isInCombat)
+      IsInAlert = _gameState.CurrentGameState == GameState.Alert;
+      if (_stopMovingFlag || isInCombat || IsInAlert)
       {
         _stopMovingFlag = false;
         IsMoving = false;
 
-        if (isInCombat)
-          _onTurnCycleExecuted.RaiseEvent();
+        _onTurnCycleExecuted.RaiseEvent();
 
 
         yield break; //untuk menghentikan coroutine
       }
+
+      _onTurnCycleExecuted.RaiseEvent();
     }
 
     IsMoving = false;
@@ -89,5 +96,10 @@ public class Player : MonoBehaviour
   public void OnNotifyStopMoving()
   {
     _stopMovingFlag = true;
+  }
+
+  private void SetWeaponType()
+  {
+    _animator.SetInteger("WeaponType", _playerConfigSO.WeaponType);
   }
 }

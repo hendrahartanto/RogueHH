@@ -4778,6 +4778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: {fileID: 11400000, guid: e0f2d34148b129f45aa98492ced61543, type: 2}
   _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  _playerConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   PathStorage: {fileID: 11400000, guid: 0353892a0e9145c4d8a1f3cd2267b058, type: 2}
   isInCombat: 0
   IsMoving: 0

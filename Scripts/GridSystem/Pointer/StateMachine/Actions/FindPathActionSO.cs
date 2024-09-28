@@ -141,6 +141,12 @@ public class FindPathAction : StateAction
   {
     GameObject tileObject = _pointerManager.Grid[x, y].TileObject;
 
+    if (tileObject == null)
+    {
+      Debug.LogError($"Tile object at position {x}, {y} is null!");
+      return;
+    }
+
     Renderer renderer = tileObject.GetComponentInChildren<Renderer>();
 
     Material material = renderer.material;

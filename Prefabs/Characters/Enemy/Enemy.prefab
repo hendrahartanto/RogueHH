@@ -4468,6 +4468,9 @@ MonoBehaviour:
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
   _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
   _gainGoldEvent: {fileID: 11400000, guid: e15ddf62ff95db4419815b6ca457fd4f, type: 2}
+  _gameOverModalSetActiveEvent: {fileID: 0}
+  _raycastSetActiveEvent: {fileID: 0}
+  _changeGameStateEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 0}
   UpdateHealthUIEvent: {fileID: 0}
 --- !u!114 &7006656950238368843
@@ -5965,7 +5968,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsReadyToChase: 0
+  IsEnemyAlert: 0
+  _currentPlayerPosition: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
+  _gridNode: {fileID: 11400000, guid: 722105876829e0c4c929aa972eca1dc7, type: 2}
   _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
+  _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
 --- !u!135 &2157708130037566431
 SphereCollider:
   m_ObjectHideFlags: 0

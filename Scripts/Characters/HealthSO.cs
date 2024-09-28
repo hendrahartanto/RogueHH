@@ -24,5 +24,7 @@ public class HealthSO : ScriptableObject
   public void DecreaseHealth(int damageValue)
   {
     _currentHealth -= damageValue;
+    if (_currentHealth < 0)
+      _currentHealth = 0;
   }
 }
