@@ -68,6 +68,7 @@ public class PointerManager : MonoBehaviour
       }
       else
       {
+        CurrentPointedCollider = null;
         isPointingNull = true;
         break;
       }
