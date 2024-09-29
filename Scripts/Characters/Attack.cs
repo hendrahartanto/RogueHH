@@ -15,6 +15,9 @@ public class Attack : MonoBehaviour
   private Damagable _currentTarget;
   public bool IsAttacking = false;
 
+  [Header("Broadcasting on")]
+  [SerializeField] private VoidEventChannelSO _cameraShakeEvent = default;
+
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
 
@@ -96,6 +99,7 @@ public class Attack : MonoBehaviour
 
       if (IsCriticalHit())
       {
+        _cameraShakeEvent.RaiseEvent();
         critical = true;
         effectiveDamage = Mathf.RoundToInt(effectiveDamage * _criticalDamage);
       }

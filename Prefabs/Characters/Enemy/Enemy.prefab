@@ -4471,8 +4471,10 @@ MonoBehaviour:
   _gameOverModalSetActiveEvent: {fileID: 0}
   _raycastSetActiveEvent: {fileID: 0}
   _changeGameStateEvent: {fileID: 0}
+  _removeAllTurnQueueEvent: {fileID: 0}
   SetMaxHealthUIEvent: {fileID: 0}
   UpdateHealthUIEvent: {fileID: 0}
+  _playerLevelUpEvent: {fileID: 0}
 --- !u!114 &7006656950238368843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4488,6 +4490,8 @@ MonoBehaviour:
   _characterConfigSO: {fileID: 0}
   _swordObject: {fileID: 0}
   IsAttacking: 0
+  _cameraShakeEvent: {fileID: 11400000, guid: a3715f4e9fbc6e74792e6aa7c372d940, type: 2}
+  _playerLevelUpEvent: {fileID: 0}
 --- !u!54 &4563817498264839816
 Rigidbody:
   m_ObjectHideFlags: 0

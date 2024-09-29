@@ -153,11 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
-  _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
+  _gameState: {fileID: 0}
+  _isTurnCyclingSetActiveEvent: {fileID: 0}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
   _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
+  _removeAllTurnQueueEvent: {fileID: 0}
 --- !u!4 &476134107
 Transform:
   m_ObjectHideFlags: 0
@@ -643,6 +645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 963194227}
   _playerTransformAnchor: {fileID: 11400000, guid: b531d92dbee4d674a897129eafc9da2c, type: 2}
+  shakeDuration: 0.5
+  shakeIntensity: 0.3
+  _cameraShakeEvent: {fileID: 11400000, guid: a3715f4e9fbc6e74792e6aa7c372d940, type: 2}
 --- !u!1 &1188021272
 GameObject:
   m_ObjectHideFlags: 0

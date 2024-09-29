@@ -1,0 +1,50 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIUpgradableItemController : MonoBehaviour
+{
+  [SerializeField] private UpgradableItemSO _upgradableItemSO = default;
+  [SerializeField] private GameObject _icon = default;
+  [SerializeField] private TextMeshProUGUI _levelText = default;
+
+  [Header("Broadcasting to")]
+  [SerializeField] private UpgradableItemSOEventChannelSO _selectUpgradeItemEvent = default;
+
+  [Header("Listening to")]
+  [SerializeField] private IncreaseGlobalPriceEventChannel _increaseGlobalPriceEventListen = default;
+
+  private void Awake()
+  {
+    SetupComponent();
+  }
+
+  private void OnEnable()
+  {
+    _increaseGlobalPriceEventListen.OnEventRaised += IncreaseItemPrice;
+  }
+
+  private void OnDisable()
+  {
+    _increaseGlobalPriceEventListen.OnEventRaised -= IncreaseItemPrice;
+  }
+
+  public void OnItemClicked()
+  {
+    _selectUpgradeItemEvent.RaiseEvent(_upgradableItemSO);
+  }
+
+  private void IncreaseItemPrice(UpgradeItemType type, int value)
+  {
+    if (_upgradableItemSO.Type == type)
+      return;
+
+    _upgradableItemSO.Price += value;
+  }
+
+  private void SetupComponent()
+  {
+    _icon.GetComponent<Image>().sprite = _upgradableItemSO.IconImage;
+    _levelText.SetText("Lvl. " + _upgradableItemSO.CurrentLevel);
+  }
+}

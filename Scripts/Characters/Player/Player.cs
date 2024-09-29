@@ -72,7 +72,6 @@ public class Player : MonoBehaviour
 
       if (_stopMovingFlag || IsInAlert || IsInCombat)
       {
-        Debug.Log("STOP MOVING");
         _stopMovingFlag = false;
         IsMoving = false;
 

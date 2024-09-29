@@ -4785,7 +4785,6 @@ MonoBehaviour:
   IsMoving: 0
   MovementProgress: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
-  _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
 --- !u!114 &-5343187690012059692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4882,6 +4881,7 @@ MonoBehaviour:
   _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   _swordObject: {fileID: 2000357184224571143}
   IsAttacking: 0
+  _cameraShakeEvent: {fileID: 11400000, guid: a3715f4e9fbc6e74792e6aa7c372d940, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
 --- !u!114 &2442832934141306455
 MonoBehaviour:
