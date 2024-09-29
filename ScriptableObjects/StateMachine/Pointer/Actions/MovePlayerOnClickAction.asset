@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MovePlayerOnClickAction
   m_EditorClassIdentifier: 
   InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
-  ChangeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
+  IsTurnCyclingSetActiveEvent: {fileID: 11400000, guid: 2a00b1a256cc7894dbb3a7adb5e17818, type: 2}

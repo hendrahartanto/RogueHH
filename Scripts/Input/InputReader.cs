@@ -38,31 +38,25 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
   public void OnMouseClick(InputAction.CallbackContext context)
   {
-    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+    if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
       MouseClickEvent.Invoke();
   }
 
   public void OnKeyboardSpace(InputAction.CallbackContext context)
   {
-    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.TurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+    if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
       KeyboardSpaceEvent.Invoke();
   }
 
   public void DisableAllInput()
   {
-    RemoveAllInputAction();
+    MouseClickEvent = delegate { };
     _gameInput.Gameplay.Disable();
   }
 
   public void EnableGameplayInput()
   {
     _gameInput.Gameplay.Enable();
-  }
-
-  private void RemoveAllInputAction()
-  {
-    MouseClickEvent = null;
-    KeyboardSpaceEvent = null;
   }
 
 }

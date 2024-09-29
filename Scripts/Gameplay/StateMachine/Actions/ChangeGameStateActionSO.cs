@@ -29,11 +29,11 @@ public class ChangeGameStateAction : StateAction
 
   private void ChangeState()
   {
-    if (_newGameState == GameState.Combat || _newGameState == GameState.Alert)
-    {
-      if (_gameState.CurrentGameState == GameState.Combat || _gameState.CurrentGameState == GameState.TurnCycling || _gameState.CurrentGameState == GameState.Alert)
-        return;
-    }
+    if (_newGameState == GameState.Combat && _gameState.CurrentGameState == GameState.Combat)
+      return;
+
+    if (_newGameState == GameState.Alert && _gameState.CurrentGameState == GameState.Alert)
+      return;
 
     if (_newGameState == GameState.Gameover)
     {

@@ -218,7 +218,7 @@ RectTransform:
   - {fileID: 512193861}
   - {fileID: 1971057724}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -354,6 +354,57 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: 2.8798}
   m_SizeDelta: {x: 812.2849, y: 39.7984}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &299892813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299892815}
+  - component: {fileID: 299892814}
+  m_Layer: 0
+  m_Name: TurnSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &299892814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299892813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175ac118ff2bd5e4092c20788ca25110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
+  _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  _isTurnCyclingSetActiveEvent: {fileID: 11400000, guid: 2a00b1a256cc7894dbb3a7adb5e17818, type: 2}
+  _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
+  _onEnemyAggro: {fileID: 11400000, guid: a3d4e6f12f244294a8eea695ea3c006c, type: 2}
+  _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
+  _removeAllTurnQueueEvent: {fileID: 11400000, guid: 00c75390bbd93ac4791ac51835f33757, type: 2}
+--- !u!4 &299892815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299892813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 41.83099, y: 27.20457, z: 29.920963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410468642
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +670,7 @@ MonoBehaviour:
   _enableGameplayInputEvent: {fileID: 11400000, guid: f5b3f5f2784c55e4796290ef3aaf8efe, type: 2}
   _disableAllInputEvent: {fileID: 11400000, guid: 40cbb36f464b037458937a868f4ce14f, type: 2}
   _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
+  _isTurnCyclingSetActiveEvent: {fileID: 11400000, guid: 2a00b1a256cc7894dbb3a7adb5e17818, type: 2}
   _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
 --- !u!4 &728158878
 Transform:

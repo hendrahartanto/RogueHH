@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
   [SerializeField] private GameStateSO _gameState;
   [SerializeField] private CharacterConfigSO _playerConfigSO = default;
   public PathStorageSO PathStorage = default;
-  private bool _isInTurnCycling;
+  public bool IsInAlert = false;
+  public bool IsInCombat = false;
   public bool IsMoving = false;
   private bool _stopMovingFlag = false;
   public float MovementProgress = 0f;
@@ -16,7 +17,6 @@ public class Player : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
-  [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
 
   private void Awake()
   {
@@ -66,10 +66,11 @@ public class Player : MonoBehaviour
 
       transform.position = endPosition;
 
-      _isInTurnCycling = _gameState.CurrentGameState == GameState.TurnCycling;
-
       //Cek jika ada perintah untuk berhenti bergerak atau Cek jika lagi dalam combat (hanya bisa move 1 tile per turn)
-      if (_stopMovingFlag || _isInTurnCycling)
+      IsInAlert = _gameState.CurrentGameState == GameState.Alert;
+      IsInCombat = _gameState.CurrentGameState == GameState.Combat;
+
+      if (_stopMovingFlag || IsInAlert || IsInCombat)
       {
         Debug.Log("STOP MOVING");
         _stopMovingFlag = false;
@@ -80,8 +81,9 @@ public class Player : MonoBehaviour
         yield break; //untuk menghentikan coroutine
       }
 
-      _onTurnCycleExecuted.RaiseEvent();
     }
+
+    _onTurnCycleExecuted.RaiseEvent();
 
     IsMoving = false;
   }
@@ -89,8 +91,6 @@ public class Player : MonoBehaviour
   public void OnNotifyMovePlayer()
   {
     IsMoving = true;
-
-    _changeGameStateEvent.RaiseEvent(GameState.TurnCycling);
 
     StartCoroutine(MoveAlongPath());
   }

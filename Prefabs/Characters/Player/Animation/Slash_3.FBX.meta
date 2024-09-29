@@ -788,15 +788,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8358209
-        functionName: HideSword
+      - time: 0.44230768
+        functionName: StopAttacking
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: StopAttacking
+      - time: 0.8358209
+        functionName: HideSword
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

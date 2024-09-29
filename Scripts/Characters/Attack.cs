@@ -15,9 +15,6 @@ public class Attack : MonoBehaviour
   private Damagable _currentTarget;
   public bool IsAttacking = false;
 
-  [Header("Broadcasting to")]
-  [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
-
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
 
@@ -52,9 +49,6 @@ public class Attack : MonoBehaviour
 
   public void AttacTarget(Damagable target)
   {
-    if (gameObject.CompareTag("Player"))
-      _changeGameStateEvent.RaiseEvent(GameState.TurnCycling);
-
     StartCoroutine(RotateTowardsTarget(target.transform));
     IsAttacking = true;
     _currentTarget = target;

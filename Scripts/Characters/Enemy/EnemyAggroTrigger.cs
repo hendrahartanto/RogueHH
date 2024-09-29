@@ -7,7 +7,6 @@ public class EnemyAggroTrigger : MonoBehaviour
 {
   public bool IsReadyToChase = false;
   public bool IsEnemyAlert = false;
-  private Collider _other = default;
   private Enemy _enemy = default;
   [SerializeField] private TransformAnchorSO _currentPlayerPosition = default;
 
@@ -31,8 +30,6 @@ public class EnemyAggroTrigger : MonoBehaviour
     {
       IsEnemyAlert = true;
 
-      _other = other;
-
       //masukin ke queue walaupun ga ke aggro agar di recheck terus LOS nya
       _onEnemyAggro.RaiseEvent(_enemy);
     }
@@ -44,27 +41,20 @@ public class EnemyAggroTrigger : MonoBehaviour
     {
       IsEnemyAlert = false;
 
-      _other = null;
-
-      _removeEnemyFromQueueEvent.RaiseEvent(_enemy);
+      if (!IsReadyToChase)
+        _removeEnemyFromQueueEvent.RaiseEvent(_enemy);
     }
   }
 
   public void CheckAggro()
   {
-
     var playerPosition = _currentPlayerPosition.Value.position;
     var enemyPosition = transform.position;
 
     if (IsLineOfSightClear(playerPosition, enemyPosition))
-    {
       StartCoroutine(RotateTowardTarget(_currentPlayerPosition.Value));
-    }
     else
-    {
-    }
-
-    _onTurnFinished.RaiseEvent();
+      _onTurnFinished.RaiseEvent();
   }
 
   private bool IsLineOfSightClear(Vector3 start, Vector3 end)
@@ -103,7 +93,7 @@ public class EnemyAggroTrigger : MonoBehaviour
       Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
       //TODO: set using configSO
-      float rotationSpeed = 10f;
+      float rotationSpeed = 40f;
       while (Quaternion.Angle(_enemy.transform.rotation, targetRotation) > 0.1f)
       {
         _enemy.transform.rotation = Quaternion.Slerp(_enemy.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
@@ -111,8 +101,8 @@ public class EnemyAggroTrigger : MonoBehaviour
       }
 
       _enemy.transform.rotation = targetRotation;
-
-      IsReadyToChase = true;
     }
+    IsReadyToChase = true;
+    _onTurnFinished.RaiseEvent();
   }
 }

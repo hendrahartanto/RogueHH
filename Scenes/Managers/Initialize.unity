@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameplayScene: {fileID: 11400000, guid: 6c5b6f8b204de85468dcedb66b6b5232, type: 2}
+  _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
   _coldStartupChannel: {fileID: 11400000, guid: 8a0cbd49bca99564db607574da7e2485, type: 2}
   _loadLocationEvent: {fileID: 11400000, guid: 62021d8bb2110c24092075e09ed27c20, type: 2}
   _loadMenuEvent: {fileID: 11400000, guid: c7ee04ac7ba00384c9d250ab713d5346, type: 2}
   _fadeEvent: {fileID: 11400000, guid: 401128ea7644fe441865b6ec3cb01fc2, type: 2}
   _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
-  _onGameplaySceneLoaded: {fileID: 11400000, guid: 8c38858231e84d346afa037541ce63af, type: 2}
   _setGameplayCanvasActiveEvent: {fileID: 11400000, guid: 3a0de6c25a6d4c74ba8537127c3967f8, type: 2}
 --- !u!1 &554082951
 GameObject:

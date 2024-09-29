@@ -7,7 +7,6 @@ public enum GameState
   Regular,
   Alert,
   Combat,
-  TurnCycling,
   Gameover,
 }
 
@@ -15,9 +14,15 @@ public enum GameState
 public class GameStateSO : ScriptableObject
 {
   public GameState CurrentGameState;
+  public bool IsTurnCycling = false;
 
   public void SetGameState(GameState newGameState)
   {
     CurrentGameState = newGameState;
+  }
+
+  public void SetIsTurnCycling(bool isTurnCycling)
+  {
+    IsTurnCycling = isTurnCycling;
   }
 }

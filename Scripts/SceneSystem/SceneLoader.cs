@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
   [SerializeField] private SceneSO _gameplayScene = default;
+  [SerializeField] private InputReader _inputReader = default;
   private SceneInstance _gameplayManagerSceneinstance = new SceneInstance();
   private bool _isLoading = false;
   private SceneSO _sceneToLoad = default;
@@ -100,7 +101,7 @@ public class SceneLoader : MonoBehaviour
 
   private IEnumerator UnloadPreviousScene()
   {
-    // _inputReader.DisableAllInput();
+    _inputReader.DisableAllInput();
     _fadeEvent.FadeIn(_fadeDuration);
 
     yield return new WaitForSeconds(_fadeDuration);
@@ -168,6 +169,7 @@ public class SceneLoader : MonoBehaviour
 
     _fadeEvent.FadeOut(_fadeDuration);
 
+    _inputReader.EnableGameplayInput();
   }
 
 }

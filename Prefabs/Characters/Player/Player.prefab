@@ -4780,8 +4780,8 @@ MonoBehaviour:
   _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
   _playerConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   PathStorage: {fileID: 11400000, guid: 0353892a0e9145c4d8a1f3cd2267b058, type: 2}
-  isInCombat: 0
   IsInAlert: 0
+  IsInCombat: 0
   IsMoving: 0
   MovementProgress: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
@@ -4863,6 +4863,7 @@ MonoBehaviour:
   _gameOverModalSetActiveEvent: {fileID: 11400000, guid: 3825540656acf9d42bfb473ed2ea5523, type: 2}
   _raycastSetActiveEvent: {fileID: 11400000, guid: 3c92df77c6577284bb148348aa415c23, type: 2}
   _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
+  _removeAllTurnQueueEvent: {fileID: 11400000, guid: 00c75390bbd93ac4791ac51835f33757, type: 2}
   SetMaxHealthUIEvent: {fileID: 11400000, guid: a493d1e054dd3be4c927a5c226a45dd9, type: 2}
   UpdateHealthUIEvent: {fileID: 11400000, guid: 51df0c45a8ae7c24da7c12a88b9c943b, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
@@ -4881,7 +4882,6 @@ MonoBehaviour:
   _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   _swordObject: {fileID: 2000357184224571143}
   IsAttacking: 0
-  _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
 --- !u!114 &2442832934141306455
 MonoBehaviour:

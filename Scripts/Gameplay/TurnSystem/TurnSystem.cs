@@ -7,16 +7,18 @@ public class TurnSystem : MonoBehaviour
   public List<ITurnComponent> QueueItems = default;
   private int _currentItemIndex = 0;
   [SerializeField] private InputReader _inputReader = default;
+  [SerializeField] private GameStateSO _gameState = default;
 
   [Header("Broadcasting to")]
-  [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
+  [SerializeField] private BoolEventChannelSO _isTurnCyclingSetActiveEvent = default;
+
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
   [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
-
+  [SerializeField] private VoidEventChannelSO _removeAllTurnQueueEvent = default;
 
   private void OnEnable()
   {
@@ -24,6 +26,7 @@ public class TurnSystem : MonoBehaviour
     _onEnemyAggro.OnEventRaised += AddToQueue;
     _onTurnFinished.OnEventRaised += ExecuteNextTurn;
     _removeEnemyFromQueueEvent.OnEventRaised += RemoveFromQueue;
+    _removeAllTurnQueueEvent.OnEventRaised += RemoveAllQueue;
   }
 
   private void OnDisable()
@@ -32,6 +35,7 @@ public class TurnSystem : MonoBehaviour
     _onEnemyAggro.OnEventRaised -= AddToQueue;
     _onTurnFinished.OnEventRaised -= ExecuteNextTurn;
     _removeEnemyFromQueueEvent.OnEventRaised -= RemoveFromQueue;
+    _removeAllTurnQueueEvent.OnEventRaised -= RemoveAllQueue;
   }
 
   private void Awake()
@@ -53,15 +57,19 @@ public class TurnSystem : MonoBehaviour
     QueueItems.Remove(turnComponent);
 
     if (QueueItems.Count <= 0)
-      _changeGameStateEvent.RaiseEvent(GameState.Regular);
+      _gameState.SetGameState(GameState.Regular);
   }
 
   private void ExecuteTurnCycle()
   {
-    if (QueueItems.Count == 0)
+    if (QueueItems.Count <= 0)
+    {
+      _isTurnCyclingSetActiveEvent.RaiseEvent(false);
       return;
+    }
 
-    _changeGameStateEvent.RaiseEvent(GameState.TurnCycling);
+    _isTurnCyclingSetActiveEvent.RaiseEvent(true);
+
 
     _currentItemIndex = 0;
     QueueItems[_currentItemIndex++].ExecuteTurn();
@@ -69,9 +77,10 @@ public class TurnSystem : MonoBehaviour
 
   private void ExecuteNextTurn()
   {
+    //jika udah diakhir queue (selesai semua) balikin gamestate ke sebelumnya
     if (_currentItemIndex >= QueueItems.Count)
     {
-      _changeGameStateEvent.RaiseEvent(GameState.Combat);
+      _isTurnCyclingSetActiveEvent.RaiseEvent(false);
       return;
     }
 
@@ -81,6 +90,11 @@ public class TurnSystem : MonoBehaviour
   private void SetupGameInput()
   {
     _inputReader.KeyboardSpaceEvent += ExecuteTurnCycle;
+  }
+
+  private void RemoveAllQueue()
+  {
+    QueueItems.Clear();
   }
 
 }

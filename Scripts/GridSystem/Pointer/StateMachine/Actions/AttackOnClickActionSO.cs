@@ -8,8 +8,8 @@ public class AttackOnClickActionSO : StateActionSO
   public InputReader InputReader = default;
 
   [Header("Broadcasting to")]
-  public GameStateEventChanelSO ChangeGameStateEvent = default;
-  protected override StateAction CreateAction() => new AttackOnClickAction(InputReader, ChangeGameStateEvent);
+  public BoolEventChannelSO IsTurnCyclingSetActiveEvent = default;
+  protected override StateAction CreateAction() => new AttackOnClickAction(InputReader, IsTurnCyclingSetActiveEvent);
 }
 
 public class AttackOnClickAction : StateAction
@@ -18,13 +18,12 @@ public class AttackOnClickAction : StateAction
   private InputReader _inputReader;
   private Attack _attack;
 
-  [Header("Broadcasting to")]
-  private GameStateEventChanelSO _changeGameStateEvent = default;
+  private BoolEventChannelSO _isTurnCyclingSetActiveEvent = default;
 
-  public AttackOnClickAction(InputReader inputReader, GameStateEventChanelSO changeGameStateEvent)
+  public AttackOnClickAction(InputReader inputReader, BoolEventChannelSO isTurnCyclingSetActiveEvent)
   {
     _inputReader = inputReader;
-    _changeGameStateEvent = changeGameStateEvent;
+    _isTurnCyclingSetActiveEvent = isTurnCyclingSetActiveEvent;
   }
 
   public override void Awake(StateMachine stateMachine)
@@ -45,7 +44,7 @@ public class AttackOnClickAction : StateAction
 
   private void AttackTarget()
   {
-    _changeGameStateEvent.RaiseEvent(GameState.TurnCycling);
+    _isTurnCyclingSetActiveEvent.RaiseEvent(true);
 
     Collider target = _pointerManager.CurrentPointedCollider;
     if (target.TryGetComponent(out Damagable damagableComp))

@@ -27,6 +27,7 @@ public class Damagable : MonoBehaviour
   [SerializeField] private BoolEventChannelSO _gameOverModalSetActiveEvent = default;
   [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
+  [SerializeField] private VoidEventChannelSO _removeAllTurnQueueEvent = default;
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
 
@@ -140,7 +141,8 @@ public class Damagable : MonoBehaviour
     else if (_source.gameObject.CompareTag("Enemy"))
     {
       IsDead = false;
-      _gameOverModalSetActiveEvent.RaiseEvent(true);
+      _gameOverModalSetActiveEvent?.RaiseEvent(true);
+      _removeAllTurnQueueEvent?.RaiseEvent();
     }
   }
 

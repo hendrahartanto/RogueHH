@@ -6,7 +6,10 @@ using UnityEngine;
 public class MovePlayerOnClickActionSO : StateActionSO
 {
   public InputReader InputReader = default;
-  protected override StateAction CreateAction() => new MovePlayerOnClickAction(InputReader);
+
+  [Header("Broadcasting to")]
+  public BoolEventChannelSO IsTurnCyclingSetActiveEvent = default;
+  protected override StateAction CreateAction() => new MovePlayerOnClickAction(InputReader, IsTurnCyclingSetActiveEvent);
 }
 
 public class MovePlayerOnClickAction : StateAction
@@ -15,10 +18,12 @@ public class MovePlayerOnClickAction : StateAction
   Attack _attack = default;
   private Player _player;
   private Damagable _damagable;
+  private BoolEventChannelSO _isTurnCyclingSetActiveEvent = default;
 
-  public MovePlayerOnClickAction(InputReader inputReader)
+  public MovePlayerOnClickAction(InputReader inputReader, BoolEventChannelSO isTurnCyclingSetActiveEvent)
   {
     _inputReader = inputReader;
+    _isTurnCyclingSetActiveEvent = isTurnCyclingSetActiveEvent;
   }
 
   public override void Awake(StateMachine stateMachine)
@@ -42,6 +47,8 @@ public class MovePlayerOnClickAction : StateAction
   {
     if (_player.PathStorage.paths.Count == 0 || _damagable.IsGettingHit)
       return;
+
+    _isTurnCyclingSetActiveEvent.RaiseEvent(true);
 
     _player.OnNotifyMovePlayer();
   }

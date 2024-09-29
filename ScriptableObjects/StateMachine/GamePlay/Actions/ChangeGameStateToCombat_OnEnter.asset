@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChangeGameStateToCombat_OnEnter
   m_EditorClassIdentifier: 
   GameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
-  NewGameState: 1
+  NewGameState: 2
   WhenToRun: 0
   InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
