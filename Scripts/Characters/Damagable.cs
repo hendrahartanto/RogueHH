@@ -27,9 +27,11 @@ public class Damagable : MonoBehaviour
   [SerializeField] private BoolEventChannelSO _gameOverModalSetActiveEvent = default;
   [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
-
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
+
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
 
   private void Start()
   {
@@ -38,13 +40,36 @@ public class Damagable : MonoBehaviour
       _currentHealth = ScriptableObject.CreateInstance<HealthSO>();
     }
 
-    _currentHealth.SetMaxHealth(_characterConfigSO.GetInitialHealth());
-    _currentHealth.SetCurrentHealth(_currentHealth.MaxHealth);
+    SetupStats();
 
-    //setup initial defend point in the SO container
+    _currentHealth.SetCurrentHealth(_currentHealth.MaxHealth);
+    UpdateHealthUIEvent.RaiseEvent(_currentHealth.CurrentHealth);
+  }
+  private void OnEnable()
+  {
+    if (_playerLevelUpEvent != null)
+      _playerLevelUpEvent.OnEventRaised += SetupStats;
+  }
+
+  private void OnDisable()
+  {
+    if (_playerLevelUpEvent != null)
+      _playerLevelUpEvent.OnEventRaised -= SetupStats;
+  }
+
+  public void SetupStats()
+  {
+    int maxHealth = (int)(_characterConfigSO.GetInitialHealth() * Math.Pow(1.1, _characterConfigSO.Level));
+
+    _currentHealth.SetMaxHealth(maxHealth);
+
+    //setup health ui
+    SetMaxHealthUIEvent.RaiseEvent(_currentHealth.MaxHealth);
+    UpdateHealthUIEvent.RaiseEvent(_currentHealth.CurrentHealth);
+
     DeffendPoint = _characterConfigSO.GetInitialDeffendPoint();
 
-    SetMaxHealthUIEvent.RaiseEvent(_currentHealth.MaxHealth);
+    DeffendPoint = (int)(DeffendPoint + (_characterConfigSO.Level * 0.08 * DeffendPoint));
   }
 
   public void ReceiveAttack(Transform source, int damage, bool critical)

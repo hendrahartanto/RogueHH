@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterConfigSO", menuName = "Configs/Character/CharacterConfigSO")]
@@ -12,9 +10,10 @@ public class CharacterConfigSO : ScriptableObject
   public int MaxInitialAttackPoint;
   public int MinInitialDeffendPoint;
   public int MaxInitialDeffendPoint;
-  public float _criticalRate;
-  public float _criticalDamage;
+  public float CriticalRate;
+  public float CriticalDamage;
   public int WeaponType;
+  public int Level;
 
   [Header("Player config")]
   public int InitialExpCap;

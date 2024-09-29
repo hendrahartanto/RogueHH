@@ -59,7 +59,6 @@ public class EnemyAggroTrigger : MonoBehaviour
     if (IsLineOfSightClear(playerPosition, enemyPosition))
     {
       StartCoroutine(RotateTowardTarget(_currentPlayerPosition.Value));
-      IsReadyToChase = true;
     }
     else
     {
@@ -112,6 +111,8 @@ public class EnemyAggroTrigger : MonoBehaviour
       }
 
       _enemy.transform.rotation = targetRotation;
+
+      IsReadyToChase = true;
     }
   }
 }

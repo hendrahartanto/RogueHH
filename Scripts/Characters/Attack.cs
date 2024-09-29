@@ -9,14 +9,39 @@ public class Attack : MonoBehaviour
   [SerializeField] private CharacterConfigSO _characterConfigSO = default;
   [SerializeField] private GameObject _swordObject = default;
   private int _attackPoint = default;
+  private float _criticalRate = default;
+  private float _criticalDamage = default;
   private int _weaponAttackPoint = default;
   private Damagable _currentTarget;
   public bool IsAttacking = false;
 
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
+
   private void Awake()
   {
+    SetupStats();
+  }
+
+  private void OnEnable()
+  {
+    if (_playerLevelUpEvent != null)
+      _playerLevelUpEvent.OnEventRaised += SetupStats;
+  }
+
+  private void OnDisable()
+  {
+    if (_playerLevelUpEvent != null)
+      _playerLevelUpEvent.OnEventRaised -= SetupStats;
+  }
+
+  public void SetupStats()
+  {
     //TODO: total attack = base attack + weapon damage
-    _attackPoint = _characterConfigSO.GetInitialAttackPoint();
+    _attackPoint = (int)(_characterConfigSO.GetInitialAttackPoint() * (1 + 0.12 * _characterConfigSO.Level));
+
+    _criticalRate = _characterConfigSO.CriticalRate;
+    _criticalDamage = _characterConfigSO.CriticalDamage;
 
     //TODO: assign dengan weapon attack point setelah ada fitur weapon
     _weaponAttackPoint = 0;
@@ -52,7 +77,7 @@ public class Attack : MonoBehaviour
 
   private bool IsCriticalHit()
   {
-    return Random.value <= _characterConfigSO._criticalRate;
+    return Random.value <= _criticalRate;
   }
 
   //called by animation event
@@ -72,7 +97,7 @@ public class Attack : MonoBehaviour
       if (IsCriticalHit())
       {
         critical = true;
-        effectiveDamage = Mathf.RoundToInt(effectiveDamage * _characterConfigSO._criticalDamage);
+        effectiveDamage = Mathf.RoundToInt(effectiveDamage * _criticalDamage);
       }
 
       _currentTarget.ReceiveAttack(transform, effectiveDamage, critical);
