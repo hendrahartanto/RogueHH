@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+  [SerializeField, ReadOnly] private string currentStateName;
   [SerializeField] private GameStateSO _gameState = default;
 
   [Header("Broadcasting to")]
@@ -29,12 +29,17 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     _gameState.SetGameState(GameState.Regular);
+
+    currentStateName = _gameState.CurrentGameState.ToString();
   }
 
   //Event Concrete Action
   private void SetInitialGameState()
   {
     _gameState.SetGameState(GameState.Regular);
+
+    currentStateName = _gameState.CurrentGameState.ToString();
+
     _enableGameplayInputEvent.RaiseEvent();
   }
 
@@ -44,5 +49,7 @@ public class GameManager : MonoBehaviour
       _disableAllInputEvent.RaiseEvent();
 
     _gameState.SetGameState(newGameState);
+
+    currentStateName = _gameState.CurrentGameState.ToString();
   }
 }
