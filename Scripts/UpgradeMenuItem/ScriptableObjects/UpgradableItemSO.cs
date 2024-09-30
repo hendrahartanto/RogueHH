@@ -12,6 +12,7 @@ public class UpgradableItemSO : ScriptableObject
   [SerializeField] private float _upgradeValue = default; //value stat yang akan ditambahin untuk upgrade
   [SerializeField] private UpgradeItemType _type = default;
   [SerializeField] private int _currentLevel = default;
+  [SerializeField] private int _maxLevel = default;
 
   public CharacterConfigSO PlayerStats => _playerStats;
   public Sprite IconImage => _iconImage;
@@ -21,6 +22,7 @@ public class UpgradableItemSO : ScriptableObject
   public float UpgradeValue => _upgradeValue;
   public UpgradeItemType Type => _type;
   public int CurrentLevel => _currentLevel;
+  public int MaxLevel => _maxLevel;
 
   public void IncreasePrice(int value)
   {

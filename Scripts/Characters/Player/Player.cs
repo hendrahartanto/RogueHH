@@ -18,6 +18,21 @@ public class Player : MonoBehaviour
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
 
+  [Header("Listening to")]
+  [SerializeField] private VoidEventChannelSO _resetPlayerLevelEvent = default;
+
+  private void OnEnable()
+  {
+    if (_resetPlayerLevelEvent != null)
+      _resetPlayerLevelEvent.OnEventRaised += ResetPlayerLevel;
+  }
+
+  private void OnDisable()
+  {
+    if (_resetPlayerLevelEvent != null)
+      _resetPlayerLevelEvent.OnEventRaised -= ResetPlayerLevel;
+  }
+
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
@@ -85,6 +100,11 @@ public class Player : MonoBehaviour
     _onTurnCycleExecuted.RaiseEvent();
 
     IsMoving = false;
+  }
+
+  private void ResetPlayerLevel()
+  {
+    _playerConfigSO.Level = 0;
   }
 
   public void OnNotifyMovePlayer()

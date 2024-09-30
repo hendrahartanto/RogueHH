@@ -39,10 +39,12 @@ public class UpgradeController : MonoBehaviour
     else if (type == UpgradeItemType.CriticalRate)
     {
       _playerConfigSO.CriticalRate += value;
+      _playerConfigSO.CriticalRate = Mathf.Round(_playerConfigSO.CriticalRate * 1000f) / 1000f;
     }
     else if (type == UpgradeItemType.CriticalDamage)
     {
       _playerConfigSO.CriticalDamage += value;
+      _playerConfigSO.CriticalDamage = Mathf.Round(_playerConfigSO.CriticalDamage * 1000f) / 1000f;
     }
   }
 }

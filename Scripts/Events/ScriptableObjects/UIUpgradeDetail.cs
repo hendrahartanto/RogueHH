@@ -69,6 +69,12 @@ public class UIUpgradeDetail : MonoBehaviour
     return true;
   }
 
+  private void IsReachedMaxLevel()
+  {
+    if (CurrentSelectedItem.MaxLevel != 0 && CurrentSelectedItem.CurrentLevel >= CurrentSelectedItem.MaxLevel)
+      UpgradeButton.SetActive(false);
+  }
+
   private void SetCurrentSelectedItem(UpgradableItemSO item)
   {
     CurrentSelectedItem = item;
@@ -91,6 +97,7 @@ public class UIUpgradeDetail : MonoBehaviour
   private void UpdateUI()
   {
     SetupDescription();
+    IsReachedMaxLevel();
     CostIndicator.GetComponentInChildren<TextMeshProUGUI>().SetText(CurrentSelectedItem.Price + " To upgrade");
   }
 
@@ -120,9 +127,11 @@ public class UIUpgradeDetail : MonoBehaviour
     }
     else if (CurrentSelectedItem.Type == UpgradeItemType.CriticalRate)
     {
+      Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.CriticalRate * 100 + "% rate\nUpgrade: +" + CurrentSelectedItem.UpgradeValue * 100 + "% rate\n");
     }
     else if (CurrentSelectedItem.Type == UpgradeItemType.CriticalDamage)
     {
+      Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.CriticalDamage * 100 + "% dmg\nUpgrade: +" + CurrentSelectedItem.UpgradeValue * 100 + "% dmg\n");
     }
   }
 }

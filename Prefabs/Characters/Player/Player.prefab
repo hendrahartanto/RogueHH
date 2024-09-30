@@ -4785,6 +4785,7 @@ MonoBehaviour:
   IsMoving: 0
   MovementProgress: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _resetPlayerLevelEvent: {fileID: 11400000, guid: 2529a7469ebacce4092407172e7403ca, type: 2}
 --- !u!114 &-5343187690012059692
 MonoBehaviour:
   m_ObjectHideFlags: 0

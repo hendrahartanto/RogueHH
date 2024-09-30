@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   [SerializeField] private GameStateSO _gameState = default;
+  [SerializeField] private GoldSO _goldSO = default;
 
   [Header("Broadcasting to")]
   [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
+    _goldSO.SetGold(100000);
     _gameState.SetGameState(GameState.Gameover);
     _gameState.SetIsTurnCycling(false);
   }

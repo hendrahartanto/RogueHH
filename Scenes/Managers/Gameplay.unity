@@ -667,6 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
+  _goldSO: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
   _enableGameplayInputEvent: {fileID: 11400000, guid: f5b3f5f2784c55e4796290ef3aaf8efe, type: 2}
   _disableAllInputEvent: {fileID: 11400000, guid: 40cbb36f464b037458937a868f4ce14f, type: 2}
   _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
@@ -929,6 +930,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dad95c69fd2530945871bdff43320ee2, type: 2}
   - {fileID: 11400000, guid: ced35ac08d9b62846ab0c382666c7928, type: 2}
   - {fileID: 11400000, guid: 9cec1c99ace507049935047a2af4d33c, type: 2}
+  - {fileID: 11400000, guid: 2c3689a108267af4a9f9d576fbb95c9e, type: 2}
+  - {fileID: 11400000, guid: 17d8f243d4160b34a8e7adc9c0caa8e4, type: 2}
 --- !u!4 &1223795388
 Transform:
   m_ObjectHideFlags: 0
@@ -1656,6 +1659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3467704844352324451, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: _resetPlayerLevelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 2529a7469ebacce4092407172e7403ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
 --- !u!114 &1354373136274024747 stripped

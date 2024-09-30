@@ -50,11 +50,18 @@ public class UIUpgradableItemController : MonoBehaviour
   private void SetupComponent()
   {
     _icon.GetComponent<Image>().sprite = _upgradableItemSO.IconImage;
-    _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
+
+    if (_upgradableItemSO.MaxLevel != 0)
+      _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel + "/" + _upgradableItemSO.MaxLevel);
+    else
+      _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
   }
 
   private void UpdateUI()
   {
-    _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
+    if (_upgradableItemSO.MaxLevel != 0)
+      _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel + "/" + _upgradableItemSO.MaxLevel);
+    else
+      _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
   }
 }
