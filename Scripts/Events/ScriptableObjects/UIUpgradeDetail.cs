@@ -14,12 +14,14 @@ public class UIUpgradeDetail : MonoBehaviour
   public TextMeshProUGUI ItemName = default;
   public TextMeshProUGUI Description = default;
   public GameObject UpgradeButton = default;
+  public GameObject CostIndicator = default;
+  public TextMeshProUGUI ErrorMessage = default;
 
 
   [Header("Broadcasting to")]
   [SerializeField] private IncreaseGlobalPriceEventChannel _increaseGlobalPriceEventBroadcast = default;
   [SerializeField] private UpgradeStatEventChannelSO _upgradeItemEvent = default;
-  [SerializeField] private IntEventChanelSO _updateGoldIndicatorUIEvent = default;
+  [SerializeField] private IntEventChanelSO _updateGoldIndicatorEvent = default;
 
 
   [Header("Listening to")]
@@ -42,14 +44,14 @@ public class UIUpgradeDetail : MonoBehaviour
 
     _upgradeItemEvent.RaiseEvent(CurrentSelectedItem.Type, CurrentSelectedItem.UpgradeValue);
 
-    CurrentSelectedItem.CurrentLevel++;
+    CurrentSelectedItem.IncrementLevel();
 
     //naikin harga global dan harga item sekarang dan sekalian UI item
     _increaseGlobalPriceEventBroadcast.RaiseEvent(CurrentSelectedItem.Type, 10);
-    CurrentSelectedItem.Price += 50;
+    CurrentSelectedItem.IncreasePrice(50);
 
     //update gold indicator UI
-    _updateGoldIndicatorUIEvent.RaiseEvent(_goldSO.CurrentGold);
+    _updateGoldIndicatorEvent.RaiseEvent(_goldSO.CurrentGold);
 
     UpdateUI();
   }
@@ -57,7 +59,10 @@ public class UIUpgradeDetail : MonoBehaviour
   private bool ValidateAndUpdateGold()
   {
     if (_goldSO.CurrentGold < CurrentSelectedItem.Price)
+    {
+      ErrorMessage.enabled = true;
       return false;
+    }
 
     _goldSO.DecreaseGold(CurrentSelectedItem.Price);
 
@@ -80,11 +85,13 @@ public class UIUpgradeDetail : MonoBehaviour
     Icon.GetComponent<Image>().sprite = CurrentSelectedItem.IconImage;
     ItemName.SetText(CurrentSelectedItem.Name);
     SetupDescription();
+    CostIndicator.GetComponentInChildren<TextMeshProUGUI>().SetText(CurrentSelectedItem.Price + " To upgrade");
   }
 
   private void UpdateUI()
   {
     SetupDescription();
+    CostIndicator.GetComponentInChildren<TextMeshProUGUI>().SetText(CurrentSelectedItem.Price + " To upgrade");
   }
 
   private void SetActive()
@@ -93,19 +100,23 @@ public class UIUpgradeDetail : MonoBehaviour
     Icon.SetActive(true);
     ItemName.enabled = true;
     Description.enabled = true;
+    CostIndicator.SetActive(true);
+    ErrorMessage.enabled = false;
   }
 
   private void SetupDescription()
   {
     if (CurrentSelectedItem.Type == UpgradeItemType.Health)
     {
-      Description.SetText(CurrentSelectedItem.Description + "\nCurrent: " + CurrentSelectedItem.PlayerStats.GetInitialHealth() + " hp\nUpgrade: +" + CurrentSelectedItem.UpgradeValue + " hp\n");
+      Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.GetInitialHealth() + " hp\nUpgrade: +" + CurrentSelectedItem.UpgradeValue + " hp\n");
     }
     else if (CurrentSelectedItem.Type == UpgradeItemType.Attack)
     {
+      Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.GetInitialAttackPoint() + " atk\nUpgrade: +" + CurrentSelectedItem.UpgradeValue + " atk\n");
     }
     else if (CurrentSelectedItem.Type == UpgradeItemType.Deffend)
     {
+      Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.GetInitialDeffendPoint() + " def\nUpgrade: +" + CurrentSelectedItem.UpgradeValue + " def\n");
     }
     else if (CurrentSelectedItem.Type == UpgradeItemType.CriticalRate)
     {

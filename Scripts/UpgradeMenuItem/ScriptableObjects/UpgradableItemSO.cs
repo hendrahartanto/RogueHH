@@ -1,22 +1,34 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UpgradeMenuItem/UpgradableItem")]
 public class UpgradableItemSO : ScriptableObject
 {
-  public CharacterConfigSO PlayerStats = default;
-  public Sprite IconImage = default;
-  public String Name = default;
-  public String Description = default;
-  public int Price = default;
-  public float UpgradeValue = default; //value stat yang akan ditambahin untuk upgrade
-  public UpgradeItemType Type = default;
-  public int CurrentLevel = default;
+  [SerializeField] private CharacterConfigSO _playerStats = default;
+  [SerializeField] private Sprite _iconImage = default;
+  [SerializeField] private String _name = default;
+  [SerializeField] private String _description = default;
+  [SerializeField] private int _price = default;
+  [SerializeField] private float _upgradeValue = default; //value stat yang akan ditambahin untuk upgrade
+  [SerializeField] private UpgradeItemType _type = default;
+  [SerializeField] private int _currentLevel = default;
 
-  private void Awake()
+  public CharacterConfigSO PlayerStats => _playerStats;
+  public Sprite IconImage => _iconImage;
+  public String Name => _name;
+  public String Description => _description;
+  public int Price => _price;
+  public float UpgradeValue => _upgradeValue;
+  public UpgradeItemType Type => _type;
+  public int CurrentLevel => _currentLevel;
+
+  public void IncreasePrice(int value)
   {
+    _price += value;
+  }
 
+  public void IncrementLevel()
+  {
+    _currentLevel++;
   }
 }

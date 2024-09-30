@@ -7,16 +7,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 839d49f42652f764b8c964f6d0b4a8a2, type: 3}
-  m_Name: HealthUpgradeItem
+  m_Name: DefenseUpgradeItem
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
-  _iconImage: {fileID: 21300000, guid: 0efaf96bd9a035b4dba16444ce2c389e, type: 3}
-  _name: Health Up
-  _description: 'Improve your maximum health. A better heart means better health. '
+  _iconImage: {fileID: 21300000, guid: 9c8101d479c60d34185259c220494c61, type: 3}
+  _name: Defense Up
+  _description: Resistance training will improve your body toughness. Tougher body
+    means more TPA work :D
   _price: 10
-  _upgradeValue: 10
-  _type: 0
+  _upgradeValue: 2
+  _type: 1
   _currentLevel: 0

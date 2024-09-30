@@ -43,18 +43,18 @@ public class UIUpgradableItemController : MonoBehaviour
       return;
     }
 
-    _upgradableItemSO.Price += value;
+    _upgradableItemSO.IncreasePrice(value);
 
   }
 
   private void SetupComponent()
   {
     _icon.GetComponent<Image>().sprite = _upgradableItemSO.IconImage;
-    _levelText.SetText("Lvl. " + _upgradableItemSO.CurrentLevel);
+    _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
   }
 
   private void UpdateUI()
   {
-    _levelText.SetText("Lvl. " + _upgradableItemSO.CurrentLevel);
+    _levelText.SetText("Lvl." + _upgradableItemSO.CurrentLevel);
   }
 }
