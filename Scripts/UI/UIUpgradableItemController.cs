@@ -13,6 +13,7 @@ public class UIUpgradableItemController : MonoBehaviour
 
   [Header("Listening to")]
   [SerializeField] private IncreaseGlobalPriceEventChannel _increaseGlobalPriceEventListen = default;
+  [SerializeField] private UpgradeStatEventChannelSO _upgradeItemEvent = default;
 
   private void Awake()
   {
@@ -37,14 +38,23 @@ public class UIUpgradableItemController : MonoBehaviour
   private void IncreaseItemPrice(UpgradeItemType type, int value)
   {
     if (_upgradableItemSO.Type == type)
+    {
+      UpdateUI();
       return;
+    }
 
     _upgradableItemSO.Price += value;
+
   }
 
   private void SetupComponent()
   {
     _icon.GetComponent<Image>().sprite = _upgradableItemSO.IconImage;
+    _levelText.SetText("Lvl. " + _upgradableItemSO.CurrentLevel);
+  }
+
+  private void UpdateUI()
+  {
     _levelText.SetText("Lvl. " + _upgradableItemSO.CurrentLevel);
   }
 }

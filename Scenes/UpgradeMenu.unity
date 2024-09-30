@@ -128,6 +128,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5483345724799055828, guid: 57a0323a80885fc4e86f8544c0fbb749, type: 3}
   m_PrefabInstance: {fileID: 5483345724643158512}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &205005285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 975313971505960546, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+  m_PrefabInstance: {fileID: 2059821224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &324629642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,11 +1144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27368460055ddf468ca570460733636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentSelectedItem: {fileID: 0}
+  CurrentSelectedItem: {fileID: 11400000, guid: dad95c69fd2530945871bdff43320ee2, type: 2}
+  _goldSO: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
   Icon: {fileID: 2119860037}
   ItemName: {fileID: 1513291666}
   Description: {fileID: 750894808}
+  UpgradeButton: {fileID: 205005285}
   _increaseGlobalPriceEventBroadcast: {fileID: 11400000, guid: 2bd1c7d38d577e04abdc5609379d58d6, type: 2}
+  _upgradeItemEvent: {fileID: 11400000, guid: 6bbdf41c98b97fa47afa6ac9f4f2c218, type: 2}
+  _updateGoldIndicatorUIEvent: {fileID: 11400000, guid: 56cd233ce3bffe541aec1f58127777b3, type: 2}
   _selectUpgradeItemEvent: {fileID: 11400000, guid: 3ad95a56e348b904e964ff851b7de093, type: 2}
 --- !u!224 &1773943258 stripped
 RectTransform:
@@ -1413,6 +1422,38 @@ PrefabInstance:
     - target: {fileID: 975313971505960547, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1563583664}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIUpgradeDetail, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}

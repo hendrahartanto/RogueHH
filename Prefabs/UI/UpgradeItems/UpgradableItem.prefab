@@ -418,6 +418,7 @@ MonoBehaviour:
   _levelText: {fileID: 7094386808333338177}
   _selectUpgradeItemEvent: {fileID: 11400000, guid: 3ad95a56e348b904e964ff851b7de093, type: 2}
   _increaseGlobalPriceEventListen: {fileID: 11400000, guid: 2bd1c7d38d577e04abdc5609379d58d6, type: 2}
+  _upgradeItemEvent: {fileID: 11400000, guid: 6bbdf41c98b97fa47afa6ac9f4f2c218, type: 2}
 --- !u!1 &7094386808333338183
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,4 +17,9 @@ public class GoldSO : ScriptableObject
   {
     _gold += value;
   }
+
+  public void DecreaseGold(int value)
+  {
+    _gold -= value;
+  }
 }
