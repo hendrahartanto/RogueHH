@@ -110,42 +110,6 @@ public class Damagable : MonoBehaviour
     }
   }
 
-  private void CheckTurnCycleTrigger()
-  {
-    //jika source attack dari player maka turn cycle akan berjalan
-    if (_source.gameObject.CompareTag("Player"))
-    {
-      _onTurnCycleExecuted.RaiseEvent();
-    }
-
-    //kalo source attack dari enemy maka enemy akan notify bahwa turn dia sudah selesai
-    if (_source.gameObject.CompareTag("Enemy"))
-    {
-      _onTurnFinished.RaiseEvent();
-    }
-  }
-
-  //called by animation event
-  private void StopGettingHit()
-  {
-    IsGettingHit = false;
-  }
-
-  private void Despawn()
-  {
-    if (_source.gameObject.CompareTag("Player"))
-    {
-      IsDead = false;
-      Destroy(gameObject);
-    }
-    else if (_source.gameObject.CompareTag("Enemy"))
-    {
-      IsDead = false;
-      _gameOverModalSetActiveEvent?.RaiseEvent(true);
-      _removeAllTurnQueueEvent?.RaiseEvent();
-    }
-  }
-
   private void OnEnemyDeath()
   {
     GetComponent<BoxCollider>().enabled = false;
@@ -174,5 +138,41 @@ public class Damagable : MonoBehaviour
   {
     _changeGameStateEvent?.RaiseEvent(GameState.Gameover);
     _raycastSetActiveEvent?.RaiseEvent(false);
+  }
+
+  //called by animation event
+  private void StopGettingHit()
+  {
+    IsGettingHit = false;
+  }
+
+  private void Despawn()
+  {
+    if (_source.gameObject.CompareTag("Player"))
+    {
+      IsDead = false;
+      Destroy(gameObject);
+    }
+    else if (_source.gameObject.CompareTag("Enemy"))
+    {
+      IsDead = false;
+      _gameOverModalSetActiveEvent?.RaiseEvent(true);
+      _removeAllTurnQueueEvent?.RaiseEvent();
+    }
+  }
+
+  private void CheckTurnCycleTrigger()
+  {
+    //jika source attack dari player maka turn cycle akan berjalan
+    if (_source.gameObject.CompareTag("Player"))
+    {
+      _onTurnCycleExecuted.RaiseEvent();
+    }
+
+    //kalo source attack dari enemy maka enemy akan notify bahwa turn dia sudah selesai
+    if (_source.gameObject.CompareTag("Enemy"))
+    {
+      _onTurnFinished.RaiseEvent();
+    }
   }
 }

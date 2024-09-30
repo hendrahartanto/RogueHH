@@ -26,11 +26,13 @@ public class StopPlayerMovementOnClickAction : StateAction
   public override void OnStateEnter()
   {
     _inputReader.MouseClickEvent += NotifyStopMoving;
+    _inputReader.StopPlayerMovementOnClick = true;
   }
 
   public override void OnStateExit()
   {
     _inputReader.MouseClickEvent -= NotifyStopMoving;
+    _inputReader.StopPlayerMovementOnClick = false;
   }
 
   public void NotifyStopMoving()

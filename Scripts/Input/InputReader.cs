@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   public event UnityAction MouseClickEvent = delegate { };
   public event UnityAction KeyboardSpaceEvent = delegate { };
   private GameInput _gameInput;
+  public bool StopPlayerMovementOnClick = false;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
@@ -39,6 +40,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   public void OnMouseClick(InputAction.CallbackContext context)
   {
     if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+      MouseClickEvent.Invoke();
+    else if (context.phase == InputActionPhase.Performed && StopPlayerMovementOnClick)
       MouseClickEvent.Invoke();
   }
 
