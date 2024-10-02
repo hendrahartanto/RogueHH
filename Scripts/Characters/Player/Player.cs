@@ -13,31 +13,13 @@ public class Player : MonoBehaviour
   public bool IsMoving = false;
   private bool _stopMovingFlag = false;
   public float MovementProgress = 0f;
-  private Animator _animator;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
 
-  [Header("Listening to")]
-  [SerializeField] private VoidEventChannelSO _resetPlayerLevelEvent = default;
-
-  private void OnEnable()
-  {
-    if (_resetPlayerLevelEvent != null)
-      _resetPlayerLevelEvent.OnEventRaised += ResetPlayerLevel;
-  }
-
-  private void OnDisable()
-  {
-    if (_resetPlayerLevelEvent != null)
-      _resetPlayerLevelEvent.OnEventRaised -= ResetPlayerLevel;
-  }
-
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
-    _animator = GetComponent<Animator>();
-    SetWeaponType();
   }
 
   private IEnumerator MoveAlongPath()
@@ -119,8 +101,5 @@ public class Player : MonoBehaviour
     _stopMovingFlag = true;
   }
 
-  private void SetWeaponType()
-  {
-    _animator.SetInteger("WeaponType", _playerConfigSO.WeaponType);
-  }
+
 }

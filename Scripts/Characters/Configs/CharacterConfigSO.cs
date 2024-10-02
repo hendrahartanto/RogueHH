@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "CharacterConfigSO", menuName = "Configs/Character/CharacterConfigSO")]
 public class CharacterConfigSO : ScriptableObject
@@ -16,36 +18,54 @@ public class CharacterConfigSO : ScriptableObject
   public int Level;
 
   [Header("Player config")]
-  public int InitialExpCap;
+  public int ExpCap;
 
   [Header("Enemy config")]
   public int MinExpGain;
   public int MaxExpGain;
   public int MinGoldGain;
   public int MaxGoldGain;
+  public float ExpGainScalingFactor;
+  public float GoldGainScalingFactor;
+
+  private void Awake()
+  {
+    ExpGainScalingFactor = 1.1f;
+    GoldGainScalingFactor = 1.1f;
+  }
 
   public int GetInitialHealth()
   {
-    return Random.Range(MinInitialHealth, MaxInitialHealth + 1);
+    int baseHealth = Random.Range(MinInitialHealth, MaxInitialHealth + 1);
+
+    return (int)(baseHealth * Math.Pow(1.1, Level));
   }
 
   public int GetInitialAttackPoint()
   {
-    return Random.Range(MinInitialAttackPoint, MaxInitialAttackPoint + 1);
+    int baseAttack = Random.Range(MinInitialAttackPoint, MaxInitialAttackPoint + 1);
+
+    return (int)(baseAttack * (1 + 0.12 * Level));
   }
 
   public int GetInitialDeffendPoint()
   {
-    return Random.Range(MinInitialDeffendPoint, MaxInitialDeffendPoint + 1);
+    int baseDeffenPoint = Random.Range(MinInitialDeffendPoint, MaxInitialDeffendPoint + 1);
+
+    return (int)(baseDeffenPoint + (Level * 0.08 * baseDeffenPoint));
   }
 
   public int GetExpGain()
   {
-    return Random.Range(MinExpGain, MaxExpGain + 1);
+    int baseExp = Random.Range(MinExpGain, MaxExpGain + 1);
+    float scaledExp = baseExp * Mathf.Pow(ExpGainScalingFactor, Level);
+    return Mathf.FloorToInt(scaledExp);
   }
 
   public int GetGoldGain()
   {
-    return Random.Range(MinGoldGain, MaxGoldGain + 1);
+    int baseGold = Random.Range(MinGoldGain, MaxGoldGain + 1);
+    float scaledGold = baseGold * Mathf.Pow(GoldGainScalingFactor, Level);
+    return Mathf.FloorToInt(scaledGold);
   }
 }

@@ -12,7 +12,7 @@ public class Damagable : MonoBehaviour
   private Transform _source;
   [NonSerialized] public int DeffendPoint = default;
 
-  [SerializeField] private CharacterConfigSO _characterConfigSO = default;
+  public CharacterConfigSO _characterConfigSO = default;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
@@ -60,7 +60,7 @@ public class Damagable : MonoBehaviour
 
   public void SetupStats()
   {
-    int maxHealth = (int)(_characterConfigSO.GetInitialHealth() * Math.Pow(1.1, _characterConfigSO.Level));
+    int maxHealth = _characterConfigSO.GetInitialHealth();
 
     _currentHealth.SetMaxHealth(maxHealth);
 
@@ -69,8 +69,6 @@ public class Damagable : MonoBehaviour
     UpdateHealthUIEvent.RaiseEvent(_currentHealth.CurrentHealth);
 
     DeffendPoint = _characterConfigSO.GetInitialDeffendPoint();
-
-    DeffendPoint = (int)(DeffendPoint + (_characterConfigSO.Level * 0.08 * DeffendPoint));
   }
 
   public void ReceiveAttack(Transform source, int damage, bool critical)

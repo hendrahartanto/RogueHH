@@ -1,11 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawnSystem : MonoBehaviour
 {
   [SerializeField] DungeonSO _dungeon;
   [SerializeField] private GridTileSO _grid;
+
+  [Header("Configs")]
+  private int _baseEnemyCount;
+  public int MaxEnemyCount;
+  public int MaxEnemiesPerRoomLimit;
+  public int MaxLevel;
+  public List<EnemyBaseSO> PossibleEnemyTypes = new List<EnemyBaseSO>();
+  public List<int> EnemyTypeChances;
+  public List<int> BaseChances;
+  public List<int> FinalChances;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onDungeonGenerated = default;
@@ -13,6 +25,11 @@ public class EnemySpawnSystem : MonoBehaviour
   [Header("Broadcasting to")]
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
+
+  private void Awake()
+  {
+    _baseEnemyCount = (int)(_dungeon.RoomCount / 1.5);
+  }
 
   private void OnEnable()
   {
@@ -24,13 +41,46 @@ public class EnemySpawnSystem : MonoBehaviour
     _onDungeonGenerated.OnEventRaised -= SpawnEnemy;
   }
 
-  private void SpawnEnemy()
+  private int ScaleEnemyCount(int level)
   {
-    //TODO: this is experimental config
-    int enemyCount = _dungeon.RoomCount * 2; // bagi 2 
-    int currEnemyCount = 0;
-    int maxEnemyPerRoom = 2;
+    return (int)Mathf.Clamp(Mathf.Lerp(_baseEnemyCount, MaxEnemyCount, (float)level / MaxLevel), _baseEnemyCount, MaxEnemyCount);
+  }
 
+  public EnemyBaseSO GetRandomEnemyType()
+  {
+    int totalChance = 0;
+    foreach (int chance in EnemyTypeChances)
+    {
+      totalChance += chance;
+    }
+
+    int randomValue = Random.Range(0, totalChance);
+    int cumulativeChance = 0;
+
+    for (int i = 0; i < PossibleEnemyTypes.Count; i++)
+    {
+      cumulativeChance += EnemyTypeChances[i];
+      if (randomValue < cumulativeChance)
+      {
+        return PossibleEnemyTypes[i];
+      }
+    }
+
+    return null;
+  }
+
+  private void SetupSpawnChances()
+  {
+    int currentLevel = _dungeon.Level;
+
+    EnemyTypeChances[0] = (int)Mathf.Lerp(BaseChances[0], FinalChances[0], (float)(currentLevel - 1) / (MaxLevel - 1));
+    EnemyTypeChances[1] = (int)Mathf.Lerp(BaseChances[1], FinalChances[1], (float)(currentLevel - 1) / (MaxLevel - 1));
+    EnemyTypeChances[2] = (int)Mathf.Lerp(BaseChances[2], FinalChances[2], (float)(currentLevel - 1) / (MaxLevel - 1));
+  }
+
+  private void SpawnEnemyPerType(int enemyCount, int type, int maxEnemyPerRoom)
+  {
+    int currEnemyCount = 0;
     while (currEnemyCount < enemyCount)
     {
       Vector2Int randomPosition;
@@ -50,7 +100,7 @@ public class EnemySpawnSystem : MonoBehaviour
           break;
       }
 
-      EnemyBaseSO enemy = _dungeon.GetRandomEnemyType();
+      EnemyBaseSO enemy = PossibleEnemyTypes[type];
 
       _changeCellTypeEvent.RaiseEvent(randomPosition.x, randomPosition.y, CellType.Enemy);
       _changeNodeAccessibleEvent.RaiseEvent(randomPosition.x, randomPosition.y, false);
@@ -74,11 +124,31 @@ public class EnemySpawnSystem : MonoBehaviour
       DamagableComp.SetMaxHealthUIEvent = setMaxhealthEvent;
       DamagableComp.UpdateHealthUIEvent = updateHealthUIEvent;
 
+      //set the level of the enemy
+      DamagableComp._characterConfigSO.Level = _dungeon.Level;
+
       //instantiate object yang udah dikasih chanel unique
       Instantiate(enemyObject, spawnLocation.position, spawnLocation.rotation);
 
       randomRoom.EnemyCount++;
       currEnemyCount++;
     }
+  }
+
+  private void SpawnEnemy()
+  {
+    SetupSpawnChances();
+
+    int enemyCount = ScaleEnemyCount(_dungeon.Level);
+
+    int easyCount = enemyCount * EnemyTypeChances[0] / 100;
+    int mediumCount = enemyCount * EnemyTypeChances[1] / 100;
+    int hardCount = enemyCount * EnemyTypeChances[2] / 100;
+
+    int maxEnemyPerRoom = enemyCount / _dungeon.RoomCount + 1;
+
+    SpawnEnemyPerType(easyCount, 0, maxEnemyPerRoom);
+    SpawnEnemyPerType(mediumCount, 1, maxEnemyPerRoom);
+    SpawnEnemyPerType(hardCount, 2, maxEnemyPerRoom);
   }
 }

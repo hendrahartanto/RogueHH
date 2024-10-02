@@ -677,6 +677,7 @@ MonoBehaviour:
   _sceneToLoad: {fileID: 11400000, guid: 6483ef790febaa14ba9c322c555c70e4, type: 2}
   _showLoadingScreen: 0
   _loadLocationEvent: {fileID: 11400000, guid: 62021d8bb2110c24092075e09ed27c20, type: 2}
+  _setDungeonConfigEvent: {fileID: 11400000, guid: 4ba63ca59c001884b8a006f187b167a0, type: 2}
   _startGameplayEvent: {fileID: 11400000, guid: 1e3bc2a0804f4a342a4de080ce8baff7, type: 2}
 --- !u!4 &712844477
 Transform:

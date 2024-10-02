@@ -21,3 +21,4 @@ MonoBehaviour:
   _upgradeValue: 2
   _type: 1
   _currentLevel: 0
+  _maxLevel: 45

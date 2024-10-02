@@ -4721,7 +4721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 89, y: 1.5, z: 45}
+  m_LocalPosition: {x: 15, y: 1.5, z: 59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4901,6 +4901,7 @@ MonoBehaviour:
   _updateExpUIEvent: {fileID: 11400000, guid: 316094f89ee9a7a40b8980b533a11f12, type: 2}
   _setupExpUIEvent: {fileID: 11400000, guid: 856cc90fec2b3574fb61b4fb8b061bae, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
+  _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
   _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
 --- !u!54 &-159225850327403872
 Rigidbody:

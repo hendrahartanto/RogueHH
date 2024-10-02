@@ -212,6 +212,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 745c0ac4b9af60143b546bac06113ede, type: 2}
   _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
   _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
+  _setDungeonConfigEvent: {fileID: 11400000, guid: 4ba63ca59c001884b8a006f187b167a0, type: 2}
 --- !u!156049354 &550963989
 Grid:
   m_ObjectHideFlags: 0
@@ -846,6 +847,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dungeon: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
+  MaxEnemyCount: 30
+  MaxEnemiesPerRoomLimit: 3
+  MaxLevel: 30
+  PossibleEnemyTypes:
+  - {fileID: 11400000, guid: a91bbb108fb97534f94fce9e416b31c9, type: 2}
+  - {fileID: 11400000, guid: 7ecb2a19f4abe9a49a20c687cebff3a5, type: 2}
+  - {fileID: 11400000, guid: 22c0ea3845bf5754b88fbde7257146c8, type: 2}
+  EnemyTypeChances: 500000000a00000005000000
+  BaseChances: 4b0000000f00000005000000
+  FinalChances: 14000000230000002d000000
   _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
   _changeCellTypeEvent: {fileID: 11400000, guid: f9f4459186c780e449553006c7c0fea9, type: 2}
   _changeNodeAccessibleEvent: {fileID: 11400000, guid: c800ee0a70f0a51449dd41da1d8b99da, type: 2}

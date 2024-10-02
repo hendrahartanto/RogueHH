@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class DamageUIManager : MonoBehaviour
+public class TextPopupManager : MonoBehaviour
 {
   [SerializeField] GameObject _textPrefab = default;
   [SerializeField] GameObject _criticalTextPrefab = default;
+  [SerializeField] List<GameObject> _coloredTextPrefabs;
   private Quaternion _rotationValue;
 
   [Header("Listening to")]
   [SerializeField] private DamagePopupEventChannel _damagePopUpEvent = default;
+  [SerializeField] private TextPopupEventChannelSO _textPopupEvent = default;
+
   private void Awake()
   {
     _rotationValue = Quaternion.Euler(30f, 45f, 0f);
@@ -18,15 +23,17 @@ public class DamageUIManager : MonoBehaviour
 
   private void OnEnable()
   {
-    _damagePopUpEvent.OnEventRaised += Setup;
+    _damagePopUpEvent.OnEventRaised += SetupDamagePopup;
+    _textPopupEvent.OnEventRaised += SetupTextPopup;
   }
 
   private void OnDisable()
   {
-    _damagePopUpEvent.OnEventRaised -= Setup;
+    _damagePopUpEvent.OnEventRaised -= SetupDamagePopup;
+    _textPopupEvent.OnEventRaised += SetupTextPopup;
   }
 
-  private void Setup(Vector3 pos, int damageValue, bool critical)
+  private void SetupDamagePopup(Vector3 pos, int damageValue, bool critical)
   {
     pos.y += 2f;
 
@@ -36,10 +43,23 @@ public class DamageUIManager : MonoBehaviour
     TextMeshPro textMesh = instance.GetComponent<TextMeshPro>();
     textMesh.SetText(damageValue.ToString());
 
-    StartCoroutine(AnimateDamagePopup(instance, textMesh));
+    StartCoroutine(AnimateTextPopup(instance, textMesh));
   }
 
-  private IEnumerator AnimateDamagePopup(GameObject popup, TextMeshPro textMesh)
+  private void SetupTextPopup(Vector3 pos, String text, TextColor color)
+  {
+    pos.y += 2f;
+
+    GameObject _textToInstantiate = _coloredTextPrefabs[(int)color];
+
+    GameObject instance = Instantiate(_textToInstantiate, pos, _rotationValue);
+    TextMeshPro textMesh = instance.GetComponent<TextMeshPro>();
+    textMesh.SetText(text);
+
+    StartCoroutine(AnimateTextPopup(instance, textMesh));
+  }
+
+  private IEnumerator AnimateTextPopup(GameObject popup, TextMeshPro textMesh)
   {
     float duration = 0.5f;
     Vector3 initialPosition = popup.transform.position;
@@ -70,4 +90,9 @@ public class DamageUIManager : MonoBehaviour
     textMesh.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
     Destroy(popup);
   }
+}
+
+public enum TextColor
+{
+  Yellow
 }

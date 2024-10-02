@@ -648,12 +648,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 728158875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e9114e7507bb6545b54175d162385e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 89560edb7a0694b4a83622ed4ce17367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _textPrefab: {fileID: 7250671784383162617, guid: ebb19491c198a764f898545b474812a9, type: 3}
   _criticalTextPrefab: {fileID: 5841908282360823402, guid: 14932a4c1e378f04eb901ca4b9d2dfcf, type: 3}
+  _coloredTextPrefabs:
+  - {fileID: 1811106266952213672, guid: b0108733548ae174c9fb896b946faf48, type: 3}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
+  _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
 --- !u!114 &728158877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45246d4db93b6344a819976d3bf10410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerExp: {fileID: 11400000, guid: 933411ba2a15add4aba40546a0e8c50f, type: 2}
   UpgradableItemList:
   - {fileID: 11400000, guid: dad95c69fd2530945871bdff43320ee2, type: 2}
   - {fileID: 11400000, guid: ced35ac08d9b62846ab0c382666c7928, type: 2}

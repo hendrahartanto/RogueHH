@@ -19,15 +19,23 @@ public class DungeonGenerator : MonoBehaviour
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+  [SerializeField] private VoidEventChannelSO _setDungeonConfigEvent = default;
 
   private void OnEnable()
   {
     _onSceneReady.OnEventRaised += Generate;
+    _setDungeonConfigEvent.OnEventRaised += SetDungeonConfig;
   }
 
   private void OnDisable()
   {
     _onSceneReady.OnEventRaised -= Generate;
+    _setDungeonConfigEvent.OnEventRaised -= SetDungeonConfig;
+  }
+
+  private void SetDungeonConfig()
+  {
+
   }
 
   private void Generate()

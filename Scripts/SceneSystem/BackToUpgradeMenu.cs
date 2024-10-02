@@ -9,7 +9,6 @@ public class BackToUpgradeMenu : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private LoadEventChannelSO _loadLocation = default;
-  [SerializeField] private VoidEventChannelSO _resetPlayerLevelEvent = default;
 
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _backToUpgradeMenuEvent = default;
@@ -26,7 +25,6 @@ public class BackToUpgradeMenu : MonoBehaviour
 
   private void GoToUpgradeMenu()
   {
-    _resetPlayerLevelEvent.RaiseEvent();
     _loadLocation.RaiseEvent(_sceneToLoad, _showLoadingScreen);
   }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Exp", menuName = "Gameplay/Character/Exp")]
 public class ExpSO : ScriptableObject
 {
-  private int _expCap;
+  [SerializeField] private int _expCap;
   private int _currentExp;
 
   public int ExpCap => _expCap;

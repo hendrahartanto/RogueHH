@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0aadcea6a250724b82e6e7d5cfa97af, type: 3}
-  m_Name: WeakEnemyConfig
+  m_Name: HardEnemyConfig
   m_EditorClassIdentifier: 
-  MinInitialHealth: 10
-  MaxInitialHealth: 15
-  MinInitialAttackPoint: 3
-  MaxInitialAttackPoint: 5
-  MinInitialDeffendPoint: 3
-  MaxInitialDeffendPoint: 5
-  CriticalRate: 0.05
-  CriticalDamage: 1.5
-  WeaponType: 0
-  Level: 0
-  InitialExpCap: 0
-  MinExpGain: 2
-  MaxExpGain: 4
-  MinGoldGain: 3
-  MaxGoldGain: 5
+  MinInitialHealth: 30
+  MaxInitialHealth: 35
+  MinInitialAttackPoint: 15
+  MaxInitialAttackPoint: 20
+  MinInitialDeffendPoint: 15
+  MaxInitialDeffendPoint: 20
+  CriticalRate: 0.35
+  CriticalDamage: 2
+  WeaponType: 1
+  Level: 30
+  ExpCap: 0
+  MinExpGain: 10
+  MaxExpGain: 15
+  MinGoldGain: 15
+  MaxGoldGain: 20
   ExpGainScalingFactor: 1.1
   GoldGainScalingFactor: 1.05

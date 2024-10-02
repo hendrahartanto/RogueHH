@@ -20,3 +20,4 @@ MonoBehaviour:
   _upgradeValue: 10
   _type: 0
   _currentLevel: 0
+  _maxLevel: 45

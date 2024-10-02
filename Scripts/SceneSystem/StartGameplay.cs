@@ -9,6 +9,7 @@ public class StartGameplay : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private LoadEventChannelSO _loadLocationEvent = default;
+  [SerializeField] private VoidEventChannelSO _setDungeonConfigEvent = default;
 
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _startGameplayEvent = default;
@@ -25,6 +26,7 @@ public class StartGameplay : MonoBehaviour
 
   private void StartNewGame()
   {
+    _setDungeonConfigEvent.RaiseEvent();
     _loadLocationEvent.RaiseEvent(_sceneToLoad, _showLoadingScreen);
   }
 }

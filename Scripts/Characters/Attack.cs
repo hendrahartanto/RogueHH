@@ -24,6 +24,7 @@ public class Attack : MonoBehaviour
   private void Awake()
   {
     SetupStats();
+    SetWeaponType();
   }
 
   private void OnEnable()
@@ -41,7 +42,7 @@ public class Attack : MonoBehaviour
   public void SetupStats()
   {
     //TODO: total attack = base attack + weapon damage
-    _attackPoint = (int)(_characterConfigSO.GetInitialAttackPoint() * (1 + 0.12 * _characterConfigSO.Level));
+    _attackPoint = _characterConfigSO.GetInitialAttackPoint();
 
     _criticalRate = _characterConfigSO.CriticalRate;
     _criticalDamage = _characterConfigSO.CriticalDamage;
@@ -116,5 +117,10 @@ public class Attack : MonoBehaviour
   private void HideSword()
   {
     _swordObject?.SetActive(false);
+  }
+
+  private void SetWeaponType()
+  {
+    GetComponent<Animator>().SetInteger("WeaponType", _characterConfigSO.WeaponType);
   }
 }

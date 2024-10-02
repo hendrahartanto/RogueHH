@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0d0893c16fdd944ad6c21673842e20, type: 3}
-  m_Name: DungeonSample
+  m_Script: {fileID: 11500000, guid: 243bfc1b62d550a4e83798361e386e9e, type: 3}
+  m_Name: TextPopupEvent
   m_EditorClassIdentifier: 
-  Size: {x: 45, y: 45}
-  RoomCount: 12
-  Level: 30
