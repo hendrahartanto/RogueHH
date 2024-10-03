@@ -15,4 +15,4 @@ MonoBehaviour:
   Size: {x: 45, y: 45}
   RoomCount: 12
   CurrentLevel: 0
-  MaxLevelReached: 0
+  MaxLevelReached: 29

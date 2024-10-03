@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinInitialHealth: 30
   MaxInitialHealth: 35
-  MinInitialAttackPoint: 15
-  MaxInitialAttackPoint: 20
-  MinInitialDeffendPoint: 15
-  MaxInitialDeffendPoint: 20
+  MinInitialAttackPoint: 12
+  MaxInitialAttackPoint: 17
+  MinInitialDeffendPoint: 12
+  MaxInitialDeffendPoint: 17
   CriticalRate: 0.35
   CriticalDamage: 2
   WeaponType: 1
@@ -28,4 +28,4 @@ MonoBehaviour:
   MinGoldGain: 15
   MaxGoldGain: 20
   ExpGainScalingFactor: 1.1
-  GoldGainScalingFactor: 1.05
+  GoldGainScalingFactor: 1.1

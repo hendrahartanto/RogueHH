@@ -72,8 +72,8 @@ public class LevelingSystem : MonoBehaviour
       _characterConfigSO.Level++;
 
       _playerLevelUpEvent.RaiseEvent();
-    }
 
-    SetupStats(remainingExp);
+      SetupStats(remainingExp);
+    }
   }
 }

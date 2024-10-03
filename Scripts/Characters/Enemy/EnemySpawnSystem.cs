@@ -112,6 +112,8 @@ public class EnemySpawnSystem : MonoBehaviour
 
       GameObject enemyObject = spawnLocation.gameObject;
 
+      SetEnemeyLabel(enemyObject, type);
+
       //assign unique helathevent chanel to each enemy
       IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
       IntEventChanelSO updateHealthUIEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
@@ -133,6 +135,13 @@ public class EnemySpawnSystem : MonoBehaviour
       randomRoom.EnemyCount++;
       currEnemyCount++;
     }
+  }
+
+  private void SetEnemeyLabel(GameObject enemy, int type)
+  {
+    Enemy enemyComp = enemy.GetComponent<Enemy>();
+    enemyComp.EnemyLabel.SetText(RandomInitial.GetRandomInitial());
+    enemyComp.EnemyLabel.color = RandomInitial.GetRarityColor(type);
   }
 
   private void SpawnEnemy()

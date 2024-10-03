@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour, ITurnComponent
   public bool IsMoving = false;
   public float MovementProgress = 0f;
   [SerializeField] private GridNodeSO _gridNode = default;
+  public TextMeshProUGUI EnemyLabel = default;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
@@ -21,7 +23,6 @@ public class Enemy : MonoBehaviour, ITurnComponent
 
   private IEnumerator MoveToTarget()
   {
-
     Node target = PathStorage.paths[0];
 
     Vector3 startPosition = transform.position;

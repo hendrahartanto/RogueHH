@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0476072dfee7593418e82343bbc31c33, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  CurrentGameState: 0
+  CurrentGameState: 3
   IsTurnCycling: 0

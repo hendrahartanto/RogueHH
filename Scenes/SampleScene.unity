@@ -849,7 +849,7 @@ MonoBehaviour:
   _grid: {fileID: 11400000, guid: 600b003d00db64341ab1fb192e1e7396, type: 2}
   MaxEnemyCount: 30
   MaxEnemiesPerRoomLimit: 3
-  MaxLevel: 30
+  MaxLevel: 29
   PossibleEnemyTypes:
   - {fileID: 11400000, guid: a91bbb108fb97534f94fce9e416b31c9, type: 2}
   - {fileID: 11400000, guid: 7ecb2a19f4abe9a49a20c687cebff3a5, type: 2}
