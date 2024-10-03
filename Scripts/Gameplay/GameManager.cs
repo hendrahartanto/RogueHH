@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    _goldSO.SetGold(100000);
     _gameState.SetGameState(GameState.Gameover);
     _gameState.SetIsTurnCycling(false);
   }

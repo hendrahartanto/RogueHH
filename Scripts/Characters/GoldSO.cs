@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gold", menuName = "Gameplay/Character/Gold")]
 public class GoldSO : ScriptableObject
 {
-  private int _gold;
+  [SerializeField] private int _gold;
   public int CurrentGold => _gold;
 
   public void SetGold(int value)

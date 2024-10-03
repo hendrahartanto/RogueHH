@@ -8,6 +8,9 @@ public class UILevelDropdown : MonoBehaviour
 
   private void Start()
   {
+    //clear untuk hapus reference dari gameplay sebelumnya
+    _dungeonSO.rooms.Clear();
+
     _dropdown = GetComponent<TMP_Dropdown>();
 
     PopulateDropdown();
