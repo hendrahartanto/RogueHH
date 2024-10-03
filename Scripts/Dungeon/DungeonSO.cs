@@ -8,5 +8,6 @@ public class DungeonSO : ScriptableObject
   public Vector2Int Size;
   public int RoomCount;
   public List<Room> rooms = new List<Room>();
-  public int Level = 0;
+  public int CurrentLevel = 0;
+  public int MaxLevelReached = 0;
 }

@@ -16,14 +16,16 @@ MonoBehaviour:
   MaxInitialHealth: 20
   MinInitialAttackPoint: 5
   MaxInitialAttackPoint: 5
-  MinInitialDeffendPoint: 2
-  MaxInitialDeffendPoint: 2
+  MinInitialDeffendPoint: 5
+  MaxInitialDeffendPoint: 5
   CriticalRate: 0.05
   CriticalDamage: 1.5
   WeaponType: 1
   Level: 0
-  InitialExpCap: 5
+  ExpCap: 0
   MinExpGain: 0
   MaxExpGain: 0
   MinGoldGain: 0
   MaxGoldGain: 0
+  ExpGainScalingFactor: 1.1
+  GoldGainScalingFactor: 1.1

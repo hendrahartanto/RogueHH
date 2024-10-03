@@ -46,9 +46,9 @@ public class TextPopupManager : MonoBehaviour
     StartCoroutine(AnimateTextPopup(instance, textMesh));
   }
 
-  private void SetupTextPopup(Vector3 pos, String text, TextColor color)
+  private void SetupTextPopup(Vector3 pos, String text, TextColor color, float yOffset)
   {
-    pos.y += 2f;
+    pos.y += 2f + yOffset;
 
     GameObject _textToInstantiate = _coloredTextPrefabs[(int)color];
 
@@ -94,5 +94,7 @@ public class TextPopupManager : MonoBehaviour
 
 public enum TextColor
 {
-  Yellow
+  Yellow,
+  Green,
+  Red
 }

@@ -655,6 +655,8 @@ MonoBehaviour:
   _criticalTextPrefab: {fileID: 5841908282360823402, guid: 14932a4c1e378f04eb901ca4b9d2dfcf, type: 3}
   _coloredTextPrefabs:
   - {fileID: 1811106266952213672, guid: b0108733548ae174c9fb896b946faf48, type: 3}
+  - {fileID: 1854996596508868176, guid: 266ad41c74131d84d9fdbfca679374f6, type: 3}
+  - {fileID: 1871967787066794829, guid: d2644aebe4b596142aab2da61867e253, type: 3}
   _damagePopUpEvent: {fileID: 11400000, guid: 28886fa88cc551f4c916443b9f74f607, type: 2}
   _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
 --- !u!114 &728158877

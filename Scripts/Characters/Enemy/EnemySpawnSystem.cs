@@ -71,7 +71,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
   private void SetupSpawnChances()
   {
-    int currentLevel = _dungeon.Level;
+    int currentLevel = _dungeon.CurrentLevel;
 
     EnemyTypeChances[0] = (int)Mathf.Lerp(BaseChances[0], FinalChances[0], (float)(currentLevel - 1) / (MaxLevel - 1));
     EnemyTypeChances[1] = (int)Mathf.Lerp(BaseChances[1], FinalChances[1], (float)(currentLevel - 1) / (MaxLevel - 1));
@@ -125,7 +125,7 @@ public class EnemySpawnSystem : MonoBehaviour
       DamagableComp.UpdateHealthUIEvent = updateHealthUIEvent;
 
       //set the level of the enemy
-      DamagableComp._characterConfigSO.Level = _dungeon.Level;
+      DamagableComp._characterConfigSO.Level = _dungeon.CurrentLevel;
 
       //instantiate object yang udah dikasih chanel unique
       Instantiate(enemyObject, spawnLocation.position, spawnLocation.rotation);
@@ -139,7 +139,7 @@ public class EnemySpawnSystem : MonoBehaviour
   {
     SetupSpawnChances();
 
-    int enemyCount = ScaleEnemyCount(_dungeon.Level);
+    int enemyCount = ScaleEnemyCount(_dungeon.CurrentLevel);
 
     int easyCount = enemyCount * EnemyTypeChances[0] / 100;
     int mediumCount = enemyCount * EnemyTypeChances[1] / 100;

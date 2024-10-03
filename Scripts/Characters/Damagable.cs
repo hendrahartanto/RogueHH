@@ -125,7 +125,7 @@ public class Damagable : MonoBehaviour
 
     //gain gold for player
     int goldGain = _characterConfigSO.GetGoldGain();
-    _gainGoldEvent.RaiseEvent(goldGain);
+    _gainGoldEvent?.RaiseEvent(goldGain);
 
     //remove enemy from queue
     _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());

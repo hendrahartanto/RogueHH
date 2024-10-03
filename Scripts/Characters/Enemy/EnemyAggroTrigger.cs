@@ -17,6 +17,7 @@ public class EnemyAggroTrigger : MonoBehaviour
   [SerializeField] private TurnComponentEventChanelSO _onEnemyAggro = default;
   [SerializeField] private TurnComponentEventChanelSO _removeEnemyFromQueueEvent = default;
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
+  [SerializeField] private TextPopupEventChannelSO _textPopupEvent = default;
 
   private void Awake()
   {
@@ -52,7 +53,10 @@ public class EnemyAggroTrigger : MonoBehaviour
     var enemyPosition = transform.position;
 
     if (IsLineOfSightClear(playerPosition, enemyPosition))
+    {
+      _textPopupEvent.RaiseEvent(transform.position, "!", TextColor.Red);
       StartCoroutine(RotateTowardTarget(_currentPlayerPosition.Value));
+    }
     else
       _onTurnFinished.RaiseEvent();
   }
