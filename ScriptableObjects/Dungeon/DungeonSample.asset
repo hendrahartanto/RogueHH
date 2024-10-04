@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: {x: 45, y: 45}
   RoomCount: 12
-  CurrentLevel: 0
+  CurrentLevel: 29
   MaxLevelReached: 29

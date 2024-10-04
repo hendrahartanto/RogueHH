@@ -53,6 +53,8 @@ public class SceneLoader : MonoBehaviour
       _gameplayManagerLoadingOpHandle = _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
       _gameplayManagerLoadingOpHandle.Completed += OnGameplaySceneReady;
     }
+
+    _onSceneReady.RaiseEvent();
   }
 
   private void LoadLoaction(SceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)

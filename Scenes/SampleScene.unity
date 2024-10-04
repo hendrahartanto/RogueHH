@@ -600,6 +600,7 @@ MonoBehaviour:
     m_AssetGUID: 8a0cbd49bca99564db607574da7e2485
     m_SubObjectName: 
     m_SubObjectType: 
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
 --- !u!1 &1068806761
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class ColdStartup : MonoBehaviour
   [SerializeField] private SceneSO _initialize = default;
   [SerializeField] private AssetReference _coldStartupChannel = default;
 
+  [Header("Broadcasting to")]
+  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+
   private bool isColdStartup = false;
 
   private void Awake()
@@ -33,6 +36,10 @@ public class ColdStartup : MonoBehaviour
     if (_currentScene != null)
     {
       instance.Result.RaiseEvent(_currentScene);
+    }
+    else
+    {
+      _onSceneReady.RaiseEvent();
     }
   }
 }
