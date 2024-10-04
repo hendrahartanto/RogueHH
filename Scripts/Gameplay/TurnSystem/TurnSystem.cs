@@ -10,8 +10,8 @@ public class TurnSystem : MonoBehaviour
   [SerializeField] private GameStateSO _gameState = default;
 
   [Header("Broadcasting to")]
+  [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
   [SerializeField] private BoolEventChannelSO _isTurnCyclingSetActiveEvent = default;
-
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
@@ -57,7 +57,7 @@ public class TurnSystem : MonoBehaviour
     QueueItems.Remove(turnComponent);
 
     if (QueueItems.Count <= 0)
-      _gameState.SetGameState(GameState.Regular);
+      _changeGameStateEvent.RaiseEvent(GameState.Regular);
   }
 
   private void ExecuteTurnCycle()

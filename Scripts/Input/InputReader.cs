@@ -15,7 +15,6 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
-  [SerializeField] private VoidEventChannelSO _disableAllInputEvent = default;
 
   private void OnEnable()
   {
@@ -28,13 +27,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
     }
 
     _enableGameplayInputEvent.OnEventRaised += EnableGameplayInput;
-    _disableAllInputEvent.OnEventRaised += DisableAllInput;
   }
 
   private void OnDisable()
   {
     _enableGameplayInputEvent.OnEventRaised -= EnableGameplayInput;
-    _disableAllInputEvent.OnEventRaised -= DisableAllInput;
   }
 
   public void OnMouseClick(InputAction.CallbackContext context)

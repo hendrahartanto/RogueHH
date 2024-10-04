@@ -5,10 +5,11 @@ public class GameManager : MonoBehaviour
 {
   [SerializeField] private GameStateSO _gameState = default;
   [SerializeField] private GoldSO _goldSO = default;
+  [SerializeField] private InputReader _inputReader = default;
 
   [Header("Broadcasting to")]
   [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
-  [SerializeField] private VoidEventChannelSO _disableAllInputEvent = default;
+  [SerializeField] private VoidEventChannelSO _playStopBattleMusicEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
@@ -45,14 +46,29 @@ public class GameManager : MonoBehaviour
 
   private void SetGameState(GameState newGameState)
   {
+    if (newGameState == GameState.Combat)
+    {
+      if (_gameState.CurrentGameState == GameState.Combat)
+        return;
+
+      _playStopBattleMusicEvent.RaiseEvent();
+    }
+
+    if (newGameState == GameState.Regular && _gameState.CurrentGameState == GameState.Combat)
+    {
+      _playStopBattleMusicEvent.RaiseEvent();
+    }
+
+    if (newGameState == GameState.Alert && _gameState.CurrentGameState == GameState.Alert)
+      return;
+
     if (newGameState == GameState.Gameover)
     {
-      _disableAllInputEvent.RaiseEvent();
+      _inputReader.DisableAllInput();
       _gameState.SetIsTurnCycling(false);
     }
 
     _gameState.SetGameState(newGameState);
-
   }
 
   private void SetIsTurnCycling(bool isTurnCycling)

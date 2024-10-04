@@ -43,7 +43,6 @@ public class AudioManager : MonoBehaviour
       if (_musicSoundEmitter.GetClip() == songToPlay)
         return AudioCueKey.Invalid;
 
-      //Music is already playing, need to fade it out
       startTime = _musicSoundEmitter.FadeMusicOut(fadeDuration);
     }
 
@@ -51,7 +50,7 @@ public class AudioManager : MonoBehaviour
     _musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 1f, startTime);
     _musicSoundEmitter.OnSoundFinishedPlaying += StopMusicEmitter;
 
-    return AudioCueKey.Invalid; //No need to return a valid key for music
+    return AudioCueKey.Invalid;
   }
 
   private bool StopMusic(AudioCueKey key)

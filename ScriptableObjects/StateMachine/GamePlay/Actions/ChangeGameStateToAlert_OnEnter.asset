@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bb0b09ff806424f9d7f2354bd58462, type: 3}
   m_Name: ChangeGameStateToAlert_OnEnter
   m_EditorClassIdentifier: 
-  GameState: {fileID: 11400000, guid: 6eb331a64a7c99a4b8fce1786ba658c1, type: 2}
   NewGameState: 1
   WhenToRun: 0
-  InputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
+  ChangeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}

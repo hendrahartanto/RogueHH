@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
-  [SerializeField] private AudioCueEventChannelSO _musicEvent = default;
   [SerializeField] private SceneSO _thisSceneSO = default;
   [SerializeField] private AudioConfigSO _audioConfig = default;
+
+  [Header("Listening on")]
+  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+
+  [Header("Broadcasting to")]
+  [SerializeField] private AudioCueEventChannelSO _musicEvent = default;
 
   private void OnEnable()
   {

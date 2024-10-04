@@ -166,8 +166,7 @@ public class SceneLoader : MonoBehaviour
 
     _setGameplayCanvasActiveEvent.RaiseEvent(_fromLocation);
 
-    if (_fromLocation)
-      _onSceneReady.RaiseEvent();
+    _onSceneReady.RaiseEvent();
 
     _fadeEvent.FadeOut(_fadeDuration);
 

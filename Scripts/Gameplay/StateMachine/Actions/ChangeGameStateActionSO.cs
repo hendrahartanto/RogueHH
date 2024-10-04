@@ -5,42 +5,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ChangeGameStateAction", menuName = "StateMachine/Actions/Gameplay/ChangeGameState")]
 public class ChangeGameStateActionSO : StateActionSO
 {
-  public GameStateSO GameState = default;
   public GameState NewGameState = default;
   public SpecificMoment WhenToRun = default;
-  public InputReader InputReader = default;
-  protected override StateAction CreateAction() => new ChangeGameStateAction(GameState, NewGameState, WhenToRun, InputReader);
+  public GameStateEventChanelSO ChangeGameStateEvent = default;
+
+  protected override StateAction CreateAction() => new ChangeGameStateAction(NewGameState, WhenToRun, ChangeGameStateEvent);
 }
 
 public class ChangeGameStateAction : StateAction
 {
   private GameState _newGameState = default;
-  private GameStateSO _gameState = default;
   private SpecificMoment _whenToRun = default;
-  private InputReader _inputReader = default;
+  private GameStateEventChanelSO _changeGameStateEvent = default;
 
-  public ChangeGameStateAction(GameStateSO gameState, GameState newGameState, SpecificMoment whenToRun, InputReader inputReader)
+  public ChangeGameStateAction(GameState newGameState, SpecificMoment whenToRun, GameStateEventChanelSO changeGameStateEvent)
   {
     _newGameState = newGameState;
-    _gameState = gameState;
     _whenToRun = whenToRun;
-    _inputReader = inputReader;
+    _changeGameStateEvent = changeGameStateEvent;
   }
 
   private void ChangeState()
   {
-    if (_newGameState == GameState.Combat && _gameState.CurrentGameState == GameState.Combat)
-      return;
-
-    if (_newGameState == GameState.Alert && _gameState.CurrentGameState == GameState.Alert)
-      return;
-
-    if (_newGameState == GameState.Gameover)
-    {
-      _inputReader.DisableAllInput();
-    }
-
-    _gameState.SetGameState(_newGameState);
+    _changeGameStateEvent.RaiseEvent(_newGameState);
   }
 
   public override void OnStateEnter()

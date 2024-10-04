@@ -6115,6 +6115,7 @@ MonoBehaviour:
   _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
+  _playBattleThemeMusicEvent: {fileID: 11400000, guid: 6df03106ad40ab241868998164811972, type: 2}
 --- !u!135 &2157708130037566431
 SphereCollider:
   m_ObjectHideFlags: 0

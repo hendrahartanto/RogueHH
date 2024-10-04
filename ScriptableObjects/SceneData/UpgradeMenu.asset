@@ -17,3 +17,4 @@ MonoBehaviour:
     m_AssetGUID: 1842835f3fe8de34aac57128c00ab7b6
     m_SubObjectName: 
     m_SubObjectType: 
+  musicTrack: {fileID: 11400000, guid: 6756c8ec4d4648a418975207c3f47143, type: 2}
