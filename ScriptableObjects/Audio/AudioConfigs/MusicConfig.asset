@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutputAudioMixerGroup: {fileID: -1090982146754775337, guid: 3a877cc92efd5854899d01f2fa964e14, type: 2}
   Mute: 0
-  Volume: 1
+  Volume: 0.3
   Pitch: 1
   PanStereo: 0
   ReverbZoneMix: 1

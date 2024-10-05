@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Dead
   m_EditorClassIdentifier: 
   _actions:
+  - {fileID: 11400000, guid: c7ec631c72f248c489c6f4e0181e9028, type: 2}
   - {fileID: 11400000, guid: cc4909ac9dfd06e4680918006bc09b63, type: 2}

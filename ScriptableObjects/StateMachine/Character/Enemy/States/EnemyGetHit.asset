@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: EnemyGetHit
   m_EditorClassIdentifier: 
   _actions:
+  - {fileID: 11400000, guid: 79cd41d04b6d15f47b2149c1137d4cd1, type: 2}
   - {fileID: 11400000, guid: 5977d7b49d30c31468ce00ab57be1fd7, type: 2}

@@ -781,7 +781,28 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.42142862
+      - time: 0.30348256
+        functionName: ShowTrail
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.33333334
+        functionName: PlaySwordSwing
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4038461
+        functionName: PlaySwordSlash
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4182235
         functionName: TriggerAttackEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -790,6 +811,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.44230768
         functionName: StopAttacking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5168868
+        functionName: HideTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

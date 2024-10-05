@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65c65a146e33a44e8af144ad50dd707, type: 3}
+  m_Name: CriticalHit
+  m_EditorClassIdentifier: 
+  looping: 0
+  _audioClipGroups:
+  - sequenceMode: 0
+    audioClips:
+    - {fileID: 8300000, guid: 2780683fe51884a4aba3de5f8b2c1714, type: 3}
+    - {fileID: 8300000, guid: 81f4ca0392c8fd445b7e4f7cbe618713, type: 3}
+    - {fileID: 8300000, guid: f80dd48a058aed04abd93441e720c9f7, type: 3}

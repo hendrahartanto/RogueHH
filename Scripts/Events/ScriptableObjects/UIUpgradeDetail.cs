@@ -22,6 +22,7 @@ public class UIUpgradeDetail : MonoBehaviour
   [SerializeField] private IncreaseGlobalPriceEventChannel _increaseGlobalPriceEventBroadcast = default;
   [SerializeField] private UpgradeStatEventChannelSO _upgradeItemEvent = default;
   [SerializeField] private IntEventChanelSO _updateGoldIndicatorEvent = default;
+  [SerializeField] private PlaySFXEventChannelSO _playSFXEvent = default;
 
 
   [Header("Listening to")]
@@ -54,6 +55,8 @@ public class UIUpgradeDetail : MonoBehaviour
     _updateGoldIndicatorEvent.RaiseEvent(_goldSO.CurrentGold);
 
     UpdateUI();
+
+    PlaySFXPurchase();
   }
 
   private bool ValidateAndUpdateGold()
@@ -133,5 +136,10 @@ public class UIUpgradeDetail : MonoBehaviour
     {
       Description.SetText(CurrentSelectedItem.Description + "\n\nCurrent: " + CurrentSelectedItem.PlayerStats.CriticalDamage * 100 + "% dmg\nUpgrade: +" + CurrentSelectedItem.UpgradeValue * 100 + "% dmg\n");
     }
+  }
+
+  private void PlaySFXPurchase()
+  {
+    _playSFXEvent.RaiseEvent(SFXName.Purchase, transform);
   }
 }

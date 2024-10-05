@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &118366674
 MonoBehaviour:
@@ -220,6 +220,7 @@ MonoBehaviour:
   _pool: {fileID: 11400000, guid: 31e018d67884cce4e8dbcb3c95732140, type: 2}
   _initialSize: 10
   _musicEventChannel: {fileID: 11400000, guid: f00aa7e9ed2d2ff4392199e12b78b727, type: 2}
+  _sfxEventChannel: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}
 --- !u!1 &554082951
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +425,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1108641458
 MonoBehaviour:
@@ -440,3 +441,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fadeEvent: {fileID: 11400000, guid: 401128ea7644fe441865b6ec3cb01fc2, type: 2}
   _imageComponent: {fileID: 554082953}
+--- !u!1 &1360787110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360787113}
+  - component: {fileID: 1360787112}
+  - component: {fileID: 1360787111}
+  m_Layer: 0
+  m_Name: RuntimeAudioPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1360787111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360787110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f73bfa8a026a943bbc162aa12b4c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXList:
+  - SFXKey: 0
+    SFXValue: {fileID: 11400000, guid: 78399c0f3401f7b498a3bcb5926b482a, type: 2}
+  - SFXKey: 1
+    SFXValue: {fileID: 11400000, guid: 8c3e50a91c36c7d498f17da95212b1e7, type: 2}
+  - SFXKey: 2
+    SFXValue: {fileID: 11400000, guid: 8948b142cb0d72f4485c3a668c4f02f8, type: 2}
+  - SFXKey: 3
+    SFXValue: {fileID: 11400000, guid: 80f6163189725d54bb3fb0152613bd8f, type: 2}
+  SFXConfig: {fileID: 11400000, guid: 335b949962521b841b89062845970987, type: 2}
+  _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
+  _sfxEvent: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}
+--- !u!114 &1360787112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360787110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5c182e41dbea741980f298863fa345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleThemeMusic: {fileID: 11400000, guid: 3fc11ce5a7269ef4bb0c34a4b30439f1, type: 2}
+  MusicConfig: {fileID: 11400000, guid: b41514320fac2ca4dba0598a50da1b4f, type: 2}
+  DungeonScene: {fileID: 11400000, guid: 6483ef790febaa14ba9c322c555c70e4, type: 2}
+  _playStopBattleMusicEvent: {fileID: 11400000, guid: 6df03106ad40ab241868998164811972, type: 2}
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
+  _musicEvent: {fileID: 11400000, guid: f00aa7e9ed2d2ff4392199e12b78b727, type: 2}
+--- !u!4 &1360787113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360787110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 446.49072, y: 466.00314, z: 253.65451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

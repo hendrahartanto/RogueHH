@@ -2087,6 +2087,7 @@ Transform:
   - {fileID: 6573738522852604339}
   - {fileID: 6838943567837357635}
   - {fileID: 5405776142106996871}
+  - {fileID: 6451111712097969722}
   m_Father: {fileID: 5932172609785661500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4485,6 +4486,7 @@ GameObject:
   - component: {fileID: 1466996193185973644}
   - component: {fileID: 7006656950238368843}
   - component: {fileID: 4563817498264839816}
+  - component: {fileID: 7738877491547900253}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -4624,7 +4626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterConfigSO: {fileID: 0}
-  _swordObject: {fileID: 0}
+  _swordObject: {fileID: 5966463842061286528}
+  _trail: {fileID: 2437718477714828773}
   IsAttacking: 0
   _cameraShakeEvent: {fileID: 11400000, guid: a3715f4e9fbc6e74792e6aa7c372d940, type: 2}
   _playerLevelUpEvent: {fileID: 0}
@@ -4644,6 +4647,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7738877491547900253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484292930280265082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3e22f6b2e7a7248bf9800a873a1abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxEventChannel: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 335b949962521b841b89062845970987, type: 2}
+  IsCriticalHit: 0
+  _swordSwing: {fileID: 11400000, guid: df60159713f674d4fafcbcc5136cd180, type: 2}
+  _swordSlash: {fileID: 11400000, guid: c976052a1baee164598d17442c18ffda, type: 2}
+  _punch: {fileID: 11400000, guid: d6065696683d90f43a48e76c156eb2e2, type: 2}
+  _criticalHit: {fileID: 11400000, guid: c14d8d317d140c14b85996af9a4227f8, type: 2}
+  _footStep: {fileID: 11400000, guid: 0117c2e2263c7494185493f420f2eba5, type: 2}
 --- !u!1 &6576404156422636036
 GameObject:
   m_ObjectHideFlags: 0
@@ -6115,7 +6138,8 @@ MonoBehaviour:
   _removeEnemyFromQueueEvent: {fileID: 11400000, guid: efd2abd6c99dd984eaad223195dde2b5, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
   _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
-  _playBattleThemeMusicEvent: {fileID: 11400000, guid: 6df03106ad40ab241868998164811972, type: 2}
+  _changeGameStateEvent: {fileID: 11400000, guid: 3ae588e7a061ef645bb8719fbc698de6, type: 2}
+  _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
 --- !u!135 &2157708130037566431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6557,3 +6581,79 @@ Transform:
   m_Father: {fileID: 634527177191938674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3033466465383203352
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7800428923596492830}
+    m_Modifications:
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.108
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17364816
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706631177219325592, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_Name
+      value: sword_common
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706631177219325592, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+--- !u!1 &2437718477714828773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 850491655552299005, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+  m_PrefabInstance: {fileID: 3033466465383203352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6451111712097969722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8331652995268731938, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+  m_PrefabInstance: {fileID: 3033466465383203352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5966463842061286528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8706631177219325592, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+  m_PrefabInstance: {fileID: 3033466465383203352}
+  m_PrefabAsset: {fileID: 0}

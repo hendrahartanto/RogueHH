@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
       _playStopBattleMusicEvent.RaiseEvent();
     }
 
-    if (newGameState == GameState.Alert && _gameState.CurrentGameState == GameState.Alert)
+    if (newGameState == GameState.Alert && (_gameState.CurrentGameState == GameState.Alert || _gameState.CurrentGameState == GameState.Combat))
       return;
 
     if (newGameState == GameState.Gameover)

@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 7094386807672460473}
   - component: {fileID: 7094386807672460478}
   - component: {fileID: 7751951830816857222}
+  - component: {fileID: 7877182188748290068}
   m_Layer: 5
   m_Name: UpgradableItem
   m_TagString: Untagged
@@ -324,6 +325,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7877182188748290068}
+        m_TargetAssemblyTypeName: UIButtonBase, Assembly-CSharp
+        m_MethodName: PlaySFXMenuClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7094386807672460478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +358,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 7877182188748290068}
+          m_TargetAssemblyTypeName: UIButtonBase, Assembly-CSharp
+          m_MethodName: PlaySFXMenuSelect
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -419,6 +444,19 @@ MonoBehaviour:
   _selectUpgradeItemEvent: {fileID: 11400000, guid: 3ad95a56e348b904e964ff851b7de093, type: 2}
   _increaseGlobalPriceEventListen: {fileID: 11400000, guid: 2bd1c7d38d577e04abdc5609379d58d6, type: 2}
   _upgradeItemEvent: {fileID: 11400000, guid: 6bbdf41c98b97fa47afa6ac9f4f2c218, type: 2}
+--- !u!114 &7877182188748290068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094386807672460476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b038f2597e2f8d044858a24509d389fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
 --- !u!1 &7094386808333338183
 GameObject:
   m_ObjectHideFlags: 0

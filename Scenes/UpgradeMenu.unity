@@ -897,30 +897,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1547030268}
-    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1547030268}
+    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: StartGameButtonOnClick
       objectReference: {fileID: 0}
     - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIUpgradeMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8036276455089130300, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8036276455089130302, guid: e0ba6827f4faa2141ba24414104dfebf, type: 3}
@@ -1926,6 +1926,7 @@ MonoBehaviour:
   _increaseGlobalPriceEventBroadcast: {fileID: 11400000, guid: 2bd1c7d38d577e04abdc5609379d58d6, type: 2}
   _upgradeItemEvent: {fileID: 11400000, guid: 6bbdf41c98b97fa47afa6ac9f4f2c218, type: 2}
   _updateGoldIndicatorEvent: {fileID: 11400000, guid: 56cd233ce3bffe541aec1f58127777b3, type: 2}
+  _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
   _selectUpgradeItemEvent: {fileID: 11400000, guid: 3ad95a56e348b904e964ff851b7de093, type: 2}
 --- !u!224 &1773943258 stripped
 RectTransform:
@@ -2433,35 +2434,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1563583664}
-    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1563583664}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: UpgradeButtonClicked
       objectReference: {fileID: 0}
     - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIUpgradeDetail, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 975313971505960573, guid: 65233bd75ec3cd5489ba4760e1c2fa77, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

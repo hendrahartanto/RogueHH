@@ -8,12 +8,15 @@ public class Attack : MonoBehaviour
 {
   [SerializeField] private CharacterConfigSO _characterConfigSO = default;
   [SerializeField] private GameObject _swordObject = default;
+  [SerializeField] private GameObject _trail = default;
+  private HumanAudio _humanAudio = default;
   private int _attackPoint = default;
   private float _criticalRate = default;
   private float _criticalDamage = default;
   private int _weaponAttackPoint = default;
   private Damagable _currentTarget;
   public bool IsAttacking = false;
+  private bool _isCriticalHit = false;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _cameraShakeEvent = default;
@@ -23,6 +26,7 @@ public class Attack : MonoBehaviour
 
   private void Awake()
   {
+    _humanAudio = GetComponent<HumanAudio>();
     SetupStats();
     SetWeaponType();
   }
@@ -56,6 +60,8 @@ public class Attack : MonoBehaviour
     StartCoroutine(RotateTowardsTarget(target.transform));
     IsAttacking = true;
     _currentTarget = target;
+    if ((_isCriticalHit = IsCriticalHit()) == true)
+      _humanAudio.IsCriticalHit = true;
   }
 
   private IEnumerator RotateTowardsTarget(Transform targetTransform)
@@ -98,7 +104,7 @@ public class Attack : MonoBehaviour
 
       int effectiveDamage = Calculation.CalculateDamage(_attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
 
-      if (IsCriticalHit())
+      if (_isCriticalHit)
       {
         _cameraShakeEvent.RaiseEvent();
         critical = true;
@@ -122,5 +128,15 @@ public class Attack : MonoBehaviour
   private void SetWeaponType()
   {
     GetComponent<Animator>().SetInteger("WeaponType", _characterConfigSO.WeaponType);
+  }
+
+  private void ShowTrail()
+  {
+    _trail?.SetActive(true);
+  }
+
+  private void HideTrail()
+  {
+    _trail?.SetActive(false);
   }
 }

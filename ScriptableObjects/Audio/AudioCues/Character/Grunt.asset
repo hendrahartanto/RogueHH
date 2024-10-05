@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65c65a146e33a44e8af144ad50dd707, type: 3}
+  m_Name: Grunt
+  m_EditorClassIdentifier: 
+  looping: 0
+  _audioClipGroups:
+  - sequenceMode: 0
+    audioClips:
+    - {fileID: 8300000, guid: cca13e39cf4767a4ab0b9389794ba0ef, type: 3}
+    - {fileID: 8300000, guid: 59c95449d63e5c44fbc7016687a55b71, type: 3}
+    - {fileID: 8300000, guid: 04d2081cb872d8f4893e2dd4aa2cf0bd, type: 3}
+    - {fileID: 8300000, guid: 8f02bb7f68851224bb06737dc8ecd786, type: 3}
