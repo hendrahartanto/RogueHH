@@ -11,6 +11,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
   [Header("Configs")]
   private int _baseEnemyCount;
+  private int _actualEnemyCount;
   public int MaxEnemyCount;
   public int MaxEnemiesPerRoomLimit;
   public int MaxLevel;
@@ -135,6 +136,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
       randomRoom.EnemyCount++;
       currEnemyCount++;
+      _actualEnemyCount++;
     }
   }
 
@@ -147,12 +149,11 @@ public class EnemySpawnSystem : MonoBehaviour
 
   private void SpawnEnemy()
   {
+    _actualEnemyCount = 0;
+
     SetupSpawnChances();
 
     int enemyCount = ScaleEnemyCount(_dungeon.CurrentLevel);
-
-    //set enemy ui indicator
-    _updateEnemyIndicatorUIEvent.RaiseEvent(enemyCount);
 
     int easyCount = enemyCount * EnemyTypeChances[0] / 100;
     int mediumCount = enemyCount * EnemyTypeChances[1] / 100;
@@ -163,5 +164,8 @@ public class EnemySpawnSystem : MonoBehaviour
     SpawnEnemyPerType(easyCount, 0, maxEnemyPerRoom);
     SpawnEnemyPerType(mediumCount, 1, maxEnemyPerRoom);
     SpawnEnemyPerType(hardCount, 2, maxEnemyPerRoom);
+
+    //set enemy ui indicator
+    _updateEnemyIndicatorUIEvent.RaiseEvent(_actualEnemyCount);
   }
 }

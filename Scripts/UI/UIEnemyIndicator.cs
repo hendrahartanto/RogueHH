@@ -26,13 +26,13 @@ public class UIEnemyIndicator : MonoBehaviour
 
   private void SetText(int currentEnemyCount)
   {
-    _text.SetText(currentEnemyCount.ToString() + " Enemy left");
+    _text.SetText(" Enemy left: " + currentEnemyCount.ToString());
     _currentEnemyCount = currentEnemyCount;
   }
 
   private void DecreaseEnemyCount()
   {
     _currentEnemyCount--;
-    _text.SetText(_currentEnemyCount.ToString() + " Enemy left");
+    _text.SetText(" Enemy left: " + _currentEnemyCount.ToString());
   }
 }
