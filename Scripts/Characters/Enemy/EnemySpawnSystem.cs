@@ -25,6 +25,7 @@ public class EnemySpawnSystem : MonoBehaviour
   [Header("Broadcasting to")]
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
+  [SerializeField] private IntEventChanelSO _updateEnemyIndicatorUIEvent = default;
 
   private void Awake()
   {
@@ -149,6 +150,9 @@ public class EnemySpawnSystem : MonoBehaviour
     SetupSpawnChances();
 
     int enemyCount = ScaleEnemyCount(_dungeon.CurrentLevel);
+
+    //set enemy ui indicator
+    _updateEnemyIndicatorUIEvent.RaiseEvent(enemyCount);
 
     int easyCount = enemyCount * EnemyTypeChances[0] / 100;
     int mediumCount = enemyCount * EnemyTypeChances[1] / 100;

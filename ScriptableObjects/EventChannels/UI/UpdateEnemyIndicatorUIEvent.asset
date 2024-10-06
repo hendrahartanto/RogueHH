@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0476072dfee7593418e82343bbc31c33, type: 3}
-  m_Name: GameState
+  m_Script: {fileID: 11500000, guid: 177970564a74a1b439f35829ccea3534, type: 3}
+  m_Name: UpdateEnemyIndicatorUIEvent
   m_EditorClassIdentifier: 
-  CurrentGameState: 0
-  IsTurnCycling: 0

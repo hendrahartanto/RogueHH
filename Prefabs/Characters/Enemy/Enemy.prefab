@@ -4610,6 +4610,7 @@ MonoBehaviour:
   _raycastSetActiveEvent: {fileID: 0}
   _changeGameStateEvent: {fileID: 0}
   _removeAllTurnQueueEvent: {fileID: 0}
+  _decreaseEnemyCountEvent: {fileID: 11400000, guid: 7fe1baf88b5ae80438042519ddc66ef6, type: 2}
   SetMaxHealthUIEvent: {fileID: 0}
   UpdateHealthUIEvent: {fileID: 0}
   _playerLevelUpEvent: {fileID: 0}

@@ -5,6 +5,7 @@ public class UILevelDropdown : MonoBehaviour
 {
   private TMP_Dropdown _dropdown = default;
   [SerializeField] private DungeonSO _dungeonSO = default;
+  [SerializeField] private IntEventChanelSO _updateFloorIndicatorUIEvent = default;
 
   private void Start()
   {
@@ -37,5 +38,6 @@ public class UILevelDropdown : MonoBehaviour
   public void ChangeCurrentDungeonFloor(int index)
   {
     _dungeonSO.CurrentLevel = index - 1;
+    _updateFloorIndicatorUIEvent.RaiseEvent(_dungeonSO.CurrentLevel);
   }
 }

@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 440b0e5719a0cd24185c28acaa77bf8b, type: 2}
   _gameState: {fileID: 0}
+  _changeGameStateEvent: {fileID: 0}
   _isTurnCyclingSetActiveEvent: {fileID: 0}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _onTurnFinished: {fileID: 11400000, guid: a363a197113727649b235ef5918df650, type: 2}
@@ -922,3 +923,4 @@ MonoBehaviour:
   _onDungeonGenerated: {fileID: 11400000, guid: 14b3008989823024a8b0211f519b99a1, type: 2}
   _changeCellTypeEvent: {fileID: 11400000, guid: f9f4459186c780e449553006c7c0fea9, type: 2}
   _changeNodeAccessibleEvent: {fileID: 11400000, guid: c800ee0a70f0a51449dd41da1d8b99da, type: 2}
+  _updateEnemyIndicatorUIEvent: {fileID: 11400000, guid: 4e2ef5a6879e2024987de7e4a38db2ce, type: 2}

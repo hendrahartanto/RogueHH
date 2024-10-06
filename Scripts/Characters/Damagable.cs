@@ -28,6 +28,8 @@ public class Damagable : MonoBehaviour
   [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
   [SerializeField] private VoidEventChannelSO _removeAllTurnQueueEvent = default;
+  [SerializeField] private VoidEventChannelSO _decreaseEnemyCountEvent = default;
+
   public IntEventChanelSO SetMaxHealthUIEvent = default;
   public IntEventChanelSO UpdateHealthUIEvent = default;
 
@@ -130,6 +132,9 @@ public class Damagable : MonoBehaviour
     //remove enemy from queue
     _removeEnemyFromQueueEvent?.RaiseEvent(GetComponent<Enemy>());
     _onTurnCycleExecuted.RaiseEvent();
+
+    //decrease enemy count
+    _decreaseEnemyCountEvent?.RaiseEvent();
   }
 
   private void OnPlayerDeath()

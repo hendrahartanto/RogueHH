@@ -1572,6 +1572,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5018144274538617338, guid: d3ac642d852f50248b4a7e933c5d7e08, type: 3}
+      propertyPath: _updateFloorIndicatorUIEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 980d1a48fe7ab4f43a18231d60ef0480, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3ac642d852f50248b4a7e933c5d7e08, type: 3}
 --- !u!224 &1431863413 stripped
