@@ -24,6 +24,19 @@ public class PlayerSpawnSystem : MonoBehaviour
     _playerTransformAnchor.Unset();
   }
 
+  //tambahin buffer agar enemy ga bisa spawn di area buffer ini
+  private void AddPlayerBuffer(int basePosX, int basePosZ)
+  {
+    int[] dirX = { 0, 1, -1, 0 };
+    int[] dirZ = { 1, 0, 0, -1 };
+
+    _grid[basePosX, basePosZ].cellTypes.Add(CellType.PlayerBuffer);
+
+    for (int i = 0; i < 4; i++)
+      _grid[basePosX + dirX[i], basePosZ + dirZ[i]]?.cellTypes.Add(CellType.PlayerBuffer);
+
+  }
+
   private void SpawnPlayer()
   {
     Vector2Int randomPosition;
@@ -43,6 +56,8 @@ public class PlayerSpawnSystem : MonoBehaviour
 
     spawnLocation.position = new Vector3(randomPosition.x * GridConfig.CellSize.x, 1.5f, randomPosition.y * GridConfig.CellSize.z) + GridConfig.Offset;
     spawnLocation.rotation = Quaternion.identity;
+
+    AddPlayerBuffer(randomPosition.x, randomPosition.y);
 
     GameObject playerInstance = Instantiate(_playerPrefab, spawnLocation.position, spawnLocation.rotation);
 

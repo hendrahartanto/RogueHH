@@ -440,5 +440,6 @@ public enum CellType
   Walkable,
   DecorationRestrict,
   Restricted,
-  Enemy
+  Enemy,
+  PlayerBuffer
 }

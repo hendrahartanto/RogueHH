@@ -98,7 +98,7 @@ public class EnemySpawnSystem : MonoBehaviour
           GlobalRandom.Next(randomRoom.area.zMin, randomRoom.area.zMax)
         );
 
-        if (_grid[randomPosition.x, randomPosition.y] != null && _grid[randomPosition.x, randomPosition.y].cellTypes.Contains(CellType.Walkable))
+        if (_grid[randomPosition.x, randomPosition.y] != null && _grid[randomPosition.x, randomPosition.y].cellTypes.Contains(CellType.Walkable) && !_grid[randomPosition.x, randomPosition.y].cellTypes.Contains(CellType.PlayerBuffer))
           break;
       }
 
