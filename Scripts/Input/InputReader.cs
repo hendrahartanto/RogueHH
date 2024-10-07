@@ -50,6 +50,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
 
   public void DisableAllInput()
   {
+    MouseClickEvent = null;
     MouseClickEvent = delegate { };
     _gameInput.Gameplay.Disable();
   }

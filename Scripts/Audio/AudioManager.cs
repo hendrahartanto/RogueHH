@@ -43,7 +43,6 @@ public class AudioManager : MonoBehaviour
 
   public AudioCueKey PlayAudioCue(AudioCueSO audioCue, AudioConfigSO settings, Vector3 position = default)
   {
-    Debug.Log("PLAY SFX");
     AudioClip[] clipsToPlay = audioCue.GetClips();
     SoundEmitter[] soundEmitterArray = new SoundEmitter[clipsToPlay.Length];
 

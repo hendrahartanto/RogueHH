@@ -25,7 +25,6 @@ public class MusicPlayer : MonoBehaviour
 
   private void PlayMusic()
   {
-    Debug.Log("Play musiic");
     _musicEvent.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
   }
 }

@@ -134,7 +134,6 @@ public class SoundEmitter : MonoBehaviour
 
   private void NotifyBeingDone()
   {
-    Debug.Log("Finished playing");
     OnSoundFinishedPlaying.Invoke(this);
   }
 }
