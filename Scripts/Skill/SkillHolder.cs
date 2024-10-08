@@ -10,11 +10,6 @@ public class SkillHolder : MonoBehaviour
   public List<SkillSO> Skills = new List<SkillSO>();
   public SkillSO SelectedSkill = default;
 
-  private void Awake()
-  {
-
-  }
-
   private void Start()
   {
     int index = 0;
@@ -29,6 +24,18 @@ public class SkillHolder : MonoBehaviour
       Skills.Add(skillInstance);
 
       index++;
+    }
+  }
+
+  //untuk destory instansi SO nya
+  private void OnDestroy()
+  {
+    foreach (SkillSO skill in Skills)
+    {
+      if (skill != null)
+      {
+        Destroy(skill);
+      }
     }
   }
 

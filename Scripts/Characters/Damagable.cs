@@ -60,6 +60,16 @@ public class Damagable : MonoBehaviour
       _playerLevelUpEvent.OnEventRaised -= SetupStats;
   }
 
+  private void OnDestroy()
+  {
+    if (gameObject.CompareTag("Enemy"))
+    {
+      Destroy(_currentHealth);
+      Destroy(SetMaxHealthUIEvent);
+      Destroy(UpdateHealthUIEvent);
+    }
+  }
+
   public void SetupStats()
   {
     int maxHealth = _characterConfigSO.GetInitialHealth();

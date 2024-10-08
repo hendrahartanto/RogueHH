@@ -27,13 +27,11 @@ public class UISkillManager : MonoBehaviour
   private void SetupSkillUI()
   {
     int index = 0;
-    foreach (SkillSO skillTempelate in SkillVault.UnlockedSkills)
+    foreach (SkillSO unlockedSkill in SkillVault.UnlockedSkills)
     {
-      SkillSO skillInstance = Instantiate(skillTempelate);
+      InsertSkill(unlockedSkill, index);
 
-      InsertSkill(skillInstance, index);
-
-      UpdateSKillCooldownUI(index, skillInstance.CurrentActiveTime);
+      UpdateSKillCooldownUI(index, unlockedSkill.CurrentActiveTime);
 
       index++;
     }
