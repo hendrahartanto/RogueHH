@@ -10,7 +10,10 @@ public class Attack : MonoBehaviour
   [SerializeField] private GameObject _swordObject = default;
   [SerializeField] private GameObject _trail = default;
   private HumanAudio _humanAudio = default;
-  private int _attackPoint = default;
+  public int _attackPoint = default;
+  public float SkillMultiplier = 0f;
+  public bool IsSkillActive = false;
+  public bool IsCastingSkill = false;
   private float _criticalRate = default;
   private float _criticalDamage = default;
   private int _weaponAttackPoint = default;
@@ -20,6 +23,9 @@ public class Attack : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _cameraShakeEvent = default;
+  [SerializeField] private VoidEventChannelSO _buffSkillActionEvent = default;
+  [SerializeField] private VoidEventChannelSO _followUpSkillActionEvent = default;
+  [SerializeField] private VoidEventChannelSO _activeSkillActionEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
@@ -58,8 +64,18 @@ public class Attack : MonoBehaviour
   public void AttacTarget(Damagable target)
   {
     StartCoroutine(RotateTowardsTarget(target.transform));
-    IsAttacking = true;
+
+    //trigger state and animation
+    if (IsSkillActive)
+    {
+      _activeSkillActionEvent?.RaiseEvent();
+      IsCastingSkill = true;
+    }
+    else
+      IsAttacking = true;
+
     _currentTarget = target;
+
     if ((_isCriticalHit = IsCriticalHit()) == true)
       _humanAudio.IsCriticalHit = true;
   }
@@ -96,13 +112,18 @@ public class Attack : MonoBehaviour
     IsAttacking = false;
   }
 
+  private void StopCastingSkill()
+  {
+    IsCastingSkill = false;
+  }
+
   private void TriggerAttackEvent()
   {
     if (_currentTarget != null)
     {
       bool critical = false;
 
-      int effectiveDamage = Calculation.CalculateDamage(_attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
+      int effectiveDamage = Calculation.CalculateDamage(IsSkillActive ? _attackPoint * SkillMultiplier : _attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
 
       if (_isCriticalHit)
       {
@@ -112,6 +133,9 @@ public class Attack : MonoBehaviour
       }
 
       _currentTarget.ReceiveAttack(transform, effectiveDamage, critical);
+
+      //jika ada followup action maka ketrigger
+      _followUpSkillActionEvent?.RaiseEvent();
     }
   }
 

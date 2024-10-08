@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
   [SerializeField] private GlobalMovementSpeedSO _movementSpeed;
   [SerializeField] private GameStateSO _gameState;
   [SerializeField] private CharacterConfigSO _playerConfigSO = default;
+  [SerializeField] private BoolEventChannelSO _setActiveIsTurnCycling = default;
   public PathStorageSO PathStorage = default;
   public bool IsInAlert = false;
   public bool IsInCombat = false;
@@ -101,5 +102,15 @@ public class Player : MonoBehaviour
     _stopMovingFlag = true;
   }
 
+  //called by animator event
+  private void ActiveTurnCycling()
+  {
+    _setActiveIsTurnCycling.RaiseEvent(true);
+  }
+
+  private void DeactiveTurnCycling()
+  {
+    _setActiveIsTurnCycling.RaiseEvent(false);
+  }
 
 }

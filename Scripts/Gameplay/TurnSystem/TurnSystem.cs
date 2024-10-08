@@ -89,7 +89,7 @@ public class TurnSystem : MonoBehaviour
 
   private void SetupGameInput()
   {
-    _inputReader.KeyboardSpaceEvent += ExecuteTurnCycle;
+    _inputReader.KeyboardSpaceEvent += _onTurnCycleExecuted.RaiseEvent;
   }
 
   private void RemoveAllQueue()

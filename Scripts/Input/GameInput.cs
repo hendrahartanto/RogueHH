@@ -33,6 +33,14 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Keyboard_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""29c454a6-320e-4291-9ca9-578d95fcf481"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""KeyboardSpace"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bb69a8d-1bad-49e0-8cf8-6b6659175aec"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Keyboard_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_MouseClick = m_Gameplay.FindAction("MouseClick", throwIfNotFound: true);
         m_Gameplay_KeyboardSpace = m_Gameplay.FindAction("KeyboardSpace", throwIfNotFound: true);
+        m_Gameplay_Keyboard_1 = m_Gameplay.FindAction("Keyboard_1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @GameInput : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_MouseClick;
     private readonly InputAction m_Gameplay_KeyboardSpace;
+    private readonly InputAction m_Gameplay_Keyboard_1;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
         public GameplayActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseClick => m_Wrapper.m_Gameplay_MouseClick;
         public InputAction @KeyboardSpace => m_Wrapper.m_Gameplay_KeyboardSpace;
+        public InputAction @Keyboard_1 => m_Wrapper.m_Gameplay_Keyboard_1;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @KeyboardSpace.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboardSpace;
                 @KeyboardSpace.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboardSpace;
                 @KeyboardSpace.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboardSpace;
+                @Keyboard_1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboard_1;
+                @Keyboard_1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboard_1;
+                @Keyboard_1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnKeyboard_1;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @KeyboardSpace.started += instance.OnKeyboardSpace;
                 @KeyboardSpace.performed += instance.OnKeyboardSpace;
                 @KeyboardSpace.canceled += instance.OnKeyboardSpace;
+                @Keyboard_1.started += instance.OnKeyboard_1;
+                @Keyboard_1.performed += instance.OnKeyboard_1;
+                @Keyboard_1.canceled += instance.OnKeyboard_1;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @GameInput : IInputActionCollection, IDisposable
     {
         void OnMouseClick(InputAction.CallbackContext context);
         void OnKeyboardSpace(InputAction.CallbackContext context);
+        void OnKeyboard_1(InputAction.CallbackContext context);
     }
 }

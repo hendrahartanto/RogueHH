@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   [SerializeField] private GameStateSO _gameState = default;
   public event UnityAction MouseClickEvent = delegate { };
   public event UnityAction KeyboardSpaceEvent = delegate { };
+  public event UnityAction Skill1Action = delegate { };
   private GameInput _gameInput;
   public bool StopPlayerMovementOnClick = false;
 
@@ -48,10 +49,19 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       KeyboardSpaceEvent.Invoke();
   }
 
+  public void OnKeyboard_1(InputAction.CallbackContext context)
+  {
+    if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+      Skill1Action.Invoke();
+  }
+
   public void DisableAllInput()
   {
     MouseClickEvent = null;
     MouseClickEvent = delegate { };
+
+    Skill1Action = delegate { };
+
     _gameInput.Gameplay.Disable();
   }
 
@@ -59,5 +69,4 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   {
     _gameInput.Gameplay.Enable();
   }
-
 }

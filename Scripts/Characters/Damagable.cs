@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-  [SerializeField] private HealthSO _currentHealth;
+  public HealthSO _currentHealth;
 
   public bool IsGettingHit = false;
   public bool IsDead = false;

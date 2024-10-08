@@ -27,6 +27,7 @@ public class SceneLoader : MonoBehaviour
   [Header("Broadcasting to")]
   [SerializeField] private FadeEventChannelSO _fadeEvent = default;
   [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+  [SerializeField] private VoidEventChannelSO _onLocationReady = default;
   [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent = default;
 
   private void OnEnable()
@@ -167,6 +168,9 @@ public class SceneLoader : MonoBehaviour
     _setGameplayCanvasActiveEvent.RaiseEvent(_fromLocation);
 
     _onSceneReady.RaiseEvent();
+
+    if (_fromLocation)
+      _onLocationReady.RaiseEvent();
 
     _fadeEvent.FadeOut(_fadeDuration);
 

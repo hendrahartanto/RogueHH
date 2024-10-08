@@ -173,6 +173,7 @@ MonoBehaviour:
   _loadMenuEvent: {fileID: 11400000, guid: c7ee04ac7ba00384c9d250ab713d5346, type: 2}
   _fadeEvent: {fileID: 11400000, guid: 401128ea7644fe441865b6ec3cb01fc2, type: 2}
   _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
+  _onLocationReady: {fileID: 11400000, guid: b399bed513d16d14e9eec137b817cb22, type: 2}
   _setGameplayCanvasActiveEvent: {fileID: 11400000, guid: 3a0de6c25a6d4c74ba8537127c3967f8, type: 2}
 --- !u!1 &365932322
 GameObject:
