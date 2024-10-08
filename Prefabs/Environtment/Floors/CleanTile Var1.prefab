@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4870674596853740115, guid: ed837ac2c7b7c1442a71ce043a32f755, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c1e1f1cf7f917554c88b780a1535c295, type: 2}
     - target: {fileID: 5916249910049529557, guid: ed837ac2c7b7c1442a71ce043a32f755, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6436045593121916015, guid: ed837ac2c7b7c1442a71ce043a32f755, type: 3}
       propertyPath: m_Name
-      value: CleanTile
+      value: CleanTile Var1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed837ac2c7b7c1442a71ce043a32f755, type: 3}

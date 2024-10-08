@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250671784383162618, guid: ebb19491c198a764f898545b474812a9, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.10872136
+      value: 0.021551609
       objectReference: {fileID: 0}
     - target: {fileID: 7250671784383162618, guid: ebb19491c198a764f898545b474812a9, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.08962262
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7250671784383162618, guid: ebb19491c198a764f898545b474812a9, type: 3}
       propertyPath: m_fontColor.r
@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250671784383162618, guid: ebb19491c198a764f898545b474812a9, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4280031231
+      value: 4278518015
       objectReference: {fileID: 0}
     - target: {fileID: 7250671784383162620, guid: ebb19491c198a764f898545b474812a9, type: 3}
       propertyPath: m_Pivot.x
