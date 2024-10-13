@@ -4917,6 +4917,7 @@ MonoBehaviour:
   _setupExpUIEvent: {fileID: 11400000, guid: 856cc90fec2b3574fb61b4fb8b061bae, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
   _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
+  _checkSkillTobeUnlockedEvent: {fileID: 11400000, guid: 4e4f31bf6f0dd25479b99926b094b3ba, type: 2}
   _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
 --- !u!54 &-159225850327403872
 Rigidbody:

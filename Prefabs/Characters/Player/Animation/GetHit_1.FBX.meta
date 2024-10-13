@@ -752,7 +752,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.40384614
+      - time: 0.37820512
         functionName: StopGettingHit
         data: 
         objectReferenceParameter: {instanceID: 0}
