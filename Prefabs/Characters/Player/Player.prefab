@@ -4726,7 +4726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 1.5, z: 33}
+  m_LocalPosition: {x: 3, y: 1.5, z: 77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4791,6 +4791,7 @@ MonoBehaviour:
   IsMoving: 0
   MovementProgress: 0
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  _reduceSkillTimeEvent: {fileID: 11400000, guid: 4b6d7fe1ed777a344904fd599cfc013e, type: 2}
 --- !u!114 &-5343187690012059692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,6 +4965,7 @@ MonoBehaviour:
   _punch: {fileID: 11400000, guid: d6065696683d90f43a48e76c156eb2e2, type: 2}
   _criticalHit: {fileID: 11400000, guid: c14d8d317d140c14b85996af9a4227f8, type: 2}
   _footStep: {fileID: 11400000, guid: 0117c2e2263c7494185493f420f2eba5, type: 2}
+  Buff: {fileID: 0}
 --- !u!114 &6740416419681412460
 MonoBehaviour:
   m_ObjectHideFlags: 0

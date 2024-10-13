@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _onTurnCycleExecuted = default;
+  [SerializeField] private VoidEventChannelSO _reduceSkillTimeEvent = default;
 
   private void Awake()
   {
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour
   private IEnumerator MoveAlongPath()
   {
     List<Node> paths = new List<Node>(PathStorage.paths);
+
+    int currentIndex = 0;
 
     foreach (var path in paths)
     {
@@ -75,9 +78,14 @@ public class Player : MonoBehaviour
 
         _onTurnCycleExecuted.RaiseEvent();
 
+
         yield break; //untuk menghentikan coroutine
       }
 
+      if (currentIndex != paths.Count - 1)
+        _reduceSkillTimeEvent.RaiseEvent();
+
+      currentIndex++;
     }
 
     _onTurnCycleExecuted.RaiseEvent();

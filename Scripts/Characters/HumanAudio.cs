@@ -20,6 +20,7 @@ public class HumanAudio : MonoBehaviour
   [SerializeField] private AudioCueSO _punch;
   [SerializeField] private AudioCueSO _criticalHit;
   [SerializeField] private AudioCueSO _footStep;
+  public AudioCueSO Buff;
 
   //called by animation event
   public void PlaySwordSwing() => PlayAudio(_swordSwing, _audioConfig, transform.position);
@@ -44,5 +45,7 @@ public class HumanAudio : MonoBehaviour
     PlayAudio(_punch, _audioConfig, transform.position);
   }
   public void PlayFootStep() => PlayAudio(_footStep, _audioConfig, transform.position);
+
+  public void PlayBuff() => PlayAudio(Buff, _audioConfig, transform.position);
 
 }

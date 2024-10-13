@@ -6,6 +6,7 @@ public class SkillSO : ScriptableObject
 {
   public String Name;
   public Sprite SkillIcon;
+  public String Description;
   public int UnlockLevel;
   public int Index;
   public int CooldownTime;
@@ -16,21 +17,32 @@ public class SkillSO : ScriptableObject
 
   [Header("Broadcasting to")]
   public IntIntEventChannelSO UpdateSkillCooldownUIEvent = default;
+  public UpdateUIIndicatorChannelSO UpdateUIIndicator = default;
 
   [Header("Listening on")]
   public VoidEventChannelSO OnTurnCycleExecuted = default;
+  public VoidEventChannelSO ReduceSkillTimeEvent = default;
 
   private void OnEnable()
   {
     OnTurnCycleExecuted.OnEventRaised += OnTurnFinished;
+    ReduceSkillTimeEvent.OnEventRaised += OnTurnFinished;
   }
 
   private void OnDisable()
   {
     OnTurnCycleExecuted.OnEventRaised -= OnTurnFinished;
+    ReduceSkillTimeEvent.OnEventRaised -= OnTurnFinished;
+  }
+
+  private void OnDestroy()
+  {
+    OnTurnCycleExecuted.OnEventRaised -= OnTurnFinished;
+    ReduceSkillTimeEvent.OnEventRaised -= OnTurnFinished;
   }
 
   public virtual void Setup(GameObject parent) { }
+  public virtual void SetupDescription() { }
   public virtual void Activate() { }
   public virtual void Deactivate() { }
 
@@ -50,10 +62,9 @@ public class SkillSO : ScriptableObject
     if (CurrentActiveTime == 0)
     {
       Deactivate();
-
-      //TODO: hilangkan indicator buff diatas
     }
 
+    UpdateUIIndicator?.RaiseEvent(this, Index);
     UpdateSkillCooldownUIEvent.RaiseEvent(Index, CurrentCooldownTime);
   }
 }

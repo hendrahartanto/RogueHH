@@ -9,7 +9,11 @@ public class LifeStealSkill : SkillSO
   private GameObject _parent = default;
   private Attack _attackComp = default;
   private HealthSO _healthSO = default;
+  public AudioCueSO LifeStealBuffSound = default;
+
+  [Header("Broadcasting to")]
   private IntEventChanelSO _updateHealthUIEvent = default;
+  [SerializeField] private TextPopupEventChannelSO _textPopupEvent = default;
 
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _followUpSkillActionEvent = default;
@@ -22,11 +26,20 @@ public class LifeStealSkill : SkillSO
     _updateHealthUIEvent = parent.GetComponent<Damagable>().UpdateHealthUIEvent;
   }
 
+  private void OnDestroy()
+  {
+    _followUpSkillActionEvent.OnEventRaised -= ApplyLifeSteal;
+  }
+
+  public override void SetupDescription()
+  {
+    Description = Name + " - For each successfull hit, increase your health by " + lifeStealScale * 100 + "% of your attack";
+  }
+
   public override void Activate()
   {
     if (CurrentCooldownTime <= 0)
     {
-      //active lifesteal effect trail
       _parent.GetComponent<SkillHolder>().ToggleLifeStealEffect();
 
       CurrentCooldownTime = CooldownTime;
@@ -34,12 +47,14 @@ public class LifeStealSkill : SkillSO
 
       UpdateSkillCooldownUIEvent.RaiseEvent(Index, CurrentCooldownTime);
 
-      //TODO: kasih indicator active time diatas
+      UpdateUIIndicator.RaiseEvent(this, Index);
 
       _followUpSkillActionEvent.OnEventRaised += ApplyLifeSteal;
 
       _attackComp.IsCastingSkill = true;
       _parent.GetComponent<Animator>().SetTrigger("BuffTrigger");
+
+      _parent.GetComponent<HumanAudio>().Buff = LifeStealBuffSound;
     }
 
   }
@@ -56,6 +71,8 @@ public class LifeStealSkill : SkillSO
     int lifeStealAmount = (int)(_attackComp._attackPoint * lifeStealScale);
     _healthSO.IncreaseHealth(lifeStealAmount);
     _updateHealthUIEvent.RaiseEvent(_healthSO.CurrentHealth);
+
+    _textPopupEvent.RaiseEvent(_parent.transform.position, lifeStealAmount.ToString(), TextColor.Green, -0.2f);
   }
 
 }

@@ -22,6 +22,10 @@ MonoBehaviour:
   CurrentActiveTime: 0
   IsSelected: 0
   UpdateSkillCooldownUIEvent: {fileID: 11400000, guid: 17f2057a7e6350f46b36ac735c12a7e0, type: 2}
+  UpdateUIIndicator: {fileID: 11400000, guid: d99545a8cfee87944b46863641c14e6e, type: 2}
   OnTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
+  ReduceSkillTimeEvent: {fileID: 11400000, guid: 4b6d7fe1ed777a344904fd599cfc013e, type: 2}
   lifeStealScale: 0.2
+  LifeStealBuffSound: {fileID: 11400000, guid: 17c18956d22d5a74d966c4ec3dc68ba7, type: 2}
+  _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
   _followUpSkillActionEvent: {fileID: 11400000, guid: e0a0703320c37ee42b6d91d8de893e1d, type: 2}

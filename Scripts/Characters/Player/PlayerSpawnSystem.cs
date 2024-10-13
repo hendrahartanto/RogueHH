@@ -33,7 +33,13 @@ public class PlayerSpawnSystem : MonoBehaviour
     _grid[basePosX, basePosZ].cellTypes.Add(CellType.PlayerBuffer);
 
     for (int i = 0; i < 4; i++)
+    {
+      //jika buffer melebihi size dari grid node
+      if (basePosX + dirX[i] > _grid.size.x || basePosZ + dirZ[i] > _grid.size.y || basePosX + dirX[i] < 0 || basePosZ + dirZ[i] < 0)
+        break;
+
       _grid[basePosX + dirX[i], basePosZ + dirZ[i]]?.cellTypes.Add(CellType.PlayerBuffer);
+    }
 
   }
 

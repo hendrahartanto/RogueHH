@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,13 +40,23 @@ public class UISkillManager : MonoBehaviour
 
   private void InsertSkill(SkillSO skill, int index)
   {
-    SetupSkillIcon(UISkillList[index], skill.SkillIcon);
+    UISkill skillComp = UISkillList[index];
+    skillComp.SetOccupied();
+
+    SetupSkillIcon(skillComp, skill.SkillIcon);
+    SetupSkillDescription(skillComp, skill);
   }
 
   private void SetupSkillIcon(UISkill uISkill, Sprite icon)
   {
     uISkill.SKillIconImage.enabled = true;
     uISkill.SKillIconImage.sprite = icon;
+  }
+
+  private void SetupSkillDescription(UISkill uiSKill, SkillSO skill)
+  {
+    skill.SetupDescription();
+    uiSKill.DescriptionText.SetText(skill.Description);
   }
 
   private void UpdateSKillCooldownUI(int index, int currentCooldownTime)

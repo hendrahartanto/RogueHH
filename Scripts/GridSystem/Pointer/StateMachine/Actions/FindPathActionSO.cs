@@ -139,6 +139,9 @@ public class FindPathAction : StateAction
 
   private void Unhighlight(int x, int y)
   {
+    if (_pointerManager.Grid[x, y] == null)
+      return;
+
     GameObject tileObject = _pointerManager.Grid[x, y].TileObject;
 
     if (tileObject == null)

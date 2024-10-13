@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -930,6 +930,7 @@ RectTransform:
   - {fileID: 699816578}
   - {fileID: 1644613539}
   - {fileID: 339916698}
+  - {fileID: 792202009}
   m_Father: {fileID: 17638040}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1262,6 +1263,59 @@ MonoBehaviour:
   _goldSO: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
   _gainGoldEvent: {fileID: 11400000, guid: e15ddf62ff95db4419815b6ca457fd4f, type: 2}
   _updateGoldIndicatorUIEvent: {fileID: 11400000, guid: 56cd233ce3bffe541aec1f58127777b3, type: 2}
+--- !u!1 &792202008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 792202009}
+  - component: {fileID: 792202010}
+  m_Layer: 5
+  m_Name: TopIndicatorContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &792202009
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792202008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 512193861}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -35}
+  m_SizeDelta: {x: 1245.7, y: 70}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &792202010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792202008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a8f71a35a613b4190df2eeb5bf915e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorParent: {fileID: 792202009}
+  indicatorPrefab: {fileID: 7075702938930190311, guid: 1532c14eca1f41e4ebb69003d99e955f, type: 3}
+  spacing: 70
+  _updateUIIndicator: {fileID: 11400000, guid: d99545a8cfee87944b46863641c14e6e, type: 2}
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
 --- !u!1 &840806525
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,6 +3246,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 17638040}
     m_Modifications:
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 782
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355944, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355945, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354373136911355945, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 1354373137693285649, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
       propertyPath: m_Name
       value: GameOverModal
@@ -3568,7 +3658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -58.42009}
+  m_AnchoredPosition: {x: 0, y: -101.9}
   m_SizeDelta: {x: 0, y: 116.8402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8580561927355111807
@@ -3618,8 +3708,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
