@@ -10,13 +10,16 @@ public class UISkill : MonoBehaviour
   public TextMeshProUGUI CooldownText = default;
   public GameObject DescriptionObject = default;
   public TextMeshProUGUI DescriptionText = default;
+  public GameObject LockedSkillOverlayObject = default;
+  public Image LockedSkillOverlayImage = default;
   private bool _isSlotOccupied = false;
 
   private void Awake()
   {
     SKillIconImage = SkillIconObject.GetComponent<Image>();
-    CooldownText = CooldownIndicatorObject.GetComponentInChildren<TextMeshProUGUI>();
+    LockedSkillOverlayImage = DescriptionObject.GetComponent<Image>();
 
+    CooldownText = CooldownIndicatorObject.GetComponentInChildren<TextMeshProUGUI>();
     DescriptionText = DescriptionObject.GetComponentInChildren<TextMeshProUGUI>();
   }
 

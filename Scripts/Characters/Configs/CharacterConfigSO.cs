@@ -19,6 +19,7 @@ public class CharacterConfigSO : ScriptableObject
 
   [Header("Player config")]
   public int ExpCap;
+  public AppearanceType appearanceType;
 
   [Header("Enemy config")]
   public int MinExpGain;
@@ -68,4 +69,11 @@ public class CharacterConfigSO : ScriptableObject
     float scaledGold = baseGold * Mathf.Pow(GoldGainScalingFactor, Level);
     return Mathf.FloorToInt(scaledGold);
   }
+}
+
+public enum AppearanceType
+{
+  Naked,
+  Normal,
+  Elite
 }

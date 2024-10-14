@@ -23,6 +23,7 @@ public class UIUpgradeDetail : MonoBehaviour
   [SerializeField] private UpgradeStatEventChannelSO _upgradeItemEvent = default;
   [SerializeField] private IntEventChanelSO _updateGoldIndicatorEvent = default;
   [SerializeField] private PlaySFXEventChannelSO _playSFXEvent = default;
+  [SerializeField] private VoidEventChannelSO _checkItemLevelEvent = default;
 
 
   [Header("Listening to")]
@@ -46,6 +47,8 @@ public class UIUpgradeDetail : MonoBehaviour
     _upgradeItemEvent.RaiseEvent(CurrentSelectedItem.Type, CurrentSelectedItem.UpgradeValue);
 
     CurrentSelectedItem.IncrementLevel();
+
+    _checkItemLevelEvent.RaiseEvent();
 
     //naikin harga global dan harga item sekarang dan sekalian UI item
     _increaseGlobalPriceEventBroadcast.RaiseEvent(CurrentSelectedItem.Type, 10);

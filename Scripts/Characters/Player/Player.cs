@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
   [SerializeField] private GameStateSO _gameState;
   [SerializeField] private CharacterConfigSO _playerConfigSO = default;
   [SerializeField] private BoolEventChannelSO _setActiveIsTurnCycling = default;
+  public GameObject NormalArmor = default;
+  public GameObject PlateArmor = default;
   public PathStorageSO PathStorage = default;
   public bool IsInAlert = false;
   public bool IsInCombat = false;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
+    SetupAppearance();
   }
 
   private IEnumerator MoveAlongPath()
@@ -108,6 +111,20 @@ public class Player : MonoBehaviour
   public void OnNotifyStopMoving()
   {
     _stopMovingFlag = true;
+  }
+
+  private void SetupAppearance()
+  {
+    if (_playerConfigSO.appearanceType == AppearanceType.Normal)
+    {
+      PlateArmor.SetActive(false);
+      NormalArmor.SetActive(true);
+    }
+    else if (_playerConfigSO.appearanceType == AppearanceType.Elite)
+    {
+      NormalArmor.SetActive(false);
+      PlateArmor.SetActive(true);
+    }
   }
 
   //called by animator event

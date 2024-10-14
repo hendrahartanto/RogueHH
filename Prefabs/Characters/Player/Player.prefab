@@ -721,7 +721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2886581604959185449
 Transform:
   m_ObjectHideFlags: 0
@@ -967,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3962825859450271903
 Transform:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4872285969008563429
 Transform:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5196785527604315861
 Transform:
   m_ObjectHideFlags: 0
@@ -3001,7 +3001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4873147922807307650
 Transform:
   m_ObjectHideFlags: 0
@@ -3141,7 +3141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7366093199039860298
 Transform:
   m_ObjectHideFlags: 0
@@ -3532,7 +3532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5098050021562361314
 Transform:
   m_ObjectHideFlags: 0
@@ -3703,7 +3703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4264296242711373739
 Transform:
   m_ObjectHideFlags: 0
@@ -4143,7 +4143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6673666256174549898
 Transform:
   m_ObjectHideFlags: 0
@@ -4790,6 +4790,9 @@ MonoBehaviour:
   IsInCombat: 0
   IsMoving: 0
   MovementProgress: 0
+  NormalArmor: {fileID: 8748779376960375204}
+  PlateArmor: {fileID: 8748779378545415572}
+  _changeAppearanceEvent: {fileID: 11400000, guid: 288f942e28bd6cc41a9183a0f992ddd0, type: 2}
   _onTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   _reduceSkillTimeEvent: {fileID: 11400000, guid: 4b6d7fe1ed777a344904fd599cfc013e, type: 2}
 --- !u!114 &-5343187690012059692
@@ -5771,7 +5774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8748779376960375207
 Transform:
   m_ObjectHideFlags: 0
@@ -5836,7 +5839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8748779378545415575
 Transform:
   m_ObjectHideFlags: 0

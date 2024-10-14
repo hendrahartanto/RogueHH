@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class UISkillManager : MonoBehaviour
 {
@@ -28,6 +25,14 @@ public class UISkillManager : MonoBehaviour
   private void SetupSkillUI()
   {
     int index = 0;
+
+    foreach (SkillSO lockedSkill in SkillVault.LockedSkills)
+    {
+      InsertLockedSkill(lockedSkill, index);
+
+      index++;
+    }
+
     foreach (SkillSO unlockedSkill in SkillVault.UnlockedSkills)
     {
       InsertSkill(unlockedSkill, index);
@@ -38,13 +43,25 @@ public class UISkillManager : MonoBehaviour
     }
   }
 
+  private void InsertLockedSkill(SkillSO skill, int index)
+  {
+    UISkill skillComp = UISkillList[index];
+    skillComp.SetOccupied();
+
+    skillComp.LockedSkillOverlayObject.SetActive(true);
+
+    SetupSkillIcon(skillComp, skill.SkillIcon);
+    SetupSkillDescription(skillComp, skill, 1);
+  }
   private void InsertSkill(SkillSO skill, int index)
   {
     UISkill skillComp = UISkillList[index];
     skillComp.SetOccupied();
 
+    skillComp.LockedSkillOverlayObject.SetActive(false);
+
     SetupSkillIcon(skillComp, skill.SkillIcon);
-    SetupSkillDescription(skillComp, skill);
+    SetupSkillDescription(skillComp, skill, 0);
   }
 
   private void SetupSkillIcon(UISkill uISkill, Sprite icon)
@@ -53,9 +70,13 @@ public class UISkillManager : MonoBehaviour
     uISkill.SKillIconImage.sprite = icon;
   }
 
-  private void SetupSkillDescription(UISkill uiSKill, SkillSO skill)
+  private void SetupSkillDescription(UISkill uiSKill, SkillSO skill, int type)
   {
-    skill.SetupDescription();
+    if (type == 0)
+      skill.SetupDescription();
+    else
+      skill.Description = "Unlocked at level " + (skill.UnlockLevel + 1);
+
     uiSKill.DescriptionText.SetText(skill.Description);
   }
 
