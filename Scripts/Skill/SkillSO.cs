@@ -64,7 +64,9 @@ public class SkillSO : ScriptableObject
       Deactivate();
     }
 
-    UpdateUIIndicator?.RaiseEvent(this, Index);
+    if (CurrentActiveTime > -1)
+      UpdateUIIndicator?.RaiseEvent(this, Index);
+
     UpdateSkillCooldownUIEvent.RaiseEvent(Index, CurrentCooldownTime);
   }
 }

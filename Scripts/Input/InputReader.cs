@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   public event UnityAction MouseClickEvent = delegate { };
   public event UnityAction KeyboardSpaceEvent = delegate { };
   public event UnityAction Skill1Action = delegate { };
+  public event UnityAction Skill2Action = delegate { };
   private GameInput _gameInput;
   public bool StopPlayerMovementOnClick = false;
 
@@ -55,12 +56,19 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       Skill1Action.Invoke();
   }
 
+  public void OnKeyboard_2(InputAction.CallbackContext context)
+  {
+    if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
+      Skill2Action.Invoke();
+  }
+
   public void DisableAllInput()
   {
     MouseClickEvent = null;
     MouseClickEvent = delegate { };
 
     Skill1Action = delegate { };
+    Skill2Action = delegate { };
 
     _gameInput.Gameplay.Disable();
   }

@@ -26,18 +26,18 @@ public class UISkillManager : MonoBehaviour
   {
     int index = 0;
 
-    foreach (SkillSO lockedSkill in SkillVault.LockedSkills)
-    {
-      InsertLockedSkill(lockedSkill, index);
-
-      index++;
-    }
-
     foreach (SkillSO unlockedSkill in SkillVault.UnlockedSkills)
     {
       InsertSkill(unlockedSkill, index);
 
       UpdateSKillCooldownUI(index, unlockedSkill.CurrentActiveTime);
+
+      index++;
+    }
+
+    foreach (SkillSO lockedSkill in SkillVault.LockedSkills)
+    {
+      InsertLockedSkill(lockedSkill, index);
 
       index++;
     }
@@ -53,6 +53,7 @@ public class UISkillManager : MonoBehaviour
     SetupSkillIcon(skillComp, skill.SkillIcon);
     SetupSkillDescription(skillComp, skill, 1);
   }
+
   private void InsertSkill(SkillSO skill, int index)
   {
     UISkill skillComp = UISkillList[index];

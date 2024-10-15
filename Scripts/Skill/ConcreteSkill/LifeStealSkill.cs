@@ -49,12 +49,13 @@ public class LifeStealSkill : SkillSO
 
       UpdateUIIndicator.RaiseEvent(this, Index);
 
-      _followUpSkillActionEvent.OnEventRaised += ApplyLifeSteal;
-
       _attackComp.IsCastingSkill = true;
       _parent.GetComponent<Animator>().SetTrigger("BuffTrigger");
 
       _parent.GetComponent<HumanAudio>().Buff = LifeStealBuffSound;
+
+      //action
+      _followUpSkillActionEvent.OnEventRaised += ApplyLifeSteal;
     }
 
   }

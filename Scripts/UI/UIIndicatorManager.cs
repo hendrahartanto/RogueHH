@@ -40,7 +40,6 @@ public class UIIndicatorManager : MonoBehaviour
     activeIndicators.Clear();
   }
 
-
   public void SetIndicator(SkillSO skillSO, int key)
   {
     if (!activeIndicators.ContainsKey(key))
@@ -76,9 +75,15 @@ public class UIIndicatorManager : MonoBehaviour
     }
     else
     {
-      Destroy(activeIndicators[key]);
-      activeIndicators.Remove(key);
+      RemoveIndicator(key);
     }
+  }
+
+  private void RemoveIndicator(int key)
+  {
+    Destroy(activeIndicators[key]);
+    activeIndicators.Remove(key);
+    UpdateIndicatorPositions();
   }
 
   private void UpdateIndicatorPositions()
@@ -89,9 +94,11 @@ public class UIIndicatorManager : MonoBehaviour
 
     float totalWidth = (count - 1) * spacing;
 
+    List<GameObject> indicatorsList = new List<GameObject>(activeIndicators.Values);
+
     for (int i = 0; i < count; i++)
     {
-      RectTransform rectTransform = activeIndicators[i].GetComponent<RectTransform>();
+      RectTransform rectTransform = indicatorsList[i].GetComponent<RectTransform>();
 
       float xPos = -totalWidth / 2 + i * spacing;
 

@@ -17,6 +17,7 @@ public class SkillContainerSO : ScriptableObject
     LockedSkills.Clear();
 
     LockedSkills.Add(CreateInstance<LifeStealSkill>());
+    LockedSkills.Add(CreateInstance<Plua100Aura>());
   }
 
   private void OnEnable()
@@ -31,13 +32,12 @@ public class SkillContainerSO : ScriptableObject
 
   public void CheckLockedSkillToBeUnlocked(int currentLevel)
   {
-    int length = LockedSkills.Count;
-    for (int i = 0; i < length; i++)
+    for (int i = LockedSkills.Count - 1; i >= 0; i--)
     {
       if (currentLevel >= LockedSkills[i].UnlockLevel)
       {
         UnlockedSkills.Add(LockedSkills[i]);
-        LockedSkills.Remove(LockedSkills[i]);
+        LockedSkills.RemoveAt(i);
       }
     }
   }

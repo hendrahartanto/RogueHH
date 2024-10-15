@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LockedSkills:
   - {fileID: 11400000, guid: b4f41594059c0bc41b3414bfb4371b64, type: 2}
+  - {fileID: 11400000, guid: 813a3f59675244b43bea104951905a32, type: 2}
   UnlockedSkills: []
   _checkSkillTobeUnlockedEvent: {fileID: 11400000, guid: 4e4f31bf6f0dd25479b99926b094b3ba, type: 2}

@@ -42,9 +42,9 @@ public class SkillHolder : MonoBehaviour
   private void SetupSkillAction(int index, SkillSO skill)
   {
     if (index == 0)
-    {
       _inputReader.Skill1Action += skill.Activate;
-    }
+    else if (index == 1)
+      _inputReader.Skill2Action += skill.Activate;
   }
 
   //called by animatior event
