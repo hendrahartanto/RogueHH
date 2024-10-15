@@ -16,8 +16,8 @@ public class SkillContainerSO : ScriptableObject
     UnlockedSkills.Clear();
     LockedSkills.Clear();
 
-    LockedSkills.Add(CreateInstance<LifeStealSkill>());
-    LockedSkills.Add(CreateInstance<Plua100Aura>());
+    UnlockedSkills.Add(CreateInstance<LifeStealSkill>());
+    UnlockedSkills.Add(CreateInstance<Plua100Aura>());
   }
 
   private void OnEnable()

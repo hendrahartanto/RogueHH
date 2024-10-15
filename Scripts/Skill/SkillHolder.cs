@@ -6,6 +6,7 @@ public class SkillHolder : MonoBehaviour
 {
   [SerializeField] private InputReader _inputReader = default;
   public List<GameObject> LifeStealEffect = new List<GameObject>();
+  public GameObject BuffAuraEffect;
   public SkillContainerSO SkillVault = default;
   public List<SkillSO> Skills = new List<SkillSO>();
   public SkillSO SelectedSkill = default;
@@ -47,12 +48,16 @@ public class SkillHolder : MonoBehaviour
       _inputReader.Skill2Action += skill.Activate;
   }
 
-  //called by animatior event
   public void ToggleLifeStealEffect()
   {
     foreach (GameObject effect in LifeStealEffect)
     {
       effect.SetActive(!effect.activeSelf);
     }
+  }
+
+  public void ToggleBuffAuraEffect()
+  {
+    BuffAuraEffect.SetActive(!BuffAuraEffect.activeSelf);
   }
 }

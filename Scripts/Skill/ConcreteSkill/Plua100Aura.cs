@@ -6,6 +6,7 @@ using UnityEngine;
 public class Plua100Aura : SkillSO
 {
   public float BuffScale = 0.2f;
+  public AudioCueSO BuffSound = default;
   private int _attackBonus = default;
   private int _deffendBonus = default;
   private GameObject _parent = default;
@@ -31,6 +32,8 @@ public class Plua100Aura : SkillSO
   {
     if (CurrentCooldownTime <= 0)
     {
+      _parent.GetComponent<SkillHolder>().ToggleBuffAuraEffect();
+
       CurrentCooldownTime = CooldownTime;
       CurrentActiveTime = ActiveTime;
 
@@ -42,6 +45,8 @@ public class Plua100Aura : SkillSO
 
       _parent.GetComponent<Animator>().SetTrigger("BuffTrigger");
 
+      _parent.GetComponent<HumanAudio>().Buff = BuffSound;
+
       //action
       _attackComp._attackPoint += _attackBonus;
       _damaagbleComp.DeffendPoint += _deffendBonus;
@@ -50,6 +55,8 @@ public class Plua100Aura : SkillSO
 
   public override void Deactivate()
   {
+    _parent.GetComponent<SkillHolder>().ToggleBuffAuraEffect();
+
     _attackComp._attackPoint -= _attackBonus;
     _damaagbleComp.DeffendPoint -= _deffendBonus;
   }

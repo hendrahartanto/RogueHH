@@ -27,3 +27,4 @@ MonoBehaviour:
   OnTurnCycleExecuted: {fileID: 11400000, guid: 9aa0289794116c448806d7b40125f30f, type: 2}
   ReduceSkillTimeEvent: {fileID: 11400000, guid: 4b6d7fe1ed777a344904fd599cfc013e, type: 2}
   BuffScale: 0.2
+  BuffSound: {fileID: 11400000, guid: f8d0b15daf9036945881f8416cb62c0f, type: 2}
