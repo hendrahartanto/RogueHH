@@ -116,6 +116,33 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Pause"",
+            ""id"": ""c38e8c77-a8b1-4e71-822f-41e09a3c78e6"",
+            ""actions"": [
+                {
+                    ""name"": ""Keyboard_esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""e43ecb86-a81f-4735-87c1-027cb7ac6772"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2e50dbd0-8ac4-4dd9-b0e4-5c0a876d82ab"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Keyboard_esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -127,6 +154,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Gameplay_Keyboard_1 = m_Gameplay.FindAction("Keyboard_1", throwIfNotFound: true);
         m_Gameplay_Keyboard_2 = m_Gameplay.FindAction("Keyboard_2", throwIfNotFound: true);
         m_Gameplay_Keyboard_3 = m_Gameplay.FindAction("Keyboard_3", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_Keyboard_esc = m_Pause.FindAction("Keyboard_esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,6 +267,39 @@ public class @GameInput : IInputActionCollection, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private IPauseActions m_PauseActionsCallbackInterface;
+    private readonly InputAction m_Pause_Keyboard_esc;
+    public struct PauseActions
+    {
+        private @GameInput m_Wrapper;
+        public PauseActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Keyboard_esc => m_Wrapper.m_Pause_Keyboard_esc;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterface != null)
+            {
+                @Keyboard_esc.started -= m_Wrapper.m_PauseActionsCallbackInterface.OnKeyboard_esc;
+                @Keyboard_esc.performed -= m_Wrapper.m_PauseActionsCallbackInterface.OnKeyboard_esc;
+                @Keyboard_esc.canceled -= m_Wrapper.m_PauseActionsCallbackInterface.OnKeyboard_esc;
+            }
+            m_Wrapper.m_PauseActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Keyboard_esc.started += instance.OnKeyboard_esc;
+                @Keyboard_esc.performed += instance.OnKeyboard_esc;
+                @Keyboard_esc.canceled += instance.OnKeyboard_esc;
+            }
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
     public interface IGameplayActions
     {
         void OnMouseClick(InputAction.CallbackContext context);
@@ -244,5 +307,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnKeyboard_1(InputAction.CallbackContext context);
         void OnKeyboard_2(InputAction.CallbackContext context);
         void OnKeyboard_3(InputAction.CallbackContext context);
+    }
+    public interface IPauseActions
+    {
+        void OnKeyboard_esc(InputAction.CallbackContext context);
     }
 }

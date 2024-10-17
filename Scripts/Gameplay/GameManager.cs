@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
   [Header("Broadcasting to")]
   [SerializeField] private VoidEventChannelSO _enableGameplayInputEvent = default;
   [SerializeField] private VoidEventChannelSO _playStopBattleMusicEvent = default;
+  [SerializeField] private VoidEventChannelSO _pauseModalToggleEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     _changeGameStateEvent.OnEventRaised += SetGameState;
     _onSceneReady.OnEventRaised += SetInitialGameState;
     _isTurnCyclingSetActiveEvent.OnEventRaised += SetIsTurnCycling;
+    _inputReader.KeyboardEscAction += TogglePauseModal;
   }
 
   private void OnDisable()
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     _changeGameStateEvent.OnEventRaised -= SetGameState;
     _onSceneReady.OnEventRaised -= SetInitialGameState;
     _isTurnCyclingSetActiveEvent.OnEventRaised -= SetIsTurnCycling;
+    _inputReader.KeyboardEscAction -= TogglePauseModal;
   }
 
   private void Start()
@@ -37,6 +40,10 @@ public class GameManager : MonoBehaviour
   }
 
   //Event Concrete Action
+  private void TogglePauseModal()
+  {
+    _pauseModalToggleEvent.RaiseEvent();
+  }
   private void SetInitialGameState()
   {
     _gameState.SetGameState(GameState.Regular);

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Input/Input Reader")]
-public class InputReader : ScriptableObject, GameInput.IGameplayActions
+public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IPauseActions
 {
   [SerializeField] private GameStateSO _gameState = default;
   public event UnityAction MouseClickEvent = delegate { };
@@ -13,6 +13,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
   public event UnityAction Skill1Action = delegate { };
   public event UnityAction Skill2Action = delegate { };
   public event UnityAction Skill3Action = delegate { };
+  public event UnityAction KeyboardEscAction = delegate { };
+
   private GameInput _gameInput;
   public bool StopPlayerMovementOnClick = false;
 
@@ -26,7 +28,9 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       _gameInput = new GameInput();
 
       _gameInput.Gameplay.SetCallbacks(this);
+      _gameInput.Pause.SetCallbacks(this);
       _gameInput.Gameplay.Enable();
+      _gameInput.Pause.Enable();
     }
 
     _enableGameplayInputEvent.OnEventRaised += EnableGameplayInput;
@@ -69,19 +73,41 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
       Skill3Action.Invoke();
   }
 
+  public void OnKeyboard_esc(InputAction.CallbackContext context)
+  {
+    if (context.phase == InputActionPhase.Performed && _gameState.CurrentGameState != GameState.Gameover)
+      KeyboardEscAction.Invoke();
+  }
+
   public void DisableAllInput()
+  {
+    RemoveInputAction();
+
+    _gameInput.Gameplay.Disable();
+    _gameInput.Pause.Disable();
+  }
+
+  private void RemoveInputAction()
   {
     MouseClickEvent = null;
     MouseClickEvent = delegate { };
 
     Skill1Action = delegate { };
     Skill2Action = delegate { };
+    Skill3Action = delegate { };
+  }
 
-    _gameInput.Gameplay.Disable();
+  public void ToggleGameplayInput()
+  {
+    if (_gameInput.Gameplay.enabled)
+      _gameInput.Gameplay.Disable();
+    else
+      _gameInput.Gameplay.Enable();
   }
 
   public void EnableGameplayInput()
   {
     _gameInput.Gameplay.Enable();
+    _gameInput.Pause.Enable();
   }
 }

@@ -57,5 +57,7 @@ public enum SFXName
   Alert,
   MenuSelect,
   MenuClick,
+  MenuOpen,
+  MenuClosed,
   Purchase
 }
