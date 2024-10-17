@@ -20,10 +20,16 @@ public class EnemyAggroTrigger : MonoBehaviour
   [SerializeField] private TextPopupEventChannelSO _textPopupEvent = default;
   [SerializeField] private GameStateEventChanelSO _changeGameStateEvent = default;
   [SerializeField] private PlaySFXEventChannelSO _playSFXEvent = default;
+  public VoidEventChannelSO ToggleAlertIndicatorEvent = default;
 
   private void Awake()
   {
     _enemy = GetComponentInParent<Enemy>();
+  }
+
+  private void OnDestroy()
+  {
+    Destroy(ToggleAlertIndicatorEvent);
   }
 
   //Ketika player masuk zona agro musuh
@@ -32,6 +38,8 @@ public class EnemyAggroTrigger : MonoBehaviour
     if (other.CompareTag("Player"))
     {
       IsEnemyAlert = true;
+
+      ToggleAlertIndicatorEvent.RaiseEvent();
 
       //masukin ke queue walaupun ga ke aggro agar di recheck terus LOS nya
       _onEnemyAggro.RaiseEvent(_enemy);
@@ -45,7 +53,10 @@ public class EnemyAggroTrigger : MonoBehaviour
       IsEnemyAlert = false;
 
       if (!IsReadyToChase)
+      {
+        ToggleAlertIndicatorEvent.RaiseEvent();
         _removeEnemyFromQueueEvent.RaiseEvent(_enemy);
+      }
     }
   }
 
@@ -56,6 +67,8 @@ public class EnemyAggroTrigger : MonoBehaviour
 
     if (IsLineOfSightClear(playerPosition, enemyPosition))
     {
+      ToggleAlertIndicatorEvent.RaiseEvent();
+
       _playSFXEvent.RaiseEvent(SFXName.Alert, transform);
       _textPopupEvent.RaiseEvent(transform.position, "!!", TextColor.Red);
       _changeGameStateEvent.RaiseEvent(GameState.Combat);

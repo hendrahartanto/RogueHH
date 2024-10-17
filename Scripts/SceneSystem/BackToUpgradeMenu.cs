@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ini sebenarnya bisa jadi go to specific location scene cs (tapi malas refactor nama)
 public class BackToUpgradeMenu : MonoBehaviour
 {
   [SerializeField] SceneSO _sceneToLoad = default;

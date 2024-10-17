@@ -12,14 +12,33 @@ public class Enemy : MonoBehaviour, ITurnComponent
   public float MovementProgress = 0f;
   [SerializeField] private GridNodeSO _gridNode = default;
   public TextMeshProUGUI EnemyLabel = default;
+  public GameObject AlertIndicator = default;
 
-  [Header("Broadcasting on")]
+  [Header("Listening on")]
+  public VoidEventChannelSO ToggleAlertIndicatorEvent = default;
+
+  [Header("Broadcasting to")]
   [SerializeField] private VoidEventChannelSO _onTurnFinished = default;
   [SerializeField] private ChangeCellTypeEventChanel _changeCellTypeEvent = default;
   [SerializeField] private GridNodeBoolEventChanelSO _changeNodeAccessibleEvent = default;
   [SerializeField] private VoidEventChannelSO _recalculatePathEvent = default;
 
   public UnityAction OnTurnExecuted { get; set; }
+
+  private void OnEnable()
+  {
+    ToggleAlertIndicatorEvent.OnEventRaised += ToggleAlertIndicator;
+  }
+
+  private void OnDisable()
+  {
+    ToggleAlertIndicatorEvent.OnEventRaised -= ToggleAlertIndicator;
+  }
+
+  private void OnDestroy()
+  {
+    Destroy(ToggleAlertIndicatorEvent);
+  }
 
   private IEnumerator MoveToTarget()
   {
@@ -97,5 +116,11 @@ public class Enemy : MonoBehaviour, ITurnComponent
   private void Awake()
   {
     PathStorage = ScriptableObject.CreateInstance<PathStorageSO>();
+  }
+
+  //Action for listener
+  private void ToggleAlertIndicator()
+  {
+    AlertIndicator.SetActive(!AlertIndicator.activeSelf);
   }
 }

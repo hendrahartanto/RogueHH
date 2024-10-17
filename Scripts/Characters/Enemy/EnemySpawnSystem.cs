@@ -116,9 +116,10 @@ public class EnemySpawnSystem : MonoBehaviour
 
       SetEnemeyLabel(enemyObject, type);
 
-      //assign unique helathevent chanel to each enemy
+      //assign unique channel to each enemy
       IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
       IntEventChanelSO updateHealthUIEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
+      VoidEventChannelSO toggleAlertIndicatorEvent = ScriptableObject.CreateInstance<VoidEventChannelSO>();
 
       UIBarManager UIHealthBarManagerComp = enemyObject.GetComponentInChildren<UIBarManager>();
       UIHealthBarManagerComp.SetMaxHealthUIEvent = setMaxhealthEvent;
@@ -127,6 +128,12 @@ public class EnemySpawnSystem : MonoBehaviour
       Damagable DamagableComp = enemyObject.GetComponent<Damagable>();
       DamagableComp.SetMaxHealthUIEvent = setMaxhealthEvent;
       DamagableComp.UpdateHealthUIEvent = updateHealthUIEvent;
+
+      Enemy enemyComp = enemyObject.GetComponent<Enemy>();
+      enemyComp.ToggleAlertIndicatorEvent = toggleAlertIndicatorEvent;
+
+      EnemyAggroTrigger enemyAggroTriggerComp = enemyObject.GetComponentInChildren<EnemyAggroTrigger>();
+      enemyAggroTriggerComp.ToggleAlertIndicatorEvent = toggleAlertIndicatorEvent;
 
       //set the level of the enemy
       DamagableComp._characterConfigSO.Level = _dungeon.CurrentLevel;
