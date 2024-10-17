@@ -13,6 +13,7 @@ public class UISkill : MonoBehaviour
   public GameObject LockedSkillOverlayObject = default;
   public Image LockedSkillOverlayImage = default;
   private bool _isSlotOccupied = false;
+  public GameObject SelectedObject = default;
 
   private void Awake()
   {

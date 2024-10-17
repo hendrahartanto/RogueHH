@@ -45,6 +45,7 @@ public class SkillSO : ScriptableObject
   public virtual void SetupDescription() { }
   public virtual void Activate() { }
   public virtual void Deactivate() { }
+  public virtual void ExecuteSkillAction() { }
 
   public void OnSkillSelected()
   {

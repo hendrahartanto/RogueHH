@@ -383,8 +383,10 @@ MonoBehaviour:
   UISkillList:
   - {fileID: 8965067859337442117}
   - {fileID: 1361628876}
+  - {fileID: 1342455539}
   _updateSkillCooldownUIEvent: {fileID: 11400000, guid: 17f2057a7e6350f46b36ac735c12a7e0, type: 2}
   _onLocationReady: {fileID: 11400000, guid: b399bed513d16d14e9eec137b817cb22, type: 2}
+  _toggleSelectedUIEvent: {fileID: 11400000, guid: 7fa47a29cdef30945926dc44c3296195, type: 2}
 --- !u!1 &295754034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1955,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8670950509577517067, guid: 2c0a251003b23e94c9a34438a7dc6816, type: 3}
   m_PrefabInstance: {fileID: 1342455537}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1342455539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3071385340659744568, guid: 2c0a251003b23e94c9a34438a7dc6816, type: 3}
+  m_PrefabInstance: {fileID: 1342455537}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30318232f914e6449abc7f6b4fd1221f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1361628874
 PrefabInstance:
   m_ObjectHideFlags: 0

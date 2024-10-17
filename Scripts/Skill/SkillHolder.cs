@@ -11,6 +11,22 @@ public class SkillHolder : MonoBehaviour
   public List<SkillSO> Skills = new List<SkillSO>();
   public SkillSO SelectedSkill = default;
 
+  [Header("Broadcasting to")]
+  [SerializeField] private IntEventChanelSO _toggleSelectedUIEvent = default;
+
+  [Header("Listening on")]
+  [SerializeField] private VoidEventChannelSO _executeActiveSkillEvent = default;
+
+  private void OnEnable()
+  {
+    _executeActiveSkillEvent.OnEventRaised += ExecuteCurrentActiveSkillAction;
+  }
+
+  private void OnDisable()
+  {
+    _executeActiveSkillEvent.OnEventRaised -= ExecuteCurrentActiveSkillAction;
+  }
+
   private void Start()
   {
     int index = 0;
@@ -46,6 +62,35 @@ public class SkillHolder : MonoBehaviour
       _inputReader.Skill1Action += skill.Activate;
     else if (index == 1)
       _inputReader.Skill2Action += skill.Activate;
+    else if (index == 2)
+      _inputReader.Skill3Action += skill.Activate;
+  }
+
+  public void SelectSkill(SkillSO skillSO)
+  {
+    if (SelectedSkill != null)
+      ToggleSkilUI(SelectedSkill);
+
+    if (SelectedSkill == skillSO)
+      SelectedSkill = null;
+    else
+    {
+      SelectedSkill = skillSO;
+      ToggleSkilUI(skillSO);
+    }
+  }
+
+  public void ToggleSkilUI(SkillSO skillSO)
+  {
+    _toggleSelectedUIEvent.RaiseEvent(skillSO.Index);
+  }
+
+  private void ExecuteCurrentActiveSkillAction()
+  {
+    SelectedSkill.ExecuteSkillAction();
+
+    ToggleSkilUI(SelectedSkill);
+    SelectedSkill = null;
   }
 
   public void ToggleLifeStealEffect()

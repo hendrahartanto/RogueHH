@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0aadcea6a250724b82e6e7d5cfa97af, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  MinInitialHealth: 20
-  MaxInitialHealth: 20
-  MinInitialAttackPoint: 5
-  MaxInitialAttackPoint: 5
-  MinInitialDeffendPoint: 5
-  MaxInitialDeffendPoint: 5
-  CriticalRate: 0.05
-  CriticalDamage: 1.5
+  MinInitialHealth: 1000
+  MaxInitialHealth: 1000
+  MinInitialAttackPoint: 400
+  MaxInitialAttackPoint: 400
+  MinInitialDeffendPoint: 400
+  MaxInitialDeffendPoint: 400
+  CriticalRate: 1
+  CriticalDamage: 3
   WeaponType: 1
   Level: 0
   ExpCap: 0
+  appearanceType: 0
   MinExpGain: 0
   MaxExpGain: 0
   MinGoldGain: 0

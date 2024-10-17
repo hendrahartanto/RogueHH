@@ -25,7 +25,7 @@ public class Attack : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _cameraShakeEvent = default;
   [SerializeField] private VoidEventChannelSO _buffSkillActionEvent = default;
   [SerializeField] private VoidEventChannelSO _followUpSkillActionEvent = default;
-  [SerializeField] private VoidEventChannelSO _activeSkillActionEvent = default;
+  [SerializeField] private VoidEventChannelSO _executeActiveSkillEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
@@ -68,8 +68,7 @@ public class Attack : MonoBehaviour
     //trigger state and animation
     if (IsSkillActive)
     {
-      _activeSkillActionEvent?.RaiseEvent();
-      IsCastingSkill = true;
+      _executeActiveSkillEvent?.RaiseEvent();
     }
     else
       IsAttacking = true;
@@ -110,6 +109,7 @@ public class Attack : MonoBehaviour
   private void StopAttacking()
   {
     IsAttacking = false;
+    IsSkillActive = false;
   }
 
   private void StopCastingSkill()

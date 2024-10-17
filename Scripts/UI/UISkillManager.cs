@@ -9,17 +9,25 @@ public class UISkillManager : MonoBehaviour
   [Header("Listening on")]
   [SerializeField] private IntIntEventChannelSO _updateSkillCooldownUIEvent = default;
   [SerializeField] private VoidEventChannelSO _onLocationReady = default;
+  [SerializeField] private IntEventChanelSO _toggleSelectedUIEvent = default;
 
   private void OnEnable()
   {
     _updateSkillCooldownUIEvent.OnEventRaised += UpdateSKillCooldownUI;
     _onLocationReady.OnEventRaised += SetupSkillUI;
+    _toggleSelectedUIEvent.OnEventRaised += ToggleSelectUI;
   }
 
   private void OnDisable()
   {
     _updateSkillCooldownUIEvent.OnEventRaised -= UpdateSKillCooldownUI;
     _onLocationReady.OnEventRaised -= SetupSkillUI;
+    _toggleSelectedUIEvent.OnEventRaised -= ToggleSelectUI;
+  }
+
+  private void ToggleSelectUI(int index)
+  {
+    UISkillList[index].SelectedObject.SetActive(!UISkillList[index].SelectedObject.activeSelf);
   }
 
   private void SetupSkillUI()

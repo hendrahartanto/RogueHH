@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class LevelingSystem : MonoBehaviour
@@ -50,7 +51,7 @@ public class LevelingSystem : MonoBehaviour
 
   public void SetupStats(int remainingExp)
   {
-    _currentExp.SetExpCap((int)(_currentExp.ExpCap * Math.Pow(_characterConfigSO.Level + 1, 1.1)));
+    _currentExp.SetExpCap((int)(_currentExp.ExpCap + 5 + Mathf.Pow(_characterConfigSO.Level, (float)1.5)));
 
     _currentExp.SetExpCap(_currentExp.ExpCap);
     _currentExp.SetCurrentExp(remainingExp);
@@ -68,6 +69,9 @@ public class LevelingSystem : MonoBehaviour
 
     while (remainingExp >= _currentExp.ExpCap)
     {
+      Debug.Log("exp cap" + _currentExp.ExpCap);
+      Debug.Log("remaining exp" + remainingExp);
+
       remainingExp -= _currentExp.ExpCap;
 
       _characterConfigSO.Level++;
@@ -77,6 +81,9 @@ public class LevelingSystem : MonoBehaviour
       _checkSkillTobeUnlockedEvent.RaiseEvent(_characterConfigSO.Level);
 
       SetupStats(remainingExp);
+
+      Debug.Log("remaining exp after" + remainingExp);
+      Debug.Log("exp cap after" + _currentExp.ExpCap);
     }
   }
 }
