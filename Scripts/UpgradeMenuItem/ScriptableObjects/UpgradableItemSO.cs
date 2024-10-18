@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UpgradeMenuItem/UpgradableItem")]
+[System.Serializable]
 public class UpgradableItemSO : ScriptableObject
 {
   [SerializeField] private CharacterConfigSO _playerStats = default;

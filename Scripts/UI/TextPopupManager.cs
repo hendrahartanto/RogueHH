@@ -30,7 +30,7 @@ public class TextPopupManager : MonoBehaviour
   private void OnDisable()
   {
     _damagePopUpEvent.OnEventRaised -= SetupDamagePopup;
-    _textPopupEvent.OnEventRaised += SetupTextPopup;
+    _textPopupEvent.OnEventRaised -= SetupTextPopup;
   }
 
   private void SetupDamagePopup(Vector3 pos, int damageValue, bool critical)

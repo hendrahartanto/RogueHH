@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4761050345749790419}
+  - component: {fileID: 6584759990564458736}
   m_Layer: 0
   m_Name: ToSpecificMenuSceneController
   m_TagString: Untagged
@@ -30,3 +31,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6584759990564458736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684897158281685167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8745e88158daf954783c6c46331075fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneToLoad: {fileID: 0}
+  _showLoadingScreen: 0
+  _loadMenu: {fileID: 11400000, guid: c7ee04ac7ba00384c9d250ab713d5346, type: 2}
+  _loadToSpecificMenuEvent: {fileID: 0}

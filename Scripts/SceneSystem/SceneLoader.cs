@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -29,6 +30,7 @@ public class SceneLoader : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _onSceneReady = default;
   [SerializeField] private VoidEventChannelSO _onLocationReady = default;
   [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent = default;
+  [SerializeField] private RequestSaveableDataEventChannelSO _requestSaveableDataEvent = default;
 
   private void OnEnable()
   {
@@ -91,6 +93,17 @@ public class SceneLoader : MonoBehaviour
   {
     if (_isLoading)
       return;
+
+    //cek nama dari scene agar bisa divalidasi untuk save system
+    Debug.Log(menuToLoad.isMainMenu);
+    if (menuToLoad.isMainMenu)
+    {
+      CharacterConfigSO playerData = _requestSaveableDataEvent.RequestPlayerData();
+      List<UpgradableItemSO> upgradableItemDataList = _requestSaveableDataEvent.RequestUpgradableItemDataList();
+      ExpSO expData = _requestSaveableDataEvent.RequestExpData();
+
+      SaveSystem.SaveData(playerData, expData, upgradableItemDataList);
+    }
 
     _sceneToLoad = menuToLoad;
     _showLoadingScreen = showLoadingScreen;

@@ -175,6 +175,7 @@ MonoBehaviour:
   _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
   _onLocationReady: {fileID: 11400000, guid: b399bed513d16d14e9eec137b817cb22, type: 2}
   _setGameplayCanvasActiveEvent: {fileID: 11400000, guid: 3a0de6c25a6d4c74ba8537127c3967f8, type: 2}
+  _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
 --- !u!1 &365932322
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +484,8 @@ MonoBehaviour:
     SFXValue: {fileID: 11400000, guid: 5bbb91d7a888dd241acc28153ac0fe99, type: 2}
   - SFXKey: 4
     SFXValue: {fileID: 11400000, guid: 624b8198302c3a94885755fbf1aef834, type: 2}
+  - SFXKey: 5
+    SFXValue: {fileID: 11400000, guid: 80f6163189725d54bb3fb0152613bd8f, type: 2}
   SFXConfig: {fileID: 11400000, guid: 335b949962521b841b89062845970987, type: 2}
   _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
   _sfxEvent: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}

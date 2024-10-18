@@ -3,6 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "CharacterConfigSO", menuName = "Configs/Character/CharacterConfigSO")]
+[System.Serializable]
 public class CharacterConfigSO : ScriptableObject
 {
   [Header("Character config")]

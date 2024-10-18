@@ -69,9 +69,6 @@ public class LevelingSystem : MonoBehaviour
 
     while (remainingExp >= _currentExp.ExpCap)
     {
-      Debug.Log("exp cap" + _currentExp.ExpCap);
-      Debug.Log("remaining exp" + remainingExp);
-
       remainingExp -= _currentExp.ExpCap;
 
       _characterConfigSO.Level++;
@@ -81,9 +78,6 @@ public class LevelingSystem : MonoBehaviour
       _checkSkillTobeUnlockedEvent.RaiseEvent(_characterConfigSO.Level);
 
       SetupStats(remainingExp);
-
-      Debug.Log("remaining exp after" + remainingExp);
-      Debug.Log("exp cap after" + _currentExp.ExpCap);
     }
   }
 }

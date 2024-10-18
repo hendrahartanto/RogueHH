@@ -18,3 +18,4 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
   musicTrack: {fileID: 11400000, guid: 6756c8ec4d4648a418975207c3f47143, type: 2}
+  isMainMenu: 0

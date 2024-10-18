@@ -13,6 +13,7 @@ public class UIGameplayCanvasManager : MonoBehaviour
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _backToUpgradeMenuEvent = default;
   [SerializeField] private VoidEventChannelSO _startGameplayEvent = default;
+  [SerializeField] private VoidEventChannelSO _goToMainMenuEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent = default;
@@ -44,7 +45,7 @@ public class UIGameplayCanvasManager : MonoBehaviour
 
     _pauseModal.ResumeButtonAction += TogglePauseModal;
     _pauseModal.BackToUpgradeButtonAction += GoToSpecificMenu;
-    // _pauseModal.ExitToMainMenuButtonAction +=
+    _pauseModal.ExitToMainMenuButtonAction += GotoMainMenu;
   }
 
   private void OnDestroy()
@@ -55,7 +56,7 @@ public class UIGameplayCanvasManager : MonoBehaviour
 
     _pauseModal.ResumeButtonAction -= TogglePauseModal;
     _pauseModal.BackToUpgradeButtonAction -= GoToSpecificMenu;
-    // _pauseModal.ExitToMainMenuButtonAction -=
+    _pauseModal.ExitToMainMenuButtonAction -= GotoMainMenu;
   }
 
   private void OnEnable()
@@ -98,6 +99,13 @@ public class UIGameplayCanvasManager : MonoBehaviour
 
     _gameOverModal.gameObject.SetActive(false);
     _floorClearedModal.gameObject.SetActive(false);
+    _pauseModal.gameObject.SetActive(false);
+  }
+
+  private void GotoMainMenu()
+  {
+    _goToMainMenuEvent.RaiseEvent();
+
     _pauseModal.gameObject.SetActive(false);
   }
 
