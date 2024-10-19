@@ -8,18 +8,21 @@ public class UIPlayerLevelIndicator : MonoBehaviour
 
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
+  [SerializeField] private VoidEventChannelSO _onSceneReady = default;
 
   private void OnEnable()
   {
     _playerLevelUpEvent.OnEventRaised += SetupText;
+    _onSceneReady.OnEventRaised += SetupText;
   }
 
   private void OnDisable()
   {
     _playerLevelUpEvent.OnEventRaised -= SetupText;
+    _onSceneReady.OnEventRaised -= SetupText;
   }
 
-  private void Awake()
+  private void Start()
   {
     SetupText();
   }

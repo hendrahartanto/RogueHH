@@ -15,6 +15,7 @@ public class PersistentVariables : MonoBehaviour
   [SerializeField] private RequestSaveableDataEventChannelSO _requestSaveableDataEvent = default;
   [SerializeField] private VoidEventChannelSO _resetSaveableDataEvent = default;
   [SerializeField] private VoidEventChannelSO _loadSaveableDataEvent = default;
+  public List<VoidEventChannelSO> CodeActionList = default;
 
   private void OnEnable()
   {
@@ -23,6 +24,10 @@ public class PersistentVariables : MonoBehaviour
     _requestSaveableDataEvent.ExpData = _playerExp;
     _requestSaveableDataEvent.DungeonData = DungeonData;
     _requestSaveableDataEvent.GoldData = GoldData;
+
+    CodeActionList[0].OnEventRaised += IncreaseMoney;
+    CodeActionList[1].OnEventRaised += IncreaseExp;
+    CodeActionList[2].OnEventRaised += UnlockDungeonLevel;
 
     _resetSaveableDataEvent.OnEventRaised += ResetData;
     _loadSaveableDataEvent.OnEventRaised += LoadData;
@@ -35,6 +40,10 @@ public class PersistentVariables : MonoBehaviour
     _requestSaveableDataEvent.ExpData = null;
     _requestSaveableDataEvent.DungeonData = null;
     _requestSaveableDataEvent.GoldData = null;
+
+    CodeActionList[0].OnEventRaised -= IncreaseMoney;
+    CodeActionList[1].OnEventRaised -= IncreaseExp;
+    CodeActionList[2].OnEventRaised -= UnlockDungeonLevel;
 
     _resetSaveableDataEvent.OnEventRaised -= ResetData;
     _loadSaveableDataEvent.OnEventRaised -= LoadData;
@@ -68,5 +77,49 @@ public class PersistentVariables : MonoBehaviour
 
     DungeonData.CurrentLevel = loadData.DungeonData.CurrentLevel;
     DungeonData.MaxLevelReached = loadData.DungeonData.MaxLevelReached;
+  }
+
+  private void IncreaseMoney()
+  {
+    GoldData.IncreaseGold(20000);
+  }
+
+  private void IncreaseExp()
+  {
+    _playerExp.GainExp(1000);
+
+    if (_playerExp.CurrentExp >= _playerExp.ExpCap)
+    {
+      OnLevelUp();
+    }
+  }
+
+
+  public void SetupStats(int remainingExp)
+  {
+    _playerExp.SetExpCap((int)(_playerExp.ExpCap + 5 + Mathf.Pow(PlayerData.Level, (float)1.5)));
+
+    _playerExp.SetExpCap(_playerExp.ExpCap);
+    _playerExp.SetCurrentExp(remainingExp);
+  }
+
+  private void OnLevelUp()
+  {
+    int remainingExp = _playerExp.CurrentExp;
+
+    while (remainingExp >= _playerExp.ExpCap)
+    {
+      remainingExp -= _playerExp.ExpCap;
+
+      PlayerData.Level++;
+
+      SetupStats(remainingExp);
+    }
+  }
+
+  private void UnlockDungeonLevel()
+  {
+    DungeonData.MaxLevelReached = 30;
+    DungeonData.CurrentLevel = 30;
   }
 }

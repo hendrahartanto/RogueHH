@@ -28,7 +28,7 @@ public class SkillContainerSO : ScriptableObject
     {
       if (currentLevel >= LockedSkills[i].UnlockLevel)
       {
-        UnlockedSkills.Add(LockedSkills[i]);
+        UnlockedSkills.Insert(0, LockedSkills[i]);
         LockedSkills.RemoveAt(i);
       }
     }

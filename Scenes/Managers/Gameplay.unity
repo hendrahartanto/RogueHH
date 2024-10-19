@@ -2331,7 +2331,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9cec1c99ace507049935047a2af4d33c, type: 2}
   - {fileID: 11400000, guid: 2c3689a108267af4a9f9d576fbb95c9e, type: 2}
   - {fileID: 11400000, guid: 17d8f243d4160b34a8e7adc9c0caa8e4, type: 2}
+  DungeonData: {fileID: 0}
+  GoldData: {fileID: 0}
+  skillContainerSO: {fileID: 0}
   _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
+  _resetSaveableDataEvent: {fileID: 0}
+  _loadSaveableDataEvent: {fileID: 0}
+  CodeActionList: []
 --- !u!4 &1223795388
 Transform:
   m_ObjectHideFlags: 0
@@ -3104,6 +3110,7 @@ MonoBehaviour:
   _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   _levelText: {fileID: 1838305925}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
 --- !u!1 &1644613538
 GameObject:
   m_ObjectHideFlags: 0

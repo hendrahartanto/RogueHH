@@ -6,6 +6,17 @@ public class UILevelDropdown : MonoBehaviour
   private TMP_Dropdown _dropdown = default;
   [SerializeField] private DungeonSO _dungeonSO = default;
   [SerializeField] private IntEventChanelSO _updateFloorIndicatorUIEvent = default;
+  [SerializeField] private VoidEventChannelSO _onCheatExecutedEvent = default;
+
+  private void OnEnable()
+  {
+    _onCheatExecutedEvent.OnEventRaised += PopulateDropdown;
+  }
+
+  private void OnDisable()
+  {
+    _onCheatExecutedEvent.OnEventRaised -= PopulateDropdown;
+  }
 
   private void Start()
   {

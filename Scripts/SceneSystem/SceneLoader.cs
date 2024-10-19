@@ -95,7 +95,6 @@ public class SceneLoader : MonoBehaviour
       return;
 
     //cek nama dari scene agar bisa divalidasi untuk save system
-    Debug.Log(menuToLoad.isMainMenu);
     if (menuToLoad.isMainMenu)
     {
       CharacterConfigSO playerData = _requestSaveableDataEvent.RequestPlayerData();

@@ -94,5 +94,6 @@ public enum SFXName
   MenuOpen,
   MenuClosed,
   Purchase,
-  Campfire
+  Campfire,
+  CheatActive
 }

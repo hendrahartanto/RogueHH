@@ -38,6 +38,21 @@ public static class SaveSystem
     }
   }
 
+  public static void DeleteSaveData()
+  {
+    string path = Application.persistentDataPath + "/player.hh";
+
+    if (File.Exists(path))
+    {
+      File.Delete(path);
+      Debug.Log("Save file deleted successfully.");
+    }
+    else
+    {
+      Debug.LogError("No save file found to delete at " + path);
+    }
+  }
+
   public static bool CheckHasSaveData()
   {
     string path = Application.persistentDataPath + "/player.hh";

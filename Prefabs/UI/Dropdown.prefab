@@ -1277,6 +1277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dungeonSO: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
+  _updateFloorIndicatorUIEvent: {fileID: 0}
+  _onCheatExecutedEvent: {fileID: 11400000, guid: dfa9d2502b015554ca9a8f799077cc6b, type: 2}
 --- !u!114 &4274143216586178120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,6 +1291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b038f2597e2f8d044858a24509d389fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ButtonComp: {fileID: 0}
+  DisabledOverlayObject: {fileID: 0}
+  EventTriggerComp: {fileID: 0}
   _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
 --- !u!1 &5018144274672593472
 GameObject:

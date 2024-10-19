@@ -77,6 +77,7 @@ public class UIMainMenuManager : MonoBehaviour
 
   private void StartNewGame()
   {
+    SaveSystem.DeleteSaveData();
     _resetSaveableDataEvent.RaiseEvent();
     _startNewGameEvent.RaiseEvent();
   }

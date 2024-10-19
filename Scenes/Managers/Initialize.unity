@@ -216,9 +216,14 @@ MonoBehaviour:
   DungeonData: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   GoldData: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
   skillContainerSO: {fileID: 11400000, guid: 78f925bcd0e7d2d43a003e7ca8517ee5, type: 2}
+  _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
   _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
   _resetSaveableDataEvent: {fileID: 11400000, guid: 7252be3971c0628458ccf7245ca2f54f, type: 2}
   _loadSaveableDataEvent: {fileID: 11400000, guid: c86ea70f8fdcd5a44b59dfe253a119a9, type: 2}
+  CodeActionList:
+  - {fileID: 11400000, guid: 09179910edb2b3e458cd4cd9677c1004, type: 2}
+  - {fileID: 11400000, guid: 5fc771aaff4d8164a9870da32a0dfaff, type: 2}
+  - {fileID: 11400000, guid: ae87e9b1e1b0aa6488d1e8b735072d5f, type: 2}
 --- !u!4 &234699800
 Transform:
   m_ObjectHideFlags: 0
@@ -554,6 +559,8 @@ MonoBehaviour:
     SFXValue: {fileID: 11400000, guid: 80f6163189725d54bb3fb0152613bd8f, type: 2}
   - SFXKey: 6
     SFXValue: {fileID: 11400000, guid: 8cdc0b73c26404c4fbc2079c6108fb77, type: 2}
+  - SFXKey: 7
+    SFXValue: {fileID: 11400000, guid: fec981bd6940f5d48a52780012743495, type: 2}
   SFXConfig: {fileID: 11400000, guid: 335b949962521b841b89062845970987, type: 2}
   _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
   _sfxEvent: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}
