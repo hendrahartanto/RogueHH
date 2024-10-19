@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
-  [SerializeField] private Button _newGameButton = default;
-
+  public UIButtonBase ContinueButtonComp;
   public UnityAction NewGameButtonAction;
+  public UnityAction ContinueButtonAction;
 
   public void NewGameButtonOnClick()
   {
     NewGameButtonAction.Invoke();
+  }
+
+  public void ContinueButtonOnClick()
+  {
+    ContinueButtonAction.Invoke();
   }
 }

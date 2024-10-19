@@ -17,6 +17,12 @@ public class ExpSO : ScriptableObject
     _currentExp = 0;
   }
 
+  public void Reset()
+  {
+    _expCap = 5;
+    _currentExp = 0;
+  }
+
   public void SetExpCap(int expCapValue)
   {
     _expCap = expCapValue;

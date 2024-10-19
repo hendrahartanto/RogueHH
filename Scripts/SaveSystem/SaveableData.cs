@@ -5,8 +5,10 @@ public class SaveableData
 {
   public PlayerData PlayerData;
   public List<UpgradableItemData> UpgradableItemDataList = new List<UpgradableItemData>();
+  public DungeonData DungeonData;
+  public GoldData GoldData;
 
-  public SaveableData(CharacterConfigSO playerData, ExpSO expData, List<UpgradableItemSO> upgradableItemDataList)
+  public SaveableData(CharacterConfigSO playerData, ExpSO expData, List<UpgradableItemSO> upgradableItemDataList, DungeonSO dungeonData, GoldSO goldData)
   {
     PlayerData = new PlayerData
     {
@@ -22,6 +24,15 @@ public class SaveableData
         Price = item.Price
       });
     }
+    DungeonData = new DungeonData
+    {
+      CurrentLevel = dungeonData.CurrentLevel,
+      MaxLevelReached = dungeonData.MaxLevelReached
+    };
+    GoldData = new GoldData
+    {
+      Gold = goldData.CurrentGold
+    };
   }
 }
 
@@ -39,4 +50,17 @@ public class UpgradableItemData
 {
   public int CurrentLevel;
   public int Price;
+}
+
+[System.Serializable]
+public class DungeonData
+{
+  public int CurrentLevel;
+  public int MaxLevelReached;
+}
+
+[System.Serializable]
+public class GoldData
+{
+  public int Gold;
 }

@@ -22,10 +22,11 @@ MonoBehaviour:
   CriticalDamage: 1.5
   WeaponType: 0
   Level: 0
-  InitialExpCap: 0
+  ExpCap: 0
+  appearanceType: 0
   MinExpGain: 2
   MaxExpGain: 4
-  MinGoldGain: 3
-  MaxGoldGain: 5
+  MinGoldGain: 5
+  MaxGoldGain: 8
   ExpGainScalingFactor: 1.1
-  GoldGainScalingFactor: 1.05
+  GoldGainScalingFactor: 1.1

@@ -17,6 +17,7 @@ public class PointerManager : MonoBehaviour
   [Header("Listening to")]
   [SerializeField] private VoidEventChannelSO _onPlayerInstantiated = default;
   [SerializeField] private BoolEventChannelSO _raycastSetActiveEvent = default;
+  [SerializeField] private VoidEventChannelSO _toggleRaycastActiveEvent = default;
 
   private void SetupCamera()
   {
@@ -28,12 +29,14 @@ public class PointerManager : MonoBehaviour
   {
     _onPlayerInstantiated.OnEventRaised += SetupCamera;
     _raycastSetActiveEvent.OnEventRaised += SetRaycastActive;
+    _toggleRaycastActiveEvent.OnEventRaised += ToggleRaycastActive;
   }
 
   private void OnDisable()
   {
     _onPlayerInstantiated.OnEventRaised -= SetupCamera;
     _raycastSetActiveEvent.OnEventRaised -= SetRaycastActive;
+    _toggleRaycastActiveEvent.OnEventRaised -= ToggleRaycastActive;
   }
 
   private void Update()
@@ -78,5 +81,10 @@ public class PointerManager : MonoBehaviour
   private void SetRaycastActive(bool isActive)
   {
     _isRaycastEnabled = isActive;
+  }
+
+  private void ToggleRaycastActive()
+  {
+    _isRaycastEnabled = !_isRaycastEnabled;
   }
 }

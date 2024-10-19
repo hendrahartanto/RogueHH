@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece000b1b62b8c64aba0be349ec53476, type: 3}
   m_Name: SkillContainer
   m_EditorClassIdentifier: 
-  LockedSkills: []
-  UnlockedSkills:
+  PersistentLockedSkills:
   - {fileID: 11400000, guid: b4f41594059c0bc41b3414bfb4371b64, type: 2}
   - {fileID: 11400000, guid: 1c16c121725f52e4abf26f2b52b62917, type: 2}
   - {fileID: 11400000, guid: 813a3f59675244b43bea104951905a32, type: 2}
+  LockedSkills: []
+  UnlockedSkills: []
   _checkSkillTobeUnlockedEvent: {fileID: 11400000, guid: 4e4f31bf6f0dd25479b99926b094b3ba, type: 2}

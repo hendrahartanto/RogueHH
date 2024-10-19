@@ -8,6 +8,8 @@ public class RequestSaveableDataEventChannelSO : ScriptableObject
   public CharacterConfigSO PlayerData;
   public List<UpgradableItemSO> UpgradableItemDataList;
   public ExpSO ExpData;
+  public DungeonSO DungeonData;
+  public GoldSO GoldData;
 
   public CharacterConfigSO RequestPlayerData()
   {
@@ -22,5 +24,15 @@ public class RequestSaveableDataEventChannelSO : ScriptableObject
   public ExpSO RequestExpData()
   {
     return ExpData;
+  }
+
+  public DungeonSO RequestDungeonData()
+  {
+    return DungeonData;
+  }
+
+  public GoldSO RequestGoldData()
+  {
+    return GoldData;
   }
 }

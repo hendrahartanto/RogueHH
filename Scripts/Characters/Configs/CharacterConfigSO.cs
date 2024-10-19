@@ -36,6 +36,19 @@ public class CharacterConfigSO : ScriptableObject
     GoldGainScalingFactor = 1.1f;
   }
 
+  public void Reset()
+  {
+    MinInitialHealth = 20;
+    MaxInitialHealth = 20;
+    MinInitialAttackPoint = 5;
+    MaxInitialAttackPoint = 5;
+    MinInitialDeffendPoint = 5;
+    MaxInitialDeffendPoint = 5;
+    CriticalRate = 0.05f;
+    CriticalDamage = 1.5f;
+    Level = 0;
+  }
+
   public int GetInitialHealth()
   {
     int baseHealth = Random.Range(MinInitialHealth, MaxInitialHealth + 1);

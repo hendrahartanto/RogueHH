@@ -10,4 +10,10 @@ public class DungeonSO : ScriptableObject
   public List<Room> rooms = new List<Room>();
   public int CurrentLevel = 0;
   public int MaxLevelReached = 0;
+
+  public void Reset()
+  {
+    CurrentLevel = 0;
+    MaxLevelReached = 0;
+  }
 }

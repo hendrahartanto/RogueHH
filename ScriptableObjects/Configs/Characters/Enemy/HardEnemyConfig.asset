@@ -23,9 +23,10 @@ MonoBehaviour:
   WeaponType: 1
   Level: 30
   ExpCap: 0
+  appearanceType: 0
   MinExpGain: 10
   MaxExpGain: 15
-  MinGoldGain: 15
-  MaxGoldGain: 20
+  MinGoldGain: 18
+  MaxGoldGain: 23
   ExpGainScalingFactor: 1.1
   GoldGainScalingFactor: 1.1

@@ -246,6 +246,7 @@ MonoBehaviour:
   _backToUpgradeMenuEvent: {fileID: 11400000, guid: 8892de1f7c615be48941da19ecba653d, type: 2}
   _startGameplayEvent: {fileID: 11400000, guid: 1e3bc2a0804f4a342a4de080ce8baff7, type: 2}
   _goToMainMenuEvent: {fileID: 11400000, guid: cf5841f1effa6654fb19d996bf3e2109, type: 2}
+  _toggleRaycastActiveEvent: {fileID: 11400000, guid: 3b992b293535e7b4bab3fda79d4b71ff, type: 2}
   _setGameplayCanvasActiveEvent: {fileID: 11400000, guid: 3a0de6c25a6d4c74ba8537127c3967f8, type: 2}
   _gameOverModalSetActiveEvent: {fileID: 11400000, guid: 3825540656acf9d42bfb473ed2ea5523, type: 2}
   _floorClearedModalSetActiveEvent: {fileID: 11400000, guid: 271d7a263aac67949bbaae8695639cba, type: 2}
@@ -440,6 +441,7 @@ MonoBehaviour:
   _sceneToLoad: {fileID: 11400000, guid: b38a628e7e128024d8891649a583c027, type: 2}
   _showLoadingScreen: 1
   _loadLocation: {fileID: 11400000, guid: 62021d8bb2110c24092075e09ed27c20, type: 2}
+  _removeAllTurnQueueEvent: {fileID: 11400000, guid: 00c75390bbd93ac4791ac51835f33757, type: 2}
   _backToUpgradeMenuEvent: {fileID: 11400000, guid: 8892de1f7c615be48941da19ecba653d, type: 2}
 --- !u!1 &173931174
 GameObject:
@@ -2308,7 +2310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1223795387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4586,6 +4588,10 @@ PrefabInstance:
       propertyPath: _resetPlayerLevelEvent
       value: 
       objectReference: {fileID: 11400000, guid: 2529a7469ebacce4092407172e7403ca, type: 2}
+    - target: {fileID: 3467704844352324451, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
+      propertyPath: _removeAllTurnQueueEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 00c75390bbd93ac4791ac51835f33757, type: 2}
     - target: {fileID: 9028914518607155655, guid: 8b5ff6c9ca930f0459c48a4df1701367, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2

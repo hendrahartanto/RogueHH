@@ -22,4 +22,9 @@ public class GoldSO : ScriptableObject
   {
     _gold -= value;
   }
+
+  public void Reset()
+  {
+    _gold = 0;
+  }
 }

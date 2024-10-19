@@ -101,8 +101,10 @@ public class SceneLoader : MonoBehaviour
       CharacterConfigSO playerData = _requestSaveableDataEvent.RequestPlayerData();
       List<UpgradableItemSO> upgradableItemDataList = _requestSaveableDataEvent.RequestUpgradableItemDataList();
       ExpSO expData = _requestSaveableDataEvent.RequestExpData();
+      DungeonSO dungeonData = _requestSaveableDataEvent.RequestDungeonData();
+      GoldSO goldData = _requestSaveableDataEvent.RequestGoldData();
 
-      SaveSystem.SaveData(playerData, expData, upgradableItemDataList);
+      SaveSystem.SaveData(playerData, expData, upgradableItemDataList, dungeonData, goldData);
     }
 
     _sceneToLoad = menuToLoad;

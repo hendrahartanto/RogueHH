@@ -14,6 +14,8 @@ public class UIGameplayCanvasManager : MonoBehaviour
   [SerializeField] private VoidEventChannelSO _backToUpgradeMenuEvent = default;
   [SerializeField] private VoidEventChannelSO _startGameplayEvent = default;
   [SerializeField] private VoidEventChannelSO _goToMainMenuEvent = default;
+  [SerializeField] private VoidEventChannelSO _toggleRaycastActiveEvent = default;
+
 
   [Header("Listening to")]
   [SerializeField] private BoolEventChannelSO _setGameplayCanvasActiveEvent = default;
@@ -118,5 +120,6 @@ public class UIGameplayCanvasManager : MonoBehaviour
 
     _inputReader.ToggleGameplayInput();
     _pauseModal.gameObject.SetActive(!_pauseModal.gameObject.activeSelf);
+    _toggleRaycastActiveEvent.RaiseEvent();
   }
 }

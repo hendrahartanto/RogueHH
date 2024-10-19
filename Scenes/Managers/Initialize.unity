@@ -176,6 +176,63 @@ MonoBehaviour:
   _onLocationReady: {fileID: 11400000, guid: b399bed513d16d14e9eec137b817cb22, type: 2}
   _setGameplayCanvasActiveEvent: {fileID: 11400000, guid: 3a0de6c25a6d4c74ba8537127c3967f8, type: 2}
   _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
+--- !u!1 &234699798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234699800}
+  - component: {fileID: 234699799}
+  m_Layer: 0
+  m_Name: PersistentVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &234699799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234699798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45246d4db93b6344a819976d3bf10410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerData: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
+  _playerExp: {fileID: 11400000, guid: 933411ba2a15add4aba40546a0e8c50f, type: 2}
+  UpgradableItemList:
+  - {fileID: 11400000, guid: dad95c69fd2530945871bdff43320ee2, type: 2}
+  - {fileID: 11400000, guid: ced35ac08d9b62846ab0c382666c7928, type: 2}
+  - {fileID: 11400000, guid: 9cec1c99ace507049935047a2af4d33c, type: 2}
+  - {fileID: 11400000, guid: 2c3689a108267af4a9f9d576fbb95c9e, type: 2}
+  - {fileID: 11400000, guid: 17d8f243d4160b34a8e7adc9c0caa8e4, type: 2}
+  DungeonData: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
+  GoldData: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
+  skillContainerSO: {fileID: 11400000, guid: 78f925bcd0e7d2d43a003e7ca8517ee5, type: 2}
+  _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
+  _resetSaveableDataEvent: {fileID: 11400000, guid: 7252be3971c0628458ccf7245ca2f54f, type: 2}
+  _loadSaveableDataEvent: {fileID: 11400000, guid: c86ea70f8fdcd5a44b59dfe253a119a9, type: 2}
+--- !u!4 &234699800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234699798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 689.7169, y: 311.68326, z: -493.0196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &365932322
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 365932323}
   - component: {fileID: 365932324}
+  - component: {fileID: 365932325}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -223,6 +281,14 @@ MonoBehaviour:
   _initialSize: 10
   _musicEventChannel: {fileID: 11400000, guid: f00aa7e9ed2d2ff4392199e12b78b727, type: 2}
   _sfxEventChannel: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}
+--- !u!81 &365932325
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365932322}
+  m_Enabled: 1
 --- !u!1 &554082951
 GameObject:
   m_ObjectHideFlags: 0

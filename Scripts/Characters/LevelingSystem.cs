@@ -14,7 +14,6 @@ public class LevelingSystem : MonoBehaviour
   [SerializeField] private IntEventChanelSO _setupExpUIEvent = default;
   [SerializeField] private VoidEventChannelSO _playerLevelUpEvent = default;
   [SerializeField] private TextPopupEventChannelSO _textPopupEvent = default;
-  [SerializeField] private IntEventChanelSO _checkSkillTobeUnlockedEvent = default;
 
   [Header("Listening to")]
   [SerializeField] private IntEventChanelSO _gainExpEvent = default;
@@ -74,8 +73,6 @@ public class LevelingSystem : MonoBehaviour
       _characterConfigSO.Level++;
 
       _playerLevelUpEvent.RaiseEvent();
-
-      _checkSkillTobeUnlockedEvent.RaiseEvent(_characterConfigSO.Level);
 
       SetupStats(remainingExp);
     }

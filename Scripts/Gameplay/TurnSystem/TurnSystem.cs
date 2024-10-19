@@ -27,6 +27,7 @@ public class TurnSystem : MonoBehaviour
     _onTurnFinished.OnEventRaised += ExecuteNextTurn;
     _removeEnemyFromQueueEvent.OnEventRaised += RemoveFromQueue;
     _removeAllTurnQueueEvent.OnEventRaised += RemoveAllQueue;
+    _inputReader.KeyboardSpaceEvent += _onTurnCycleExecuted.RaiseEvent;
   }
 
   private void OnDisable()
@@ -36,12 +37,12 @@ public class TurnSystem : MonoBehaviour
     _onTurnFinished.OnEventRaised -= ExecuteNextTurn;
     _removeEnemyFromQueueEvent.OnEventRaised -= RemoveFromQueue;
     _removeAllTurnQueueEvent.OnEventRaised -= RemoveAllQueue;
+    _inputReader.KeyboardSpaceEvent -= _onTurnCycleExecuted.RaiseEvent;
   }
 
   private void Awake()
   {
     QueueItems = new List<ITurnComponent>();
-    SetupGameInput();
   }
 
   private void AddToQueue(ITurnComponent turnComponent)
@@ -85,11 +86,6 @@ public class TurnSystem : MonoBehaviour
     }
 
     QueueItems[_currentItemIndex++].ExecuteTurn();
-  }
-
-  private void SetupGameInput()
-  {
-    _inputReader.KeyboardSpaceEvent += _onTurnCycleExecuted.RaiseEvent;
   }
 
   private void RemoveAllQueue()

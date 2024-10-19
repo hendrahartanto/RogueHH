@@ -46,4 +46,5 @@ MonoBehaviour:
   _sceneToLoad: {fileID: 0}
   _showLoadingScreen: 0
   _loadMenu: {fileID: 11400000, guid: c7ee04ac7ba00384c9d250ab713d5346, type: 2}
-  _loadToSpecificMenuEvent: {fileID: 0}
+  _removeAllTurnQueueEvent: {fileID: 0}
+  _loadToSpecificMenuEvent: {fileID: 11400000, guid: 00c75390bbd93ac4791ac51835f33757, type: 2}

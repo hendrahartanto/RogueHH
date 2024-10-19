@@ -34,4 +34,20 @@ public class UpgradableItemSO : ScriptableObject
   {
     _currentLevel++;
   }
+
+  public void SetLevel(int level)
+  {
+    _currentLevel = level;
+  }
+
+  public void SetPrice(int price)
+  {
+    _price = price;
+  }
+
+  public void Reset()
+  {
+    _price = 10;
+    _currentLevel = 0;
+  }
 }

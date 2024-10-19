@@ -9,6 +9,7 @@ public class GotoSpecificMenuScene : MonoBehaviour
 
   [Header("Broadcasting to")]
   [SerializeField] private LoadEventChannelSO _loadMenu = default;
+  [SerializeField] private VoidEventChannelSO _removeAllTurnQueueEvent = default;
 
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _loadToSpecificMenuEvent = default;
@@ -25,6 +26,7 @@ public class GotoSpecificMenuScene : MonoBehaviour
 
   private void GotoSpecificMenu()
   {
+    _removeAllTurnQueueEvent?.RaiseEvent();
     _loadMenu.RaiseEvent(_sceneToLoad, _showLoadingScreen);
   }
 }

@@ -5,21 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillContainer", menuName = "Skill/SkillContainer")]
 public class SkillContainerSO : ScriptableObject
 {
+  public List<SkillSO> PersistentLockedSkills = new List<SkillSO>();
   public List<SkillSO> LockedSkills = new List<SkillSO>();
   public List<SkillSO> UnlockedSkills = new List<SkillSO>();
 
   [Header("Listening on")]
   [SerializeField] private IntEventChanelSO _checkSkillTobeUnlockedEvent = default;
-
-  private void Start()
-  {
-    UnlockedSkills.Clear();
-    LockedSkills.Clear();
-
-    UnlockedSkills.Add(CreateInstance<LifeStealSkill>());
-    UnlockedSkills.Add(CreateInstance<Bash>());
-    UnlockedSkills.Add(CreateInstance<Plua100Aura>());
-  }
 
   private void OnEnable()
   {
@@ -40,6 +31,17 @@ public class SkillContainerSO : ScriptableObject
         UnlockedSkills.Add(LockedSkills[i]);
         LockedSkills.RemoveAt(i);
       }
+    }
+  }
+
+  public void Reset()
+  {
+    UnlockedSkills.Clear();
+    LockedSkills.Clear();
+
+    foreach (SkillSO skill in PersistentLockedSkills)
+    {
+      LockedSkills.Add(Instantiate(skill));
     }
   }
 }
