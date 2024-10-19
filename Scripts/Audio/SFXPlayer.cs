@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class SFXPlayer : MonoBehaviour
@@ -17,11 +18,13 @@ public class SFXPlayer : MonoBehaviour
   private void OnEnable()
   {
     _playSFXEvent.OnEventRaised += PlaySFX;
+    _playSFXEvent.OnStopEventRaised += StopSFX;
   }
 
   private void OnDisable()
   {
     _playSFXEvent.OnEventRaised -= PlaySFX;
+    _playSFXEvent.OnStopEventRaised -= StopSFX;
   }
 
   public AudioCueSO GetAudioCue(SFXName sfxName)
@@ -38,9 +41,39 @@ public class SFXPlayer : MonoBehaviour
     return null;
   }
 
+  public void SetAudioCueKey(SFXName sfxName, AudioCueKey key)
+  {
+    foreach (var mapping in SFXList)
+    {
+      if (mapping.SFXKey == sfxName)
+      {
+        mapping.SFXCueKey = key;
+      }
+    }
+  }
+
+  public AudioCueKey GetAudioCueKey(SFXName sfxName)
+  {
+    foreach (var mapping in SFXList)
+    {
+      if (mapping.SFXKey == sfxName)
+      {
+        return mapping.SFXCueKey;
+      }
+    }
+
+    return SFXList[0].SFXCueKey;
+  }
+
   private void PlaySFX(SFXName sfxName, Transform transform)
   {
-    _sfxEvent.RaisePlayEvent(GetAudioCue(sfxName), SFXConfig, transform.position);
+    AudioCueKey key = _sfxEvent.RaisePlayEvent(GetAudioCue(sfxName), SFXConfig, transform.position);
+    SetAudioCueKey(sfxName, key);
+  }
+
+  private void StopSFX(SFXName sfxName)
+  {
+    _sfxEvent.RaiseStopEvent(GetAudioCueKey(sfxName));
   }
 
 }
@@ -50,6 +83,7 @@ public class SFXMapping
 {
   public SFXName SFXKey;
   public AudioCueSO SFXValue;
+  public AudioCueKey SFXCueKey;
 }
 
 public enum SFXName
@@ -59,5 +93,6 @@ public enum SFXName
   MenuClick,
   MenuOpen,
   MenuClosed,
-  Purchase
+  Purchase,
+  Campfire
 }

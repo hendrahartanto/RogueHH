@@ -552,6 +552,8 @@ MonoBehaviour:
     SFXValue: {fileID: 11400000, guid: 624b8198302c3a94885755fbf1aef834, type: 2}
   - SFXKey: 5
     SFXValue: {fileID: 11400000, guid: 80f6163189725d54bb3fb0152613bd8f, type: 2}
+  - SFXKey: 6
+    SFXValue: {fileID: 11400000, guid: 8cdc0b73c26404c4fbc2079c6108fb77, type: 2}
   SFXConfig: {fileID: 11400000, guid: 335b949962521b841b89062845970987, type: 2}
   _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
   _sfxEvent: {fileID: 11400000, guid: c955caf3eeef81841afe41ba0431d9c4, type: 2}

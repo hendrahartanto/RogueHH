@@ -2629,9 +2629,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuPanel: {fileID: 741723919}
   _alertModal: {fileID: 2458836409064821663}
+  _onSceneReady: {fileID: 11400000, guid: b54cb99b90d40aa4da7dd4fe2df0fd6b, type: 2}
   _startNewGameEvent: {fileID: 11400000, guid: 52bec9db819d8714697997c2e67517d4, type: 2}
   _resetSaveableDataEvent: {fileID: 11400000, guid: 7252be3971c0628458ccf7245ca2f54f, type: 2}
   _loadSaveableDataEvent: {fileID: 11400000, guid: c86ea70f8fdcd5a44b59dfe253a119a9, type: 2}
+  _playSFXEvent: {fileID: 11400000, guid: 82d81f60c3048a447b501215ddf10f34, type: 2}
 --- !u!1001 &1684949069
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,15 +9,27 @@ public class UIMainMenuManager : MonoBehaviour
   [Header("Mainmenu component")]
   [SerializeField] UIMainMenu _mainMenuPanel = default;
   [SerializeField] UIAlertModal _alertModal = default;
+  [SerializeField] VoidEventChannelSO _onSceneReady = default;
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _startNewGameEvent = default;
   [SerializeField] private VoidEventChannelSO _resetSaveableDataEvent = default;
   [SerializeField] private VoidEventChannelSO _loadSaveableDataEvent = default;
+  [SerializeField] private PlaySFXEventChannelSO _playSFXEvent = default;
 
   private void Awake()
   {
     _hasSaveData = SaveSystem.CheckHasSaveData();
+  }
+
+  private void OnEnable()
+  {
+    _onSceneReady.OnEventRaised += PlayCampfireSFX;
+  }
+
+  private void OnDisable()
+  {
+    _onSceneReady.OnEventRaised -= PlayCampfireSFX;
   }
 
   private void Start()
@@ -59,6 +71,8 @@ public class UIMainMenuManager : MonoBehaviour
     //alert modal
     _alertModal.BackButtonAction -= ToggleAlertModal;
     _alertModal.ContinueButtonAction += StartNewGame;
+
+    _playSFXEvent.RaiseStopEvent(SFXName.Campfire);
   }
 
   private void StartNewGame()
@@ -77,5 +91,7 @@ public class UIMainMenuManager : MonoBehaviour
   {
     _alertModal.gameObject.SetActive(!_alertModal.gameObject.activeSelf);
   }
+
+  private void PlayCampfireSFX() => _playSFXEvent.RaiseEvent(SFXName.Campfire, transform);
 
 }

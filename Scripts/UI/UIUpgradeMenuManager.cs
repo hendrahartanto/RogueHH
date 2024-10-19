@@ -9,6 +9,7 @@ public class UIUpgradeMenuManager : MonoBehaviour
 
   [Header("Broadcasting on")]
   [SerializeField] private VoidEventChannelSO _startGameplayEvent = default;
+  [SerializeField] private VoidEventChannelSO _goToMainMenuEvent = default;
 
   private void Start()
   {
@@ -23,5 +24,10 @@ public class UIUpgradeMenuManager : MonoBehaviour
   private void StartGameplay()
   {
     _startGameplayEvent.RaiseEvent();
+  }
+
+  public void GotoMainMenu()
+  {
+    _goToMainMenuEvent.RaiseEvent();
   }
 }
