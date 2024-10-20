@@ -53,21 +53,21 @@ public class CharacterConfigSO : ScriptableObject
   {
     int baseHealth = Random.Range(MinInitialHealth, MaxInitialHealth + 1);
 
-    return (int)(baseHealth * Math.Pow(1.1, Level));
+    return (int)(baseHealth * Mathf.Pow(1.06f, Level));
   }
 
   public int GetInitialAttackPoint()
   {
     int baseAttack = Random.Range(MinInitialAttackPoint, MaxInitialAttackPoint + 1);
 
-    return (int)(baseAttack * (1 + 0.12 * Level));
+    return (int)(baseAttack * Mathf.Pow(1.08f, Level));
   }
 
   public int GetInitialDeffendPoint()
   {
     int baseDeffenPoint = Random.Range(MinInitialDeffendPoint, MaxInitialDeffendPoint + 1);
 
-    return (int)(baseDeffenPoint + (Level * 0.08 * baseDeffenPoint));
+    return (int)(baseDeffenPoint * Mathf.Pow(1.06f, Level));
   }
 
   public int GetExpGain()

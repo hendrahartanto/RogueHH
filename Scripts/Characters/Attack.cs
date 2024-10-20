@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -9,6 +6,7 @@ public class Attack : MonoBehaviour
   [SerializeField] private CharacterConfigSO _characterConfigSO = default;
   [SerializeField] private GameObject _swordObject = default;
   [SerializeField] private GameObject _trail = default;
+  [SerializeField] private GameObject _bashTrail = default;
   private HumanAudio _humanAudio = default;
   public int _attackPoint = default;
   public float SkillMultiplier = 0f;
@@ -123,6 +121,8 @@ public class Attack : MonoBehaviour
     {
       bool critical = false;
 
+      Debug.Log(_currentTarget.DeffendPoint);
+
       int effectiveDamage = Calculation.CalculateDamage(IsSkillActive ? _attackPoint * SkillMultiplier : _attackPoint, _weaponAttackPoint, _currentTarget.DeffendPoint);
 
       if (_isCriticalHit)
@@ -156,11 +156,17 @@ public class Attack : MonoBehaviour
 
   private void ShowTrail()
   {
-    _trail?.SetActive(true);
+    if (!IsCastingSkill)
+      _trail?.SetActive(true);
+    else
+      _bashTrail?.SetActive(true);
   }
 
   private void HideTrail()
   {
-    _trail?.SetActive(false);
+    if (!IsCastingSkill)
+      _trail?.SetActive(false);
+    else
+      _bashTrail?.SetActive(false);
   }
 }

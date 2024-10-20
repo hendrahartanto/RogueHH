@@ -8,6 +8,11 @@ public class ChangeAppearanceBroadcaster : MonoBehaviour
   [Header("Listening on")]
   [SerializeField] private VoidEventChannelSO _checkItemLevelEvent = default;
 
+  private void Awake()
+  {
+    CheckLevel();
+  }
+
   private void OnEnable()
   {
     _checkItemLevelEvent.OnEventRaised += CheckLevel;
@@ -28,5 +33,7 @@ public class ChangeAppearanceBroadcaster : MonoBehaviour
     {
       PlayerConfigSO.appearanceType = AppearanceType.Normal;
     }
+    else
+      PlayerConfigSO.appearanceType = AppearanceType.Naked;
   }
 }

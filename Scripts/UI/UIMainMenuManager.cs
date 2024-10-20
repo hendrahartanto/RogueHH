@@ -20,6 +20,7 @@ public class UIMainMenuManager : MonoBehaviour
   private void Awake()
   {
     _hasSaveData = SaveSystem.CheckHasSaveData();
+    Debug.Log(_hasSaveData);
   }
 
   private void OnEnable()
@@ -56,6 +57,8 @@ public class UIMainMenuManager : MonoBehaviour
       _mainMenuPanel.NewGameButtonAction += ToggleAlertModal;
       _mainMenuPanel.ContinueButtonAction += LoadGame;
     }
+
+    _mainMenuPanel.ExitButtonAction += ExitGame;
   }
 
   private void OnDestroy()
@@ -72,12 +75,16 @@ public class UIMainMenuManager : MonoBehaviour
     _alertModal.BackButtonAction -= ToggleAlertModal;
     _alertModal.ContinueButtonAction += StartNewGame;
 
+    _mainMenuPanel.ExitButtonAction -= ExitGame;
+
     _playSFXEvent.RaiseStopEvent(SFXName.Campfire);
   }
 
   private void StartNewGame()
   {
-    SaveSystem.DeleteSaveData();
+    if (_hasSaveData)
+      SaveSystem.DeleteSaveData();
+
     _resetSaveableDataEvent.RaiseEvent();
     _startNewGameEvent.RaiseEvent();
   }
@@ -86,6 +93,16 @@ public class UIMainMenuManager : MonoBehaviour
   {
     _loadSaveableDataEvent.RaiseEvent();
     _startNewGameEvent.RaiseEvent();
+  }
+
+  private void ExitGame()
+  {
+#if UNITY_STANDALONE
+    Application.Quit();
+#endif
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#endif
   }
 
   private void ToggleAlertModal()

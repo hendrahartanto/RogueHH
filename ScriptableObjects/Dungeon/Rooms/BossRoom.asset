@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7abc0879c7bd3e41b6a6ebcf22810d3, type: 3}
+  m_Name: BossRoom
+  m_EditorClassIdentifier: 
+  roomMaxSize: {x: 10, y: 10}
+  roomMinSize: {x: 10, y: 10}
+  possibleFloors:
+  - {fileID: 5629556561305024555, guid: cbab85ae49939304b86a33e36f7d2cec, type: 3}
+  - {fileID: 8319790866325399462, guid: ef47a26bcb18fd04fbe4013106325730, type: 3}
+  - {fileID: 1561684851770740266, guid: fc59800ae10f67d4a9fc8ad66e3d3fc6, type: 3}
+  - {fileID: 7730507251135223850, guid: 06264a18a68c9924c862c1bec121881d, type: 3}
+  - {fileID: 83457949293074488, guid: 6798453256db6ee4ba04dd8a326c00bc, type: 3}
+  - {fileID: 5726541732238411787, guid: 237f2e5cce3625149988851283381cf1, type: 3}
+  FloorChances: c80000000500000005000000050000000500000005000000
+  possibleDecorations:
+  - {fileID: 11400000, guid: 8ec1ac0a0e2d135478c5a753b82d2204, type: 2}
+  - {fileID: 11400000, guid: bcfb5d6d3fb24814bb75ca1541c2b5db, type: 2}
+  - {fileID: 11400000, guid: ad257f2e4bf4719458b2cb420c0f780f, type: 2}
+  - {fileID: 11400000, guid: 01145c9e7f58bc543938aeb0db03bf24, type: 2}
+  DecorationChances: 32000000320000003200000032000000

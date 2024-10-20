@@ -86,7 +86,7 @@ public class UIUpgradeDetail : MonoBehaviour
     CurrentSelectedItem = item;
 
     if (!_isActive)
-      SetActive();
+      SetActive(item);
 
     SetChildComponent();
 
@@ -107,9 +107,11 @@ public class UIUpgradeDetail : MonoBehaviour
     CostIndicator.GetComponentInChildren<TextMeshProUGUI>().SetText(CurrentSelectedItem.Price + " To upgrade");
   }
 
-  private void SetActive()
+  private void SetActive(UpgradableItemSO item)
   {
-    UpgradeButton.SetActive(true);
+    if (item.CurrentLevel < item.MaxLevel)
+      UpgradeButton.SetActive(true);
+
     Icon.SetActive(true);
     ItemName.enabled = true;
     Description.enabled = true;

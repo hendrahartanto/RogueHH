@@ -16,8 +16,8 @@ MonoBehaviour:
   _iconImage: {fileID: 21300000, guid: 0efaf96bd9a035b4dba16444ce2c389e, type: 3}
   _name: Health Up
   _description: 'Improve your maximum health. A better heart means better health. '
-  _price: 10
+  _price: 4060
   _upgradeValue: 10
   _type: 0
-  _currentLevel: 0
+  _currentLevel: 45
   _maxLevel: 45

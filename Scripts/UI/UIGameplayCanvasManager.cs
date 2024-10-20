@@ -4,6 +4,9 @@ public class UIGameplayCanvasManager : MonoBehaviour
 {
   private Canvas _gameplayCanvas = default;
   [SerializeField] private InputReader _inputReader = default;
+  [SerializeField] private DungeonSO _dungeonSO = default;
+  public GameObject GotoNextFloorController = default;
+  public GameObject GotoUpgradeMenuController = default;
 
   [Header("Gameplay canvas component")]
   [SerializeField] private UIGameOverModal _gameOverModal = default;
@@ -37,6 +40,7 @@ public class UIGameplayCanvasManager : MonoBehaviour
   private void Start()
   {
     SetGameplayScreen();
+
   }
 
   private void SetGameplayScreen()
@@ -92,6 +96,11 @@ public class UIGameplayCanvasManager : MonoBehaviour
   public void SetFloorClearedModalActive(bool isActive)
   {
     _floorClearedModal.gameObject.SetActive(isActive);
+
+    if (_dungeonSO.CurrentLevel == -1)
+      GotoNextFloorController.SetActive(false);
+    else
+      GotoUpgradeMenuController.SetActive(false);
   }
 
   private void GoToSpecificMenu()

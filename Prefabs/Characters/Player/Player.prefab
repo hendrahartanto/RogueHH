@@ -4726,7 +4726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049406681976180358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75, y: 1.5, z: 7}
+  m_LocalPosition: {x: 17, y: 1.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598641499425146018}
@@ -4892,6 +4892,7 @@ MonoBehaviour:
   _characterConfigSO: {fileID: 11400000, guid: 02d4cbb54edcede44a54a9e1d92e7acb, type: 2}
   _swordObject: {fileID: 2000357184224571143}
   _trail: {fileID: 7555655924556529250}
+  _bashTrail: {fileID: 6142873870991464565}
   _attackPoint: 0
   SkillMultiplier: 0
   IsSkillActive: 0
@@ -4920,7 +4921,6 @@ MonoBehaviour:
   _setupExpUIEvent: {fileID: 11400000, guid: 856cc90fec2b3574fb61b4fb8b061bae, type: 2}
   _playerLevelUpEvent: {fileID: 11400000, guid: 5c075d9b9c2dcbc4ebdb576041b8dc03, type: 2}
   _textPopupEvent: {fileID: 11400000, guid: 1dba780e446553345b6cee38170545a8, type: 2}
-  _checkSkillTobeUnlockedEvent: {fileID: 11400000, guid: 4e4f31bf6f0dd25479b99926b094b3ba, type: 2}
   _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
 --- !u!54 &-159225850327403872
 Rigidbody:
@@ -6449,14 +6449,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3afc383c580478c48a4e02794e9777c2, type: 3}
---- !u!4 &1853228081228284123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6535119436771728164, guid: 3afc383c580478c48a4e02794e9777c2, type: 3}
-  m_PrefabInstance: {fileID: 4829712156991921151}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7979421045998665929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3294960044824943414, guid: 3afc383c580478c48a4e02794e9777c2, type: 3}
+  m_PrefabInstance: {fileID: 4829712156991921151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1853228081228284123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6535119436771728164, guid: 3afc383c580478c48a4e02794e9777c2, type: 3}
   m_PrefabInstance: {fileID: 4829712156991921151}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7140062139613745567
@@ -6533,6 +6533,11 @@ Transform:
 --- !u!1 &2000357184224571143 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8706631177219325592, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
+  m_PrefabInstance: {fileID: 7140062139613745567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6142873870991464565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3902729248604752362, guid: eaebdfeaa4d031a4d8bef616282ef715, type: 3}
   m_PrefabInstance: {fileID: 7140062139613745567}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7263998287516080794

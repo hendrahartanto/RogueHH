@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LocationScenes
+  m_EditorClassIdentifier: 
+  m_GroupName: LocationScenes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: eecb55a49ad14664790757199c56b0d8
+  m_SerializeEntries:
+  - m_GUID: 4afb06591340e584391f8840b4b92687
+    m_Address: Assets/Scenes/BossFloor.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 4afb06591340e584391f8840b4b92687, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 4afb06591340e584391f8840b4b92687, type: 3}
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Assets/Scenes/SampleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  - m_GUID: 1842835f3fe8de34aac57128c00ab7b6
+    m_Address: Assets/Scenes/UpgradeMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 1842835f3fe8de34aac57128c00ab7b6, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 1842835f3fe8de34aac57128c00ab7b6, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 1afc8866e92769f42b57941cd8639e98, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c58ec567eb3c83547a1d11b683ba74e9, type: 2}
+    - {fileID: 11400000, guid: 21472f92974d71046a7d0037ae2c4e25, type: 2}

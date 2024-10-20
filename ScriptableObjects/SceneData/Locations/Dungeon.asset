@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a1cf52b2faf074995b25de7328e65b, type: 3}
   m_Name: Dungeon
   m_EditorClassIdentifier: 
+  SceneName: SampleScene
   sceneType: 0
   sceneReference:
     m_AssetGUID: 9fc0d4010bbf28b4594072e72b8655ab
     m_SubObjectName: 
     m_SubObjectType: 
   musicTrack: {fileID: 11400000, guid: 2c6a137114e7862488df039bae72d8c5, type: 2}
+  isMainMenu: 0

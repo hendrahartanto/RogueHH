@@ -17,7 +17,8 @@ public class ColdStartup : MonoBehaviour
 
   private void Awake()
   {
-    isColdStartup = !SceneManager.GetSceneByName(_initialize.sceneReference.editorAsset.name).isLoaded;
+    string sceneName = _initialize.SceneName; // Assuming SceneSO contains the SceneName
+    isColdStartup = !SceneManager.GetSceneByName(sceneName).isLoaded;
   }
 
   private void Start()

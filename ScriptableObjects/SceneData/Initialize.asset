@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2866c04f5690f343b12977bfef3e4a6, type: 3}
   m_Name: Initialize
   m_EditorClassIdentifier: 
+  SceneName: Initialize
   sceneType: 1
   sceneReference:
     m_AssetGUID: 4a70037bac0862649a781941c7647db3
     m_SubObjectName: 
     m_SubObjectType: 
+  musicTrack: {fileID: 0}
+  isMainMenu: 0

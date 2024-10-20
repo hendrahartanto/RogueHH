@@ -19,6 +19,7 @@ public class SceneLoader : MonoBehaviour
   private AsyncOperationHandle<SceneInstance> _loadingOperationHandle = default;
   private float _fadeDuration = .5f;
   private bool _fromLocation = false;
+  private bool _isInitialLoad = true;
 
   [Header("Listening to")]
   [SerializeField] private LoadEventChannelSO _coldStartupChannel = default;
@@ -97,13 +98,17 @@ public class SceneLoader : MonoBehaviour
     //cek nama dari scene agar bisa divalidasi untuk save system
     if (menuToLoad.isMainMenu)
     {
-      CharacterConfigSO playerData = _requestSaveableDataEvent.RequestPlayerData();
-      List<UpgradableItemSO> upgradableItemDataList = _requestSaveableDataEvent.RequestUpgradableItemDataList();
-      ExpSO expData = _requestSaveableDataEvent.RequestExpData();
-      DungeonSO dungeonData = _requestSaveableDataEvent.RequestDungeonData();
-      GoldSO goldData = _requestSaveableDataEvent.RequestGoldData();
-
-      SaveSystem.SaveData(playerData, expData, upgradableItemDataList, dungeonData, goldData);
+      if (_isInitialLoad)
+        _isInitialLoad = false;
+      else
+      {
+        CharacterConfigSO playerData = _requestSaveableDataEvent.RequestPlayerData();
+        List<UpgradableItemSO> upgradableItemDataList = _requestSaveableDataEvent.RequestUpgradableItemDataList();
+        ExpSO expData = _requestSaveableDataEvent.RequestExpData();
+        DungeonSO dungeonData = _requestSaveableDataEvent.RequestDungeonData();
+        GoldSO goldData = _requestSaveableDataEvent.RequestGoldData();
+        SaveSystem.SaveData(playerData, expData, upgradableItemDataList, dungeonData, goldData);
+      }
     }
 
     _sceneToLoad = menuToLoad;
@@ -135,7 +140,7 @@ public class SceneLoader : MonoBehaviour
       }
       else
       {
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(_currentScene.sceneReference.editorAsset.name);
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(_currentScene.SceneName);
         if (unloadOperation != null)
         {
           yield return unloadOperation;

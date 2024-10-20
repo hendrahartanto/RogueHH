@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StartGameplay : MonoBehaviour
 {
+  [SerializeField] private DungeonSO _dungeonSO = default;
   [SerializeField] SceneSO _sceneToLoad = default;
+  [SerializeField] SceneSO _secondarySceneToLoad = default;
   [SerializeField] private bool _showLoadingScreen = default;
 
   [Header("Broadcasting on")]
@@ -26,7 +26,12 @@ public class StartGameplay : MonoBehaviour
 
   private void StartNewGame()
   {
-    _setDungeonConfigEvent.RaiseEvent();
-    _loadLocationEvent.RaiseEvent(_sceneToLoad, _showLoadingScreen);
+    if (_dungeonSO.CurrentLevel == -1)
+      _loadLocationEvent.RaiseEvent(_secondarySceneToLoad, _showLoadingScreen);
+    else
+    {
+      _setDungeonConfigEvent.RaiseEvent();
+      _loadLocationEvent.RaiseEvent(_sceneToLoad, _showLoadingScreen);
+    }
   }
 }

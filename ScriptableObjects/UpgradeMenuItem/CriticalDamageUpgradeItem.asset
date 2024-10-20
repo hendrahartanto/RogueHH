@@ -17,8 +17,8 @@ MonoBehaviour:
   _name: Crit Dmg Up
   _description: Why just hit hard when you can hit harder? Boosts your critical damage
     to make those lucky hits hurt even more.
-  _price: 10
+  _price: 4060
   _upgradeValue: 0.05
   _type: 4
-  _currentLevel: 0
+  _currentLevel: 45
   _maxLevel: 45

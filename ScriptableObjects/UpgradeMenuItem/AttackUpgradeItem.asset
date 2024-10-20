@@ -17,8 +17,8 @@ MonoBehaviour:
   _name: Attack Up
   _description: A proper muscle training will allow you to really strengthen your
     muscles.
-  _price: 10
+  _price: 4060
   _upgradeValue: 2
   _type: 2
-  _currentLevel: 0
+  _currentLevel: 45
   _maxLevel: 45

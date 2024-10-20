@@ -64,10 +64,12 @@ public class PersistentVariables : MonoBehaviour
 
   private void LoadData()
   {
+    skillContainerSO.Reset();
     SaveableData loadData = SaveSystem.LoadData();
     PlayerData.Level = loadData.PlayerData.Level;
     PlayerData.ExpCap = loadData.PlayerData.ExpCap;
     _playerExp.SetCurrentExp(loadData.PlayerData.CurrentExp);
+    _playerExp.SetExpCap(loadData.PlayerData.ExpCap);
 
     for (int i = 0; i < UpgradableItemList.Count; i++)
     {
@@ -77,6 +79,8 @@ public class PersistentVariables : MonoBehaviour
 
     DungeonData.CurrentLevel = loadData.DungeonData.CurrentLevel;
     DungeonData.MaxLevelReached = loadData.DungeonData.MaxLevelReached;
+
+    GoldData.SetGold(loadData.GoldData.Gold);
   }
 
   private void IncreaseMoney()
@@ -93,7 +97,6 @@ public class PersistentVariables : MonoBehaviour
       OnLevelUp();
     }
   }
-
 
   public void SetupStats(int remainingExp)
   {
@@ -119,7 +122,7 @@ public class PersistentVariables : MonoBehaviour
 
   private void UnlockDungeonLevel()
   {
-    DungeonData.MaxLevelReached = 30;
-    DungeonData.CurrentLevel = 30;
+    DungeonData.MaxLevelReached = 100;
+    DungeonData.CurrentLevel = 100;
   }
 }

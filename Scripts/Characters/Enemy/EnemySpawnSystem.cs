@@ -154,8 +154,72 @@ public class EnemySpawnSystem : MonoBehaviour
     enemyComp.EnemyLabel.color = RandomInitial.GetRarityColor(type);
   }
 
+  private void SpawnBoss()
+  {
+
+    Vector2Int randomPosition;
+    Room randomRoom = _dungeon.rooms[GlobalRandom.Next(0, _dungeon.RoomCount)];
+
+    while (true)
+    {
+      randomPosition = new Vector2Int(
+        GlobalRandom.Next(randomRoom.area.xMin, randomRoom.area.xMax),
+        GlobalRandom.Next(randomRoom.area.zMin, randomRoom.area.zMax)
+      );
+
+      if (_grid[randomPosition.x, randomPosition.y] != null && _grid[randomPosition.x, randomPosition.y].cellTypes.Contains(CellType.Walkable) && !_grid[randomPosition.x, randomPosition.y].cellTypes.Contains(CellType.PlayerBuffer))
+        break;
+    }
+
+    EnemyBaseSO enemy = PossibleEnemyTypes[0];
+
+    _changeCellTypeEvent.RaiseEvent(randomPosition.x, randomPosition.y, CellType.Enemy);
+    _changeNodeAccessibleEvent.RaiseEvent(randomPosition.x, randomPosition.y, false);
+
+    Transform spawnLocation = enemy.GetRandomPrefab().transform;
+
+    spawnLocation.position = new Vector3(randomPosition.x * GridConfig.CellSize.x, 1.5f, randomPosition.y * GridConfig.CellSize.z) + GridConfig.Offset;
+    spawnLocation.rotation = Quaternion.identity;
+
+    GameObject enemyObject = spawnLocation.gameObject;
+
+    SetEnemeyLabel(enemyObject, 2);
+
+    //assign unique channel to each enemy
+    IntEventChanelSO setMaxhealthEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
+    IntEventChanelSO updateHealthUIEvent = ScriptableObject.CreateInstance<IntEventChanelSO>();
+    VoidEventChannelSO toggleAlertIndicatorEvent = ScriptableObject.CreateInstance<VoidEventChannelSO>();
+
+    UIBarManager UIHealthBarManagerComp = enemyObject.GetComponentInChildren<UIBarManager>();
+    UIHealthBarManagerComp.SetMaxHealthUIEvent = setMaxhealthEvent;
+    UIHealthBarManagerComp.UpdateHealthUIEvent = updateHealthUIEvent;
+
+    Damagable DamagableComp = enemyObject.GetComponent<Damagable>();
+    DamagableComp.SetMaxHealthUIEvent = setMaxhealthEvent;
+    DamagableComp.UpdateHealthUIEvent = updateHealthUIEvent;
+
+    Enemy enemyComp = enemyObject.GetComponent<Enemy>();
+    enemyComp.ToggleAlertIndicatorEvent = toggleAlertIndicatorEvent;
+
+    EnemyAggroTrigger enemyAggroTriggerComp = enemyObject.GetComponentInChildren<EnemyAggroTrigger>();
+    enemyAggroTriggerComp.ToggleAlertIndicatorEvent = toggleAlertIndicatorEvent;
+
+    //set the level of the enemy
+    DamagableComp._characterConfigSO.Level = _dungeon.CurrentLevel;
+
+    //instantiate object yang udah dikasih chanel unique
+    Instantiate(enemyObject, spawnLocation.position, spawnLocation.rotation);
+  }
+
   private void SpawnEnemy()
   {
+    if (_dungeon.CurrentLevel == -1)
+    {
+      SpawnBoss();
+      _updateEnemyIndicatorUIEvent.RaiseEvent(1);
+      return;
+    }
+
     _actualEnemyCount = 0;
 
     SetupSpawnChances();

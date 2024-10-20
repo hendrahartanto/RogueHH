@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a1cf52b2faf074995b25de7328e65b, type: 3}
+  m_Name: BossFloor
+  m_EditorClassIdentifier: 
+  SceneName: BossFloor
+  sceneType: 0
+  sceneReference:
+    m_AssetGUID: 4afb06591340e584391f8840b4b92687
+    m_SubObjectName: 
+    m_SubObjectType: 
+  musicTrack: {fileID: 11400000, guid: 2c6a137114e7862488df039bae72d8c5, type: 2}
+  isMainMenu: 0

@@ -3,6 +3,7 @@ using UnityEngine.AddressableAssets;
 
 public class SceneSO : ScriptableObject
 {
+  public string SceneName;
   public SceneType sceneType;
   public AssetReference sceneReference;
   public AudioCueSO musicTrack;
@@ -13,6 +14,7 @@ public class SceneSO : ScriptableObject
     Location,
     Initialize,
     Gameplay,
-    Menu
+    Menu,
+    Initializer
   }
 }

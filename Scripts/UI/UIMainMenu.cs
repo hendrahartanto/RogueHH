@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
   public UIButtonBase ContinueButtonComp;
   public UnityAction NewGameButtonAction;
   public UnityAction ContinueButtonAction;
+  public UnityAction ExitButtonAction;
 
   public void NewGameButtonOnClick()
   {
@@ -18,5 +16,10 @@ public class UIMainMenu : MonoBehaviour
   public void ContinueButtonOnClick()
   {
     ContinueButtonAction.Invoke();
+  }
+
+  public void ExitButtonOnClick()
+  {
+    ExitButtonAction.Invoke();
   }
 }

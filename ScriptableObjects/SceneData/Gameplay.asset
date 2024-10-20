@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b999531f91a6940925897204dc97ba, type: 3}
   m_Name: Gameplay
   m_EditorClassIdentifier: 
+  SceneName: Gameplay
   sceneType: 2
   sceneReference:
     m_AssetGUID: b4ae614b208c17b4bbe6c655b6848d80
     m_SubObjectName: 
     m_SubObjectType: 
+  musicTrack: {fileID: 0}
+  isMainMenu: 0

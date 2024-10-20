@@ -17,8 +17,8 @@ MonoBehaviour:
   _name: Defense Up
   _description: Resistance training will improve your body toughness. Tougher body
     means more TPA work :D
-  _price: 10
+  _price: 4060
   _upgradeValue: 2
   _type: 1
-  _currentLevel: 0
+  _currentLevel: 45
   _maxLevel: 45

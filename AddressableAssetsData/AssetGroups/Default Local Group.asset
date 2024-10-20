@@ -16,43 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 862bfa69a119c7c4e95fcf6182b072f4
-  m_SerializeEntries:
-  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_Address: Assets/Scenes/SampleScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 4a70037bac0862649a781941c7647db3
-    m_Address: Assets/Scenes/Managers/Initialize.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 8a0cbd49bca99564db607574da7e2485
-    m_Address: Assets/ScriptableObjects/EventChannels/SceneSystems/ColdStartupChannel.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: b4ae614b208c17b4bbe6c655b6848d80
-    m_Address: Assets/Scenes/Managers/Gameplay.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 8de013795ecbdc4498dd0d4390ac2b75
-    m_Address: Assets/Scenes/MainMenu.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 1842835f3fe8de34aac57128c00ab7b6
-    m_Address: Assets/Scenes/UpgradeMenu.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1afc8866e92769f42b57941cd8639e98, type: 2}
   m_SchemaSet:
