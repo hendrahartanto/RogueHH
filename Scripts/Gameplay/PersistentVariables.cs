@@ -100,7 +100,10 @@ public class PersistentVariables : MonoBehaviour
 
   public void SetupStats(int remainingExp)
   {
-    _playerExp.SetExpCap((int)(_playerExp.ExpCap + 5 + Mathf.Pow(PlayerData.Level, (float)1.5)));
+    float levelScaling = Mathf.Pow(PlayerData.Level, 1.75f);
+    float expCapMultiplier = 10 + (2 * PlayerData.Level);
+
+    _playerExp.SetExpCap((int)(_playerExp.ExpCap + expCapMultiplier + levelScaling));
 
     _playerExp.SetExpCap(_playerExp.ExpCap);
     _playerExp.SetCurrentExp(remainingExp);

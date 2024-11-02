@@ -216,7 +216,6 @@ MonoBehaviour:
   DungeonData: {fileID: 11400000, guid: c5d6539484445b8419abea3e84a1deda, type: 2}
   GoldData: {fileID: 11400000, guid: 9680468b75eb6a54b9133113f2d42c53, type: 2}
   skillContainerSO: {fileID: 11400000, guid: 78f925bcd0e7d2d43a003e7ca8517ee5, type: 2}
-  _gainExpEvent: {fileID: 11400000, guid: b4c8dacfbc86c2a47bda46f6784026ba, type: 2}
   _requestSaveableDataEvent: {fileID: 11400000, guid: 68e4bf2702e384c49aa8235b98e205df, type: 2}
   _resetSaveableDataEvent: {fileID: 11400000, guid: 7252be3971c0628458ccf7245ca2f54f, type: 2}
   _loadSaveableDataEvent: {fileID: 11400000, guid: c86ea70f8fdcd5a44b59dfe253a119a9, type: 2}

@@ -15,6 +15,9 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
   public event UnityAction Skill3Action = delegate { };
   public event UnityAction KeyboardEscAction = delegate { };
 
+  public float spaceCooldown = 0.5f;
+  private float lastSpacePressTime = -Mathf.Infinity;
+
   private GameInput _gameInput;
   public bool StopPlayerMovementOnClick = false;
 
@@ -51,8 +54,16 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
   public void OnKeyboardSpace(InputAction.CallbackContext context)
   {
-    if (context.phase == InputActionPhase.Performed && !_gameState.IsTurnCycling && _gameState.CurrentGameState != GameState.Gameover)
-      KeyboardSpaceEvent.Invoke();
+    if (context.phase == InputActionPhase.Performed
+        && !_gameState.IsTurnCycling
+        && _gameState.CurrentGameState != GameState.Gameover)
+    {
+      if (Time.time - lastSpacePressTime >= spaceCooldown)
+      {
+        lastSpacePressTime = Time.time;
+        KeyboardSpaceEvent.Invoke();
+      }
+    }
   }
 
   public void OnKeyboard_1(InputAction.CallbackContext context)

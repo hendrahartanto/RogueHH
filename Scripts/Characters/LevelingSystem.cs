@@ -50,7 +50,10 @@ public class LevelingSystem : MonoBehaviour
 
   public void SetupStats(int remainingExp)
   {
-    _currentExp.SetExpCap((int)(_currentExp.ExpCap * Mathf.Pow(1.03f, _characterConfigSO.Level + 1)));
+    float levelScaling = Mathf.Pow(_characterConfigSO.Level, 1.75f);
+    float expCapMultiplier = 10 + (2 * _characterConfigSO.Level);
+
+    _currentExp.SetExpCap((int)(_currentExp.ExpCap + expCapMultiplier + levelScaling));
 
     _currentExp.SetExpCap(_currentExp.ExpCap);
     _currentExp.SetCurrentExp(remainingExp);
