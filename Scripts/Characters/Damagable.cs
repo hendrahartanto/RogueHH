@@ -177,6 +177,7 @@ public class Damagable : MonoBehaviour
     //jika source attack dari player maka turn cycle akan berjalan
     if (_source.gameObject.CompareTag("Player"))
     {
+      Debug.Log("Check turn cycle");
       _onTurnCycleExecuted.RaiseEvent();
     }
 

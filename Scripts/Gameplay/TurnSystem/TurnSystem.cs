@@ -71,7 +71,6 @@ public class TurnSystem : MonoBehaviour
 
     _isTurnCyclingSetActiveEvent.RaiseEvent(true);
 
-
     _currentItemIndex = 0;
     QueueItems[_currentItemIndex++].ExecuteTurn();
   }
