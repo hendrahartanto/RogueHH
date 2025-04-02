@@ -3,6 +3,7 @@
 
 A self-make **roguelike turn-based strategy** game with an **isometric perspective**. Battle through **infinite floors** filled with increasingly powerful enemies, strategize your movements, and upgrade your character to survive the depths!
 
+
 ## 🚀 Features
 - 🏰 Pre-Game Upgrade System
 - 🎥 Isometric Look
@@ -15,6 +16,7 @@ A self-make **roguelike turn-based strategy** game with an **isometric perspecti
   - Use a combination of **buffs and active skills** to turn the tide in battle.
 - 🎨 Visual & Performance Enhancements
 
+
 ## 🎭 Game Architecture & Design Patterns
 This game heavily utilizes Scriptable Objects and the Event Bus Pattern to create a modular and scalable system:
 - **Scriptable Objects** for flexible game architecture.
@@ -22,6 +24,7 @@ This game heavily utilizes Scriptable Objects and the Event Bus Pattern to creat
 - **Event Handling** with **Channels** for cleaner communication between systems.
 - **State Machine** to manage player and enemy behaviors.
 - **Observer Pattern** integrated into event channels.
+
 
 ## 🎥 Screenshots / Gameplay Demo
 ### Main Menu
