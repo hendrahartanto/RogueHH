@@ -4,18 +4,20 @@
 A self-make **roguelike turn-based strategy** game with an **isometric perspective**. Battle through **infinite floors** filled with increasingly powerful enemies, strategize your movements, and upgrade your character to survive the depths!
 
 
-## 🚀 Features
-- 🏰 Pre-Game Upgrade System
-- 🎥 Isometric Look
-- 🔺 Infinite Floor System
-- 🏗 Procedural Floor Generation
-- 🎲 Tile-Based Movement
-  - Click-based navigation using **A\* pathfinding** for optimal movement.  
-  - Enemies utilize a **custom A\* algorithm** to find alternative paths when blocked.
-- ⚔ Turn-Based Combat System
-  - Use a combination of **buffs and active skills** to turn the tide in battle.
-- 🎨 Visual & Performance Enhancements
+⚔️ Core Gameplay
+- **Dynamic Leveling System:** Gain experience, level up your character, and grow stronger during your run to keep up with the dungeon's dangers.
+- **Infinite Scaling Difficulty:** Survive an endless descent. The higher the floor you reach, the tougher and more unforgiving the enemies become. 
+- **Skill System:**
+  - **Attack Skills:** Unleash active abilities to attack enemies.
+  - **Tactical Buffs:** Activate buffs featuring managed **active durations and cooldowns**.
+- **Pre-Game Upgrade System:** Use your hard-earned resources to upgrade your base character stats before starting a new run.
 
+### 🎲 World & Mechanics
+- **Procedural Floor Generation:** Explore endlessly generated dungeon floors. No two runs are ever the exact same.
+- **Advanced Tile-Based Movement:**
+  - Click-based navigation utilizing **A\* pathfinding** for precise and optimal player movement.  
+  - Smart AI: Enemies use a **custom A\* algorithm** to dynamically find alternative paths when their primary route is blocked.
+- **Isometric Perspective:** A clean, classic isometric view optimized with visual and performance enhancements.
 
 ## 🎭 Game Architecture & Design Patterns
 This game heavily utilizes Scriptable Objects and the Event Bus Pattern to create a modular and scalable system:
